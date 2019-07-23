@@ -2,22 +2,23 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>러닝자바스크립트 chapter7 - Hexo</title>
+<title>chapter7. 스코프 - Hexo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
     <meta name="description" content="스코프 변수와 상수, 매개변수가 언제 어디서 정의되는지를 결정ex )  함수 매개변수가 함수 바디 안에서만 존재하는 것  스코프123456//스코프function f(x)&amp;#123;    return x + 3;&amp;#125;f(5); // 8x; //ReferenceError : x is not defined   x가 아주 잠시나마 존재했으므로 x + 3을">
+<meta name="keywords" content="스코프">
 <meta property="og:type" content="article">
-<meta property="og:title" content="러닝자바스크립트 chapter7">
+<meta property="og:title" content="chapter7. 스코프">
 <meta property="og:url" content="http://yoursite.com/2019/07/13/chapter7/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="스코프 변수와 상수, 매개변수가 언제 어디서 정의되는지를 결정ex )  함수 매개변수가 함수 바디 안에서만 존재하는 것  스코프123456//스코프function f(x)&amp;#123;    return x + 3;&amp;#125;f(5); // 8x; //ReferenceError : x is not defined   x가 아주 잠시나마 존재했으므로 x + 3을">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-14T14:55:23.023Z">
+<meta property="og:updated_time" content="2019-07-23T11:14:58.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="러닝자바스크립트 chapter7">
+<meta name="twitter:title" content="chapter7. 스코프">
 <meta name="twitter:description" content="스코프 변수와 상수, 매개변수가 언제 어디서 정의되는지를 결정ex )  함수 매개변수가 함수 바디 안에서만 존재하는 것  스코프123456//스코프function f(x)&amp;#123;    return x + 3;&amp;#125;f(5); // 8x; //ReferenceError : x is not defined   x가 아주 잠시나마 존재했으므로 x + 3을">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -93,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="러닝자바스크립트 chapter7" height="28">
+                <img src="/images/logo.svg" alt="chapter7. 스코프" height="28">
             
             </a>
         </div>
@@ -144,7 +145,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-13T06:24:03.000Z">2019-07-13</time>
+                <time class="level-item has-text-grey" datetime="2019-07-12T15:00:00.000Z">2019-07-13</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
@@ -163,7 +164,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                러닝자바스크립트 chapter7
+                chapter7. 스코프
             
         </h1>
         <div class="content">
@@ -183,8 +184,8 @@ x가 아주 잠시나마 존재했으므로 x + 3을 계산 할 수 있었다.
 </ul>
 <a id="more"></a>
 
-<p><span style="background:#ffcd00">변수의 스코프가 어떤 함수</span>라고 말할 때, 함수를 실제 호출할 때 까지는 함수 바디의 정해진 매개변수가 존재하지 않는다. 함수를 호출할 때마다 매개변수가 나타나고, 함수가 제어권을 반환하면 스코프 밖으로 사라진다.</p>
-<p><span style="background:#ffcd00">변수와 상수</span>는 만들기 전에는 존재하지 않는다. let이나 const로 선언 하기 전에는 스코프 안에서 존재하지 않는다.</p>
+<p><span class="bg-yellow">변수의 스코프가 어떤 함수</span>라고 말할 때, 함수를 실제 호출할 때 까지는 함수 바디의 정해진 매개변수가 존재하지 않는다. 함수를 호출할 때마다 매개변수가 나타나고, 함수가 제어권을 반환하면 스코프 밖으로 사라진다.</p>
+<p><span class="bg-yellow">변수와 상수</span>는 만들기 전에는 존재하지 않는다. let이나 const로 선언 하기 전에는 스코프 안에서 존재하지 않는다.</p>
 <p>(var는 특수한 경우) </p>
 <blockquote>
 <p>변수를 선언 : 식별자를 주어서 존재를 알린다.<br>변수를 정의 : 선언과 함께 값을 부여한다.<br><br>자바스크립트는 선언과 동시에 값이 주어지므로 둘을 구분하지 않는다.</p>
@@ -213,7 +214,7 @@ x가 아주 잠시나마 존재했으므로 x + 3을 계산 할 수 있었다.
 1. 변수 x는 함수 f를 정의 할 때 존재하나 y는 다른 스코프에도 존재 한다.
 2. 다른 스코프에서 y를 선언하고 그 스코프에서 f를 호출하더라도
     f를 호출하면 x는 그 바디 안에 스코프에 있지만 y는 그렇지 않다.
-3. 정적 스코프는 <span style="background:#ffcd00">전역 스코프</span>, <span style="background:#ffcd00">블록 스코프</span> , <span style="background:#ffcd00">함수 스코프</span>에 적용된다.
+3. 정적 스코프는 <span class="bg-yellow">전역 스코프</span>, <span class="bg-yellow">블록 스코프</span> , <span class="bg-yellow">함수 스코프</span>에 적용된다.
 </pre>
 
 <hr>
@@ -271,7 +272,7 @@ x는 블록 안에서 정의되었고,
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">//외부블록</span></span><br><span class="line">    <span class="hljs-keyword">let</span> x = &#123;<span class="hljs-attr">color</span> : <span class="hljs-string">"blue"</span>&#125;;</span><br><span class="line">    <span class="hljs-keyword">let</span> y = x;</span><br><span class="line">    <span class="hljs-keyword">let</span> z =<span class="hljs-number">3</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-comment">//내부블록 </span></span><br><span class="line">        <span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>; <span class="hljs-comment">//외부블록의  x가 가려짐 </span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//5</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(y.color)<span class="hljs-comment">//"blue": y가 가리키는 외부 스코프의 x가 가리키는 객체는 모두 스코프 안에 있다. </span></span><br><span class="line">        y.color = <span class="hljs-string">"red"</span>;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(z) <span class="hljs-comment">//"3" :z는 숨겨지지 않았다.</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x.color); <span class="hljs-comment">//"red" 객체가 내부스코프에서 수정됨 </span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(y.color); <span class="hljs-comment">//"red"; x와 y는 같은 객체를 가리킴  </span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(z); <span class="hljs-comment">//"3"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <pre>
-1. 스코프는 계층적 , 이로인해 <span style="background:#ffcd00">스코프 체인</span>이란 개념이 생김 
+1. 스코프는 계층적 , 이로인해 <span class="bg-yellow">스코프 체인</span>이란 개념이 생김 
 2. 스코프 체인에 있는 변수는 스코프에 있는 것이므로 숨겨지지만 않으면 접근이 가능하다.
 </pre>
 
@@ -371,6 +372,15 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
 <figure class="highlight javascript hljs"><figcaption><span>스트릭트모드</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line"><span class="hljs-meta">    'use strict'</span>;</span><br><span class="line">    <span class="hljs-comment">//코드를 전부 이 안에서 작성합니다.</span></span><br><span class="line">    <span class="hljs-comment">//이 코드는 스트릭트 모드로 동작하지만,</span></span><br><span class="line">    <span class="hljs-comment">//이 코드와 함께 동작하는 다른 스크립트는 스트릭트 모드에 영향을 받지 않습니다.</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
         </div>
         
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/스코프/">스코프</a>
+                </div>
+            </div>
+        </div>
+        
         
         
     </div>
@@ -420,7 +430,7 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
         <div class="level-start">
             <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/15/chapter8/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">러닝자바스크립트 chapter8</span>
+                <span class="level-item">chapter8. 배열과 배열 처리</span>
             </a>
         </div>
         
@@ -467,7 +477,7 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        5
                     </p>
                 </div>
             </div>
@@ -487,7 +497,7 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        7
                     </p>
                 </div>
             </div>
@@ -566,7 +576,7 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
                 <span class="level-item">러닝자바스크립트</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li>
             </ul>
@@ -575,6 +585,15 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
 </div>
     
         
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -588,16 +607,54 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
         
         <article class="media">
             
-            <a href="/2019/07/22/chapter9/" class="media-left">
+            <a href="/2019/07/23/chapter10/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter9">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter10. 맵과 셋">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T06:24:03.000Z">2019-07-22</time></div>
-                    <a href="/2019/07/22/chapter9/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter9</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T15:00:00.000Z">2019-07-23</time></div>
+                    <a href="/2019/07/23/chapter10/" class="has-link-black-ter is-size-6">chapter10. 맵과 셋</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/23/chapter11/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter11. 맵과 셋">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T15:00:00.000Z">2019-07-23</time></div>
+                    <a href="/2019/07/23/chapter11/" class="has-link-black-ter is-size-6">chapter11. 맵과 셋</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/22/chapter9/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter9. 객체와 객체지향 프로그래밍">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-21T15:00:00.000Z">2019-07-22</time></div>
+                    <a href="/2019/07/22/chapter9/" class="has-link-black-ter is-size-6">chapter9. 객체와 객체지향 프로그래밍</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
                     </p>
@@ -609,14 +666,14 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
             
             <a href="/2019/07/15/chapter8/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter8">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter8. 배열과 배열 처리">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-15T06:24:03.000Z">2019-07-15</time></div>
-                    <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter8</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-14T15:00:00.000Z">2019-07-15</time></div>
+                    <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">chapter8. 배열과 배열 처리</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
                     </p>
@@ -628,14 +685,14 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
             
             <a href="/2019/07/13/chapter7/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter7">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter7. 스코프">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-13T06:24:03.000Z">2019-07-13</time></div>
-                    <a href="/2019/07/13/chapter7/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter7</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-12T15:00:00.000Z">2019-07-13</time></div>
+                    <a href="/2019/07/13/chapter7/" class="has-link-black-ter is-size-6">chapter7. 스코프</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
                     </p>
@@ -661,7 +718,7 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
                     <span class="level-item">July 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -678,6 +735,55 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/map/">
+                        <span class="tag">map</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/set/">
+                        <span class="tag">set</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/배열/">
+                        <span class="tag">배열</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/스코프/">
+                        <span class="tag">스코프</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/인스턴스/">
+                        <span class="tag">인스턴스</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/클래스/">
+                        <span class="tag">클래스</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/프로퍼티/">
+                        <span class="tag">프로퍼티</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -704,16 +810,54 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
         
         <article class="media">
             
-            <a href="/2019/07/22/chapter9/" class="media-left">
+            <a href="/2019/07/23/chapter10/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter9">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter10. 맵과 셋">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T06:24:03.000Z">2019-07-22</time></div>
-                    <a href="/2019/07/22/chapter9/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter9</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T15:00:00.000Z">2019-07-23</time></div>
+                    <a href="/2019/07/23/chapter10/" class="has-link-black-ter is-size-6">chapter10. 맵과 셋</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/23/chapter11/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter11. 맵과 셋">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T15:00:00.000Z">2019-07-23</time></div>
+                    <a href="/2019/07/23/chapter11/" class="has-link-black-ter is-size-6">chapter11. 맵과 셋</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/22/chapter9/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter9. 객체와 객체지향 프로그래밍">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-21T15:00:00.000Z">2019-07-22</time></div>
+                    <a href="/2019/07/22/chapter9/" class="has-link-black-ter is-size-6">chapter9. 객체와 객체지향 프로그래밍</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
                     </p>
@@ -725,14 +869,14 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
             
             <a href="/2019/07/15/chapter8/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter8">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter8. 배열과 배열 처리">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-15T06:24:03.000Z">2019-07-15</time></div>
-                    <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter8</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-14T15:00:00.000Z">2019-07-15</time></div>
+                    <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">chapter8. 배열과 배열 처리</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
                     </p>
@@ -744,14 +888,14 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
             
             <a href="/2019/07/13/chapter7/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter7">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter7. 스코프">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-13T06:24:03.000Z">2019-07-13</time></div>
-                    <a href="/2019/07/13/chapter7/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter7</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-12T15:00:00.000Z">2019-07-13</time></div>
+                    <a href="/2019/07/13/chapter7/" class="has-link-black-ter is-size-6">chapter7. 스코프</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
                     </p>
@@ -777,7 +921,7 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
                     <span class="level-item">July 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -794,6 +938,55 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
                 Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/map/">
+                        <span class="tag">map</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/set/">
+                        <span class="tag">set</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/배열/">
+                        <span class="tag">배열</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/스코프/">
+                        <span class="tag">스코프</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/인스턴스/">
+                        <span class="tag">인스턴스</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/클래스/">
+                        <span class="tag">클래스</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/프로퍼티/">
+                        <span class="tag">프로퍼티</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -812,7 +1005,7 @@ f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="러닝자바스크립트 chapter7" height="28">
+                    <img src="/images/logo.svg" alt="chapter7. 스코프" height="28">
                 
                 </a>
                 <p class="is-size-7">

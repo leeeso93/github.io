@@ -13,3 +13,22 @@
 #back-to-top.rise-up {
     transform: translateY(0);
 }
+
+/* ==========================================================================
+   custom.css
+   ========================================================================== */
+
+.hljs-comment, .hljs-quote {
+    color: #57A64A;
+    font-style: normal;
+}
+.text-danger{
+    color:#e90000;
+}
+.bg-yellow{
+    background: #ffcd00;
+    color: #333;
+    font-size: 0.85em;
+    font-weight: normal;
+    padding: 0.25em 0.5em 0.25em;
+}
