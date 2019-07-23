@@ -2,20 +2,24 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Categories - Hexo</title>
+<title>chapter11. 예외와 예외 처리 - Hexo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="map,set,스코프,프로퍼티,클래스,인스턴스,배열">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+    <meta name="description" content="11.1 Error 객체 자바스크립트에는 내장된 Error 객체가 있고,이 객체는 에러 처리에 간편하게 사용할 수 있다.Error 인스턴스를 만들면서 에러 메시지를 지정 할 수 있다.">
+<meta name="keywords" content="map,set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chapter11. 예외와 예외 처리">
+<meta property="og:url" content="http://yoursite.com/2019/07/24/chapter11/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="11.1 Error 객체 자바스크립트에는 내장된 Error 객체가 있고,이 객체는 에러 처리에 간편하게 사용할 수 있다.Error 인스턴스를 만들면서 에러 메시지를 지정 할 수 있다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-23T13:06:51.063Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="chapter11. 예외와 예외 처리">
+<meta name="twitter:description" content="11.1 Error 객체 자바스크립트에는 내장된 Error 객체가 있고,이 객체는 에러 처리에 간편하게 사용할 수 있다.Error 인스턴스를 만들면서 에러 메시지를 지정 할 수 있다.">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -90,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Hexo" height="28">
+                <img src="/images/logo.svg" alt="chapter11. 예외와 예외 처리" height="28">
             
             </a>
         </div>
@@ -102,7 +106,7 @@
                 
                 <a class="navbar-item" href="/archives">Archives</a>
                 
-                <a class="navbar-item is-active" href="/categories">Categories</a>
+                <a class="navbar-item" href="/categories">Categories</a>
                 
                 <a class="navbar-item" href="/tags">Tags</a>
                 
@@ -135,27 +139,159 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-23T15:00:00.000Z">2019-07-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 699 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                chapter11. 예외와 예외 처리
+            
+        </h1>
+        <div class="content">
+            <h2 id="11-1-Error-객체"><a href="#11-1-Error-객체" class="headerlink" title="11.1 Error 객체"></a>11.1 Error 객체</h2><blockquote>
+<p>자바스크립트에는 내장된 Error 객체가 있고,<br>이 객체는 에러 처리에 간편하게 사용할 수 있다.<br>Error 인스턴스를 만들면서 에러 메시지를 지정 할 수 있다.</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight javascript hljs"><figcaption><span>error</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"invalid Error"</span>);</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="try-catch와-예외-처리"><a href="#try-catch와-예외-처리" class="headerlink" title="try/catch와 예외 처리"></a>try/catch와 예외 처리</h2><blockquote>
+<p>예외처리는 try…catch문을 사용</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>try...catch</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//유효한 이메일인지 체크</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateEmail</span>(<span class="hljs-params">email</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> email.match(<span class="hljs-regexp">/@/</span>) ? </span><br><span class="line">    email : </span><br><span class="line">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`invalid email :<span class="hljs-subst">$&#123;email&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//try...catch</span></span><br><span class="line"><span class="hljs-keyword">const</span> email = <span class="hljs-string">'a@d.com'</span>;</span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> validateEmail = validateEmail(email);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span>(validateEmail <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Error</span>)&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Error <span class="hljs-subst">$&#123;validateEmail.message&#125;</span>`</span>);</span><br><span class="line">    &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`valid email <span class="hljs-subst">$&#123;validateEmail&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(err)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">`Error <span class="hljs-subst">$&#123;err.message&#125;</span>`</span>);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre>
+에러를 캐치했으므로 프로그램은 멈추지 않는다.
+에러가 일어나면 즉시 catch 블록으로 이동함
+validateEmail을 실행한 다음 if 문은 실행되지 않음
+</pre>
+<br>
+
+<h2 id="11-3-에러-일으키기"><a href="#11-3-에러-일으키기" class="headerlink" title="11.3 에러 일으키기"></a>11.3 에러 일으키기</h2><blockquote>
+<p>자바스크립트는 에러를 일으킬 떄 숫자나 문자열 등 어떤 값이든 catch절에 넘길 수 있다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>현금인출</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//에러 일으키기</span></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">계좌 잔고(balance)가 요청받은 금액보다 적다면 예외를 발생</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">billPay</span>(<span class="hljs-params">amount,payee,account</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(amount &gt; account.balance)</span><br><span class="line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"insufficient funds"</span>);</span><br><span class="line">    account.transfer(payee,amount);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre>
+throw를 호출하면 함수는 즉시 실행을 멈춤
+따라서, account.transfer(payee,amount)는 실행되지 않는다.
+</pre>
+<br>
+
+<h2 id="11-4-예외-처리와-호출-스택"><a href="#11-4-예외-처리와-호출-스택" class="headerlink" title="11.4 예외 처리와 호출 스택"></a>11.4 예외 처리와 호출 스택</h2><blockquote>
+<p><strong>호출 스택</strong> : 완료되지 않은 함수가 쌓이는 것</p>
+<ul>
+<li>에러는 캐치 될 때까지 호출 스택을 따라 올라감</li>
+<li>에러는 호출 스택 어디서든 캐치 할 수 있다.</li>
+<li>에러를 캐치하지 않으면 자바스크립트 멈춤<br>  =&gt;처리하지 않은 에러 or 캐치하지 않은 에러</li>
+<li><em>stack 프로퍼티*</em> : Error 인스턴스는 스택을 문자열로 표현한 stack 프로퍼티가 있다.    </li>
+</ul>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>호출스택</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//에러 처리</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"a calling b"</span>);</span><br><span class="line">    b();</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'a :done'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"b calling c"</span>);  </span><br><span class="line">    c();</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'b :done'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"c :throwing Error"</span>);  </span><br><span class="line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'e error'</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'c :done'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">d</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"d calling c"</span>);  </span><br><span class="line">    c();</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'d :done'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    a();</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(err)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(err.stack);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    d();</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(err)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(err.stack);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">a calling b</span></span><br><span class="line"><span class="hljs-comment">b calling c</span></span><br><span class="line"><span class="hljs-comment">c :throwing Error</span></span><br><span class="line"><span class="hljs-comment">Error: e error</span></span><br><span class="line"><span class="hljs-comment">    at c (&lt;anonymous&gt;:17:11)</span></span><br><span class="line"><span class="hljs-comment">    at b (&lt;anonymous&gt;:11:5)</span></span><br><span class="line"><span class="hljs-comment">    at a (&lt;anonymous&gt;:5:5)</span></span><br><span class="line"><span class="hljs-comment">    at &lt;anonymous&gt;:28:5</span></span><br><span class="line"><span class="hljs-comment">d calling c</span></span><br><span class="line"><span class="hljs-comment">c :throwing Error</span></span><br><span class="line"><span class="hljs-comment">Error: e error</span></span><br><span class="line"><span class="hljs-comment">    at c (&lt;anonymous&gt;:17:11)</span></span><br><span class="line"><span class="hljs-comment">    at d (&lt;anonymous&gt;:23:5)</span></span><br><span class="line"><span class="hljs-comment">    at &lt;anonymous&gt;:34:5</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="try…catch…finally"><a href="#try…catch…finally" class="headerlink" title="try…catch…finally"></a>try…catch…finally</h2><blockquote>
+<p>try블록의 코드가 HTTP 연결이나 파일 같은 ‘자원’을 처리해야 할 때<br>어느 시점에서 이 자원을 해제해야함</p>
+<ul>
+<li>try는 에러가 일어나면 자원을 헤재할 기회가 사라질 수 있음</li>
+<li>catch는 에러가 없으면 실행되지 않음</li>
+<li>finally 에러 관계없이 반드시 호출됨</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>try...catch...finally</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//try...catch...finally</span></span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"1.this line is executed.."</span>);</span><br><span class="line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"whoops"</span>);   </span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"2.this line is not.."</span>);</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(err)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"3.there was an error..."</span>);</span><br><span class="line">&#125;<span class="hljs-keyword">finally</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"4....always excuted"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">1.this line is executed..</span></span><br><span class="line"><span class="hljs-comment">3.there was an error...</span></span><br><span class="line"><span class="hljs-comment">4....always excuted</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/map/">map</a>, <a class="has-link-grey -link" href="/tags/set/">set</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
-            <span class="level-start">
-                <span class="level-item">러닝자바스크립트</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li>
-            </ul>
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
         </div>
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/23/chapter10/">
+                <span class="level-item">chapter10. 맵과 셋</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
 
 
@@ -721,7 +857,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Hexo" height="28">
+                    <img src="/images/logo.svg" alt="chapter11. 예외와 예외 처리" height="28">
                 
                 </a>
                 <p class="is-size-7">
