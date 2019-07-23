@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>러닝자바스크립트 chapter9 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="9.1 프로퍼티 나열 1) 배열은 값을 가지며 각 값에는 숫자형 인덱스가 있습니다.    객체는 프로퍼티를 가지며 각 프로퍼티에는 문자열이나 심볼 인덱스가 있습니다2) 배열에는 순서가 있습니다. 반면 객체는 그런 순서가 보장되지 않습니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="러닝자바스크립트 chapter9">
+<meta property="og:url" content="http://yoursite.com/2019/07/22/chapter9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="9.1 프로퍼티 나열 1) 배열은 값을 가지며 각 값에는 숫자형 인덱스가 있습니다.    객체는 프로퍼티를 가지며 각 프로퍼티에는 문자열이나 심볼 인덱스가 있습니다2) 배열에는 순서가 있습니다. 반면 객체는 그런 순서가 보장되지 않습니다.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-23T07:44:52.951Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="러닝자바스크립트 chapter9">
+<meta name="twitter:description" content="9.1 프로퍼티 나열 1) 배열은 값을 가지며 각 값에는 숫자형 인덱스가 있습니다.    객체는 프로퍼티를 가지며 각 프로퍼티에는 문자열이나 심볼 인덱스가 있습니다2) 배열에는 순서가 있습니다. 반면 객체는 그런 순서가 보장되지 않습니다.">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="러닝자바스크립트 chapter9" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-22T06:24:03.000Z">2019-07-22</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 minutes read (About 1994 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                러닝자바스크립트 chapter9
+            
+        </h1>
+        <div class="content">
+            <h2 id="9-1-프로퍼티-나열"><a href="#9-1-프로퍼티-나열" class="headerlink" title="9.1 프로퍼티 나열"></a>9.1 프로퍼티 나열</h2><blockquote>
+<p>1) 배열은 값을 가지며 각 값에는 숫자형 인덱스가 있습니다.<br>    객체는 프로퍼티를 가지며 각 프로퍼티에는 문자열이나 심볼 인덱스가 있습니다<br>2) 배열에는 순서가 있습니다. 반면 <strong>객체는 그런 순서가 보장되지 않습니다.</strong><br><br></p>
+</blockquote>
+<a id="more"></a>
+<h2 id="9-1-1-for…in"><a href="#9-1-1-for…in" class="headerlink" title="9.1.1 for…in"></a>9.1.1 for…in</h2><ul>
+<li>for…in : 객체 프로퍼티를 나열할 떄</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> SYM = <span class="hljs-built_in">Symbol</span>();</span><br><span class="line"><span class="hljs-keyword">const</span> o =&#123;<span class="hljs-attr">a</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">b</span>:<span class="hljs-number">2</span>,<span class="hljs-attr">c</span>:<span class="hljs-number">3</span>,[SYM]:<span class="hljs-number">4</span>&#125;;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> prop <span class="hljs-keyword">in</span> o)&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!o.hasOwnProperty(prop)) <span class="hljs-keyword">continue</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;prop&#125;</span>:<span class="hljs-subst">$&#123;o[prop]&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">a:1</span></span><br><span class="line"><span class="hljs-comment">b:2</span></span><br><span class="line"><span class="hljs-comment">c:3</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<pre>hasOwnProperty : for...in에 나타날 위험을 제거하기 위해 사용
+for...in 루프에는 키가 심볼인 프로퍼티는 포함 안됌
+</pre>
+<br>
+
+<h2 id="9-1-2-Object-keys"><a href="#9-1-2-Object-keys" class="headerlink" title="9.1.2 Object.keys"></a>9.1.2 Object.keys</h2><blockquote>
+<p>객체에서 나열 가능한 문자열 프로퍼티를 배열로 반환</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 9.1.2 Object.keys</span></span><br><span class="line"><span class="hljs-keyword">const</span> SYM = <span class="hljs-built_in">Symbol</span>();</span><br><span class="line"><span class="hljs-keyword">const</span> o =&#123;<span class="hljs-attr">a</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">b</span>:<span class="hljs-number">2</span>,<span class="hljs-attr">c</span>:<span class="hljs-number">3</span>,[SYM]:<span class="hljs-number">4</span>&#125;;</span><br><span class="line"><span class="hljs-built_in">Object</span>.keys(o).forEach(<span class="hljs-function"><span class="hljs-params">prop</span> =&gt;</span> <span class="hljs-built_in">console</span>.log (<span class="hljs-string">`<span class="hljs-subst">$&#123;prop&#125;</span> :<span class="hljs-subst">$&#123;o[prop]&#125;</span>`</span>));</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">a:1</span></span><br><span class="line"><span class="hljs-comment">b:2</span></span><br><span class="line"><span class="hljs-comment">c:3</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+hasOwnProperty를 체크할 필요가 없다.
+객체의 프로퍼티 키를 배열로 가져와야 할때 Object.keys가 편리하다.
+</pre>
+<br>
+
+<h2 id="9-2-객체지향-프로그래밍"><a href="#9-2-객체지향-프로그래밍" class="headerlink" title="9.2 객체지향 프로그래밍"></a>9.2 객체지향 프로그래밍</h2><blockquote>
+<p>OOP) 객체 : 데이터와 기능을 논리적으로 묶은 것</p>
+<ul>
+<li>클래스 : 자동차처럼 추상적이고 범용적인 것 </li>
+<li>인스턴스 : 특정 자동차처럼 구체적이고 한정적인 것</li>
+<li>메서드 : 기능</li>
+<li>클래스 메서드 : 클래스지만 특정 인스턴스에 묶이지 않는 기능</li>
+<li>생성자 : 인스턴스를 처음 만들 떄 생성자가 실행됨, 객체 인스턴스를 초기화함</li>
+</ul>
+</blockquote>
+<p>클래스 : 운송수단<br>서브 클래스 : 자동차, 보트, 비행기..<br>보트 서브 클래스 : 요트, 카누,모터보트…<br><br></p>
+<h2 id="9-2-1-클래스와-인스턴스-생성"><a href="#9-2-1-클래스와-인스턴스-생성" class="headerlink" title="9.2.1 클래스와 인스턴스 생성"></a>9.2.1 클래스와 인스턴스 생성</h2><blockquote>
+<p>ES6애서 클래스를 만드는 간편한 새 문법을 도입함</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>클래스만들기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre>새 클래스 Car을 만듬, 아직 인스턴스(특정 자동차)는 안만들어짐</pre>
+<br>
+
+<figure class="highlight javascript hljs"><figcaption><span>인스턴스만들기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> car1 = <span class="hljs-keyword">new</span> Car();</span><br><span class="line"><span class="hljs-keyword">const</span> car2 = <span class="hljs-keyword">new</span> Car();</span><br></pre></td></tr></table></figure>
+
+<pre>인스턴스를 만들 떈 new 키워드를 사용한다</pre>
+<br>
+
+<figure class="highlight javascript hljs"><figcaption><span>instanceof</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//instanceof</span></span><br><span class="line">car1 <span class="hljs-keyword">instanceof</span> Car <span class="hljs-comment">//true</span></span><br><span class="line">car1 <span class="hljs-keyword">instanceof</span> Bus <span class="hljs-comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<pre>instanceof : 객체가 클래스인지, 인스턴스인지 확인
+car1은 Car의 인스턴스이지만, Bus의 인스턴스는 아니다.
+</pre>
+<br>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//제조사, 모델, 변속 기능 추가</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(make, model)&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.make = make;</span><br><span class="line">        <span class="hljs-keyword">this</span>.model = model;</span><br><span class="line">        <span class="hljs-keyword">this</span>.userGears = [<span class="hljs-string">'P'</span>,<span class="hljs-string">'N'</span>,<span class="hljs-string">'R'</span>,<span class="hljs-string">'D'</span>];</span><br><span class="line">        <span class="hljs-keyword">this</span>.userGear = <span class="hljs-keyword">this</span>.userGears[<span class="hljs-number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    shift(gear)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.userGears.indexOf(gear)&lt;<span class="hljs-number">0</span>)</span><br><span class="line">        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'invalid gear :'</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;gear&#125;</span>`</span>);</span><br><span class="line">        <span class="hljs-keyword">this</span>.userGear = gear</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//실제 사용</span></span><br><span class="line"><span class="hljs-keyword">const</span> car1 = <span class="hljs-keyword">new</span> Car(<span class="hljs-string">'Thsla'</span>,<span class="hljs-string">'Model S'</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> car2 = <span class="hljs-keyword">new</span> Car(<span class="hljs-string">'Mazda'</span>,<span class="hljs-string">'3i'</span>);</span><br><span class="line">car1.shift(<span class="hljs-string">'D'</span>);</span><br><span class="line">car2.shift(<span class="hljs-string">'R'</span>);</span><br><span class="line"></span><br><span class="line">car1.userGear <span class="hljs-comment">//"R"</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+this : 메서드를 호출한 인스턴스를 가리키는 목적 
+userGears :  사용할 수 있는 기어 목록
+gear :  현재 기어 사용할 수 있는 첫번째 기어로 초기화
+shift : 메서드(기어변속)
+
+* 실수로 기어 프로퍼티를 고치지 않도록 어느 정도 막을 수 있다.
+_ : 외부에서 접근하면 안돼는 프로퍼티 이름 앞에 붙이는 가짜 접근 제한 ex)_userGears
+</pre>
+<br>
+
+<h2 id="9-2-2-클래스는-함수다"><a href="#9-2-2-클래스는-함수다" class="headerlink" title="9.2.2 클래스는 함수다."></a>9.2.2 클래스는 함수다.</h2><blockquote>
+<p>ES6에서 class 키워드를 도입하기 전까지,<br><strong>클래스를 만드는 것은 곧 클래스 생성자로 사용될 함수를 만든다</strong>는 의미<br>but, class는 단축 문법일 뿐이고 자바스크립트의 클래스가 바뀐 것은 아님</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>es5</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Car</span>(<span class="hljs-params">make,model</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.make = make;</span><br><span class="line">    <span class="hljs-keyword">this</span>.model = model;</span><br><span class="line">    <span class="hljs-keyword">this</span>.userGears = [<span class="hljs-string">'P'</span>,<span class="hljs-string">'N'</span>,<span class="hljs-string">'R'</span>,<span class="hljs-string">'D'</span>];</span><br><span class="line">    <span class="hljs-keyword">this</span>.userGear = <span class="hljs-keyword">this</span>.userGears[<span class="hljs-number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript hljs"><figcaption><span>es6</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Es6Car</span> </span>&#123;&#125; <span class="hljs-comment">//생성자는 의도적으로 생략</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Es5Car</span> </span>&#123;&#125;</span><br><span class="line">&gt; <span class="hljs-keyword">typeof</span> Es6Car <span class="hljs-comment">//'function'</span></span><br><span class="line">&gt; <span class="hljs-keyword">typeof</span> Es5Car <span class="hljs-comment">//'function'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-2-3-프로토타입"><a href="#9-2-3-프로토타입" class="headerlink" title="9.2.3 프로토타입"></a>9.2.3 프로토타입</h2><blockquote>
+<p>프로토타입 메서드: 클래스의 인스턴스에서 사용할 수 있는 메서드<br>ex) Car.prototype.shift :<br>Car 클래스의 인스턴스에서 사용할 수 있는 shift 메서드는 프로토타입 메서드임 </p>
+<ul>
+<li>최근엔 메서드를 ‘#’로 표기하기도함 ex)Car#shift</li>
+<li>클래스는 대문자로 시작하는게 관용적임<br>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>함수의 prototype 프로퍼티가 중요한 시점은 new 키워드로 새 인스턴스를 만들때</strong></li>
+<li>new 키워드로 만든 새 객체는 생성자 prototype 프로퍼티에 접근가능</li>
+<li>‘<strong>proto</strong>‘(밑줄 2개) 프로퍼티에 저장()</li>
+<li>동적 디스패치 : 메서드 호출 </li>
+</ul>
+<figure class="highlight javascript hljs"><figcaption><span>prototype</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//9.2.3 프로토타입</span></span><br><span class="line"><span class="hljs-keyword">const</span> Car = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> carProps = <span class="hljs-keyword">new</span> <span class="hljs-built_in">WeakMap</span>();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">constructor</span>(make,model)&#123;</span><br><span class="line">            <span class="hljs-keyword">this</span>.make = make;</span><br><span class="line">            <span class="hljs-keyword">this</span>.model = model;</span><br><span class="line">            <span class="hljs-keyword">this</span>._userGears = [<span class="hljs-string">'P'</span>,<span class="hljs-string">'N'</span>,<span class="hljs-string">'R'</span>,<span class="hljs-string">'D'</span>];</span><br><span class="line">            carProps.set(<span class="hljs-keyword">this</span>,&#123;<span class="hljs-attr">userGear</span>:<span class="hljs-keyword">this</span>._userGears[<span class="hljs-number">0</span>]&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">get</span> userGear()&#123;<span class="hljs-keyword">return</span> carProps.get(<span class="hljs-keyword">this</span>).userGear;&#125;</span><br><span class="line">        <span class="hljs-keyword">set</span> userGear(value)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>._userGears.indexOf(value)&lt;<span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;value&#125;</span>`</span>);</span><br><span class="line">            carProps.get(<span class="hljs-keyword">this</span>).userGear = value;</span><br><span class="line">        &#125;</span><br><span class="line">        shift(gear)&#123;<span class="hljs-keyword">this</span>.userGear = gear;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> Car;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> car1 = <span class="hljs-keyword">new</span> Car();</span><br><span class="line"><span class="hljs-keyword">const</span> car2 = <span class="hljs-keyword">new</span> Car();</span><br><span class="line">car1.shift === Car.prototype.shift; <span class="hljs-comment">//true;</span></span><br><span class="line">car1.shift(<span class="hljs-string">'D'</span>);</span><br><span class="line">car1.shift(<span class="hljs-string">'d'</span>);<span class="hljs-comment">//error;</span></span><br><span class="line">car1.userGear; <span class="hljs-comment">// 'D';</span></span><br><span class="line">car1.shift === car2.shift; <span class="hljs-comment">//true;</span></span><br><span class="line"></span><br><span class="line">car1.shift = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">gear</span>) </span>&#123;<span class="hljs-keyword">this</span>.userGear = gear.toUpperCase();&#125;</span><br><span class="line">car1.shift === Car.prototype.shift; <span class="hljs-comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-2-4-정적-메서드"><a href="#9-2-4-정적-메서드" class="headerlink" title="9.2.4 정적 메서드"></a>9.2.4 정적 메서드</h2><blockquote>
+<p>정적 메서드 : 클래스 메서드</p>
+<ul>
+<li>특정 인스턴스에 적용되지 않음</li>
+<li>this는 인스턴스가 아니라 클래스 자체에 묶임</li>
+<li>클래스와 관련되지만 인스턴스와 관련없는 범용적 작업에 사용<br>ex) 자동차 식별 번호 (VIN) 붙이기  </li>
+<li>여러 인스턴스를 대상으로 하는 작업에도 사용</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>정적메서드</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//areSimilar : 두 자동차의 제조사와 모델이 같으면 true 반환 메서드</span></span><br><span class="line"><span class="hljs-comment">//areSame :  두 자동차의 VIN이 같으면 true반환 메서드</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> getNextVin()&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> Car.nextVin++; <span class="hljs-comment">//this.nextVin++이라고 써도 되지만,</span></span><br><span class="line">                                <span class="hljs-comment">// Car을 앞에 쓰면 정적 메서드라는 걸 상기</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(make,model)&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.make = make;</span><br><span class="line">        <span class="hljs-keyword">this</span>.model = model;</span><br><span class="line">        <span class="hljs-keyword">this</span>.vin = Car.getNextVin();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">static</span> areSimilar(car1,car2)&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> car1.make == car2.make &amp;&amp; car1.model == car2.model;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">static</span> areSame(car1,car2)&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> car1.vin === car2.vin;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Car.nextVin = <span class="hljs-number">0</span>; <span class="hljs-comment">//초기값</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> car1 = <span class="hljs-keyword">new</span> Car(<span class="hljs-string">"Tesla"</span>,<span class="hljs-string">"S"</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> car2 = <span class="hljs-keyword">new</span> Car(<span class="hljs-string">"Mazda"</span>,<span class="hljs-string">"3"</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> car3 = <span class="hljs-keyword">new</span> Car(<span class="hljs-string">"Mazda"</span>,<span class="hljs-string">"3"</span>);</span><br><span class="line"></span><br><span class="line">car1.vin; <span class="hljs-comment">//0</span></span><br><span class="line">car2.vin; <span class="hljs-comment">//1</span></span><br><span class="line">car3.vin; <span class="hljs-comment">//2</span></span><br><span class="line"></span><br><span class="line">Car.areSimilar(car1,car2);<span class="hljs-comment">//false</span></span><br><span class="line">Car.areSimilar(car2,car3);<span class="hljs-comment">//true</span></span><br><span class="line">Car.areSame(car2,car3);<span class="hljs-comment">//false</span></span><br><span class="line">Car.areSame(car2,car2);<span class="hljs-comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-2-5-상속"><a href="#9-2-5-상속" class="headerlink" title="9.2.5 상속"></a>9.2.5 상속</h2><blockquote>
+<p>클래스 인스턴스는 클래스의 기능을 모두 상속한다.</p>
+<ul>
+<li><strong>프로토타입 체인</strong> :<br>  조건에 맞는 프로토타입을 찾을 때 까지 체인을 계속 거슬러감<br>  프로토타입을 찾지 못하면 에러를 일으킴</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//프로토타입 체인</span></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">deployAirbags </span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.passengers = [];</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Vehicle created"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    addPassenger(p)&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.passengers.push(p);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vehicle</span></span>&#123; </span><br><span class="line">    <span class="hljs-keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>();</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Car created"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    deployAirbags()&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"BWOOSH"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> v = <span class="hljs-keyword">new</span> Vehicle(); </span><br><span class="line">v.addPassenger(<span class="hljs-string">"Frank"</span>);</span><br><span class="line">v.addPassenger(<span class="hljs-string">"Judy"</span>);</span><br><span class="line">v.passengers; <span class="hljs-comment">// ["Frank","Judy"];</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> Car();</span><br><span class="line">c.addPassenger(<span class="hljs-string">"Alice"</span>);</span><br><span class="line">c.addPassenger(<span class="hljs-string">"Cameron"</span>);</span><br><span class="line">c.passengers; <span class="hljs-comment">//["Alice","Cameron"]</span></span><br><span class="line"></span><br><span class="line">v.deployAirbags(); <span class="hljs-comment">//error</span></span><br><span class="line">c.deployAirbags(); <span class="hljs-comment">//console.log("BWOOSH");</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>extends</strong> :  Car를 Vehicle의 서브 클래스로 만듬</li>
+<li><strong>super()</strong> :  슈퍼클래스의 생성자 호출, 서브클래스에서는 이 함수를 반드시 호출</li>
+</ul>
+<pre>
+c 에서는 deployAirbags 호출 가능, v 에서는 error
+<span style="color:red">서브클래스는 슈퍼클래스의 모든 메서드에 접근 가능 / 반대는 불가</span>
+</pre>
+
+<h2 id="9-2-6-다형성"><a href="#9-2-6-다형성" class="headerlink" title="9.2.6 다형성"></a>9.2.6 다형성</h2><blockquote>
+<p>다형성 : 여러 슈퍼클러스의 맴버인 인스턴스<br>instanceOf 연산자:  객체가 클래스의 인스턴스인지 확인</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>다형성</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//다형성</span></span><br><span class="line"><span class="hljs-comment">// Vehicle : 슈퍼클래스 </span></span><br><span class="line"><span class="hljs-comment">// Motorcycle 와 Car는 Vehicle의 서브클래스임 </span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Motorcycle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vehicle</span></span>&#123;&#125;;</span><br><span class="line"><span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> Car();</span><br><span class="line"><span class="hljs-keyword">const</span> m = <span class="hljs-keyword">new</span> Motorcycle();</span><br><span class="line">c <span class="hljs-keyword">instanceof</span> Car; <span class="hljs-comment">//true</span></span><br><span class="line">c <span class="hljs-keyword">instanceof</span> Vehicle; <span class="hljs-comment">//true</span></span><br><span class="line">m <span class="hljs-keyword">instanceof</span> Car <span class="hljs-comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>자바스크립트의 모든 객체는 루트 클래스인 Object의 인스턴스이다</strong></li>
+</ul>
+<h2 id="9-2-7-객체-프로퍼티-나열-다시-보기"><a href="#9-2-7-객체-프로퍼티-나열-다시-보기" class="headerlink" title="9.2.7 객체 프로퍼티 나열 다시 보기"></a>9.2.7 객체 프로퍼티 나열 다시 보기</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Super</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.name = <span class="hljs-string">'Super'</span>;</span><br><span class="line">        <span class="hljs-keyword">this</span>.isSuper = <span class="hljs-literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//유효하지만 권장x</span></span><br><span class="line">Super.prototype.sneaky = <span class="hljs-string">'not recommended'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sub</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Super</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>();<span class="hljs-comment">//서브클래스는 써줘야함</span></span><br><span class="line">        <span class="hljs-keyword">this</span>.name = <span class="hljs-string">'Sub'</span>;</span><br><span class="line">        <span class="hljs-keyword">this</span>.isSub = <span class="hljs-literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> obj = <span class="hljs-keyword">new</span> Sub(); </span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> p <span class="hljs-keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;p&#125;</span> : <span class="hljs-subst">$&#123;obj[p]&#125;</span>`</span>+ (obj.hasOwnProperty(p)? <span class="hljs-string">''</span>: <span class="hljs-string">'(inherited)'</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">name : Sub</span></span><br><span class="line"><span class="hljs-comment">isSuper : true</span></span><br><span class="line"><span class="hljs-comment">isSub : true</span></span><br><span class="line"><span class="hljs-comment">sneaky : not recommended(inherited)</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-2-8-문자열-표현"><a href="#9-2-8-문자열-표현" class="headerlink" title="9.2.8 문자열 표현"></a>9.2.8 문자열 표현</h2><blockquote>
+<p>toString : 객채의 기본적인 문자열 표현을 제공</p>
+</blockquote>
+<h2 id="9-3-다중-상속-믹스인-인터페이스"><a href="#9-3-다중-상속-믹스인-인터페이스" class="headerlink" title="9.3 다중 상속, 믹스인, 인터페이스"></a>9.3 다중 상속, 믹스인, 인터페이스</h2><blockquote>
+<p><strong>다중 상속</strong> : 클래스가 슈퍼 클래스 두 개를 가지는 기능, 충돌 위험 존재<br><strong>인터페이스</strong> : 다중 상속을 지원하지 않는 언어의 경우 인터페이스를 도입<br><strong>믹스인</strong> : 기능을 필요한 만큼 섞은 것<br><strong>Symbol()</strong> : 심볼은 고유하므로, 다른 슈퍼클래스의 기능과 충돌할 가능성이 없다.</p>
+</blockquote>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/15/chapter8/">
+                <span class="level-item">러닝자바스크립트 chapter8</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="leeeso93">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        leeeso93
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        이소뭉&#39;s Blog
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Category
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/leeeso93" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/leeeso93">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/leeeso93" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/22/chapter9/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter9">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T06:24:03.000Z">2019-07-22</time></div>
+                    <a href="/2019/07/22/chapter9/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter9</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/15/chapter8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter8">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-15T06:24:03.000Z">2019-07-15</time></div>
+                    <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter8</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/13/chapter7/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter7">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-13T06:24:03.000Z">2019-07-13</time></div>
+                    <a href="/2019/07/13/chapter7/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter7</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/22/chapter9/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter9">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T06:24:03.000Z">2019-07-22</time></div>
+                    <a href="/2019/07/22/chapter9/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter9</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/15/chapter8/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter8">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-15T06:24:03.000Z">2019-07-15</time></div>
+                    <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter8</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/13/chapter7/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="러닝자바스크립트 chapter7">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-13T06:24:03.000Z">2019-07-13</time></div>
+                    <a href="/2019/07/13/chapter7/" class="has-link-black-ter is-size-6">러닝자바스크립트 chapter7</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="러닝자바스크립트 chapter9" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
