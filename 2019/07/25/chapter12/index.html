@@ -2,19 +2,24 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Archives: 2019 - Hexo</title>
+<title>chapter12. 이터레이터와 제너레이터 - Hexo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+    <meta name="description" content="이터레이터iterator : ‘지금 어디 있는지’ 파악할 수 있도록 도움 ex)배열  values() 메서드를 써서 이터레이터를 만들 수 있다. next() 메서드를 써서 호출할 수 있다. 이터레이터가 끝까지 진행하면 뒤로 돌아가서 다른 데이터를 제공할 수 없다. 이터레이터는 모두 독립적이다. 즉 새 이터레이터를 만들 때마다 처음에서 시작한다. 각각 다른">
+<meta name="keywords" content="이터레이터,제너레이터">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chapter12. 이터레이터와 제너레이터">
+<meta property="og:url" content="http://yoursite.com/2019/07/25/chapter12/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="이터레이터iterator : ‘지금 어디 있는지’ 파악할 수 있도록 도움 ex)배열  values() 메서드를 써서 이터레이터를 만들 수 있다. next() 메서드를 써서 호출할 수 있다. 이터레이터가 끝까지 진행하면 뒤로 돌아가서 다른 데이터를 제공할 수 없다. 이터레이터는 모두 독립적이다. 즉 새 이터레이터를 만들 때마다 처음에서 시작한다. 각각 다른">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-24T14:53:07.489Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="chapter12. 이터레이터와 제너레이터">
+<meta name="twitter:description" content="이터레이터iterator : ‘지금 어디 있는지’ 파악할 수 있도록 도움 ex)배열  values() 메서드를 써서 이터레이터를 만들 수 있다. next() 메서드를 써서 호출할 수 있다. 이터레이터가 끝까지 진행하면 뒤로 돌아가서 다른 데이터를 제공할 수 없다. 이터레이터는 모두 독립적이다. 즉 새 이터레이터를 만들 때마다 처음에서 시작한다. 각각 다른">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -89,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Hexo" height="28">
+                <img src="/images/logo.svg" alt="chapter12. 이터레이터와 제너레이터" height="28">
             
             </a>
         </div>
@@ -134,206 +139,182 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-24T15:00:00.000Z">2019-07-25</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-24T15:00:00.000Z">2019-07-25</time>
-                        <a href="/2019/07/25/chapter12/" class="has-link-black-ter is-size-6">chapter12. 이터레이터와 제너레이터</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-23T15:00:00.000Z">2019-07-24</time>
-                        <a href="/2019/07/24/chapter11/" class="has-link-black-ter is-size-6">chapter11. 예외와 예외 처리</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-22T15:00:00.000Z">2019-07-23</time>
-                        <a href="/2019/07/23/chapter10/" class="has-link-black-ter is-size-6">chapter10. 맵과 셋</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes read (About 1222 words)
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-21T15:00:00.000Z">2019-07-22</time>
-                        <a href="/2019/07/22/chapter9/" class="has-link-black-ter is-size-6">chapter9. 객체와 객체지향 프로그래밍</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-14T15:00:00.000Z">2019-07-15</time>
-                        <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">chapter8. 배열과 배열 처리</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-12T15:00:00.000Z">2019-07-13</time>
-                        <a href="/2019/07/13/chapter7/" class="has-link-black-ter is-size-6">chapter7. 스코프</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-06-25T11:06:08.000Z">2019-06-25</time>
-                        <a href="/2019/06/25/chapter4/" class="has-link-black-ter is-size-6">chapter4. 제어문</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-06-25T11:06:02.000Z">2019-06-25</time>
-                        <a href="/2019/06/25/chapter3/" class="has-link-black-ter is-size-6">chapter3. 리터럴과 변수, 상수, 데이터타입</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-06-24T11:06:02.000Z">2019-06-24</time>
-                        <a href="/2019/06/24/chapter2/" class="has-link-black-ter is-size-6">chapter2. 자바스크립트 개발 도구</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-06-24T09:06:02.000Z">2019-06-24</time>
-                        <a href="/2019/06/24/chapter1/" class="has-link-black-ter is-size-6">chapter1. 첫 번째 에플리케이션</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                chapter12. 이터레이터와 제너레이터
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p><strong>이터레이터iterator</strong> : ‘지금 어디 있는지’ 파악할 수 있도록 도움 ex)배열</p>
+<ul>
+<li><strong>values()</strong> 메서드를 써서 이터레이터를 만들 수 있다.</li>
+<li><strong>next()</strong> 메서드를 써서 호출할 수 있다.</li>
+<li>이터레이터가 끝까지 진행하면 뒤로 돌아가서 다른 데이터를 제공할 수 없다.</li>
+<li>이터레이터는 모두 독립적이다. 즉 새 이터레이터를 만들 때마다 처음에서 시작한다.</li>
+<li>각각 다른 요소를 가리키는 이터레이터 여러 개를 동시에 사용 가능하다.</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight javascript hljs"><figcaption><span>이터레이터</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> book = [</span><br><span class="line">    <span class="hljs-string">"1page"</span>,<span class="hljs-string">"2page"</span>,<span class="hljs-string">"3page"</span>,<span class="hljs-string">"4page"</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> it = book.values(); <span class="hljs-comment">//이터레이터 생성</span></span><br><span class="line">it.next(); <span class="hljs-comment">//이터레이터 호출 //&#123;value: "1page", done: false&#125;</span></span><br><span class="line">it.next(); <span class="hljs-comment">// &#123;value: "2page", done: false&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-1-이터레이션-프로토콜"><a href="#12-1-이터레이션-프로토콜" class="headerlink" title="12.1 이터레이션 프로토콜"></a>12.1 이터레이션 프로토콜</h2><blockquote>
+<ul>
+<li>이터레이터 프로토콜은 모든 객체를 <strong>이터러블iterable</strong> 객체로 바꿀 수 있다.</li>
+<li>이터레이션 프로토콜은 클래스에 <strong>심볼 메서드 Symbol.iterator</strong>가 있고,<br>이 메서드가 이터레이터처럼 동작하는 객체, 즉 value와 done 프로퍼티가 있는 객체를 반환하는 next() 메서드를 가진 객체를 반환한다면 그 클래스의 인스턴스는 이터러블 객체란 뜻이다.</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>이터레이션_프로토콜</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">메시지에 타임스탬프를 붙이는 로그 클래스 </span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Log</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.messages = [];</span><br><span class="line">    &#125;</span><br><span class="line">    add(message)&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.messages.push(&#123;message,<span class="hljs-attr">timestamp</span>:<span class="hljs-built_in">Date</span>.now()&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    [<span class="hljs-built_in">Symbol</span>.iterator]()&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.messages.values();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> log = <span class="hljs-keyword">new</span> Log();</span><br><span class="line">log.add(<span class="hljs-string">"first"</span>);</span><br><span class="line">log.add(<span class="hljs-string">"second"</span>);</span><br><span class="line">log.add(<span class="hljs-string">"third"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> entry <span class="hljs-keyword">of</span> log)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;entry.message&#125;</span> @ <span class="hljs-subst">$&#123;entry.timestamp&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">first @ 1563976491610</span></span><br><span class="line"><span class="hljs-comment">second @ 1563976491610</span></span><br><span class="line"><span class="hljs-comment">third @ 1563976491610</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>이터레이터는 무한한 데이터에도 사용할 수 있다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>피보나치수열</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//피보나치수열</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FibonacciSequence</span></span>&#123;</span><br><span class="line">    [<span class="hljs-built_in">Symbol</span>.iterator]()&#123;</span><br><span class="line">        <span class="hljs-keyword">let</span> a = <span class="hljs-number">0</span> , b = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span>&#123;</span><br><span class="line">            next()&#123;</span><br><span class="line">                <span class="hljs-keyword">let</span> rval = &#123;<span class="hljs-attr">value</span>:b, <span class="hljs-attr">done</span>:<span class="hljs-literal">false</span>&#125;;</span><br><span class="line">                b += a;</span><br><span class="line">                a = rval.value;</span><br><span class="line">                <span class="hljs-keyword">return</span> rval;            </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> fib = <span class="hljs-keyword">new</span> FibonacciSequence(); <span class="hljs-comment">//인스턴스 생성</span></span><br><span class="line"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> n <span class="hljs-keyword">of</span> fib)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(n);</span><br><span class="line">    <span class="hljs-keyword">if</span>(++i &gt;<span class="hljs-number">9</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 무한루프에서 벗어나게 10회 계산한뒤 빠져나옴</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> 1</span></span><br><span class="line"><span class="hljs-comment"> 2</span></span><br><span class="line"><span class="hljs-comment"> 3</span></span><br><span class="line"><span class="hljs-comment"> 5</span></span><br><span class="line"><span class="hljs-comment"> 8</span></span><br><span class="line"><span class="hljs-comment"> 13</span></span><br><span class="line"><span class="hljs-comment"> 21</span></span><br><span class="line"><span class="hljs-comment"> 34</span></span><br><span class="line"><span class="hljs-comment"> 55</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-2-제너레이터"><a href="#12-2-제너레이터" class="headerlink" title="12.2 제너레이터"></a>12.2 제너레이터</h2><blockquote>
+<p><strong>제너레이터</strong> : 이터레이터를 사용해 자신의 실행을 제어하는 함수</p>
+<ul>
+<li>제너레이터 만들때 <strong>function 키워드 뒤에 애스터리스크(*)</strong>를 붙인다.</li>
+<li>return 이외에 <strong>yield 키워드</strong>를 쓸 수 있다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>제너레이터의 두 가지 새로운 개념</strong></p>
+<ul>
+<li>1) 제너레이터는 함수의 실행을 개별적 단계로 나누어 함수의 실행을 제어한다.</li>
+<li>2) 실행 중인 함수와 통신한다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>제너레이터의 두 가지 예외</strong></p>
+<ul>
+<li>1) 제너레이터는 언제든 호출자에게 제어권을 넘길 수 있다.</li>
+<li>2) 제너레이터는 호출한 즉시 실행되지는 않는다.<br>  대신 이터레이터를 반환하고, 이터레이터의 next() 메서드를 호출함에 따라 실행된다.</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>제너레이터</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/* 무지개 색깔을 반환하는 제너레이터 생성 */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">rainbow</span>(<span class="hljs-params"></span>)</span>&#123;<span class="hljs-comment">//* 기호는 제너레이터 문법</span></span><br><span class="line">    <span class="hljs-keyword">yield</span> <span class="hljs-string">'red'</span>;</span><br><span class="line">    <span class="hljs-keyword">yield</span> <span class="hljs-string">'orange'</span>;</span><br><span class="line">    <span class="hljs-keyword">yield</span> <span class="hljs-string">'yellow'</span>;</span><br><span class="line">    <span class="hljs-keyword">yield</span> <span class="hljs-string">'green'</span>;</span><br><span class="line">    <span class="hljs-keyword">yield</span> <span class="hljs-string">'blue'</span>;</span><br><span class="line">    <span class="hljs-keyword">yield</span> <span class="hljs-string">'indigo'</span>;</span><br><span class="line">    <span class="hljs-keyword">yield</span> <span class="hljs-string">'violet'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> it = rainbow(); <span class="hljs-comment">//함수호출</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> color <span class="hljs-keyword">of</span> it)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(color);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">red</span></span><br><span class="line"><span class="hljs-comment">orange</span></span><br><span class="line"><span class="hljs-comment">yellow</span></span><br><span class="line"><span class="hljs-comment">green</span></span><br><span class="line"><span class="hljs-comment">blue</span></span><br><span class="line"><span class="hljs-comment">indigo</span></span><br><span class="line"><span class="hljs-comment">violet</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+<span class="bg-yellow">제너레이터를 호출하면 이터레이터를 얻는다.</span>
+함수를 호출한 다음 이터레이터를 써서 단계별로 진행한다.
+</pre>
+
+
+<h2 id="12-2-1-yield-표현식과-양뱡향-통신"><a href="#12-2-1-yield-표현식과-양뱡향-통신" class="headerlink" title="12.2.1 yield 표현식과 양뱡향 통신"></a>12.2.1 yield 표현식과 양뱡향 통신</h2><blockquote>
+<ul>
+<li>yield 표현식을 통해 양뱡향 통신이 이뤄진다.</li>
+<li>yield 표현식의 값은 호출자가 제너레이터의 이터레이터에서 next를 호출할 때 제공하는 매개변수이다.</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>대화_이어나가기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// yield 표현식과 양뱡향 통신</span></span><br><span class="line"><span class="hljs-comment">//대화_이어나가기 제너레이터 생성</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">interrogate</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> name = <span class="hljs-keyword">yield</span> <span class="hljs-string">'what is your name?'</span>; <span class="hljs-comment">//let it = itterrogate();</span></span><br><span class="line">    <span class="hljs-keyword">const</span> color = <span class="hljs-keyword">yield</span> <span class="hljs-string">'what is your favorite color?'</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;name&#125;</span>'s favorite color is <span class="hljs-subst">$&#123;color&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">const</span> it = interrogate();</span><br><span class="line">it.next(); <span class="hljs-comment">//&#123;value: "what is your name?", done: false&#125;</span></span><br><span class="line">it.next(<span class="hljs-string">"Ethan"</span>); <span class="hljs-comment">//&#123;value: "what is your favorite color?", done: false&#125;</span></span><br><span class="line">it.next(<span class="hljs-string">"red"</span>); <span class="hljs-comment">//&#123;value: "Ethan's favorite color is red", done: true&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>제너레이터를 호출하면 호출자가 함수의 실행을 제어할 수 있다.</li>
+<li>제너레이터는 화살표 표기법으로 만들 수 없으며 반드시 function*을 써야한다.</li>
+</ul>
+</blockquote>
+<h2 id="12-2-2-제너레이터와-return"><a href="#12-2-2-제너레이터와-return" class="headerlink" title="12.2.2 제너레이터와 return"></a>12.2.2 제너레이터와 return</h2><blockquote>
+<ul>
+<li>yield문은 제너레이터의 마지막 문이여서 제너레이터를 끝내지 않는다.</li>
+<li>제너레이터에서 return 문을 사용하면, 그 위치와 관계없이 done은 true가 되고, value프로퍼티는 return이 반환하는 값이 된다.</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>제너레이터와_return</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//제너레이터와 return</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">abc</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">yield</span> <span class="hljs-string">'a'</span>;</span><br><span class="line">    <span class="hljs-keyword">yield</span> <span class="hljs-string">'b'</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">'c'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> it = abc();</span><br><span class="line">it.next(); <span class="hljs-comment">//&#123;value: "a", done: false&#125;</span></span><br><span class="line">it.next(); <span class="hljs-comment">//&#123;value: "b", done: false&#125;</span></span><br><span class="line">it.next(); <span class="hljs-comment">//&#123;value: "c", done: true&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>제너레이터에서 중요한 값을 return으로 반환하지 말아야한다.</strong><br>제너레이터가 반환한 값을 사용할 때는 yield로 쓰고,<br>return은 제너레이터를 중간에 종료할 떄만 사용</p>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/이터레이터/">이터레이터</a>, <a class="has-link-grey -link" href="/tags/제너레이터/">제너레이터</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/24/chapter11/">
+                <span class="level-item">chapter11. 예외와 예외 처리</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
 </div>
 
@@ -954,7 +935,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Hexo" height="28">
+                    <img src="/images/logo.svg" alt="chapter12. 이터레이터와 제너레이터" height="28">
                 
                 </a>
                 <p class="is-size-7">

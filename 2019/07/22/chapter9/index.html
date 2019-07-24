@@ -16,7 +16,7 @@
 <meta property="og:description" content="9.1 프로퍼티 나열 1) 배열은 값을 가지며 각 값에는 숫자형 인덱스가 있습니다.    객체는 프로퍼티를 가지며 각 프로퍼티에는 문자열이나 심볼 인덱스가 있습니다2) 배열에는 순서가 있습니다. 반면 객체는 그런 순서가 보장되지 않습니다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-23T08:46:18.277Z">
+<meta property="og:updated_time" content="2019-07-24T14:52:34.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="chapter9. 객체와 객체지향 프로그래밍">
 <meta name="twitter:description" content="9.1 프로퍼티 나열 1) 배열은 값을 가지며 각 값에는 숫자형 인덱스가 있습니다.    객체는 프로퍼티를 가지며 각 프로퍼티에는 문자열이나 심볼 인덱스가 있습니다2) 배열에는 순서가 있습니다. 반면 객체는 그런 순서가 보장되지 않습니다.">
@@ -169,9 +169,12 @@
         </h1>
         <div class="content">
             <h2 id="9-1-프로퍼티-나열"><a href="#9-1-프로퍼티-나열" class="headerlink" title="9.1 프로퍼티 나열"></a>9.1 프로퍼티 나열</h2><blockquote>
-<p>1) 배열은 값을 가지며 각 값에는 숫자형 인덱스가 있습니다.<br>    객체는 프로퍼티를 가지며 각 프로퍼티에는 문자열이나 심볼 인덱스가 있습니다<br>2) 배열에는 순서가 있습니다. 반면 <strong>객체는 그런 순서가 보장되지 않습니다.</strong><br><br></p>
+<p>1) 배열은 값을 가지며 각 값에는 숫자형 인덱스가 있습니다.<br>    객체는 프로퍼티를 가지며 각 프로퍼티에는 문자열이나 심볼 인덱스가 있습니다<br>2) 배열에는 순서가 있습니다. 반면 <strong>객체는 그런 순서가 보장되지 않습니다.</strong></p>
 </blockquote>
 <a id="more"></a>
+
+
+
 <h2 id="9-1-1-for…in"><a href="#9-1-1-for…in" class="headerlink" title="9.1.1 for…in"></a>9.1.1 for…in</h2><ul>
 <li>for…in : 객체 프로퍼티를 나열할 떄</li>
 </ul>
@@ -180,7 +183,7 @@
 <pre>hasOwnProperty : for...in에 나타날 위험을 제거하기 위해 사용
 for...in 루프에는 키가 심볼인 프로퍼티는 포함 안됌
 </pre>
-<br>
+
 
 <h2 id="9-1-2-Object-keys"><a href="#9-1-2-Object-keys" class="headerlink" title="9.1.2 Object.keys"></a>9.1.2 Object.keys</h2><blockquote>
 <p>객체에서 나열 가능한 문자열 프로퍼티를 배열로 반환</p>
@@ -191,7 +194,7 @@ for...in 루프에는 키가 심볼인 프로퍼티는 포함 안됌
 hasOwnProperty를 체크할 필요가 없다.
 객체의 프로퍼티 키를 배열로 가져와야 할때 Object.keys가 편리하다.
 </pre>
-<br>
+
 
 <h2 id="9-2-객체지향-프로그래밍"><a href="#9-2-객체지향-프로그래밍" class="headerlink" title="9.2 객체지향 프로그래밍"></a>9.2 객체지향 프로그래밍</h2><blockquote>
 <p>OOP) 객체 : 데이터와 기능을 논리적으로 묶은 것</p>
@@ -203,26 +206,26 @@ hasOwnProperty를 체크할 필요가 없다.
 <li>생성자 : 인스턴스를 처음 만들 떄 생성자가 실행됨, 객체 인스턴스를 초기화함</li>
 </ul>
 </blockquote>
-<p>클래스 : 운송수단<br>서브 클래스 : 자동차, 보트, 비행기..<br>보트 서브 클래스 : 요트, 카누,모터보트…<br><br></p>
+<p>클래스 : 운송수단<br>서브 클래스 : 자동차, 보트, 비행기..<br>보트 서브 클래스 : 요트, 카누,모터보트…</p>
 <h2 id="9-2-1-클래스와-인스턴스-생성"><a href="#9-2-1-클래스와-인스턴스-생성" class="headerlink" title="9.2.1 클래스와 인스턴스 생성"></a>9.2.1 클래스와 인스턴스 생성</h2><blockquote>
 <p>ES6애서 클래스를 만드는 간편한 새 문법을 도입함</p>
 </blockquote>
 <figure class="highlight javascript hljs"><figcaption><span>클래스만들기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <pre>새 클래스 Car을 만듬, 아직 인스턴스(특정 자동차)는 안만들어짐</pre>
-<br>
+
 
 <figure class="highlight javascript hljs"><figcaption><span>인스턴스만들기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> car1 = <span class="hljs-keyword">new</span> Car();</span><br><span class="line"><span class="hljs-keyword">const</span> car2 = <span class="hljs-keyword">new</span> Car();</span><br></pre></td></tr></table></figure>
 
 <pre>인스턴스를 만들 떈 new 키워드를 사용한다</pre>
-<br>
+
 
 <figure class="highlight javascript hljs"><figcaption><span>instanceof</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//instanceof</span></span><br><span class="line">car1 <span class="hljs-keyword">instanceof</span> Car <span class="hljs-comment">//true</span></span><br><span class="line">car1 <span class="hljs-keyword">instanceof</span> Bus <span class="hljs-comment">//false</span></span><br></pre></td></tr></table></figure>
 
 <pre>instanceof : 객체가 클래스인지, 인스턴스인지 확인
 car1은 Car의 인스턴스이지만, Bus의 인스턴스는 아니다.
 </pre>
-<br>
+
 
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//제조사, 모델, 변속 기능 추가</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(make, model)&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.make = make;</span><br><span class="line">        <span class="hljs-keyword">this</span>.model = model;</span><br><span class="line">        <span class="hljs-keyword">this</span>.userGears = [<span class="hljs-string">'P'</span>,<span class="hljs-string">'N'</span>,<span class="hljs-string">'R'</span>,<span class="hljs-string">'D'</span>];</span><br><span class="line">        <span class="hljs-keyword">this</span>.userGear = <span class="hljs-keyword">this</span>.userGears[<span class="hljs-number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    shift(gear)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.userGears.indexOf(gear)&lt;<span class="hljs-number">0</span>)</span><br><span class="line">        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'invalid gear :'</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;gear&#125;</span>`</span>);</span><br><span class="line">        <span class="hljs-keyword">this</span>.userGear = gear</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//실제 사용</span></span><br><span class="line"><span class="hljs-keyword">const</span> car1 = <span class="hljs-keyword">new</span> Car(<span class="hljs-string">'Thsla'</span>,<span class="hljs-string">'Model S'</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> car2 = <span class="hljs-keyword">new</span> Car(<span class="hljs-string">'Mazda'</span>,<span class="hljs-string">'3i'</span>);</span><br><span class="line">car1.shift(<span class="hljs-string">'D'</span>);</span><br><span class="line">car2.shift(<span class="hljs-string">'R'</span>);</span><br><span class="line"></span><br><span class="line">car1.userGear <span class="hljs-comment">//"R"</span></span><br></pre></td></tr></table></figure>
 
@@ -235,7 +238,7 @@ shift : 메서드(기어변속)
 * 실수로 기어 프로퍼티를 고치지 않도록 어느 정도 막을 수 있다.
 _ : 외부에서 접근하면 안돼는 프로퍼티 이름 앞에 붙이는 가짜 접근 제한 ex)_userGears
 </pre>
-<br>
+
 
 <h2 id="9-2-2-클래스는-함수다"><a href="#9-2-2-클래스는-함수다" class="headerlink" title="9.2.2 클래스는 함수다."></a>9.2.2 클래스는 함수다.</h2><blockquote>
 <p>ES6에서 class 키워드를 도입하기 전까지,<br><strong>클래스를 만드는 것은 곧 클래스 생성자로 사용될 함수를 만든다</strong>는 의미<br>but, class는 단축 문법일 뿐이고 자바스크립트의 클래스가 바뀐 것은 아님</p>
@@ -248,8 +251,7 @@ _ : 외부에서 접근하면 안돼는 프로퍼티 이름 앞에 붙이는 가
 <p>프로토타입 메서드: 클래스의 인스턴스에서 사용할 수 있는 메서드<br>ex) Car.prototype.shift :<br>Car 클래스의 인스턴스에서 사용할 수 있는 shift 메서드는 프로토타입 메서드임 </p>
 <ul>
 <li>최근엔 메서드를 ‘#’로 표기하기도함 ex)Car#shift</li>
-<li>클래스는 대문자로 시작하는게 관용적임<br>
-</li>
+<li>클래스는 대문자로 시작하는게 관용적임</li>
 </ul>
 </blockquote>
 <ul>
@@ -287,6 +289,7 @@ _ : 외부에서 접근하면 안돼는 프로퍼티 이름 앞에 붙이는 가
 c 에서는 deployAirbags 호출 가능, v 에서는 error
 <span style="color:red">서브클래스는 슈퍼클래스의 모든 메서드에 접근 가능 / 반대는 불가</span>
 </pre>
+
 
 <h2 id="9-2-6-다형성"><a href="#9-2-6-다형성" class="headerlink" title="9.2.6 다형성"></a>9.2.6 다형성</h2><blockquote>
 <p>다형성 : 여러 슈퍼클러스의 맴버인 인스턴스<br>instanceOf 연산자:  객체가 클래스의 인스턴스인지 확인</p>
@@ -419,7 +422,7 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        10
                     </p>
                 </div>
             </div>
@@ -439,7 +442,7 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        7
+                        9
                     </p>
                 </div>
             </div>
@@ -518,7 +521,7 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
                 <span class="level-item">러닝자바스크립트</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li>
             </ul>
@@ -532,7 +535,7 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+        <a href="/tags/map/" style="font-size: 15px;">map</a> <a href="/tags/set/" style="font-size: 15px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
 </div>
 
@@ -546,6 +549,25 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/25/chapter12/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter12. 이터레이터와 제너레이터">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T15:00:00.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/chapter12/" class="has-link-black-ter is-size-6">chapter12. 이터레이터와 제너레이터</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -623,25 +645,6 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/13/chapter7/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter7. 스코프">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-12T15:00:00.000Z">2019-07-13</time></div>
-                    <a href="/2019/07/13/chapter7/" class="has-link-black-ter is-size-6">chapter7. 스코프</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -660,7 +663,18 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
                     <span class="level-item">July 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -702,6 +716,13 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
                 <div class="control">
                     <a class="tags has-addons" href="/tags/스코프/">
                         <span class="tag">스코프</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/이터레이터/">
+                        <span class="tag">이터레이터</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -709,6 +730,13 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
                 <div class="control">
                     <a class="tags has-addons" href="/tags/인스턴스/">
                         <span class="tag">인스턴스</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/제너레이터/">
+                        <span class="tag">제너레이터</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -752,6 +780,25 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
         
         <article class="media">
             
+            <a href="/2019/07/25/chapter12/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter12. 이터레이터와 제너레이터">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T15:00:00.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/chapter12/" class="has-link-black-ter is-size-6">chapter12. 이터레이터와 제너레이터</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/24/chapter11/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter11. 예외와 예외 처리">
@@ -826,25 +873,6 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/13/chapter7/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter7. 스코프">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-12T15:00:00.000Z">2019-07-13</time></div>
-                    <a href="/2019/07/13/chapter7/" class="has-link-black-ter is-size-6">chapter7. 스코프</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -863,7 +891,18 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
                     <span class="level-item">July 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -905,6 +944,13 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
                 <div class="control">
                     <a class="tags has-addons" href="/tags/스코프/">
                         <span class="tag">스코프</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/이터레이터/">
+                        <span class="tag">이터레이터</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -912,6 +958,13 @@ c 에서는 deployAirbags 호출 가능, v 에서는 error
                 <div class="control">
                     <a class="tags has-addons" href="/tags/인스턴스/">
                         <span class="tag">인스턴스</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/제너레이터/">
+                        <span class="tag">제너레이터</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
