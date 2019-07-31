@@ -16,7 +16,7 @@
 <meta property="og:description" content="이터레이터iterator : ‘지금 어디 있는지’ 파악할 수 있도록 도움 ex)배열  values() 메서드를 써서 이터레이터를 만들 수 있다. next() 메서드를 써서 호출할 수 있다. 이터레이터가 끝까지 진행하면 뒤로 돌아가서 다른 데이터를 제공할 수 없다. 이터레이터는 모두 독립적이다. 즉 새 이터레이터를 만들 때마다 처음에서 시작한다. 각각 다른">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-24T14:53:07.489Z">
+<meta property="og:updated_time" content="2019-07-27T03:45:00.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="chapter12. 이터레이터와 제너레이터">
 <meta name="twitter:description" content="이터레이터iterator : ‘지금 어디 있는지’ 파악할 수 있도록 도움 ex)배열  values() 메서드를 써서 이터레이터를 만들 수 있다. next() 메서드를 써서 호출할 수 있다. 이터레이터가 끝까지 진행하면 뒤로 돌아가서 다른 데이터를 제공할 수 없다. 이터레이터는 모두 독립적이다. 즉 새 이터레이터를 만들 때마다 처음에서 시작한다. 각각 다른">
@@ -193,7 +193,7 @@
 <blockquote>
 <p>이터레이터는 무한한 데이터에도 사용할 수 있다.</p>
 </blockquote>
-<figure class="highlight javascript hljs"><figcaption><span>피보나치수열</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//피보나치수열</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FibonacciSequence</span></span>&#123;</span><br><span class="line">    [<span class="hljs-built_in">Symbol</span>.iterator]()&#123;</span><br><span class="line">        <span class="hljs-keyword">let</span> a = <span class="hljs-number">0</span> , b = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span>&#123;</span><br><span class="line">            next()&#123;</span><br><span class="line">                <span class="hljs-keyword">let</span> rval = &#123;<span class="hljs-attr">value</span>:b, <span class="hljs-attr">done</span>:<span class="hljs-literal">false</span>&#125;;</span><br><span class="line">                b += a;</span><br><span class="line">                a = rval.value;</span><br><span class="line">                <span class="hljs-keyword">return</span> rval;            </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> fib = <span class="hljs-keyword">new</span> FibonacciSequence(); <span class="hljs-comment">//인스턴스 생성</span></span><br><span class="line"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> n <span class="hljs-keyword">of</span> fib)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(n);</span><br><span class="line">    <span class="hljs-keyword">if</span>(++i &gt;<span class="hljs-number">9</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 무한루프에서 벗어나게 10회 계산한뒤 빠져나옴</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> 1</span></span><br><span class="line"><span class="hljs-comment"> 2</span></span><br><span class="line"><span class="hljs-comment"> 3</span></span><br><span class="line"><span class="hljs-comment"> 5</span></span><br><span class="line"><span class="hljs-comment"> 8</span></span><br><span class="line"><span class="hljs-comment"> 13</span></span><br><span class="line"><span class="hljs-comment"> 21</span></span><br><span class="line"><span class="hljs-comment"> 34</span></span><br><span class="line"><span class="hljs-comment"> 55</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><figcaption><span>피보나치수열</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//피보나치수열</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FibonacciSequence</span></span>&#123;</span><br><span class="line">    [<span class="hljs-built_in">Symbol</span>.iterator]()&#123;</span><br><span class="line">        <span class="hljs-keyword">let</span> a = <span class="hljs-number">0</span> , b = <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span>&#123;</span><br><span class="line">            next()&#123;</span><br><span class="line">                <span class="hljs-keyword">let</span> rval = &#123;<span class="hljs-attr">value</span>:b, <span class="hljs-attr">done</span>:<span class="hljs-literal">false</span>&#125;;</span><br><span class="line">                b += a;</span><br><span class="line">                a = rval.value;</span><br><span class="line">                <span class="hljs-keyword">return</span> rval;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> fib = <span class="hljs-keyword">new</span> FibonacciSequence(); <span class="hljs-comment">//인스턴스 생성</span></span><br><span class="line"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> n <span class="hljs-keyword">of</span> fib)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(n);</span><br><span class="line">    <span class="hljs-keyword">if</span>(++i &gt;<span class="hljs-number">9</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 무한루프에서 벗어나게 10회 계산한뒤 빠져나옴</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> 1</span></span><br><span class="line"><span class="hljs-comment"> 2</span></span><br><span class="line"><span class="hljs-comment"> 3</span></span><br><span class="line"><span class="hljs-comment"> 5</span></span><br><span class="line"><span class="hljs-comment"> 8</span></span><br><span class="line"><span class="hljs-comment"> 13</span></span><br><span class="line"><span class="hljs-comment"> 21</span></span><br><span class="line"><span class="hljs-comment"> 34</span></span><br><span class="line"><span class="hljs-comment"> 55</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="12-2-제너레이터"><a href="#12-2-제너레이터" class="headerlink" title="12.2 제너레이터"></a>12.2 제너레이터</h2><blockquote>
 <p><strong>제너레이터</strong> : 이터레이터를 사용해 자신의 실행을 제어하는 함수</p>
@@ -307,6 +307,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/31/chapter13/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">chapter13. 함수와 추상적 사고</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/24/chapter11/">
@@ -357,7 +364,7 @@
                         Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        10
+                        11
                     </p>
                 </div>
             </div>
@@ -377,7 +384,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        13
                     </p>
                 </div>
             </div>
@@ -456,7 +463,7 @@
                 <span class="level-item">러닝자바스크립트</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li>
             </ul>
@@ -470,7 +477,7 @@
         <h3 class="menu-label">
             Nuage de tags
         </h3>
-        <a href="/tags/map/" style="font-size: 15px;">map</a> <a href="/tags/set/" style="font-size: 15px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+        <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
 </div>
 
@@ -484,6 +491,25 @@
         <h3 class="menu-label">
             Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/31/chapter13/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter13. 함수와 추상적 사고">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-30T15:00:00.000Z">2019-07-31</time></div>
+                    <a href="/2019/07/31/chapter13/" class="has-link-black-ter is-size-6">chapter13. 함수와 추상적 사고</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -561,25 +587,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/15/chapter8/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter8. 배열과 배열 처리">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-14T15:00:00.000Z">2019-07-15</time></div>
-                    <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">chapter8. 배열과 배열 처리</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -598,7 +605,7 @@
                     <span class="level-item">July 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -628,6 +635,27 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/for/">
+                        <span class="tag">for</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git세팅/">
+                        <span class="tag">git세팅</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/if/">
+                        <span class="tag">if</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/map/">
                         <span class="tag">map</span>
                         <span class="tag is-grey">2</span>
@@ -651,7 +679,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/스코프/">
                         <span class="tag">스코프</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -672,6 +700,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/제너레이터/">
                         <span class="tag">제너레이터</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/제어문/">
+                        <span class="tag">제어문</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -715,6 +750,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/31/chapter13/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter13. 함수와 추상적 사고">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-30T15:00:00.000Z">2019-07-31</time></div>
+                    <a href="/2019/07/31/chapter13/" class="has-link-black-ter is-size-6">chapter13. 함수와 추상적 사고</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/25/chapter12/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter12. 이터레이터와 제너레이터">
@@ -789,25 +843,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/15/chapter8/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter8. 배열과 배열 처리">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-14T15:00:00.000Z">2019-07-15</time></div>
-                    <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">chapter8. 배열과 배열 처리</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -826,7 +861,7 @@
                     <span class="level-item">July 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -856,6 +891,27 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/for/">
+                        <span class="tag">for</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git세팅/">
+                        <span class="tag">git세팅</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/if/">
+                        <span class="tag">if</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/map/">
                         <span class="tag">map</span>
                         <span class="tag is-grey">2</span>
@@ -879,7 +935,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/스코프/">
                         <span class="tag">스코프</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -900,6 +956,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/제너레이터/">
                         <span class="tag">제너레이터</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/제어문/">
+                        <span class="tag">제어문</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>

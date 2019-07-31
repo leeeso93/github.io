@@ -16,7 +16,7 @@
 <meta property="og:description" content="10.1 맵 ES6 이전에는 키와 값을 연결하려면 객체를 사용해야함, 여러 단점 생성  프로토타입 체인으로 인해 의도하지 않은 연결이 생길 수 있음 객체 안에 연결된 키와 값이 몇 개인지 쉽게 알수 없음 키는 반드시 문자열이나 심볼이여야 하므로 객체를 키로 써서 값과 연결할 수 없음 객체는 프로퍼티 순서를 보장하지 않음">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-24T14:52:54.095Z">
+<meta property="og:updated_time" content="2019-07-27T05:52:26.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="chapter10. 맵과 셋">
 <meta name="twitter:description" content="10.1 맵 ES6 이전에는 키와 값을 연결하려면 객체를 사용해야함, 여러 단점 생성  프로토타입 체인으로 인해 의도하지 않은 연결이 생길 수 있음 객체 안에 연결된 키와 값이 몇 개인지 쉽게 알수 없음 키는 반드시 문자열이나 심볼이여야 하므로 객체를 키로 써서 값과 연결할 수 없음 객체는 프로퍼티 순서를 보장하지 않음">
@@ -155,7 +155,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes read (About 918 words)
+                    6 minutes read (About 919 words)
                 </span>
                 
                 
@@ -233,7 +233,7 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
 
 
 <h2 id="10-3-셋"><a href="#10-3-셋" class="headerlink" title="10.3 셋"></a>10.3 셋</h2><blockquote>
-<p><strong>Set()</strong> : 중복을 허용하지 않는 데이터 집합</p>
+<p><strong>Set()</strong> : 중복을 허용하지 않는 데이터 집합ㅊ</p>
 </blockquote>
 <figure class="highlight javascript hljs"><figcaption><span>set()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> roles = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>();</span><br><span class="line">roles.add(<span class="hljs-string">"User"</span>); <span class="hljs-comment">//사용자 역할 추가 add();</span></span><br><span class="line">roles.add(<span class="hljs-string">"Admin"</span>); <span class="hljs-comment">//관리자 역할 추가 add();</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">Set(2) &#123;"User", "Admin"&#125;</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line">roles.size; <span class="hljs-comment">//2 </span></span><br><span class="line"></span><br><span class="line">roles.delete(<span class="hljs-string">"User"</span>); <span class="hljs-comment">//true</span></span><br><span class="line">roles <span class="hljs-comment">//Set(1) &#123;"Admin"&#125;</span></span><br><span class="line">roles.delete(<span class="hljs-string">"User"</span>); <span class="hljs-comment">//false</span></span><br></pre></td></tr></table></figure>
 
@@ -359,7 +359,7 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
                         Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        10
+                        11
                     </p>
                 </div>
             </div>
@@ -379,7 +379,7 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        13
                     </p>
                 </div>
             </div>
@@ -458,7 +458,7 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
                 <span class="level-item">러닝자바스크립트</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">10</span>
+                <span class="level-item tag">11</span>
             </span>
         </a></li>
             </ul>
@@ -472,7 +472,7 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
         <h3 class="menu-label">
             Nuage de tags
         </h3>
-        <a href="/tags/map/" style="font-size: 15px;">map</a> <a href="/tags/set/" style="font-size: 15px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+        <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
 </div>
 
@@ -486,6 +486,25 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
         <h3 class="menu-label">
             Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/31/chapter13/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter13. 함수와 추상적 사고">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-30T15:00:00.000Z">2019-07-31</time></div>
+                    <a href="/2019/07/31/chapter13/" class="has-link-black-ter is-size-6">chapter13. 함수와 추상적 사고</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -563,25 +582,6 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/15/chapter8/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter8. 배열과 배열 처리">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-14T15:00:00.000Z">2019-07-15</time></div>
-                    <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">chapter8. 배열과 배열 처리</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -600,7 +600,7 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
                     <span class="level-item">July 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -630,6 +630,27 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/for/">
+                        <span class="tag">for</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git세팅/">
+                        <span class="tag">git세팅</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/if/">
+                        <span class="tag">if</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/map/">
                         <span class="tag">map</span>
                         <span class="tag is-grey">2</span>
@@ -653,7 +674,7 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
                 <div class="control">
                     <a class="tags has-addons" href="/tags/스코프/">
                         <span class="tag">스코프</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -674,6 +695,13 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
                 <div class="control">
                     <a class="tags has-addons" href="/tags/제너레이터/">
                         <span class="tag">제너레이터</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/제어문/">
+                        <span class="tag">제어문</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -717,6 +745,25 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
         
         <article class="media">
             
+            <a href="/2019/07/31/chapter13/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter13. 함수와 추상적 사고">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-30T15:00:00.000Z">2019-07-31</time></div>
+                    <a href="/2019/07/31/chapter13/" class="has-link-black-ter is-size-6">chapter13. 함수와 추상적 사고</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/25/chapter12/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter12. 이터레이터와 제너레이터">
@@ -791,25 +838,6 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/15/chapter8/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="chapter8. 배열과 배열 처리">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-14T15:00:00.000Z">2019-07-15</time></div>
-                    <a href="/2019/07/15/chapter8/" class="has-link-black-ter is-size-6">chapter8. 배열과 배열 처리</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -828,7 +856,7 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
                     <span class="level-item">July 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -858,6 +886,27 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/for/">
+                        <span class="tag">for</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/git세팅/">
+                        <span class="tag">git세팅</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/if/">
+                        <span class="tag">if</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/map/">
                         <span class="tag">map</span>
                         <span class="tag is-grey">2</span>
@@ -881,7 +930,7 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
                 <div class="control">
                     <a class="tags has-addons" href="/tags/스코프/">
                         <span class="tag">스코프</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -902,6 +951,13 @@ IIEF 내부에서 그 인스턴스의 비밀스러운 내용을 저장할 수 �
                 <div class="control">
                     <a class="tags has-addons" href="/tags/제너레이터/">
                         <span class="tag">제너레이터</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/제어문/">
+                        <span class="tag">제어문</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
