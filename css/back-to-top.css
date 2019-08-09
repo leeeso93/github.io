@@ -32,3 +32,7 @@
     font-weight: normal;
     padding: 0.25em 0.5em 0.25em;
 }
+.gallery-item img{
+    display: block;
+    margin: auto;
+}
