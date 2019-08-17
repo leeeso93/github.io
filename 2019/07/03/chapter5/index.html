@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>chapter5. 표현식과 연산자 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="5.1 연산자 값을 만드는 행동 반드시 피연산자가 있어야 한다.  5.2 산술 연산자  전위 연산자(–i , ++i) : 먼저 변수의 값을 바꾼 다음 평가후위 연산자(i– , i++) : 값을 바꾸기 전에 평가">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chapter5. 표현식과 연산자">
+<meta property="og:url" content="http://yoursite.com/2019/07/03/chapter5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="5.1 연산자 값을 만드는 행동 반드시 피연산자가 있어야 한다.  5.2 산술 연산자  전위 연산자(–i , ++i) : 먼저 변수의 값을 바꾼 다음 평가후위 연산자(i– , i++) : 값을 바꾸기 전에 평가">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-08-13T12:52:35.891Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="chapter5. 표현식과 연산자">
+<meta name="twitter:description" content="5.1 연산자 값을 만드는 행동 반드시 피연산자가 있어야 한다.  5.2 산술 연산자  전위 연산자(–i , ++i) : 먼저 변수의 값을 바꾼 다음 평가후위 연산자(i– , i++) : 값을 바꾸기 전에 평가">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="chapter5. 표현식과 연산자" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-02T15:00:00.000Z">2019-07-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 minutes read (About 1726 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                chapter5. 표현식과 연산자
+            
+        </h1>
+        <div class="content">
+            <h2 id="5-1-연산자"><a href="#5-1-연산자" class="headerlink" title="5.1 연산자"></a>5.1 연산자</h2><blockquote>
+<p>값을 만드는 행동 반드시 피연산자가 있어야 한다.</p>
+</blockquote>
+<h2 id="5-2-산술-연산자"><a href="#5-2-산술-연산자" class="headerlink" title="5.2 산술 연산자"></a>5.2 산술 연산자</h2><p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/running_chap5_1.png?raw=true" alt="표 5-1 산술 연산자"></p>
+<blockquote>
+<p>전위 연산자(–i , ++i) : 먼저 변수의 값을 바꾼 다음 평가<br>후위 연산자(i– , i++) : 값을 바꾸기 전에 평가</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//전위 연산자 후의 연산자</span></span><br><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">2</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> r1 = x++ + x++;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(r1); <span class="hljs-comment">//5</span></span><br><span class="line"><span class="hljs-keyword">const</span> r2 = ++x + ++x;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(r2); <span class="hljs-comment">//11</span></span><br><span class="line"><span class="hljs-keyword">const</span> r3 = x++ + ++x;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(r3); <span class="hljs-comment">//14</span></span><br><span class="line"><span class="hljs-keyword">const</span> r4 = ++x + x++;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(r4); <span class="hljs-comment">//18</span></span><br><span class="line"><span class="hljs-keyword">let</span> y = <span class="hljs-number">10</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> r5 = y-- + y--;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(r5); <span class="hljs-comment">//19</span></span><br><span class="line"><span class="hljs-keyword">const</span> r6 = --y + --y;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(r6); <span class="hljs-comment">//13</span></span><br><span class="line"><span class="hljs-keyword">const</span> r7 = y-- + --y;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(r7); <span class="hljs-comment">//10</span></span><br><span class="line"><span class="hljs-keyword">const</span> r8 = --y + y--;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(r8); <span class="hljs-comment">//6</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-3-연산자-우선순위"><a href="#5-3-연산자-우선순위" class="headerlink" title="5.3 연산자 우선순위"></a>5.3 연산자 우선순위</h2><p><img src="https://k.kakaocdn.net/dn/b9BFqR/btqwxj2dIw5/vARfz2ZAVr2hQCVYaYdM80/img.jpg" alt="그림 5-2 연산자 우선순위"></p>
+<h2 id="5-4-비교-연산자"><a href="#5-4-비교-연산자" class="headerlink" title="5.4 비교 연산자"></a>5.4 비교 연산자</h2><blockquote>
+<p>두 개의 값을 비교<br><strong>일치연산자 (===)</strong> : 같은 객체를 가리키거나 , 같은 타입이면서 값도 같음 / !== : 일치하지 않음<br><strong>동등연산자 (==)</strong> : 같은 객체를 가리키거나, 값이 같음 ex) “33” == 33<br>대소관계</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//일치연산자와 동등연산차 차이</span></span><br><span class="line"><span class="hljs-comment">//비교 연산자</span></span><br><span class="line"><span class="hljs-keyword">const</span> n = <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> s = <span class="hljs-string">"5"</span>;</span><br><span class="line">n === s; <span class="hljs-comment">//false</span></span><br><span class="line">n !== s; <span class="hljs-comment">//true</span></span><br><span class="line">n === <span class="hljs-built_in">Number</span>(s); <span class="hljs-comment">//true</span></span><br><span class="line">n == s; <span class="hljs-comment">//true 권장 x</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> a = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">"an"</span> &#125;;</span><br><span class="line"><span class="hljs-keyword">const</span> b = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">"an"</span> &#125;;</span><br><span class="line"></span><br><span class="line">a === b; <span class="hljs-comment">//false 객체는 항상 다름</span></span><br><span class="line">a == b; <span class="hljs-comment">//false 객체는 항상 다름</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>관계연산자</strong> : 관계가 있는 값을 비교 작다(&lt;),작거나 같다(&lt;=),크다(&gt;),크거나 같다(&gt;=)</p>
+</blockquote>
+<h2 id="5-5-숫자비교"><a href="#5-5-숫자비교" class="headerlink" title="5.5 숫자비교"></a>5.5 숫자비교</h2><blockquote>
+<p>NaN : 그 자신을 포함하여 무엇과되 같지 않음 NaN === NaN / NaN ==NaN 모두 false<br>isNaN을 사용하여 NaN 값을 알아낼수 있다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>정수비교</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//정수비교</span></span><br><span class="line"><span class="hljs-keyword">let</span> n = <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">  n += <span class="hljs-number">0.1</span>;</span><br><span class="line">  <span class="hljs-keyword">if</span> (n === <span class="hljs-number">0.3</span>) <span class="hljs-keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">`stop at<span class="hljs-subst">$&#123;n&#125;</span>`</span>); <span class="hljs-comment">//실행 안됌</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* EPSILON */</span></span><br><span class="line"><span class="hljs-keyword">let</span> n = <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">  n += <span class="hljs-number">0.1</span>;</span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Math</span>.abs(n - <span class="hljs-number">0.3</span>) &lt; <span class="hljs-built_in">Number</span>.EPSILON) <span class="hljs-keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">`stop at<span class="hljs-subst">$&#123;n&#125;</span>`</span>); <span class="hljs-comment">//결과 stop at0.30000000000000004</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-6-문자열-병합"><a href="#5-6-문자열-병합" class="headerlink" title="5.6 문자열 병합"></a>5.6 문자열 병합</h2><blockquote>
+<p>문자열 병합은 피연산자중 하나라도 문자열이면 문자열 병합을 수행</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-number">3</span> + <span class="hljs-number">5</span> + <span class="hljs-string">"8"</span>; <span class="hljs-comment">// "88"</span></span><br><span class="line"><span class="hljs-string">"3"</span> + <span class="hljs-number">5</span> + <span class="hljs-number">8</span>; <span class="hljs-comment">//"358"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-7-논리-연산자"><a href="#5-7-논리-연산자" class="headerlink" title="5.7 논리 연산자"></a>5.7 논리 연산자</h2><blockquote>
+<p>오직 불리언 값만 다룰수 있다. true or false<br>boolean이 아닌 값도 다룰 수 있고, boolean이 아닌 값을 반환하기도 한다.</p>
+</blockquote>
+<h2 id="5-7-1-참-같은-값과-거짓-같은-값"><a href="#5-7-1-참-같은-값과-거짓-같은-값" class="headerlink" title="5.7.1 참 같은 값과 거짓 같은 값"></a>5.7.1 참 같은 값과 거짓 같은 값</h2><blockquote>
+<p>자바스크립트에서는 모든 데이터를 참 같은 값과 거짓 같은 값으로 나눌 수 있다.</p>
+</blockquote>
+<p><strong>거짓 같은 값</strong></p>
+<ul>
+<li>undefined</li>
+<li>null</li>
+<li>false</li>
+<li>0</li>
+<li>NaN</li>
+<li>‘’ (빈 문자열)</li>
+</ul>
+<p>이들 외에는 모드 참 같은 값</p>
+<p><strong>참 같은 값</strong></p>
+<ul>
+<li>모든 객체 valueOf() 메서드를 호출 했을때 false를 반환하는 객체도 참 같은 값</li>
+</ul>
+<ul>
+<li>배열, 빈 배열도 참 같은 값</li>
+<li>공백만 있는 문자열 “ “</li>
+<li>문자열 “false”</li>
+</ul>
+<h2 id="5-8-AND-OR-NOT"><a href="#5-8-AND-OR-NOT" class="headerlink" title="5.8 AND, OR, NOT"></a>5.8 AND, OR, NOT</h2><blockquote>
+<p>자바스크립트가 지원하는 논리연산자는 AND(&amp;&amp;) OR(||) NOT(!)<br>&amp;&amp; : 교집합,<br>|| : 합집합<br>! : 부정</p>
+</blockquote>
+<p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/running_chap5_2.png?raw=true" alt="표 5-2 연산의 진위표"></p>
+<h2 id="5-8-1-단축평가"><a href="#5-8-1-단축평가" class="headerlink" title="5.8.1 단축평가"></a>5.8.1 단축평가</h2><blockquote>
+<p>x = true, y = false<br>x&amp;&amp;y =false //x의 값만 알면 y의 값을 평가할 필요도 없이 false<br>x||y =true //x의 값만 알면 y의 값을 평가할 필요도 없이 true</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//단축평가</span></span><br><span class="line"><span class="hljs-keyword">const</span> skipIt = <span class="hljs-literal">true</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">0</span>; <span class="hljs-comment">//false</span></span><br><span class="line"><span class="hljs-keyword">const</span> result = skipIt || x++; <span class="hljs-comment">//1==true || 0 false 의 합집합 ==true 1</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">//true</span></span><br><span class="line"><span class="hljs-comment">//skipIt 가 true이고 true 값의 합집합은 true 이므로 뒤 표현식 실행 안됌 x = 0</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//부수효과</span></span><br><span class="line"><span class="hljs-keyword">const</span> skipIt = <span class="hljs-literal">false</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">0</span>; <span class="hljs-comment">//false</span></span><br><span class="line"><span class="hljs-keyword">const</span> result = skipIt || x++; <span class="hljs-comment">//0과 1의 합집합</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">//0</span></span><br><span class="line"><span class="hljs-comment">// skipIt가 false라고 해서 합집합이 항상 false가 아니므로 x++ 실행 x = 1 부수효과 실행</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> doIt = <span class="hljs-literal">false</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">0</span>; <span class="hljs-comment">//false</span></span><br><span class="line"><span class="hljs-keyword">const</span> result = doIt &amp;&amp; x++; <span class="hljs-comment">//0과 0의 교집합</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">//false</span></span><br><span class="line"><span class="hljs-comment">// skipIt 가 false이고 false의 교집합은 false이므로  두 번째 피연산자를 실행하지 않는다. x = 0</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> doIt = <span class="hljs-literal">true</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">0</span>; <span class="hljs-comment">//false</span></span><br><span class="line"><span class="hljs-keyword">const</span> result = doIt &amp;&amp; x++; <span class="hljs-comment">//0과 0의 교집합</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">//0</span></span><br><span class="line"><span class="hljs-comment">// skipIt 가 true라고 해서 교집합이항상 true를 반환하는 것이 아니므로  x++ 실행 x = 1 부수효과 실행</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-8-2-피연산자가-불리언이-아닐때-논리-연산자가-동작하는-방법"><a href="#5-8-2-피연산자가-불리언이-아닐때-논리-연산자가-동작하는-방법" class="headerlink" title="5.8.2 피연산자가 불리언이 아닐때 논리 연산자가 동작하는 방법"></a>5.8.2 피연산자가 불리언이 아닐때 논리 연산자가 동작하는 방법</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> options = suppliedOptions || &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">"Default"</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-8-3-조건-연산자"><a href="#5-8-3-조건-연산자" class="headerlink" title="5.8.3 조건 연산자"></a>5.8.3 조건 연산자</h2><blockquote>
+<p>유일한 3항 연산자</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>조건 연산자</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> doIt = <span class="hljs-literal">false</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> result = doIt ? <span class="hljs-string">"Did it"</span> : <span class="hljs-string">"Didn't do it"</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-8-4-쉼표-연산자"><a href="#5-8-4-쉼표-연산자" class="headerlink" title="5.8.4 쉼표 연산자"></a>5.8.4 쉼표 연산자</h2><blockquote>
+<p>표현식을 결합하여 두 표현식을 평가한 후, 두번째 표현식의 결과를 반환=&gt; 마지막 표현식의 결과를 반환<br>for 문에서 표현식을 결합할 때 사용하거나, 함수에서 빠져나오기 전 여러 작업을 한데 묶을 때 사용합니다</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">0</span>,</span><br><span class="line">  y = <span class="hljs-number">10</span>,</span><br><span class="line">  z;</span><br><span class="line">z = (x++, y++);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(z); <span class="hljs-comment">//10</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-9-연산자-그룹"><a href="#5-9-연산자-그룹" class="headerlink" title="5.9 연산자 그룹"></a>5.9 연산자 그룹</h2><blockquote>
+<p>(괄호)에는 아무 효과도 없지만, 연산자 우선순위를 높이거나 명확히 표현하는데 사용</p>
+</blockquote>
+<h2 id="5-9-1-비트-연산자"><a href="#5-9-1-비트-연산자" class="headerlink" title="5.9.1 비트 연산자"></a>5.9.1 비트 연산자</h2><blockquote>
+<p>별로 사용안함</p>
+</blockquote>
+<h2 id="5-9-2-typeOf-연산자"><a href="#5-9-2-typeOf-연산자" class="headerlink" title="5.9.2 typeOf 연산자"></a>5.9.2 typeOf 연산자</h2><blockquote>
+<p>피연산자의 타입을 나타내는 문자열을 반환, 자바스크립트의 7가지 데이터타입(undefined, null, boolean, 숫자, 문자, 심볼, 객체)를 정확히 나타내지 못함 .<br>typeOf x : 권장<br>typeOf(x): 유효하긴 하지만 권장하진 않음</p>
+</blockquote>
+<p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/running_chap5_3.png?raw=true" alt="표 5-3 연산의 진위표"></p>
+<h2 id="5-9-3-void-연산자"><a href="#5-9-3-void-연산자" class="headerlink" title="5.9.3 void 연산자"></a>5.9.3 void 연산자</h2><blockquote>
+<p>피연산자를 평가한후 undefined를 반환<br><a href="javascript:void 0" target="_blank" rel="noopener">링크 이동을 막아줍니다.</a></p>
+</blockquote>
+<h2 id="5-9-4-할당-연산자"><a href="#5-9-4-할당-연산자" class="headerlink" title="5.9.4 할당 연산자"></a>5.9.4 할당 연산자</h2><blockquote>
+<p>변수에 값을 할당</p>
+</blockquote>
+<p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/running_chap5_4.png?raw=true" alt="표 5-4 할당 연산자"></p>
+<h2 id="5-10-헤체할당"><a href="#5-10-헤체할당" class="headerlink" title="5.10 헤체할당"></a>5.10 헤체할당</h2><blockquote>
+<p>객체나 배열을 변수로 해체할 수 있다. es6에서 새로 도입됨</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//객체 선언</span></span><br><span class="line"><span class="hljs-keyword">const</span> obj = &#123; <span class="hljs-attr">b</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">c</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">d</span>: <span class="hljs-number">4</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//객체할당</span></span><br><span class="line"><span class="hljs-keyword">const</span> &#123; a, b, c &#125; = obj;</span><br><span class="line">a; <span class="hljs-comment">//undefined "a"가 없습니다.</span></span><br><span class="line">b; <span class="hljs-comment">//2</span></span><br><span class="line">c; <span class="hljs-comment">//3</span></span><br><span class="line">d; <span class="hljs-comment">//ReferenceError "d"는 정의되지 않았습니다.</span></span><br></pre></td></tr></table></figure>
+
+<pre> 객체를 해체할 때는 반드시 변수명과 프로퍼티 이름이 일치해야 합니다.
+obj에 a 프로퍼티가 없으므로 a는 undefined
+해체 할당에 d라는 프로퍼티가 없으므로 d는 선언조차 되지 않음
+</pre>
+
+<ul>
+<li>배열 해체</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//배열 선언</span></span><br><span class="line"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br><span class="line"><span class="hljs-keyword">let</span> [x, y] = arr;</span><br><span class="line">x;</span><br><span class="line">y;</span><br><span class="line">z; <span class="hljs-comment">//ReferenceError "z"는  정의되지 않았습니다.</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//확산 연산자를 사용하면 남은 요소를 새 배열에 할당할수 있다.</span></span><br><span class="line"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];</span><br><span class="line"><span class="hljs-keyword">let</span> [x, y, ...rest] = arr;</span><br><span class="line">x; <span class="hljs-comment">// 1</span></span><br><span class="line">y; <span class="hljs-comment">//2</span></span><br><span class="line">rest; <span class="hljs-comment">//[3,4,5]</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+배열을 해체할 때는 변수 이름을 마음대로 써도 됨 , 배열 순서에 대응한다. 
+</pre>
+
+<h2 id="5-11-객체와-배열-연산자"><a href="#5-11-객체와-배열-연산자" class="headerlink" title="5.11 객체와 배열 연산자"></a>5.11 객체와 배열 연산자</h2><p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/running_chap5_5.png?raw=true" alt="표 5-5 객체와 배열 연산자"></p>
+<h2 id="5-12-탬플릿-문자열과-표현식"><a href="#5-12-탬플릿-문자열과-표현식" class="headerlink" title="5.12 탬플릿 문자열과 표현식"></a>5.12 탬플릿 문자열과 표현식</h2><blockquote>
+<p>어떤 표현식이든 그 값을 문자열에 넣을 수 있다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> roomTempC = <span class="hljs-number">21.5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> currentTempC = <span class="hljs-number">19.5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> message =</span><br><span class="line">  <span class="hljs-string">`The current temperature is`</span> +</span><br><span class="line">  <span class="hljs-string">`<span class="hljs-subst">$&#123;currentTempC - roomTempC&#125;</span>\u00b0C dirrenet than room temperature`</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> fahrenheit = <span class="hljs-string">`the current temperature is <span class="hljs-subst">$&#123;(currentTempC * <span class="hljs-number">9</span>) <span class="hljs-regexp">/ 5 +</span></span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst"><span class="hljs-regexp">  32&#125;\u00b0F`;</span></span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst"><span class="hljs-regexp">console.log(message);</span></span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst"><span class="hljs-regexp">console.log(fahrenheit);</span></span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst"><span class="hljs-regexp"></span></span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst"><span class="hljs-regexp">/</span><span class="hljs-regexp">/The current temperature is-2°C dirrenet than room temperature</span></span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst"><span class="hljs-regexp">/</span><span class="hljs-regexp">/the current temperature is 67.1°F</span></span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-13-1-if…else-문을-3항-연산자로-바꾸기"><a href="#5-13-1-if…else-문을-3항-연산자로-바꾸기" class="headerlink" title="5.13.1 if…else 문을 3항 연산자로 바꾸기"></a>5.13.1 if…else 문을 3항 연산자로 바꾸기</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//if else문을 3항 연산자로 변경</span></span><br><span class="line"><span class="hljs-keyword">if</span> (isPrime(n)) &#123;</span><br><span class="line">  label = <span class="hljs-string">"prime"</span>;</span><br><span class="line">&#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">  label = <span class="hljs-string">"non-prime"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">label = isPrime(n) ? <span class="hljs-string">"prime"</span> : <span class="hljs-string">"non-prime"</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-13-2-if문을-단축-평가하는-OR-표현식으로-바꾸기"><a href="#5-13-2-if문을-단축-평가하는-OR-표현식으로-바꾸기" class="headerlink" title="5.13.2 if문을 단축 평가하는 OR 표현식으로 바꾸기"></a>5.13.2 if문을 단축 평가하는 OR 표현식으로 바꾸기</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (!options) options = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">options = options || &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/04/chapter6/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">chapter6. 함수</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/25/chapter4/">
+                <span class="level-item">chapter4. 제어문</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right ">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#5-1-연산자">
+        <span class="has-mr-6">1</span>
+        <span>5.1 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-2-산술-연산자">
+        <span class="has-mr-6">2</span>
+        <span>5.2 산술 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-3-연산자-우선순위">
+        <span class="has-mr-6">3</span>
+        <span>5.3 연산자 우선순위</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-4-비교-연산자">
+        <span class="has-mr-6">4</span>
+        <span>5.4 비교 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-5-숫자비교">
+        <span class="has-mr-6">5</span>
+        <span>5.5 숫자비교</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-6-문자열-병합">
+        <span class="has-mr-6">6</span>
+        <span>5.6 문자열 병합</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-7-논리-연산자">
+        <span class="has-mr-6">7</span>
+        <span>5.7 논리 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-7-1-참-같은-값과-거짓-같은-값">
+        <span class="has-mr-6">8</span>
+        <span>5.7.1 참 같은 값과 거짓 같은 값</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-8-AND-OR-NOT">
+        <span class="has-mr-6">9</span>
+        <span>5.8 AND, OR, NOT</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-8-1-단축평가">
+        <span class="has-mr-6">10</span>
+        <span>5.8.1 단축평가</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-8-2-피연산자가-불리언이-아닐때-논리-연산자가-동작하는-방법">
+        <span class="has-mr-6">11</span>
+        <span>5.8.2 피연산자가 불리언이 아닐때 논리 연산자가 동작하는 방법</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-8-3-조건-연산자">
+        <span class="has-mr-6">12</span>
+        <span>5.8.3 조건 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-8-4-쉼표-연산자">
+        <span class="has-mr-6">13</span>
+        <span>5.8.4 쉼표 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-9-연산자-그룹">
+        <span class="has-mr-6">14</span>
+        <span>5.9 연산자 그룹</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-9-1-비트-연산자">
+        <span class="has-mr-6">15</span>
+        <span>5.9.1 비트 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-9-2-typeOf-연산자">
+        <span class="has-mr-6">16</span>
+        <span>5.9.2 typeOf 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-9-3-void-연산자">
+        <span class="has-mr-6">17</span>
+        <span>5.9.3 void 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-9-4-할당-연산자">
+        <span class="has-mr-6">18</span>
+        <span>5.9.4 할당 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-10-헤체할당">
+        <span class="has-mr-6">19</span>
+        <span>5.10 헤체할당</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-11-객체와-배열-연산자">
+        <span class="has-mr-6">20</span>
+        <span>5.11 객체와 배열 연산자</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-12-탬플릿-문자열과-표현식">
+        <span class="has-mr-6">21</span>
+        <span>5.12 탬플릿 문자열과 표현식</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-13-1-if…else-문을-3항-연산자로-바꾸기">
+        <span class="has-mr-6">22</span>
+        <span>5.13.1 if…else 문을 3항 연산자로 바꾸기</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-13-2-if문을-단축-평가하는-OR-표현식으로-바꾸기">
+        <span class="has-mr-6">23</span>
+        <span>5.13.2 if문을 단축 평가하는 OR 표현식으로 바꾸기</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">19</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="chapter5. 표현식과 연산자" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

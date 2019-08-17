@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>chapter19. 제이쿼리 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="제이쿼리는 DOM을 조작하거나, Ajax 요청을 실행할 때 널리 쓰이는 라이브러리이다. 제이쿼리는 3개의 장점 존재한다.   브라우저 호환성을 걱정하지 않아도 된다. 제이쿼리의 Ajax API는 매우 단순하다. 제이쿼리는 내장된 DOM API를 더 유용하고 단순하게 바꾼 메서드를 제공한다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chapter19. 제이쿼리">
+<meta property="og:url" content="http://yoursite.com/2019/08/13/chapter19/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="제이쿼리는 DOM을 조작하거나, Ajax 요청을 실행할 때 널리 쓰이는 라이브러리이다. 제이쿼리는 3개의 장점 존재한다.   브라우저 호환성을 걱정하지 않아도 된다. 제이쿼리의 Ajax API는 매우 단순하다. 제이쿼리는 내장된 DOM API를 더 유용하고 단순하게 바꾼 메서드를 제공한다.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-08-13T12:43:12.724Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="chapter19. 제이쿼리">
+<meta name="twitter:description" content="제이쿼리는 DOM을 조작하거나, Ajax 요청을 실행할 때 널리 쓰이는 라이브러리이다. 제이쿼리는 3개의 장점 존재한다.   브라우저 호환성을 걱정하지 않아도 된다. 제이쿼리의 Ajax API는 매우 단순하다. 제이쿼리는 내장된 DOM API를 더 유용하고 단순하게 바꾼 메서드를 제공한다.">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="chapter19. 제이쿼리" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-12T15:00:00.000Z">2019-08-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes read (About 1220 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                chapter19. 제이쿼리
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>제이쿼리는 DOM을 조작하거나, Ajax 요청을 실행할 때 널리 쓰이는 라이브러리이다. 제이쿼리는 3개의 장점 존재한다.</p>
+</blockquote>
+<ul>
+<li>브라우저 호환성을 걱정하지 않아도 된다.</li>
+<li>제이쿼리의 Ajax API는 매우 단순하다.</li>
+<li>제이쿼리는 내장된 DOM API를 더 유용하고 단순하게 바꾼 메서드를 제공한다.<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="19-1-맥가이버-나이프-달러-기호"><a href="#19-1-맥가이버-나이프-달러-기호" class="headerlink" title="19.1 맥가이버 나이프, 달러 기호"></a>19.1 맥가이버 나이프, 달러 기호</h2><blockquote>
+<p>제이쿼리는 자바스크립트에서 달러 기호를 식별자로 쓸 수 있다는 장점을 활용한 첫 번째 라이브러리 중 하나이다.<br>프로젝트에서 제이쿼리를 사용할 때는 <strong>jQuery</strong>나 <strong>$</strong>를 사용한다.</p>
+</blockquote>
+<h2 id="19-2-제이쿼리-불러오기"><a href="#19-2-제이쿼리-불러오기" class="headerlink" title="19.2 제이쿼리 불러오기"></a>19.2 제이쿼리 불러오기</h2><blockquote>
+<p>CDN을 이용하여 불러올 수 있다.</p>
+</blockquote>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://code.jquery.com/jquery-latest.min.js"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="19-3-DOM-기다리기"><a href="#19-3-DOM-기다리기" class="headerlink" title="19.3 DOM 기다리기"></a>19.3 DOM 기다리기</h2><blockquote>
+<p>제이쿼리는 브라우저가 페이지를 완전히 읽고 DOM을 구축한 다음에만 호출되는 콜백 안에 코드를 작성한다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//여기 있는 코드는 html을 모두 불러오고 DOM이 구성된 다음에 실행된다.</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//단축형</span></span><br><span class="line">$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//여기 있는 코드는 html을 모두 불러오고 DOM이 구성된 다음에 실행된다.</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<pre>
+위 코드는 여러 번 써도 안전하므로, 제이쿼리 코드를 몇 개로 나누어 써도 모두 <span class="bg-yellow">DOM을 불러온 뒤에 실행된다.</span>
+</pre>
+
+<h2 id="19-4-제이쿼리로-감싼-DOM-요소"><a href="#19-4-제이쿼리로-감싼-DOM-요소" class="headerlink" title="19.4 제이쿼리로 감싼 DOM 요소"></a>19.4 제이쿼리로 감싼 DOM 요소</h2><blockquote>
+<p>제이쿼리로 DOM을 조작 할 때 가장 많이 쓰는 방법은 <strong>제이쿼리로 DOM 요소를 감싸는 것</strong><br>제이쿼리 함수($)로 DOM 요소 셋을 감싼 것을 제이쿼리 객체로 부른다.<br>제이쿼리 함수를 호출 할 때는 주로 css 선택자나 html을 사용한다.</p>
+</blockquote>
+<figure class="highlight html hljs"><figcaption><span>이번장에 사용할 HTML 문서</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ie=edge"</span> /&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Simple html<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span><br><span class="line">      .callout &#123;</span><br><span class="line">        border: 1px solid #ff0080;</span><br><span class="line">        margin: 2px 4px;</span><br><span class="line">        padding: 2px 6px;</span><br><span class="line">      &#125;</span><br><span class="line">      .code &#123;</span><br><span class="line">        background: #ccc;</span><br><span class="line">        margin: 1px 2px;</span><br><span class="line">        padding: 1px 4px;</span><br><span class="line">        font-family: monospace;</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Simple Html<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"content"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>simple<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> HTML file.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"callout"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>this is as fancy as...we'll get!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">        IDs (such as <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"code"</span>&gt;</span>#content<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>) are unique (there can</span><br><span class="line">        only be one per page).</span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">        Classes (such as <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>.callout<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>) can be used on many elements</span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"callout2"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"callout fancy"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>A single HTML element can have multiple classes<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> $paras = $(<span class="hljs-string">"p"</span>);</span><br><span class="line">  $paras.length; <span class="hljs-comment">//5</span></span><br><span class="line">  <span class="hljs-keyword">typeof</span> $paras; <span class="hljs-comment">//"object"</span></span><br><span class="line">  $paras <span class="hljs-keyword">instanceof</span> $; <span class="hljs-comment">//true</span></span><br><span class="line">  $paras <span class="hljs-keyword">instanceof</span> jQuery; <span class="hljs-comment">//true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//html로 제이쿼리 호출</span></span><br><span class="line"><span class="hljs-keyword">const</span> $newParas = $(<span class="hljs-string">"&lt;p&gt;new created&lt;/p&gt;"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="19-5-요소-조작"><a href="#19-5-요소-조작" class="headerlink" title="19.5 요소 조작"></a>19.5 요소 조작</h2><blockquote>
+<p>제이쿼리에는 <strong>text</strong>와 <strong>html</strong> 메서드가 있다.<br>이들 요소는 각각 textContent, innerHTML 프로퍼티에 대응한다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// ## 요소 조작</span></span><br><span class="line">$(<span class="hljs-string">"p"</span>).text(<span class="hljs-string">"All paragraphs replaced"</span>);</span><br><span class="line">$(<span class="hljs-string">"p"</span>).html(<span class="hljs-string">"&lt;i&gt;All&lt;/i&gt; paragraphs replaced"</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>제이쿼리는 쉽게 여러 요소를 동시에 수정 가능하다.<br>제이쿼리는 기본적으로 제이쿼리 객체에 들어있는 모든 요소에 같은 작업을 하면서 루프 실행을 대신함<br>특정 부분만 바꾸려면 제이쿼리의 eq 메서드를 사용</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>eq()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//특정 문단 조작</span></span><br><span class="line">$(<span class="hljs-string">"p"</span>) <span class="hljs-comment">//p태그중에</span></span><br><span class="line">  .eq(<span class="hljs-number">2</span>) <span class="hljs-comment">//3번째 문단에</span></span><br><span class="line">  .html(<span class="hljs-string">"&lt;i&gt;All&lt;/i&gt; paragraphs replaced"</span>); <span class="hljs-comment">//html 조작</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//요소제거</span></span><br><span class="line">$(<span class="hljs-string">"p"</span>).remove();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>제이쿼리 메서드는 모두 제이쿼리 객체를 반환한다.<br>따라서 반환된 객체에서 다시 메서드를 호출하는 식으로, 메서드 체인으로 연결 가능하다.<br>체인을 사용하면 아주 간단히 여러 요소를 조작 가능하다.</p>
+</blockquote>
+<ul>
+<li><p>삽입할 자리에서 호출</p>
+<blockquote>
+<p><strong>append()</strong> : 일치하는 요소에 자식을 추가<br><strong>before()</strong> 일치하는 요소 <strong>앞자리</strong>에 형제를 삽입<br><strong>after()</strong> : 일치하는 요소 <strong>뒷자리</strong>에 형제를 삽입</p>
+</blockquote>
+</li>
+<li><p>삽입할 요소에서 호출</p>
+<blockquote>
+<p><strong>appendTo()</strong> :<br><strong>insertBefore()</strong> &gt; <strong>insertAfter()</strong> :</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">"p"</span>).append(<span class="hljs-string">"&lt;sup&gt;*&lt;/sup&gt;"</span>);</span><br><span class="line">$(<span class="hljs-string">"p"</span>).after(<span class="hljs-string">"&lt;sup&gt;뒤형제&lt;/sup&gt;"</span>);</span><br><span class="line">$(<span class="hljs-string">"p"</span>).before(<span class="hljs-string">"&lt;sup&gt;앞형제&lt;/sup&gt;"</span>);</span><br><span class="line"></span><br><span class="line">$(<span class="hljs-string">"&lt;sup&gt;*&lt;/sup&gt;"</span>).appendTo(<span class="hljs-string">"p"</span>); <span class="hljs-comment">//$("p").append("&lt;sup&gt;*&lt;/sup&gt;")과 같음</span></span><br><span class="line">$(<span class="hljs-string">"&lt;hr/&gt;"</span>).insertBefore(<span class="hljs-string">"p"</span>); <span class="hljs-comment">//$("p").before("&lt;hr/&gt;");</span></span><br><span class="line">$(<span class="hljs-string">"&lt;hr/&gt;"</span>).insertAfter(<span class="hljs-string">"p"</span>); <span class="hljs-comment">//$("p").after("&lt;hr/&gt;");</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>제이쿼리에서는 요소의 스타일도 쉽게 변경 가능<br><strong>addClass()</strong> : 클래스 추가<br><strong>removeClass()</strong> : 클래스 제거<br><strong>toggleClass()</strong> : 클래스 토글<br><strong>filter()</strong> : 셋 요소 일치 선택자에 맞는 요소만 남도록 선택범위축소<br><strong>not()</strong> : filter()의 반대<br><strong>find()</strong> : 주어진 선택자에 일치하는 자손만 남김</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//홀수 문단만 빨간색으로</span></span><br><span class="line">$(<span class="hljs-string">"p:odd"</span>).css(<span class="hljs-string">"color"</span>, <span class="hljs-string">"red"</span>);</span><br><span class="line"><span class="hljs-comment">//p태그뒤에 hr을 넣고 p태그 안에 각주를 넣고 홀수번째 p태그에 텍스트 빨간색</span></span><br><span class="line">$(<span class="hljs-string">"p"</span>)</span><br><span class="line">  .after(<span class="hljs-string">"&lt;hr/&gt;"</span>)</span><br><span class="line">  .append(<span class="hljs-string">"&lt;sup&gt;*&lt;/sup&gt;"</span>)</span><br><span class="line">  .filter(<span class="hljs-string">":odd"</span>)</span><br><span class="line">  .css(<span class="hljs-string">"color"</span>, <span class="hljs-string">"red"</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="19-6-제이쿼리-취소"><a href="#19-6-제이쿼리-취소" class="headerlink" title="19.6 제이쿼리 취소"></a>19.6 제이쿼리 취소</h2><blockquote>
+<p><strong>get()</strong>: 제이쿼리 객체로 감싼 것을 취소하고 dom 요소에 직접 접근하기 위해서는 get 메서드를 사용해야 한다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//## 19.6 제이쿼리 취소</span></span><br><span class="line"><span class="hljs-keyword">const</span> para2 = $(<span class="hljs-string">"p"</span>).get(<span class="hljs-number">1</span>); <span class="hljs-comment">//두번째 &lt;p&gt;</span></span><br><span class="line"><span class="hljs-keyword">const</span> paras = $(<span class="hljs-string">"p"</span>).get(); <span class="hljs-comment">//모든 &lt;p&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="19-7-Ajax"><a href="#19-7-Ajax" class="headerlink" title="19.7 Ajax"></a>19.7 Ajax</h2><blockquote>
+<p>제이쿼리에는 Ajax 호출을 간편하면서도 세밀히 컨트롤 할 수 있는 메서드가 있다. 가장 널리 쓰는 Ajax 호출을 간편하게 바꾼 <strong>get</strong>과 <strong>post</strong> 메서드가 있다. 이 메서드는 콜백을 지원하지만, 서버 응답을 처리할때 권장하는 방법인 프라미스를 반환하기도한다.</p>
+</blockquote>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/11/chapter18/">
+                <span class="level-item">chapter18. 브라우저의 자바스크립트</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right ">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#19-1-맥가이버-나이프-달러-기호">
+        <span class="has-mr-6">1</span>
+        <span>19.1 맥가이버 나이프, 달러 기호</span>
+        </a></li><li>
+        <a class="is-flex" href="#19-2-제이쿼리-불러오기">
+        <span class="has-mr-6">2</span>
+        <span>19.2 제이쿼리 불러오기</span>
+        </a></li><li>
+        <a class="is-flex" href="#19-3-DOM-기다리기">
+        <span class="has-mr-6">3</span>
+        <span>19.3 DOM 기다리기</span>
+        </a></li><li>
+        <a class="is-flex" href="#19-4-제이쿼리로-감싼-DOM-요소">
+        <span class="has-mr-6">4</span>
+        <span>19.4 제이쿼리로 감싼 DOM 요소</span>
+        </a></li><li>
+        <a class="is-flex" href="#19-5-요소-조작">
+        <span class="has-mr-6">5</span>
+        <span>19.5 요소 조작</span>
+        </a></li><li>
+        <a class="is-flex" href="#19-6-제이쿼리-취소">
+        <span class="has-mr-6">6</span>
+        <span>19.6 제이쿼리 취소</span>
+        </a></li><li>
+        <a class="is-flex" href="#19-7-Ajax">
+        <span class="has-mr-6">7</span>
+        <span>19.7 Ajax</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">19</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="chapter19. 제이쿼리" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

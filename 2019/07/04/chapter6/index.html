@@ -2,23 +2,23 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>chapter3. 리터럴과 변수, 상수, 데이터타입 - Hexo</title>
+<title>chapter6. 함수 - Hexo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content=".. 제작 중입니다..">
+    <meta name="description" content="함수 : 하나의 단위로 실행되는 문의 집합  6.1 반환 값 return :함수를 즉시 종료하고 값을 반환return을 명시적으로 호출하지 않으면 반환 값은 undefined가 됨">
 <meta property="og:type" content="article">
-<meta property="og:title" content="chapter3. 리터럴과 변수, 상수, 데이터타입">
-<meta property="og:url" content="http://yoursite.com/2019/06/25/chapter3/index.html">
+<meta property="og:title" content="chapter6. 함수">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/chapter6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".. 제작 중입니다..">
+<meta property="og:description" content="함수 : 하나의 단위로 실행되는 문의 집합  6.1 반환 값 return :함수를 즉시 종료하고 값을 반환return을 명시적으로 호출하지 않으면 반환 값은 undefined가 됨">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-03T05:20:30.096Z">
+<meta property="og:updated_time" content="2019-08-13T13:00:39.387Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chapter3. 리터럴과 변수, 상수, 데이터타입">
-<meta name="twitter:description" content=".. 제작 중입니다..">
+<meta name="twitter:title" content="chapter6. 함수">
+<meta name="twitter:description" content="함수 : 하나의 단위로 실행되는 문의 집합  6.1 반환 값 return :함수를 즉시 종료하고 값을 반환return을 명시적으로 호출하지 않으면 반환 값은 undefined가 됨">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -93,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="chapter3. 리터럴과 변수, 상수, 데이터타입" height="28">
+                <img src="/images/logo.svg" alt="chapter6. 함수" height="28">
             
             </a>
         </div>
@@ -148,7 +148,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-25T11:06:02.000Z">2019-06-25</time>
+                <time class="level-item has-text-grey" datetime="2019-07-03T15:00:00.000Z">2019-07-04</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
@@ -158,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 6 words)
+                    a minute read (About 197 words)
                 </span>
                 
                 
@@ -167,11 +167,40 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                chapter3. 리터럴과 변수, 상수, 데이터타입
+                chapter6. 함수
             
         </h1>
         <div class="content">
-            <p>.. 제작 중입니다..</p>
+            <blockquote>
+<p><strong>함수</strong> : 하나의 단위로 실행되는 문의 집합</p>
+</blockquote>
+<h2 id="6-1-반환-값"><a href="#6-1-반환-값" class="headerlink" title="6.1 반환 값"></a>6.1 반환 값</h2><blockquote>
+<p><strong>return</strong> :함수를 즉시 종료하고 값을 반환<br>return을 명시적으로 호출하지 않으면 반환 값은 undefined가 됨</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight javascript hljs"><figcaption><span>함수 return</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGreeting</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-string">"hello world"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getGreeting();</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-2-호출과-참조"><a href="#6-2-호출과-참조" class="headerlink" title="6.2 호출과 참조"></a>6.2 호출과 참조</h2><blockquote>
+<p>함수 식별자 뒤에 ()를 쓰면 함수를 호출,<br>괄호를 쓰지 않으면 함수를 참조하며 함수 실행되지 않는다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>호출과 참조</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGreeting</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//함수 바디 중괄호</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"hello world"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getGreeting(); <span class="hljs-comment">// "hello world";</span></span><br><span class="line">getGreeting; <span class="hljs-comment">// function getGreeting()</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>변수에 할당</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//변수에 할당</span></span><br><span class="line"><span class="hljs-keyword">const</span> f = getGreeting;</span><br><span class="line">f(); <span class="hljs-comment">//hello, world;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>객체 프로퍼티에 할당</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//객체 프로퍼티에 할당</span></span><br><span class="line"><span class="hljs-keyword">const</span> o = &#123;&#125;;</span><br><span class="line">o.f = getGreeting;</span><br><span class="line">o.f();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>배열 요소에 할당</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//배열 요소에 할당</span></span><br><span class="line"><span class="hljs-keyword">const</span> arr = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;</span><br><span class="line">arr[<span class="hljs-number">1</span>] = getGreeting;</span><br><span class="line">arr[<span class="hljs-number">1</span>]();</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -222,16 +251,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/25/chapter4/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/13/chapter7/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">chapter4. 제어문</span>
+                <span class="level-item">chapter7. 스코프</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/24/chapter2/">
-                <span class="level-item">chapter2. 자바스크립트 개발 도구</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/03/chapter5/">
+                <span class="level-item">chapter5. 표현식과 연산자</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -256,7 +285,15 @@
             <h3 class="menu-label">
                 Catalogue
             </h3>
-            
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#6-1-반환-값">
+        <span class="has-mr-6">1</span>
+        <span>6.1 반환 값</span>
+        </a></li><li>
+        <a class="is-flex" href="#6-2-호출과-참조">
+        <span class="has-mr-6">2</span>
+        <span>6.2 호출과 참조</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
@@ -307,7 +344,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="chapter3. 리터럴과 변수, 상수, 데이터타입" height="28">
+                    <img src="/images/logo.svg" alt="chapter6. 함수" height="28">
                 
                 </a>
                 <p class="is-size-7">
