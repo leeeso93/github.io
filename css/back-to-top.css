@@ -1,38 +1,40 @@
 #back-to-top {
-    position: fixed;
-    padding: 8px 0;
-    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
-    opacity: 0;
-    line-height: 24px;
-    outline: none;
-    transform: translateY(120px);
+  position: fixed;
+  padding: 8px 0;
+  transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform,
+    0.4s ease border-radius;
+  opacity: 0;
+  line-height: 24px;
+  outline: none;
+  transform: translateY(120px);
 }
 #back-to-top.fade-in {
-    opacity: 1;
+  opacity: 1;
 }
 #back-to-top.rise-up {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 /* ==========================================================================
    custom.css
    ========================================================================== */
 
-.hljs-comment, .hljs-quote {
-    color: #57A64A;
-    font-style: normal;
+.hljs-comment,
+.hljs-quote {
+  color: #57a64a;
+  font-style: normal;
 }
-.text-danger{
-    color:#e90000;
+.text-danger {
+  color: #e90000;
 }
-.bg-yellow{
-    background: #ffcd00;
-    color: #333;
-    font-size: 0.85em;
-    font-weight: normal;
-    padding: 0.25em 0.5em 0.25em;
+.bg-yellow {
+  background: #ffcd00;
+  color: #333;
+  font-size: 0.85em;
+  font-weight: normal;
+  padding: 0.25em 0.5em 0.25em;
 }
-.gallery-item img{
-    display: block;
-    margin: auto;
+.gallery-item img {
+  display: block;
+  margin: auto;
 }

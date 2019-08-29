@@ -15,7 +15,7 @@
 <meta property="og:description" content="18.1 ES5와 ES6 서버에서는 ES6 기능 중 무엇이 지원되는지 확실히 알 수 있고, 자바스크립트 엔진을 선택할 수 있습니다.반면 웹에서는 작성한 코드를 실행할 자바스크립트 엔진을 선택하는 것은 불가능하고, 어떤 브라우저인지 알 수 있는 믿을 만한 정보조차 없습니다.사용자의 환경을 컨트롤 하지 않는 한 ES5를 사용해야 합니다.트랜스컴파일을 통해 ES">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-13T11:56:18.512Z">
+<meta property="og:updated_time" content="2019-08-17T04:39:05.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="chapter18. 브라우저의 자바스크립트">
 <meta name="twitter:description" content="18.1 ES5와 ES6 서버에서는 ES6 기능 중 무엇이 지원되는지 확실히 알 수 있고, 자바스크립트 엔진을 선택할 수 있습니다.반면 웹에서는 작성한 코드를 실행할 자바스크립트 엔진을 선택하는 것은 불가능하고, 어떤 브라우저인지 알 수 있는 믿을 만한 정보조차 없습니다.사용자의 환경을 컨트롤 하지 않는 한 ES5를 사용해야 합니다.트랜스컴파일을 통해 ES">
@@ -177,7 +177,7 @@
 <a id="more"></a>
 
 <h2 id="18-2-문서-객체-모델"><a href="#18-2-문서-객체-모델" class="headerlink" title="18.2 문서 객체 모델"></a>18.2 문서 객체 모델</h2><blockquote>
-<p>DON 즉 문서객체모델은 HTML 문서의 구조를 나타내는 표기법인 동시에 브라우저가 HTML 문서를 조작하는 핵심입니다.<br>DOM은 트리 구조로 표현합니다. DOM 트리는 노드(node)로 구성됩니다.<br>루트 노트를 제외한 모든 노드엔 부모가 있고, 자식노드는 있어도 되고 없어도 됩니다.<br>루트 노트는 문서(document)이며, 자식 노드는 html요소 하나 뿐입니다.<br>DOM 트리의 모든 노드는 Node 클래스의 인스턴스 입니다. Node 객체에는 트리 구조를 나타내는 parentNode와 childNodes 프로퍼티, 자신에 대한 프로퍼티인 nodeName과 nodeType 프로터피가 있습니다.<br>DOM은 노드로만 구성됩니다. 하지만 모든 노드가 html 요소는 아닙니다. 예를 들어, 문단 태그 p는 html 요소지만, p태그의 텍스트는 텍스트 노드입니다. 노드는 거의 html 요소이고, ‘요소’라고 하면 그건 ‘요소 노드’를 가리킵니다.</p>
+<p>DOM 즉 문서객체모델은 HTML 문서의 구조를 나타내는 표기법인 동시에 브라우저가 HTML 문서를 조작하는 핵심입니다.<br>DOM은 트리 구조로 표현합니다. DOM 트리는 노드(node)로 구성됩니다.<br>루트 노트를 제외한 모든 노드엔 부모가 있고, 자식노드는 있어도 되고 없어도 됩니다.<br>루트 노트는 문서(document)이며, 자식 노드는 html요소 하나 뿐입니다.<br>DOM 트리의 모든 노드는 Node 클래스의 인스턴스 입니다. Node 객체에는 트리 구조를 나타내는 parentNode와 childNodes 프로퍼티, 자신에 대한 프로퍼티인 nodeName과 nodeType 프로터피가 있습니다.<br>DOM은 노드로만 구성됩니다. 하지만 모든 노드가 html 요소는 아닙니다. 예를 들어, 문단 태그 p는 html 요소지만, p태그의 텍스트는 텍스트 노드입니다. 노드는 거의 html 요소이고, ‘요소’라고 하면 그건 ‘요소 노드’를 가리킵니다.</p>
 </blockquote>
 <p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/running_chap18_1.png?raw=true" alt="표 18-1 DOM 트리"></p>
 <figure class="highlight html hljs"><figcaption><span>이번장에 사용할 HTML 문서</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ie=edge"</span> /&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Simple html<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span><br><span class="line">      .callout &#123;</span><br><span class="line">        border: 1px solid #ff0080;</span><br><span class="line">        margin: 2px 4px;</span><br><span class="line">        padding: 2px 6px;</span><br><span class="line">      &#125;</span><br><span class="line">      .code &#123;</span><br><span class="line">        background: #ccc;</span><br><span class="line">        margin: 1px 2px;</span><br><span class="line">        padding: 1px 4px;</span><br><span class="line">        font-family: monospace;</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Simple Html<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"content"</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>simple<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> HTML file.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"callout"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>this is as fancy as...we'll get!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">        IDs (such as <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"code"</span>&gt;</span>#content<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>) are unique (there can</span><br><span class="line">        only be one per page).</span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">        Classes (such as <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>.callout<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>) can be used on many elements</span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"callout2"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"callout fancy"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>A single HTML element can have multiple classes<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -203,7 +203,7 @@
 </blockquote>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// ## 18.6 DOM 요소 조작</span></span><br><span class="line"><span class="hljs-keyword">const</span> para1 = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"p"</span>)[<span class="hljs-number">0</span>];</span><br><span class="line">para1.textContent; <span class="hljs-comment">//"This is simple HTML..."</span></span><br><span class="line">para1.innerHTML; <span class="hljs-comment">//"This is simple HTML...""</span></span><br><span class="line">para1.textContent = <span class="hljs-string">"Modified HTML file"</span>;</span><br><span class="line">para1.innerHTML = <span class="hljs-string">"Modified HTML file"</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="18-7-새-Dom-요소-만들기"><a href="#18-7-새-Dom-요소-만들기" class="headerlink" title="18.7 새 Dom 요소 만들기"></a>18.7 새 Dom 요소 만들기</h2><blockquote>
+<h2 id="18-7-새-DOM-요소-만들기"><a href="#18-7-새-DOM-요소-만들기" class="headerlink" title="18.7 새 DOM 요소 만들기"></a>18.7 새 DOM 요소 만들기</h2><blockquote>
 <p><strong>document.createElement</strong>로 새 노드를 만들 수 있다.<br>이 메서드는 새 요소를 만들지만 DOM 요소에 추가하지는 않습니다.<br>DOM에 추가하는건 따로 해야한다.<br><strong>insertBefore</strong>과 <strong>appendChild</strong> 메서드를 사용해 DOM에 추가한다.</p>
 </blockquote>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//요소 생성</span></span><br><span class="line"><span class="hljs-keyword">const</span> p1 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"p"</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> p2 = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"p"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//요소에 텍스트 생성</span></span><br><span class="line">p1.textContent = <span class="hljs-string">"i was created dynamically"</span>;</span><br><span class="line">p2.textContent = <span class="hljs-string">"i was also created dynamically"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//DOM에 추가</span></span><br><span class="line"><span class="hljs-keyword">const</span> parent = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"content"</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> firstChild = parent.childNodes[<span class="hljs-number">0</span>];</span><br><span class="line">parent.insertBefore(p1, firstChild);</span><br><span class="line">parent.appendChild(p2);</span><br></pre></td></tr></table></figure>
@@ -250,40 +250,6 @@
 </div>
 
 
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
@@ -350,9 +316,9 @@
         <span class="has-mr-6">6</span>
         <span>18.6 DOM 요소 조작</span>
         </a></li><li>
-        <a class="is-flex" href="#18-7-새-Dom-요소-만들기">
+        <a class="is-flex" href="#18-7-새-DOM-요소-만들기">
         <span class="has-mr-6">7</span>
-        <span>18.7 새 Dom 요소 만들기</span>
+        <span>18.7 새 DOM 요소 만들기</span>
         </a></li><li>
         <a class="is-flex" href="#18-8-요소-스타일링">
         <span class="has-mr-6">8</span>
@@ -397,7 +363,7 @@
                 <span class="level-item">러닝자바스크립트</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">19</span>
+                <span class="level-item tag">21</span>
             </span>
         </a></li>
             </ul>
