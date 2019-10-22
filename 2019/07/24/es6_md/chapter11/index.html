@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>chapter11. 예외와 예외 처리 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="11.1 Error 객체 자바스크립트에는 내장된 Error 객체가 있고,이 객체는 에러 처리에 간편하게 사용할 수 있다.Error 인스턴스를 만들면서 에러 메시지를 지정 할 수 있다.">
+<meta name="keywords" content="map,set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chapter11. 예외와 예외 처리">
+<meta property="og:url" content="http://yoursite.com/2019/07/24/es6_md/chapter11/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="11.1 Error 객체 자바스크립트에는 내장된 Error 객체가 있고,이 객체는 에러 처리에 간편하게 사용할 수 있다.Error 인스턴스를 만들면서 에러 메시지를 지정 할 수 있다.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-10-20T13:33:21.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="chapter11. 예외와 예외 처리">
+<meta name="twitter:description" content="11.1 Error 객체 자바스크립트에는 내장된 Error 객체가 있고,이 객체는 에러 처리에 간편하게 사용할 수 있다.Error 인스턴스를 만들면서 에러 메시지를 지정 할 수 있다.">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="chapter11. 예외와 예외 처리" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-23T15:00:00.000Z">2019-07-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 703 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                chapter11. 예외와 예외 처리
+            
+        </h1>
+        <div class="content">
+            <h2 id="11-1-Error-객체"><a href="#11-1-Error-객체" class="headerlink" title="11.1 Error 객체"></a>11.1 Error 객체</h2><blockquote>
+<p>자바스크립트에는 내장된 Error 객체가 있고,<br>이 객체는 에러 처리에 간편하게 사용할 수 있다.<br>Error 인스턴스를 만들면서 에러 메시지를 지정 할 수 있다.</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight javascript hljs"><figcaption><span>error</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"invalid Error"</span>);</span><br><span class="line"><span class="hljs-comment">//Error: invalid Error at &lt;anonymous&gt;:1:13</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="11-2-try-catch와-예외-처리"><a href="#11-2-try-catch와-예외-처리" class="headerlink" title="11.2 try/catch와 예외 처리"></a>11.2 try/catch와 예외 처리</h2><blockquote>
+<p>예외처리는 try…catch문을 사용</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>try...catch</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//유효한 이메일인지 체크</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateEmail</span>(<span class="hljs-params">email</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> email.match(<span class="hljs-regexp">/@/</span>) ? </span><br><span class="line">    email : </span><br><span class="line">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`invalid email :<span class="hljs-subst">$&#123;email&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//try...catch</span></span><br><span class="line"><span class="hljs-keyword">const</span> email = <span class="hljs-string">'a@d.com'</span>;</span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> validateEmail = validateEmail(email);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span>(validateEmail <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Error</span>)&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Error <span class="hljs-subst">$&#123;validateEmail.message&#125;</span>`</span>);</span><br><span class="line">    &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`valid email <span class="hljs-subst">$&#123;validateEmail&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(err)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">`Error <span class="hljs-subst">$&#123;err.message&#125;</span>`</span>);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre>
+에러를 캐치했으므로 프로그램은 멈추지 않는다.
+에러가 일어나면 즉시 catch 블록으로 이동함
+validateEmail을 실행한 다음 if 문은 실행되지 않음
+</pre>
+
+
+<h2 id="11-3-에러-일으키기"><a href="#11-3-에러-일으키기" class="headerlink" title="11.3 에러 일으키기"></a>11.3 에러 일으키기</h2><blockquote>
+<p>자바스크립트는 에러를 일으킬 떄 숫자나 문자열 등 어떤 값이든 catch절에 넘길 수 있다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>현금인출</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//에러 일으키기</span></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">계좌 잔고(balance)가 요청받은 금액보다 적다면 예외를 발생</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">billPay</span>(<span class="hljs-params">amount,payee,account</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(amount &gt; account.balance)</span><br><span class="line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"insufficient funds"</span>);</span><br><span class="line">    account.transfer(payee,amount);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre>
+throw를 호출하면 함수는 즉시 실행을 멈춤
+따라서, account.transfer(payee,amount)는 실행되지 않는다.
+</pre>
+
+
+<h2 id="11-4-예외-처리와-호출-스택"><a href="#11-4-예외-처리와-호출-스택" class="headerlink" title="11.4 예외 처리와 호출 스택"></a>11.4 예외 처리와 호출 스택</h2><blockquote>
+<p><strong>호출 스택</strong> : 완료되지 않은 함수가 쌓이는 것</p>
+<ul>
+<li>에러는 캐치 될 때까지 호출 스택을 따라 올라감</li>
+<li>에러는 호출 스택 어디서든 캐치 할 수 있다.</li>
+<li>에러를 캐치하지 않으면 자바스크립트 멈춤<br>  =&gt;처리하지 않은 에러 or 캐치하지 않은 에러</li>
+<li><em>stack 프로퍼티*</em> : Error 인스턴스는 스택을 문자열로 표현한 stack 프로퍼티가 있다.    </li>
+</ul>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>호출스택</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//에러 처리</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"a calling b"</span>);</span><br><span class="line">    b();</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'a :done'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"b calling c"</span>);  </span><br><span class="line">    c();</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'b :done'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"c :throwing Error"</span>);  </span><br><span class="line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'e error'</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'c :done'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">d</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"d calling c"</span>);  </span><br><span class="line">    c();</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'d :done'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    a();</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(err)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(err.stack);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    d();</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(err)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(err.stack);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">a calling b</span></span><br><span class="line"><span class="hljs-comment">b calling c</span></span><br><span class="line"><span class="hljs-comment">c :throwing Error</span></span><br><span class="line"><span class="hljs-comment">Error: e error</span></span><br><span class="line"><span class="hljs-comment">    at c (&lt;anonymous&gt;:17:11)</span></span><br><span class="line"><span class="hljs-comment">    at b (&lt;anonymous&gt;:11:5)</span></span><br><span class="line"><span class="hljs-comment">    at a (&lt;anonymous&gt;:5:5)</span></span><br><span class="line"><span class="hljs-comment">    at &lt;anonymous&gt;:28:5</span></span><br><span class="line"><span class="hljs-comment">d calling c</span></span><br><span class="line"><span class="hljs-comment">c :throwing Error</span></span><br><span class="line"><span class="hljs-comment">Error: e error</span></span><br><span class="line"><span class="hljs-comment">    at c (&lt;anonymous&gt;:17:11)</span></span><br><span class="line"><span class="hljs-comment">    at d (&lt;anonymous&gt;:23:5)</span></span><br><span class="line"><span class="hljs-comment">    at &lt;anonymous&gt;:34:5</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="11-5-try…catch…finally"><a href="#11-5-try…catch…finally" class="headerlink" title="11.5 try…catch…finally"></a>11.5 try…catch…finally</h2><blockquote>
+<p>try블록의 코드가 HTTP 연결이나 파일 같은 ‘자원’을 처리해야 할 때<br>어느 시점에서 이 자원을 해제해야함</p>
+<ul>
+<li>try는 에러가 일어나면 자원을 헤재할 기회가 사라질 수 있음</li>
+<li>catch는 에러가 없으면 실행되지 않음</li>
+<li>finally 에러 관계없이 반드시 호출됨</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>try...catch...finally</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//try...catch...finally</span></span><br><span class="line"><span class="hljs-keyword">try</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"1.this line is executed.."</span>);</span><br><span class="line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"whoops"</span>);   </span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"2.this line is not.."</span>);</span><br><span class="line">&#125;<span class="hljs-keyword">catch</span>(err)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"3.there was an error..."</span>);</span><br><span class="line">&#125;<span class="hljs-keyword">finally</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"4....always excuted"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">1.this line is executed..</span></span><br><span class="line"><span class="hljs-comment">3.there was an error...</span></span><br><span class="line"><span class="hljs-comment">4....always excuted</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/map/">map</a>, <a class="has-link-grey -link" href="/tags/set/">set</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/25/es6_md/chapter12/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">chapter12. 이터레이터와 제너레이터</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/23/es6_md/chapter10/">
+                <span class="level-item">chapter10. 맵과 셋</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right ">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#11-1-Error-객체">
+        <span class="has-mr-6">1</span>
+        <span>11.1 Error 객체</span>
+        </a></li><li>
+        <a class="is-flex" href="#11-2-try-catch와-예외-처리">
+        <span class="has-mr-6">2</span>
+        <span>11.2 try/catch와 예외 처리</span>
+        </a></li><li>
+        <a class="is-flex" href="#11-3-에러-일으키기">
+        <span class="has-mr-6">3</span>
+        <span>11.3 에러 일으키기</span>
+        </a></li><li>
+        <a class="is-flex" href="#11-4-예외-처리와-호출-스택">
+        <span class="has-mr-6">4</span>
+        <span>11.4 예외 처리와 호출 스택</span>
+        </a></li><li>
+        <a class="is-flex" href="#11-5-try…catch…finally">
+        <span class="has-mr-6">5</span>
+        <span>11.5 try…catch…finally</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catégories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트를-다루는-기술/">
+            <span class="level-start">
+                <span class="level-item">리액트를 다루는 기술</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nuage de tags
+        </h3>
+        <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="chapter11. 예외와 예외 처리" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Articles',
+                PAGES: 'Pages',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>

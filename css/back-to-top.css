@@ -34,7 +34,20 @@
   font-weight: normal;
   padding: 0.25em 0.5em 0.25em;
 }
+.bg-grey {
+  background: #e2e5e8;
+  color: #333;
+  font-size: 0.85em;
+  font-weight: normal;
+  padding: 0.25em 0.5em 0.25em;
+}
+
 .gallery-item img {
   display: block;
   margin: auto;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.8;
 }

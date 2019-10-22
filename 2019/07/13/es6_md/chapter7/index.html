@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>chapter7. 스코프 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="스코프 변수와 상수, 매개변수가 언제 어디서 정의되는지를 결정ex )  함수 매개변수가 함수 바디 안에서만 존재하는 것">
+<meta name="keywords" content="스코프">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chapter7. 스코프">
+<meta property="og:url" content="http://yoursite.com/2019/07/13/es6_md/chapter7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="스코프 변수와 상수, 매개변수가 언제 어디서 정의되는지를 결정ex )  함수 매개변수가 함수 바디 안에서만 존재하는 것">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-10-20T13:33:21.432Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="chapter7. 스코프">
+<meta name="twitter:description" content="스코프 변수와 상수, 매개변수가 언제 어디서 정의되는지를 결정ex )  함수 매개변수가 함수 바디 안에서만 존재하는 것">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="chapter7. 스코프" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-12T15:00:00.000Z">2019-07-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    21 minutes read (About 3204 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                chapter7. 스코프
+            
+        </h1>
+        <div class="content">
+            <h2 id="스코프"><a href="#스코프" class="headerlink" title="스코프"></a>스코프</h2><blockquote>
+<p>변수와 상수, 매개변수가 언제 어디서 정의되는지를 결정<br>ex )  함수 매개변수가 함수 바디 안에서만 존재하는 것</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight javascript hljs"><figcaption><span>스코프</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//스코프</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params">x</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> x + <span class="hljs-number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line">f(<span class="hljs-number">5</span>); <span class="hljs-comment">// 8</span></span><br><span class="line">x; <span class="hljs-comment">//ReferenceError : x is not defined</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+x가 아주 잠시나마 존재했으므로 x + 3을 계산 할 수 있었다.
+그러나 함수를 벗어나면 x가 존재하지 않는 것처럼 보인다.
+따라서 x의 스코프가 함수 f라고한다. 
+</pre>
+
+<ul>
+<li>스코프 : 시야, 범위라고 이해</li>
+</ul>
+<p><span class="bg-yellow">변수의 스코프가 어떤 함수</span>라고 말할 때, 함수를 실제 호출할 때 까지는 함수 바디의 정해진 매개변수가 존재하지 않는다. 함수를 호출할 때마다 매개변수가 나타나고, 함수가 제어권을 반환하면 스코프 밖으로 사라진다.</p>
+<p><span class="bg-yellow">변수와 상수</span>는 만들기 전에는 존재하지 않는다. let이나 const로 선언 하기 전에는 스코프 안에서 존재하지 않는다.</p>
+<p>(var는 특수한 경우) </p>
+<blockquote>
+<p>변수를 선언 : 식별자를 주어서 존재를 알린다.<br>변수를 정의 : 선언과 함께 값을 부여한다.<br><br>자바스크립트는 선언과 동시에 값이 주어지므로 둘을 구분하지 않는다.</p>
+</blockquote>
+<h2 id="7-1-스코프와-존재"><a href="#7-1-스코프와-존재" class="headerlink" title="7.1 스코프와 존재"></a>7.1 스코프와 존재</h2><p>변수가 존재하지 않으면 그 변수는 스코프안에 ‘있지 않음’ → 그 변수는 존재하지 않는다 ?<br>꼭 그런건 아님 </p>
+<blockquote>
+<p>스코프 : 실행 컨텍스트에서 현재 보이고 접근할 수 있는 식별자<br>존재한다 : 그 식별자가 메모리가 할당된 무언가를 가리킴 </p>
+</blockquote>
+<p>‘존재하지만  스코프 안에는 없는 변수의 예’ </p>
+<p>무언가가 더 존재하지 않는다 해도 자바스크립트는 메모리를 바로 회수하는 것이 아닌,</p>
+<p>자동적으로 <strong>가비지 콜렉션 프로세스에서 메모리를 회수</strong> 한다. </p>
+<hr>
+<h2 id="7-1-정적-스코프와-동적-스코프"><a href="#7-1-정적-스코프와-동적-스코프" class="headerlink" title="7.1 정적 스코프와 동적 스코프"></a>7.1 정적 스코프와 동적 스코프</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'one'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f2</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'two'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">f2();</span><br><span class="line">f1();</span><br><span class="line">f2();</span><br></pre></td></tr></table></figure>
+
+<pre>
+정적으로 보면 이 프로그램은 위에서 아래로 읽어내리지만(f1 정의-> f2정의)
+실행을 하면 f2 -> f1 -> f2
+자바스크립트의 스코프는 정적, 
+어떤 변수가 함수 스코프 안에 있는지 함수를 정의할 때 알 수 있다.
+</pre>
+
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> x = <span class="hljs-number">3</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(y);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">//새 스코프</span></span><br><span class="line">     <span class="hljs-keyword">const</span> y = <span class="hljs-number">5</span>;</span><br><span class="line">     f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre>
+1. 변수 x는 함수 f를 정의 할 때 존재하나 y는 다른 스코프에도 존재 한다.
+2. 다른 스코프에서 y를 선언하고 그 스코프에서 f를 호출하더라도
+    f를 호출하면 x는 그 바디 안에 스코프에 있지만 y는 그렇지 않다.
+3. 정적 스코프는 <span class="bg-yellow">전역 스코프</span>, <span class="bg-yellow">블록 스코프</span> , <span class="bg-yellow">함수 스코프</span>에 적용된다.
+</pre>
+
+<hr>
+<h2 id="7-3-전역-스코프"><a href="#7-3-전역-스코프" class="headerlink" title="7.3 전역 스코프"></a>7.3 전역 스코프</h2><p>스코프는 계층적이며 트리 맨아래 바탕이 되는 무언가가 있어야 한다.<br>-&gt; 암시적으로 주어지는 스코프가 필요 </p>
+<p>이를 <strong>전역 스코프</strong> 라고 한다.</p>
+<p>전역 스코프에서 선언한 것은 무엇이든 프로그램의 모든 스코프에서 볼 수 있다. </p>
+<p><strong>전역변수</strong> : 전역 스코프에서 선언된 것 , 전역 스코프에 의존하는 걸 피해라.. </p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//전역 스코프, 전역변수 </span></span><br><span class="line"><span class="hljs-keyword">let</span> name = <span class="hljs-string">'lrene'</span> <span class="hljs-comment">//전역</span></span><br><span class="line"><span class="hljs-keyword">let</span> age = <span class="hljs-number">25</span>; <span class="hljs-comment">//전역 </span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`hello <span class="hljs-subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBirthYear</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getFullYear() - age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre>
+1. 함수가 호출하는 스코프에 대단히 의존적이다 
+2. name과 age의 값을 어디든지 실수로 바꿀 수 있다. 
+3. greet()와 getBirthYear()도 전역 변수에 의존하므로
+    name과 age를 정확히 사용한다는 가정에서만 쓸 수 있다. 
+</pre>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//전역 스코프, 전역변수 개선ver1</span></span><br><span class="line"><span class="hljs-comment">//단일 객체에 보관 </span></span><br><span class="line"><span class="hljs-keyword">let</span> user = &#123;</span><br><span class="line">    name = <span class="hljs-string">'Irene'</span>,</span><br><span class="line">    age : <span class="hljs-number">25</span>,</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`hello <span class="hljs-subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBirthYear</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getFullYear() - age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre>
+1. user을 써서 단일 객체에 보관
+2. 그러나 아직 greet와 getBirthYear은 전역 user에 의존
+</pre>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//전역 스코프, 전역변수 개선ver2</span></span><br><span class="line"><span class="hljs-comment">//모든 스코프에서 호출할 수 있고, 명시적으로 user을 전달 받음 </span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">user</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`hello <span class="hljs-subst">$&#123;user.name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBirthYear</span>(<span class="hljs-params">user</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getFullYear() - user.age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre>
+1. 모든 스코프에서 호출할 수 있고, 명시적으로 user을 전달 받음
+</pre>
+
+<h2 id="7-4-블록-스코프"><a href="#7-4-블록-스코프" class="headerlink" title="7.4 블록 스코프"></a>7.4 블록 스코프</h2><blockquote>
+<p>블록의 스코프안에서만 보이는 식별자<br>let,const는 식별자를 블록 스코프에서 선언 </p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//블록 스코프 </span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'before block'</span>); </span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'inside block'</span>);</span><br><span class="line">    <span class="hljs-keyword">const</span> x = <span class="hljs-number">3</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">`outside block; x = <span class="hljs-subst">$&#123;x&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//결과</span></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">before block  </span></span><br><span class="line"><span class="hljs-comment">inside block  </span></span><br><span class="line"><span class="hljs-comment">3</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">ReferenceError: x is not defined</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<pre> 
+x는 블록 안에서 정의되었고, 
+블록을 나가는 즉시  x도 스코프 밖으로 사라지므로 정의되지 않은 것으로 간주
+</pre>
+
+<h2 id="7-5-변수-숨기기"><a href="#7-5-변수-숨기기" class="headerlink" title="7.5 변수 숨기기"></a>7.5 변수 숨기기</h2><blockquote>
+<p>다른 스코프에 있으면서 이름이 같은 변수나 상수는 혼란을 초래 </p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">//block 1</span></span><br><span class="line">    <span class="hljs-keyword">const</span> x = <span class="hljs-string">'blue'</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// "blue"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//ReferenceError: x is not defined</span></span><br><span class="line"> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">//block2</span></span><br><span class="line">    <span class="hljs-keyword">const</span> x = <span class="hljs-number">3</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x) <span class="hljs-comment">// "3"</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> x); <span class="hljs-comment">//undefined ; x는 스코프 밖에 있습니다.</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>변수 숨기기</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//스코프 중첩 </span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">//외부블록 </span></span><br><span class="line">    <span class="hljs-keyword">let</span> x  = <span class="hljs-string">'blue'</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x) ; <span class="hljs-comment">//"blue"   </span></span><br><span class="line"> </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-comment">//내부블록 </span></span><br><span class="line">        <span class="hljs-keyword">let</span> x = <span class="hljs-number">3</span>;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// "3" </span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//"blue"  </span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> x); <span class="hljs-comment">//undefined ; x는 스코프에 있지 않습니다. .</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+1.  내부 블록의 x와 외부블록의 x는 이름만 같은 다른 변수이다.
+2. 그러므로 외부 스코프의 x를 숨기는 (가리는) 효과를 발휘
+3. 실행 흐름이 내부 블록에 들어가 새 x를 정의 할 때, 두 변수가 모두 스코프 안에 있다 
+4. 이름이 같은  x의 경우 내부 블록에서 외부 스코프에 접근 할 방법은 없음 
+</pre>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">//외부블록</span></span><br><span class="line">    <span class="hljs-keyword">let</span> x = &#123;<span class="hljs-attr">color</span> : <span class="hljs-string">"blue"</span>&#125;;</span><br><span class="line">    <span class="hljs-keyword">let</span> y = x;</span><br><span class="line">    <span class="hljs-keyword">let</span> z =<span class="hljs-number">3</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-comment">//내부블록 </span></span><br><span class="line">        <span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>; <span class="hljs-comment">//외부블록의  x가 가려짐 </span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//5</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(y.color)<span class="hljs-comment">//"blue": y가 가리키는 외부 스코프의 x가 가리키는 객체는 모두 스코프 안에 있다. </span></span><br><span class="line">        y.color = <span class="hljs-string">"red"</span>;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(z) <span class="hljs-comment">//"3" :z는 숨겨지지 않았다.</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x.color); <span class="hljs-comment">//"red" 객체가 내부스코프에서 수정됨 </span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(y.color); <span class="hljs-comment">//"red"; x와 y는 같은 객체를 가리킴  </span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(z); <span class="hljs-comment">//"3"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre>
+1. 스코프는 계층적 , 이로인해 <span class="bg-yellow">스코프 체인</span>이란 개념이 생김 
+2. 스코프 체인에 있는 변수는 스코프에 있는 것이므로 숨겨지지만 않으면 접근이 가능하다.
+</pre>
+
+<h2 id="7-6-함수-클로저-정적-스코프"><a href="#7-6-함수-클로저-정적-스코프" class="headerlink" title="7.6 함수, 클로저, 정적 스코프"></a>7.6 함수, 클로저, 정적 스코프</h2><blockquote>
+<p>함수가 특정 스코프에 접근할 수 있도록 의도적으로 그 스코프에서 정의하는 경우가 많다.<br>이를 클로저라고 한다.<br><br>클로저 :  스코프를 함수 주변으로 좁히는 것 </p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>클로저예제</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//클로저 예제 </span></span><br><span class="line"><span class="hljs-keyword">let</span> globalFunc; <span class="hljs-comment">//정의되지 않은 전역함수 </span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> blockVar = <span class="hljs-string">"a"</span>;</span><br><span class="line">    globalFunc = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(blockVar); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">globalFunc(); <span class="hljs-comment">//"a"</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+1. globalFunc가 블록 안에서 값을 할당 받음 
+2. globalFunc를 호출하면 이 함수는 스코프에서 빠져나왔어도 blockVar에 접근 할 수 있다.
+3. 일반적으로 스코프를 빠져나가면 해당 스코프 안에서 선언한 변수는 메모리에서 제거해도 안전하다 
+4. 그러나 스코프 안에서 함수를 정의했고, 이 함수는 스코프 밖에서도 참조할 수 있으므로 자바스크립트는 스코프를 계속 유지한다. 
+
+=> 즉, 스코프 안에서 함수를 정의하면 해당 스코프는 더 오래 유지가 된다 .
+=> 또한, 접근 할 수 없는 것에 접근 할 수 있게하는 효과도 있다. 
+</pre>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> f; <span class="hljs-comment">//정의되지 않은 함수 </span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> o = &#123;<span class="hljs-attr">note</span> : <span class="hljs-string">'safe'</span>&#125;;</span><br><span class="line">    f = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">let</span> oRef = f();</span><br><span class="line">oRef.note = <span class="hljs-string">'not so safe after all!'</span>;</span><br></pre></td></tr></table></figure>
+
+<pre>
+1. 일반적으로 스코프 바깥쪽에 있는 것들은 접근할 수 없다.
+2. 그러나 함수를 정의해 클로저를 만들면 접근할 방법이 생긴다 .
+</pre>
+
+<h2 id="7-7-즉시-호출하는-함수-표현식"><a href="#7-7-즉시-호출하는-함수-표현식" class="headerlink" title="7.7 즉시 호출하는 함수 표현식"></a>7.7 즉시 호출하는 함수 표현식</h2><blockquote>
+<p>함수 표현식을 사용하면 즉시 호출하는 함수 표현식(llEF)를 만들 수 있다.<br><br>IIFE : Immediately Invoked Function Expressions, 함수를 선언하고 즉시 실행 </p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>IIEF</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//IIEF</span></span><br><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-comment">//IIEF 바디        </span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<pre>
+함수 표현식으로 익명 함수를 만들고 그 함수를 즉시 호출
+IIFE는 내부에 있는 것 모두 자신의 스코프를 가지지만,
+IIEF가 함수이므로 스코프 밖으로 무언갈 내보낼 수 있는 장점을 가짐 
+</pre>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> message =(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> secret = <span class="hljs-string">"I'm a secret!"</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`The secret is <span class="hljs-subst">$&#123;secret.length&#125;</span> characters long.`</span>;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="hljs-built_in">console</span>.log(message);<span class="hljs-comment">//The secret is 13 characters long.</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+1. 변수 secret은 IIEF 스코프 안에서 안전하게 보호되며 외부에서 접근 할 수 없다.
+2. 그렇지만  IIEF는 함수이므로 무엇이든 반환할 수 있다.
+</pre>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> f = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`i have been called <span class="hljs-subst">$&#123;++count&#125;</span> time(s)`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"> </span><br><span class="line">f(); <span class="hljs-comment">//i have been called 1 time(s)</span></span><br><span class="line">f(); <span class="hljs-comment">//i have been called 2 time(s)</span></span><br><span class="line"><span class="hljs-comment">//...</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+변수 count는 IIEF안에 안전하게 보관되어 있으므로 손댈 방법이 없다.
+f는 자신이 몇 번 호출됐는지 정확히 알고 있다.
+</pre>
+
+<h2 id="7-8-함수-스코프와-호이스팅"><a href="#7-8-함수-스코프와-호이스팅" class="headerlink" title="7.8 함수 스코프와 호이스팅"></a>7.8 함수 스코프와 호이스팅</h2><blockquote>
+<p>let<br>let으로 변수를 선언하면, 그 변수는 선언하기 전에 존재하지 않는다.</p>
+</blockquote>
+<blockquote>
+<p>var<br>var로 선언한 변수는 현재 스코프 안이라면 어디서든 사용할 수 있으며, 선언하기 전에도 사용할 수 있다.</p>
+</blockquote>
+<p><strong>아직 선언되지않은 변수의 값 == 에러를 일으킴<br>존재하되 값이 undefined인 변수 = 에러를 일으키지 않음</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//let </span></span><br><span class="line">x; <span class="hljs-comment">//x가 정의되지 않음 </span></span><br><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">3</span>; <span class="hljs-comment">//에러가 실행되어 멈춰서 여기에 도달할 수 없음</span></span><br><span class="line"><span class="hljs-string">``</span><span class="hljs-string">` </span></span><br><span class="line"><span class="hljs-string">&lt;pre&gt;</span></span><br><span class="line"><span class="hljs-string">let을 쓰면 변수를 선언하기 전에 사용하려고 할때 에러가 난다. </span></span><br><span class="line"><span class="hljs-string">&lt;/pre&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">`</span><span class="hljs-string">``</span>javascript</span><br><span class="line"><span class="hljs-comment">//var </span></span><br><span class="line">x;</span><br><span class="line"><span class="hljs-keyword">var</span> x = <span class="hljs-number">3</span>;</span><br><span class="line">x; <span class="hljs-comment">//3</span></span><br><span class="line">x; <span class="hljs-comment">//선언(할당은 아닌)이 끌어올려 집니다. </span></span><br><span class="line">x; <span class="hljs-comment">//undefined</span></span><br><span class="line"><span class="hljs-keyword">var</span> x = <span class="hljs-number">3</span>;</span><br><span class="line">x; <span class="hljs-comment">//3</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+1. var로 변수를 선언하면, 선언하기 전에도 사용할 수 있다.
+2. var로 선언한 변수는 끌어올린다는 뜻의 호이스팅이라는 메커니즘을 따름
+3. 선언만 끌어올리지며, 할당은 끌어올리지지 않는다. 
+</pre>
+
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//원래코드 </span></span><br><span class="line"><span class="hljs-keyword">if</span>(x !==<span class="hljs-number">3</span>)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(y); <span class="hljs-comment">//undefined</span></span><br><span class="line">    <span class="hljs-keyword">var</span> y = <span class="hljs-number">5</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(y === <span class="hljs-number">5</span>)&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> x = <span class="hljs-number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(y); <span class="hljs-comment">//5</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">if</span>(x === <span class="hljs-number">3</span>)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(y); <span class="hljs-comment">//5</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">//자바스크립트가 해석한 코드 </span></span><br><span class="line"><span class="hljs-keyword">var</span> x;</span><br><span class="line"><span class="hljs-keyword">var</span> y;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">if</span>(x !== <span class="hljs-number">3</span>)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(y);</span><br><span class="line">    y = <span class="hljs-number">5</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (y === <span class="hljs-number">5</span>)&#123;</span><br><span class="line">        x = <span class="hljs-number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(y);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">if</span>(x === <span class="hljs-number">3</span>)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">var</span> x = <span class="hljs-number">3</span>;</span><br><span class="line"><span class="hljs-keyword">if</span>(x === <span class="hljs-number">3</span>)&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> x = <span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+1. 같은 함수나 전역 스코프 안에서는 var로 새 변수를 만들 수 없다.
+2. let으로 가능 했던 변수 숨김도 불가능
+3. 그렇지만 ES5로 트랜스 컴파일 해야하므로 var의 동작을 이해해야한다. 
+</pre>
+
+<h2 id="7-9-함수-호이스팅"><a href="#7-9-함수-호이스팅" class="headerlink" title="7.9 함수 호이스팅"></a>7.9 함수 호이스팅</h2><blockquote>
+<p>var로 선언된 변수와 마찬가지로, 함수 선언도 스코프 맨 위로 끌어올려진다.<br>함수를 선언하기 전에 호출 할 수 있다. </p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f(); <span class="hljs-comment">//"f"</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>그러나, 변수에 할당한 함수 표현식은 끌어올려지지 않는다.</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f(); <span class="hljs-comment">//ReferrenceError : f는 정의되지 않았습니다.</span></span><br><span class="line"><span class="hljs-keyword">let</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(f);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-10-사각지대"><a href="#7-10-사각지대" class="headerlink" title="7.10 사각지대"></a>7.10 사각지대</h2><blockquote>
+<p>let으로 선언하는 변수는 선언하기 전까지 존재하지 않는다는 직관적 개념<br>스코프 안에서 변수의 사각지대는 변수가 선언되기 전의 코드 </p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> x ===<span class="hljs-string">"undefined"</span>)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"x doesn't exist or is undefined"</span>);</span><br><span class="line">&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">    <span class="hljs-comment">//x를 사용해도 안전한 코드</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">//결과 x doesn't exist or is undefined</span></span><br></pre></td></tr></table></figure>
+
+<pre>해당 코드는 안전하고 에러가 발생하지 않는다. </pre>
+
+<p><strong>BUT, 이 코드를 let으로 바꾸면 에러가 발생</strong></p>
+<figure class="highlight javascript hljs"><figcaption><span>사각지대let</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//사각지대 let</span></span><br><span class="line"><span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> x === <span class="hljs-string">"undefined"</span>)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"x doesn't exist or is undefined"</span>);</span><br><span class="line">&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">    <span class="hljs-comment">//x를 사용해도 안전한 코드 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>;<span class="hljs-comment">//Uncaught ReferenceError: Cannot access 'x' before initialization</span></span><br></pre></td></tr></table></figure>
+
+<p>ES6에서는 typeof 연산자로 변수가 정의됐는지 확인 할 필요가 거의 없어짐</p>
+<h2 id="7-11-스트릭트-모드"><a href="#7-11-스트릭트-모드" class="headerlink" title="7.11 스트릭트 모드"></a>7.11 스트릭트 모드</h2><blockquote>
+<p><strong>암시적 전역변수(ES5문법)</strong> : var로 변수를 선언하는 것을 잊으면 자바스크립트는 전역 변수를 참조하려 한다고 간주하고,<br>그런 전역변수를 스스로 생성 =&gt; 수많은 문제 생성<br><strong>스트릭트 모드 : 암시적 전역 변수를 허용하지 않음</strong><br><strong>“use strict”를 코드 맨 앞에 씀</strong> </p>
+</blockquote>
+<p>전역 스코프에서 스트릭트 모드를 사용하지 않는 편이 좋다 . </p>
+<figure class="highlight javascript hljs"><figcaption><span>스트릭트모드</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line"><span class="hljs-meta">    'use strict'</span>;</span><br><span class="line">    <span class="hljs-comment">//코드를 전부 이 안에서 작성합니다.</span></span><br><span class="line">    <span class="hljs-comment">//이 코드는 스트릭트 모드로 동작하지만,</span></span><br><span class="line">    <span class="hljs-comment">//이 코드와 함께 동작하는 다른 스크립트는 스트릭트 모드에 영향을 받지 않습니다.</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/스코프/">스코프</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/15/es6_md/chapter8/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">chapter8. 배열과 배열 처리</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/04/es6_md/chapter6/">
+                <span class="level-item">chapter6. 함수</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right ">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#스코프">
+        <span class="has-mr-6">1</span>
+        <span>스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-1-스코프와-존재">
+        <span class="has-mr-6">2</span>
+        <span>7.1 스코프와 존재</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-1-정적-스코프와-동적-스코프">
+        <span class="has-mr-6">3</span>
+        <span>7.1 정적 스코프와 동적 스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-3-전역-스코프">
+        <span class="has-mr-6">4</span>
+        <span>7.3 전역 스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-4-블록-스코프">
+        <span class="has-mr-6">5</span>
+        <span>7.4 블록 스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-5-변수-숨기기">
+        <span class="has-mr-6">6</span>
+        <span>7.5 변수 숨기기</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-6-함수-클로저-정적-스코프">
+        <span class="has-mr-6">7</span>
+        <span>7.6 함수, 클로저, 정적 스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-7-즉시-호출하는-함수-표현식">
+        <span class="has-mr-6">8</span>
+        <span>7.7 즉시 호출하는 함수 표현식</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-8-함수-스코프와-호이스팅">
+        <span class="has-mr-6">9</span>
+        <span>7.8 함수 스코프와 호이스팅</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-9-함수-호이스팅">
+        <span class="has-mr-6">10</span>
+        <span>7.9 함수 호이스팅</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-10-사각지대">
+        <span class="has-mr-6">11</span>
+        <span>7.10 사각지대</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-11-스트릭트-모드">
+        <span class="has-mr-6">12</span>
+        <span>7.11 스트릭트 모드</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catégories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트를-다루는-기술/">
+            <span class="level-start">
+                <span class="level-item">리액트를 다루는 기술</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nuage de tags
+        </h3>
+        <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="chapter7. 스코프" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Articles',
+                PAGES: 'Pages',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>react chapter3. 컴포넌트 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="클래스형 컴포넌트, 함수형 컴포넌트, props, state, state를 사용할때 주의사항 등을 알아본다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react chapter3. 컴포넌트">
+<meta property="og:url" content="http://yoursite.com/2019/10/20/react_md/react_chap3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="클래스형 컴포넌트, 함수형 컴포넌트, props, state, state를 사용할때 주의사항 등을 알아본다.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-10-21T08:10:16.441Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react chapter3. 컴포넌트">
+<meta name="twitter:description" content="클래스형 컴포넌트, 함수형 컴포넌트, props, state, state를 사용할때 주의사항 등을 알아본다.">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="react chapter3. 컴포넌트" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-19T15:00:00.000Z">2019-10-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/리액트를-다루는-기술/">리액트를 다루는 기술</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    28 minutes read (About 4129 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                react chapter3. 컴포넌트
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>클래스형 컴포넌트, 함수형 컴포넌트, props, state, state를 사용할때 주의사항 등을 알아본다.</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="3-1-클래스형-컴포넌트"><a href="#3-1-클래스형-컴포넌트" class="headerlink" title="3.1 클래스형 컴포넌트"></a>3.1 클래스형 컴포넌트</h2><blockquote>
+<p>함수형 컴포넌트는 다음과 같은 구조로 이루어져 있다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>App.js 함수형 컴포넌트</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//함수형 컴포넌트</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> name =<span class="hljs-string">"리액트"</span>;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"react"</span>&gt;</span>&#123;name&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<p>컴포넌트는 <strong>함수형 컴포넌트</strong>와 <strong>클래스형 컴포넌트</strong>로 선언할 수 있다.</p>
+<blockquote>
+<p>클래스형 컴포넌트는 다음과 같은 구조이다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>App.js 클래스형 컴포넌트</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//클래스형 컴포넌트</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-title">extend</span> <span class="hljs-title">Component</span></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> name =<span class="hljs-string">"리액트"</span>;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"react"</span>&gt;</span>&#123;name&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<p>클래스형 컴포넌트로 바뀌었지만 둘의 기능은 똑같다.<br>이 둘의 차이점은 <strong>클래스형 컴포넌트</strong>는
+<span class="bg-grey">state 기능 및 라이프사이클(life cycle)을 사용가능하다는 것과 임의 메서드를 정의할 수 있다는 것</span>이다.<br>클래스형 컴포넌트에서는 render 함수가 꼭 있어야하고, 그 안에 보여줄 JSX를 반환해야한다.</p>
+<p>리액트 메뉴얼에서는 함수형 컴포넌트와 hooks를 사용하기를 권장하지만 함수형 컴포넌트도 장단점이 존재한다.</p>
+<p><strong>함수형 컴포넌트 장점</strong> :  선언하기가 편하다, 메모리 자원을 덜 사용한다, 프로젝트 빌드 후 배포할때 파일 크기가 더 작다.<br><strong>함수형 컴포넌트 단점</strong> : state와 라이프사이클 API 사용이 불가능하다(이 점은 리액트 v16.8 업데이트 후 Hooks 라는 기능이 도입되면서 해결)</p>
+<h2 id="3-2-첫-컴포넌트-생성"><a href="#3-2-첫-컴포넌트-생성" class="headerlink" title="3.2 첫 컴포넌트 생성"></a>3.2 첫 컴포넌트 생성</h2><blockquote>
+<p>파일만들기 -&gt; 코드 작성 -&gt; 모듈내보내기 및 불러오기</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>MyComponent.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//hello-react\src\MyComponent.js</span></span><br><span class="line"><span class="hljs-comment">//모듈 불러오기(import)</span></span><br><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> MyComponent = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> (<span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span> 나의 새롭고 멋진 컴포넌트<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//모듈 내보내기</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyComponent;</span><br></pre></td></tr></table></figure>
+
+<p>function 키워드 사용대신 () =&gt; {} 를 사용함 이는 ES6에서 도입된 화살표 함수 문법임</p>
+<h2 id="노트-ES6-화살표-함수"><a href="#노트-ES6-화살표-함수" class="headerlink" title="노트 ES6 화살표 함수"></a>노트 ES6 화살표 함수</h2><blockquote>
+<p>화살표 함수는 ES6 문법에서 함수를 표현하는 새로운 방식이다. 이 문법은 주로 함수를 파라미터로 전달할 때 유용하다.<br>이 문법이 기존 function을 대체할 수 없는 이유는  <strong>서로 가리키는 this의 값이 다르기 때문</strong>이다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>function vs 화살표</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">BlackDog</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">"흰둥이"</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">        name: <span class="hljs-string">"검둥이"</span>,</span><br><span class="line">        bark: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name + <span class="hljs-string">"명멍"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> blackDog = <span class="hljs-keyword">new</span> BlackDog();</span><br><span class="line">blackDog.dark(); <span class="hljs-comment">//검둥이 멍멍</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">WhiteDog</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">"흰둥이"</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">        name: <span class="hljs-string">"검둥이"</span>,</span><br><span class="line">        bark: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name + <span class="hljs-string">"명멍"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> whiteDog = <span class="hljs-keyword">new</span> WhiteDog();</span><br><span class="line">whiteDog.dark();<span class="hljs-comment">//흰둥이 멍멍</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>일반 함수는 자신이 종속된 객체를 this로 가리키며, 화살표 함수는 자신이 종속된 인스턴스를 가리킨다.</strong></p>
+<h2 id="노트-ReactJS-Code-Snippet-사용"><a href="#노트-ReactJS-Code-Snippet-사용" class="headerlink" title="노트 ReactJS Code Snippet 사용"></a>노트 ReactJS Code Snippet 사용</h2><blockquote>
+<p>vs code 에서 ReactJS Code Snippet 확장팩 설치후 에디터에 rsc를 입력하면<br>알아서 react 컴포넌트 코드가 생성됨<br>rsc -&gt; 함수형 컴포넌트 생성<br>rcc - &gt; 클래스형 컴포넌트 생성</p>
+</blockquote>
+<h2 id="3-2-2-모듈-불러오기-import"><a href="#3-2-2-모듈-불러오기-import" class="headerlink" title="3.2.2 모듈 불러오기(import)"></a>3.2.2 모듈 불러오기(import)</h2><figure class="highlight javascript hljs"><figcaption><span>App.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> MyComponent <span class="hljs-keyword">from</span> <span class="hljs-string">'./MyComponent'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">MyComponent</span> /&gt;</span>;</span></span><br><span class="line"><span class="hljs-xml">&#125;;</span></span><br><span class="line"><span class="hljs-xml"></span></span><br><span class="line"><span class="hljs-xml">export default App;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-props"><a href="#3-3-props" class="headerlink" title="3.3 props"></a>3.3 props</h2><blockquote>
+<p>props는 컴포넌트 속성을 설정할때 사용하는 요소이다.<br>props 값은 해당 컴포넌트를 불러와 사용하는 부모 컴포넌트 (현 상황에서는 App.js가 부모 컴포넌트임)에서 설정 가능하다.</p>
+</blockquote>
+<h2 id="3-3-1-JSX-내부에서-props-랜더링"><a href="#3-3-1-JSX-내부에서-props-랜더링" class="headerlink" title="3.3.1 JSX 내부에서 props 랜더링"></a>3.3.1 JSX 내부에서 props 랜더링</h2><blockquote>
+<p>MyComponent 수정해서 해당 컴포넌트에서 name이라는 props를 랜더링하도록 설정한다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>MyComponent.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//hello-react\src\MyComponent.js</span></span><br><span class="line"><span class="hljs-comment">//모듈 불러오기(import)</span></span><br><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> MyComponent = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> (<span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>안녕하세요, 제 이름은 &#123;props.name&#125; 입니다.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//모듈 내보내기</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyComponent;</span><br></pre></td></tr></table></figure>
+
+<p>App.js 컴포넌트에서 MyComponent의 props의 값을 지정한다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>App.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> MyComponent <span class="hljs-keyword">from</span> <span class="hljs-string">'./MyComponent'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">MyComponent</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"soo"</span>/&gt;</span>;</span></span><br><span class="line"><span class="hljs-xml">&#125;;</span></span><br><span class="line"><span class="hljs-xml"></span></span><br><span class="line"><span class="hljs-xml">export default App;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-3-props-기본값-설정-defaultProps"><a href="#3-3-3-props-기본값-설정-defaultProps" class="headerlink" title="3.3.3 props 기본값 설정 : defaultProps"></a>3.3.3 props 기본값 설정 : defaultProps</h2><blockquote>
+<p>name 값을 부모 컴포넌트에서 지정해주지 않으면 name 값이 안나타나므로<br>“안녕하세요, 제 이름은 입니다.” 로 나온다.<br>지금처럼 props 값을 지정하지 않을때 보여줄 <strong>기본값을 설정</strong>하는 <strong>defaultProps</strong>는 다음과 같다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>defaultProps</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> MyComponent = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> (<span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>안녕하세요, 제 이름은 &#123;props.name&#125; 입니다.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//기본설정하기</span></span><br><span class="line">MyComponent.defaultProps =&#123;</span><br><span class="line">  name : <span class="hljs-string">"기본이름"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyComponent;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-4-태그-사이의-내용을-보여주는-children"><a href="#3-3-4-태그-사이의-내용을-보여주는-children" class="headerlink" title="3.3.4 태그 사이의 내용을 보여주는 children"></a>3.3.4 태그 사이의 내용을 보여주는 children</h2><blockquote>
+<p>리액트 컴포넌트를 사용할 떄, 컴포넌트 태그 사이에 내용을 보여주는 props가 있는데 <strong>children</strong> 이라고 한다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>App.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> MyComponent <span class="hljs-keyword">from</span> <span class="hljs-string">'./MyComponent'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">MyComponent</span>&gt;</span>자식<span class="hljs-tag">&lt;/<span class="hljs-name">MyComponent</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<p>위에서 MyComponent 사이에 작성한 ‘자식’이란 문자열을 MyComponent 내부에서 보여주려면 <strong>props.children</strong>을 사용한다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>MyComponent.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> MyComponent = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> (<span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>안녕하세요, 제 이름은 &#123;props.name&#125; 입니다.</span></span><br><span class="line"><span class="hljs-xml">    children의 값은 &#123;props.children&#125; 입니다.</span></span><br><span class="line"><span class="hljs-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">  안녕하세요, 제 이름은 기본이름 입니다.</span></span><br><span class="line"><span class="hljs-comment">  children의 값은 자식입니다.</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line">(...)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyComponent;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-5-비구조화-할당-문법을-통해-내부-props-값-추출하기"><a href="#3-3-5-비구조화-할당-문법을-통해-내부-props-값-추출하기" class="headerlink" title="3.3.5 비구조화 할당 문법을 통해 내부 props 값 추출하기"></a>3.3.5 비구조화 할당 문법을 통해 내부 props 값 추출하기</h2><blockquote>
+<p>MyComponent 에서 props 값을 조회할 때마다 props.name 과 같이 props.를 붙여주고 있는데, 이러한 작업을 더 편하게 하기 위해 ES6의 비구조화 할당 문법을 사용하여 내부 값을 추출할 수 있다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>MyComponent.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//MyComponent.js 수정</span></span><br><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> MyComponent = <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-comment">//비구조화 할당</span></span><br><span class="line">  <span class="hljs-keyword">const</span> &#123;name , children&#125; = props;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">return</span> (<span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>안녕하세요, 제 이름은 &#123;name&#125; 입니다.</span></span><br><span class="line"><span class="hljs-xml">    children의 값은 &#123;children&#125; 입니다.</span></span><br><span class="line"><span class="hljs-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(...)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyComponent;</span><br></pre></td></tr></table></figure>
+
+<p>다음과 같이도 수정 가능하다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>MyComponent.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//MyComponent.js 수정</span></span><br><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> MyComponent = <span class="hljs-function">(<span class="hljs-params">&#123;name , children&#125;</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="hljs-keyword">return</span> (<span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>안녕하세요, 제 이름은 &#123;name&#125; 입니다.</span></span><br><span class="line"><span class="hljs-xml">    children의 값은 &#123;children&#125; 입니다.</span></span><br><span class="line"><span class="hljs-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(...)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyComponent;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-6-propTypes를-통한-props-검증"><a href="#3-3-6-propTypes를-통한-props-검증" class="headerlink" title="3.3.6 propTypes를 통한 props 검증"></a>3.3.6 propTypes를 통한 props 검증</h2><blockquote>
+<p>props에 타입을 지정할때는 <strong>propTypes</strong>를 사용한다.<br>propTypes를 사용하기 위해서는 import 구문을 사용하여 불러와야 한다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>MyComponent.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"><span class="hljs-comment">//propsType 불러오기</span></span><br><span class="line"><span class="hljs-keyword">import</span> PropTypes <span class="hljs-keyword">from</span> <span class="hljs-string">'prop-types'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> MyComponent = <span class="hljs-function">(<span class="hljs-params">&#123;name , children&#125;</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="hljs-keyword">return</span> (...)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//props타입 지정</span></span><br><span class="line">MyComponent.propTypes = &#123;</span><br><span class="line">  name : PropTypes.string <span class="hljs-comment">//문자열으로 타입을 지정, name의 값은 무조건 문자열로 전달해야한다.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyComponent;</span><br></pre></td></tr></table></figure>
+
+<p>name에 값을 문자열이 아닌 다른값(ex)숫자)로 전달하면 값은 나오지만, 개발자 도구 console탭에서 오류를 알려준다.</p>
+<h2 id="3-3-6-1-isRequired를-사용하여-필수-propTypes-설정"><a href="#3-3-6-1-isRequired를-사용하여-필수-propTypes-설정" class="headerlink" title="3.3.6.1 isRequired를 사용하여 필수 propTypes 설정"></a>3.3.6.1 isRequired를 사용하여 필수 propTypes 설정</h2><blockquote>
+<p>propTypes를 지정하지 않았을 때 경고 메시지 등을 띄어주기 위해 <strong>isRequired</strong>를사용한다.<br>필수 propTypes를 지정할 때 사용 </p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>MyComponent.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"><span class="hljs-comment">//propsType 불러오기</span></span><br><span class="line"><span class="hljs-keyword">import</span> PropTypes <span class="hljs-keyword">from</span> <span class="hljs-string">'prop-types'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> MyComponent = <span class="hljs-function">(<span class="hljs-params">&#123;name ,favoriteNumber, children&#125;</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="hljs-keyword">return</span> (<span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>안녕하세요, 제 이름은 &#123;name&#125; 입니다.</span></span><br><span class="line"><span class="hljs-xml">    children의 값은 &#123;children&#125; 입니다.</span></span><br><span class="line"><span class="hljs-xml"></span></span><br><span class="line"><span class="hljs-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span></span><br><span class="line"><span class="hljs-xml">    제가 좋아하는 숫자는 &#123;favoriteNumber&#125;입니다.</span></span><br><span class="line"><span class="hljs-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//props타입 지정</span></span><br><span class="line">MyComponent.propTypes = &#123;</span><br><span class="line">  name : PropTypes.string <span class="hljs-comment">//문자열으로 타입을 지정, name의 값은 무조건 문자열로 전달해야한다.</span></span><br><span class="line">  favoriteNumber : propTypes.number.isRequired</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyComponent;</span><br></pre></td></tr></table></figure>
+
+<p>favoriteNumber의 값을 설정하지 않았으므로 개발자 도구에 오류가 발생하게된다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>App.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> MyComponent <span class="hljs-keyword">from</span> <span class="hljs-string">'./MyComponent'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//App.js에서 favoriteNumber의 값을 불러옴 </span></span><br><span class="line"><span class="hljs-keyword">return</span> <span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">MyComponent</span> <span class="hljs-attr">favoriteNumber</span>=<span class="hljs-string">&#123;1&#125;</span>&gt;</span>자식<span class="hljs-tag">&lt;/<span class="hljs-name">MyComponent</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<h2 id="더-많은-PropTypes의-종류들"><a href="#더-많은-PropTypes의-종류들" class="headerlink" title="더 많은 PropTypes의 종류들"></a>더 많은 PropTypes의 종류들</h2><p>다음과 같은 것들이 PropTypes의 종류가 될 수 있다.</p>
+<ul>
+<li>array : 배열</li>
+<li>arrayOf :  특정 propType으로 이루어진 배열</li>
+<li>bool : true or false 값</li>
+<li>func : 함수</li>
+<li>object : 객체</li>
+<li>number : 숫자</li>
+<li>string : 문자</li>
+<li>symbol : ES6의 Symbol</li>
+<li>node : 랜더링 할 수 있는 모든 것 (숫자, 문자열, JSX 등등)</li>
+<li>instanceOf(클래스) : 특정 클래스의 인스턴스 </li>
+<li>oneOf([‘dog’,’cat’]) :  주어진 배열 요소 값 중 하나</li>
+<li>oneOfType([React.PropTypes.string, PropTypes.number]) : 주어진 배열 안의 종류 중 하나</li>
+<li>objectOf(React.PropTypes.number): 객체의 모든 키 값이 인자로 주어진 propType인 객체</li>
+<li>shape({name : PropTypes.string, num : PropTypes.number}) : 주어진 스키마를 가진 객체 </li>
+<li>any : 아무 종류</li>
+</ul>
+<p>더 자세한 정보는 link: <a href="https://github.com/facebook/prop-types" target="_blank" rel="noopener">https://github.com/facebook/prop-types</a> 에서 확인 가능</p>
+<h2 id="3-3-7-클래스형-컴포넌트에서-props-사용하기"><a href="#3-3-7-클래스형-컴포넌트에서-props-사용하기" class="headerlink" title="3.3.7 클래스형 컴포넌트에서 props 사용하기"></a>3.3.7 클래스형 컴포넌트에서 props 사용하기</h2><blockquote>
+<p>클래스형 컴포넌트에서 props를 사용할땐, render 함수에서 this.props를 조회하면 된다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>MyComponent.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> propTypes <span class="hljs-keyword">from</span> <span class="hljs-string">'prop-types'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCompoenet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123; name, favoriteNumber, children &#125; = <span class="hljs-keyword">this</span>.props; <span class="hljs-comment">//비구조화 할당</span></span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        제 이름은 &#123;name&#125;입니다.</span><br><span class="line">        &lt;br /&gt;</span><br><span class="line">        제가 좋아하는 색은 &#123;favoriteNumber&#125; 이구요</span><br><span class="line">        &lt;br /&gt;</span><br><span class="line">        저의 차일드는 &#123;children&#125; 입니다.</span><br><span class="line">      &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    );</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">/</span><span class="hljs-regexp">/defaultProps 지정</span></span><br><span class="line"><span class="hljs-regexp">MyComponent.defaultProps =&#123;</span></span><br><span class="line"><span class="hljs-regexp">  name : "기본이름";</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">/</span><span class="hljs-regexp">/propTypes 지정</span></span><br><span class="line"><span class="hljs-regexp">MyComponent.propTypes = &#123;</span></span><br><span class="line"><span class="hljs-regexp">  name : PropTypes.string </span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">export default MyCompoenet;</span></span><br></pre></td></tr></table></figure>
+
+<p>class 내부에서 지정하는 방법도 있다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> propTypes <span class="hljs-keyword">from</span> <span class="hljs-string">'prop-types'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCompoenet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//내부에서 지정</span></span><br><span class="line">  <span class="hljs-keyword">static</span> defaultProps = &#123;</span><br><span class="line">    name: <span class="hljs-string">'기본이름'</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="hljs-keyword">static</span> propTypes = &#123;</span><br><span class="line">    name: propTypes.string,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123; name, favoriteNumber, children &#125; = <span class="hljs-keyword">this</span>.props;</span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        제 이름은 &#123;name&#125;입니다.</span><br><span class="line">        &lt;br /&gt;</span><br><span class="line">        제가 좋아하는 색은 &#123;favoriteNumber&#125; 이구요</span><br><span class="line">        &lt;br /&gt;</span><br><span class="line">        저의 차일드는 &#123;children&#125; 입니다.</span><br><span class="line">      &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    );</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">export default MyCompoenet;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-state"><a href="#3-4-state" class="headerlink" title="3.4 state"></a>3.4 state</h2><blockquote>
+<p><strong>props</strong>가 부모 컴포넌트가 설정하는 값이며, 컴포넌트 자신은 해당 props를 읽는 용도로만 사용할 수 있고, props를 바꾸려먼 부모 컴포넌트에서 바꾸어야 하는 것이라면<br> <strong>state</strong>는 컴포넌트 내부에서 바뀔 수 있는 값을 말한다.<br>리액트에서는 두 가지 state가 있다. 하나는 <strong>클래스형 컴포넌트가 지닌 state</strong>이고, 다른 하나는 <strong>함수형 컴포넌트에서 useState를 통해 사용하는 state</strong> 이다.</p>
+</blockquote>
+<h2 id="클래스형-컴포넌트의-state"><a href="#클래스형-컴포넌트의-state" class="headerlink" title="클래스형 컴포넌트의 state"></a>클래스형 컴포넌트의 state</h2><p>새로운 Counter.js라는 컴포넌트를 src 폴더에 생성한다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>Conuter.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="hljs-keyword">super</span>(props);</span><br><span class="line">    <span class="hljs-comment">//state의 초기값 설정</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.state = &#123;</span><br><span class="line">      number: <span class="hljs-number">0</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123; number &#125; = <span class="hljs-keyword">this</span>.state; <span class="hljs-comment">//state를 조회할 때는 this.state로 조회한다.</span></span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;&#123;number&#125;&lt;<span class="hljs-regexp">/h1&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;button /</span><span class="hljs-regexp">/onClick을 통해 버튼이 클릭되었을때 호출할 함수를 지정</span></span><br><span class="line"><span class="hljs-regexp">          onClick=&#123;() =&gt; &#123;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/this.setState를 사용하여 state에 새로운 값을 넣는다.</span></span><br><span class="line"><span class="hljs-regexp">            this.setState(&#123; number: number + 1 &#125;);</span></span><br><span class="line"><span class="hljs-regexp">          &#125;&#125;</span></span><br><span class="line"><span class="hljs-regexp">        &gt;</span></span><br><span class="line"><span class="hljs-regexp">          +1</span></span><br><span class="line"><span class="hljs-regexp">        &lt;/</span>button&gt;</span><br><span class="line">      &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    );</span></span><br><span class="line"><span class="hljs-regexp">  &#125;</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br><span class="line"><span class="hljs-regexp">export default Counter;</span></span><br></pre></td></tr></table></figure>
+
+<p> 컴포넌트의 state를 설정할 때는 다음과 같이 <strong>constructor 메서드</strong>를 작성하여 설정한다. 클래스형에서 constructor을 작성할때는 반드시 <strong>super(props)를 호출</strong>해 주어야 한다. 그 다음에, constructor 내부에 this.state값에 초깃값을 설정해준다. 컴포넌트의 state는 객체 형태 ({}) 여야 한다.</p>
+<p>render 함수에서 현재 state를 조회할 때는 this.state를 조회하면 된다. 그리고 button의 onClick 이벤트 안에 this.setState라는 함수를 사용해 state 값을 변경한다.<br>후에 App.js에서 컴포넌트를 불러와 랜더링을 하면 버튼 클릭시 숫자가 1씩 올라가게 된다.</p>
+<h2 id="3-4-1-1-state-객체-안에-여러-값이-있을-때"><a href="#3-4-1-1-state-객체-안에-여러-값이-있을-때" class="headerlink" title="3.4.1.1 state 객체 안에 여러 값이 있을 때"></a>3.4.1.1 state 객체 안에 여러 값이 있을 때</h2><blockquote>
+<p>state 객체 안에 여러 값이 있을때는 다음과 같이 작성한다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>Conuter.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="hljs-keyword">super</span>(props);</span><br><span class="line">    <span class="hljs-comment">//state의 초기값 여러개 설정</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.state = &#123;</span><br><span class="line">      number: <span class="hljs-number">0</span>,</span><br><span class="line">      fixedNumber : <span class="hljs-number">0</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123; number, fixedNumber &#125; = <span class="hljs-keyword">this</span>.state; <span class="hljs-comment">//state를 조회할 때는 this.state로 조회한다.</span></span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      &lt;h1&gt;&#123;number&#125;&lt;<span class="hljs-regexp">/h1&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;h1&gt;변경 불가 값 : &#123;fixedNumber&#125;&lt;/</span>h1&gt;</span><br><span class="line">      ...</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Counter;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-1-1-state를-constructor에서-꺼내기"><a href="#3-4-1-1-state를-constructor에서-꺼내기" class="headerlink" title="3.4.1.1 state를 constructor에서 꺼내기"></a>3.4.1.1 state를 constructor에서 꺼내기</h2><blockquote>
+<p>state 초기값을 지정하기 위해 constructor 메서드를 선언해주었는데, 또 다른 방식으로도 state 초깃값을 지정할 수 있다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>Counter.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//다른 방식으로 state 초깃값 설정하기</span></span><br><span class="line">  state = &#123;</span><br><span class="line">    number:<span class="hljs-number">0</span>,</span><br><span class="line">    fixedNumber :<span class="hljs-number">0</span>;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123; number, fixedNumber &#125; = <span class="hljs-keyword">this</span>.state; <span class="hljs-comment">//state를 조회할 때는 this.state로 조회한다.</span></span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      ...</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Counter;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-1-3-this-setState에-객체-대신-함수-인자-전달하기"><a href="#3-4-1-3-this-setState에-객체-대신-함수-인자-전달하기" class="headerlink" title="3.4.1.3 this.setState에 객체 대신 함수 인자 전달하기"></a>3.4.1.3 this.setState에 객체 대신 함수 인자 전달하기</h2><blockquote>
+<p>this.setState를 사용하여 state 값을 업데이트 할 땐 상태가 비동기적으로 업데이트 된다. 만약 onClick 함수 내부에서 this.setState를 두 번 호출하면 클릭시 +2가 될까?</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>Counter.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  (...)</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123; number &#125; = <span class="hljs-keyword">this</span>.state; <span class="hljs-comment">//state를 조회할 때는 this.state로 조회한다.</span></span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">       (...)</span><br><span class="line">          onClick=&#123;() =&gt; &#123;</span><br><span class="line">            <span class="hljs-comment">//this.setState를 사용하여 state에 새로운 값을 넣는다.</span></span><br><span class="line">            <span class="hljs-keyword">this</span>.setState(&#123; <span class="hljs-attr">number</span>: number + <span class="hljs-number">1</span> &#125;);</span><br><span class="line">            <span class="hljs-keyword">this</span>.setState(&#123; <span class="hljs-attr">number</span>: <span class="hljs-keyword">this</span>.state.number + <span class="hljs-number">1</span> &#125;);</span><br><span class="line">          &#125;&#125;</span><br><span class="line">        &gt;</span><br><span class="line">          +<span class="hljs-number">1</span></span><br><span class="line">        &lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Counter;</span><br></pre></td></tr></table></figure>
+
+<p>정답은 “NO”이다. this.setState를 사용한다고 해서 state 값이 바로 바뀌진 않기 때문이다.</p>
+<p>이에 대한 해결을 하기 위해서는 this.setState를 사용할 때, 객체 대신 함수를 인자로 넣어주면 된다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>this.setState 객체 대신 함수를 인자로 넣어주기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//this.setState를 사용해 바로 값이 변경되게 하려면/?</span></span><br><span class="line"><span class="hljs-keyword">this</span>.setState(<span class="hljs-function">(<span class="hljs-params">prevState,props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span>(</span><br><span class="line">    <span class="hljs-comment">//업데이트 할 내용</span></span><br><span class="line">  )</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>여기서 prevState는 기존 상태이고, props는 현재 지니고 있는 props를 가리키는데 , 만약 props 값이 업데이트 과정에서 필요없다면 생략 가능하다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>Counter.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//클릭시 +2를 하게끔 this.setState를 두번 호출해보자!</span></span><br><span class="line"><span class="hljs-keyword">import</span> React, &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  (...)</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123; number &#125; = <span class="hljs-keyword">this</span>.state; <span class="hljs-comment">//state를 조회할 때는 this.state로 조회한다.</span></span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">       (...)</span><br><span class="line">        &lt;button onClick=&#123;</span><br><span class="line">          () =&gt; &#123;</span><br><span class="line">            </span><br><span class="line">              <span class="hljs-comment">//this.setState 바로바로 값 바꾸게 하기 </span></span><br><span class="line">              <span class="hljs-keyword">this</span>.setState(<span class="hljs-function"><span class="hljs-params">prevState</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">                  number: prevState.number + <span class="hljs-number">1</span>,</span><br><span class="line">                &#125;;</span><br><span class="line">              &#125;);</span><br><span class="line"></span><br><span class="line">              <span class="hljs-comment">//한 번 더</span></span><br><span class="line">              <span class="hljs-keyword">this</span>.setState(<span class="hljs-function"><span class="hljs-params">prevState</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">                  number: prevState.number + <span class="hljs-number">1</span>,</span><br><span class="line">                &#125;;</span><br><span class="line">              &#125;);</span><br><span class="line">            &#125;&#125;</span><br><span class="line">          &gt; +<span class="hljs-number">2</span></span><br><span class="line">        &lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Counter;</span><br></pre></td></tr></table></figure>
+
+<h2 id="this-setState가-끝난-뒤에-특정-작업-실행하기"><a href="#this-setState가-끝난-뒤에-특정-작업-실행하기" class="headerlink" title="this.setState가 끝난 뒤에 특정 작업 실행하기"></a>this.setState가 끝난 뒤에 특정 작업 실행하기</h2><blockquote>
+<p>setState를 사용해 값을 업데이트 하고 난 다음에 특정작업을 실행하기 위해서는 setState의 두번째 파라미터에 callback 함수를 등록해 작업을 처리하면 된다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>Counter.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(...)</span><br><span class="line"> &lt;button </span><br><span class="line">  onClick=&#123;() =&gt; &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.setState(</span><br><span class="line">      &#123;</span><br><span class="line">        number: number + <span class="hljs-number">1</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="hljs-comment">//콜백 함수로 업데이트 후 작업 처리</span></span><br><span class="line">      () =&gt; &#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'작업 끝'</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;&#125;</span><br><span class="line">  &gt;</span><br><span class="line">  +<span class="hljs-number">1</span></span><br><span class="line">&lt;<span class="hljs-regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-2-함수형-컴포넌트에서-useState-사용하기"><a href="#3-4-2-함수형-컴포넌트에서-useState-사용하기" class="headerlink" title="3.4.2 함수형 컴포넌트에서 useState 사용하기"></a>3.4.2 함수형 컴포넌트에서 useState 사용하기</h2><blockquote>
+<p>리액트 v16.8 이전에는 함수형 컴포넌트에서 state를 사용할 수 없었지만, 16.8 이후로부터는 <strong>useState</strong>라는 함수를 통해 함수형 컴포넌트에서도 state를 사용할 수 있게 되었다.<br>이 과정에서 <strong>Hooks</strong>를 사용하게 된다.Hooks의 종류는 다양한데, 지금은 useState만을 사용해 보도록한다.</p>
+</blockquote>
+<h2 id="3-4-2-1-배열-비구조화-할당"><a href="#3-4-2-1-배열-비구조화-할당" class="headerlink" title="3.4.2.1 배열 비구조화 할당"></a>3.4.2.1 배열 비구조화 할당</h2><blockquote>
+<p>배열 비구조화 할당은 배열 안에 들어 있는 값을 쉽게 추출할 수 있게 한다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>배열 비구조화 할당 예제</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> array = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//배열 비구조화 전</span></span><br><span class="line"><span class="hljs-keyword">const</span> one = array[<span class="hljs-number">0</span>]; <span class="hljs-comment">//1</span></span><br><span class="line"><span class="hljs-keyword">const</span> one = array[<span class="hljs-number">1</span>]; <span class="hljs-comment">//2</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//배열 비구조화 후</span></span><br><span class="line"><span class="hljs-keyword">const</span> [one, two] = array;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-2-2-useState-사용"><a href="#3-4-2-2-useState-사용" class="headerlink" title="3.4.2.2 useState 사용"></a>3.4.2.2 useState 사용</h2><p>새로운 Say.js 컴포넌트를 src 폴더에 생성한다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>Say.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; useState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> Say = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> [message, setMessage] = useState(<span class="hljs-string">''</span>);</span><br><span class="line">  <span class="hljs-keyword">const</span> onClickEnter = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> setMessage(<span class="hljs-string">'안녕하세요!'</span>);</span><br><span class="line">  <span class="hljs-keyword">const</span> onClickLeave = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> setMessage(<span class="hljs-string">'안녕히 가세요!'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> [color, setColor] = useState(<span class="hljs-string">'black'</span>);</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;onClickEnter&#125;&gt;입장&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;button onClick=&#123;onClickLeave&#125;&gt;퇴장&lt;/</span>button&gt;</span><br><span class="line">      &lt;h1 style=&#123;&#123; color &#125;&#125;&gt;&#123;message&#125;&lt;<span class="hljs-regexp">/h1&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Say;</span><br></pre></td></tr></table></figure>
+
+<p>useState 함수의 인자에 상태 초기값을 넣어준다. 클래스형 컴포넌트에서 state 초깃값은 항상 객체 형태로 넣어주어야 하는 것과 달리, useState 에서는 반드시 객체가 아니여도 크게 상관없다. 문자열, 숫자, 객체, 배열 모두 가능하다.</p>
+<p>함수를 호출하면 배열이 반환되는데, 배열의 첫번째 요소 <strong>헌재상태</strong>이고,<br>두번째는 상태를 바꿔주는 setter 함수이다. 위의 Say.js 의 경우 message가 현재상태이고, setMessage가 message의 상태값으 바꿔주는 setter 함수가 된다.</p>
+<p>App.js에서 Say.js를 랜더링을 하면<br>입장 버튼 클릭시 ‘안녕하세요’라는 문자열이,<br>퇴장 버튼 클릭시 ‘안녕히 가세요!’라는 문자열이 나오게된다.</p>
+<h2 id="3-4-2-3-한-컴포넌트에서-useState-여러번-사용하기"><a href="#3-4-2-3-한-컴포넌트에서-useState-여러번-사용하기" class="headerlink" title="3.4.2.3 한 컴포넌트에서 useState 여러번 사용하기"></a>3.4.2.3 한 컴포넌트에서 useState 여러번 사용하기</h2><blockquote>
+<p>useState는 여러번 사용해도 상관없다. 또 다른 상태를 useState로 관리하면 된다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>Say.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, &#123; useState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> Say = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> [message, setMessage] = useState(<span class="hljs-string">''</span>);</span><br><span class="line">  <span class="hljs-keyword">const</span> onClickEnter = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> setMessage(<span class="hljs-string">'안녕하세요!'</span>);</span><br><span class="line">  <span class="hljs-keyword">const</span> onClickLeave = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> setMessage(<span class="hljs-string">'안녕히 가세요!'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> [color, setColor] = useState(<span class="hljs-string">'black'</span>);</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;onClickEnter&#125;&gt;입장&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;button onClick=&#123;onClickLeave&#125;&gt;퇴장&lt;/</span>button&gt;</span><br><span class="line">      &lt;h1 style=&#123;&#123; color &#125;&#125;&gt;&#123;message&#125;&lt;<span class="hljs-regexp">/h1&gt;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">      &lt;button style=&#123;&#123; color: 'red' &#125;&#125; onClick=&#123;() =&gt; setColor('red')&#125;&gt;</span></span><br><span class="line"><span class="hljs-regexp">        빨간색</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>button&gt;</span><br><span class="line"></span><br><span class="line">      &lt;button style=&#123;&#123; <span class="hljs-attr">color</span>: <span class="hljs-string">'green'</span> &#125;&#125; onClick=&#123;() =&gt; setColor(<span class="hljs-string">'green'</span>)&#125;&gt;</span><br><span class="line">        초록색</span><br><span class="line">      &lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">      &lt;button style=&#123;&#123; color: 'blue' &#125;&#125; onClick=&#123;() =&gt; setColor('blue')&#125;&gt;</span></span><br><span class="line"><span class="hljs-regexp">        파란색</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">  );</span></span><br><span class="line"><span class="hljs-regexp">&#125;;</span></span><br><span class="line"><span class="hljs-regexp">export default Say;</span></span><br></pre></td></tr></table></figure>
+
+<p>클릭시 텍스트 색상이 바뀌게 된다.</p>
+<h2 id="state를-사용할-때-주의-사항"><a href="#state를-사용할-때-주의-사항" class="headerlink" title="state를 사용할 때 주의 사항"></a>state를 사용할 때 주의 사항</h2><blockquote>
+<p>state 값을 바꾸어야 할때는 setState 혹은 전달받은 setter함수를 이용해야 한다.<br>배열이나 객체를 업데이트 할때는 사본을 만들고 사본의 값을 업데이트 한 후, 그 사본의 상태값을 변경해줘야한다.<br>객체에 대한 사본을 만들 때는 spread 연산자라 불리는 …을 사용하여 처리한다.<br>배열에 대한 사본을 만들 때는 배열 내장 함수를 이용한다(filter, concat 등))</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//사본을 만들어 업데이트 하는 예시</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//객체 다루기</span></span><br><span class="line"><span class="hljs-keyword">const</span> object = &#123;<span class="hljs-attr">a</span>:<span class="hljs-number">1</span>, <span class="hljs-attr">b</span>:<span class="hljs-number">2</span>, <span class="hljs-attr">c</span>:<span class="hljs-number">3</span>&#125;;</span><br><span class="line"><span class="hljs-keyword">const</span> nextObject = &#123;...object, <span class="hljs-attr">b</span>:<span class="hljs-number">2</span>&#125;; <span class="hljs-comment">//사본 생성</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//배열 </span></span><br><span class="line"><span class="hljs-keyword">const</span> array = [</span><br><span class="line">  &#123;<span class="hljs-attr">id</span> :<span class="hljs-number">1</span>, <span class="hljs-attr">value</span> :<span class="hljs-literal">true</span>&#125;,</span><br><span class="line">  &#123;<span class="hljs-attr">id</span> :<span class="hljs-number">2</span>, <span class="hljs-attr">value</span> :<span class="hljs-literal">false</span>&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> nextArry = array.concat(&#123;<span class="hljs-attr">id</span> :<span class="hljs-number">4</span>&#125;); <span class="hljs-comment">//새 항목 추가</span></span><br><span class="line">nextArry.filter(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.id !=<span class="hljs-number">2</span>); <span class="hljs-comment">//id가 2인 항목 제거</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/10/scss_md/sass2/">
+                <span class="level-item">SCSS의 문법  nesting, mixin, extend , partial</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right ">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#3-1-클래스형-컴포넌트">
+        <span class="has-mr-6">1</span>
+        <span>3.1 클래스형 컴포넌트</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-2-첫-컴포넌트-생성">
+        <span class="has-mr-6">2</span>
+        <span>3.2 첫 컴포넌트 생성</span>
+        </a></li><li>
+        <a class="is-flex" href="#노트-ES6-화살표-함수">
+        <span class="has-mr-6">3</span>
+        <span>노트 ES6 화살표 함수</span>
+        </a></li><li>
+        <a class="is-flex" href="#노트-ReactJS-Code-Snippet-사용">
+        <span class="has-mr-6">4</span>
+        <span>노트 ReactJS Code Snippet 사용</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-2-2-모듈-불러오기-import">
+        <span class="has-mr-6">5</span>
+        <span>3.2.2 모듈 불러오기(import)</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-3-props">
+        <span class="has-mr-6">6</span>
+        <span>3.3 props</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-3-1-JSX-내부에서-props-랜더링">
+        <span class="has-mr-6">7</span>
+        <span>3.3.1 JSX 내부에서 props 랜더링</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-3-3-props-기본값-설정-defaultProps">
+        <span class="has-mr-6">8</span>
+        <span>3.3.3 props 기본값 설정 : defaultProps</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-3-4-태그-사이의-내용을-보여주는-children">
+        <span class="has-mr-6">9</span>
+        <span>3.3.4 태그 사이의 내용을 보여주는 children</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-3-5-비구조화-할당-문법을-통해-내부-props-값-추출하기">
+        <span class="has-mr-6">10</span>
+        <span>3.3.5 비구조화 할당 문법을 통해 내부 props 값 추출하기</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-3-6-propTypes를-통한-props-검증">
+        <span class="has-mr-6">11</span>
+        <span>3.3.6 propTypes를 통한 props 검증</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-3-6-1-isRequired를-사용하여-필수-propTypes-설정">
+        <span class="has-mr-6">12</span>
+        <span>3.3.6.1 isRequired를 사용하여 필수 propTypes 설정</span>
+        </a></li><li>
+        <a class="is-flex" href="#더-많은-PropTypes의-종류들">
+        <span class="has-mr-6">13</span>
+        <span>더 많은 PropTypes의 종류들</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-3-7-클래스형-컴포넌트에서-props-사용하기">
+        <span class="has-mr-6">14</span>
+        <span>3.3.7 클래스형 컴포넌트에서 props 사용하기</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-4-state">
+        <span class="has-mr-6">15</span>
+        <span>3.4 state</span>
+        </a></li><li>
+        <a class="is-flex" href="#클래스형-컴포넌트의-state">
+        <span class="has-mr-6">16</span>
+        <span>클래스형 컴포넌트의 state</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-4-1-1-state-객체-안에-여러-값이-있을-때">
+        <span class="has-mr-6">17</span>
+        <span>3.4.1.1 state 객체 안에 여러 값이 있을 때</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-4-1-1-state를-constructor에서-꺼내기">
+        <span class="has-mr-6">18</span>
+        <span>3.4.1.1 state를 constructor에서 꺼내기</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-4-1-3-this-setState에-객체-대신-함수-인자-전달하기">
+        <span class="has-mr-6">19</span>
+        <span>3.4.1.3 this.setState에 객체 대신 함수 인자 전달하기</span>
+        </a></li><li>
+        <a class="is-flex" href="#this-setState가-끝난-뒤에-특정-작업-실행하기">
+        <span class="has-mr-6">20</span>
+        <span>this.setState가 끝난 뒤에 특정 작업 실행하기</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-4-2-함수형-컴포넌트에서-useState-사용하기">
+        <span class="has-mr-6">21</span>
+        <span>3.4.2 함수형 컴포넌트에서 useState 사용하기</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-4-2-1-배열-비구조화-할당">
+        <span class="has-mr-6">22</span>
+        <span>3.4.2.1 배열 비구조화 할당</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-4-2-2-useState-사용">
+        <span class="has-mr-6">23</span>
+        <span>3.4.2.2 useState 사용</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-4-2-3-한-컴포넌트에서-useState-여러번-사용하기">
+        <span class="has-mr-6">24</span>
+        <span>3.4.2.3 한 컴포넌트에서 useState 여러번 사용하기</span>
+        </a></li><li>
+        <a class="is-flex" href="#state를-사용할-때-주의-사항">
+        <span class="has-mr-6">25</span>
+        <span>state를 사용할 때 주의 사항</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catégories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트를-다루는-기술/">
+            <span class="level-start">
+                <span class="level-item">리액트를 다루는 기술</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nuage de tags
+        </h3>
+        <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="react chapter3. 컴포넌트" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Articles',
+                PAGES: 'Pages',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>

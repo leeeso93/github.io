@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>chapter17. 정규표현식 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="17.1 부분 문자열 검색과 대체 정규표현식(정규식)으로 하는 일은 문자열 속에서 부분 문자열을 찾는 일이며찾은 부분을 교체할 때도 있다.다만 그 전에, 정규식을 쓰지 않고 검색하고 교체하는 방법인String.prototype 메서드 검색을 살펴본다,큰 문자열 안에 원하는 부분 문자열이 존재하는지 여부를 찾을 때 사용">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chapter17. 정규표현식">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/es6_md/chapter17/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="17.1 부분 문자열 검색과 대체 정규표현식(정규식)으로 하는 일은 문자열 속에서 부분 문자열을 찾는 일이며찾은 부분을 교체할 때도 있다.다만 그 전에, 정규식을 쓰지 않고 검색하고 교체하는 방법인String.prototype 메서드 검색을 살펴본다,큰 문자열 안에 원하는 부분 문자열이 존재하는지 여부를 찾을 때 사용">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-10-20T13:33:21.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="chapter17. 정규표현식">
+<meta name="twitter:description" content="17.1 부분 문자열 검색과 대체 정규표현식(정규식)으로 하는 일은 문자열 속에서 부분 문자열을 찾는 일이며찾은 부분을 교체할 때도 있다.다만 그 전에, 정규식을 쓰지 않고 검색하고 교체하는 방법인String.prototype 메서드 검색을 살펴본다,큰 문자열 안에 원하는 부분 문자열이 존재하는지 여부를 찾을 때 사용">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="chapter17. 정규표현식" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-06T15:00:00.000Z">2019-08-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17 minutes read (About 2556 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                chapter17. 정규표현식
+            
+        </h1>
+        <div class="content">
+            <h2 id="17-1-부분-문자열-검색과-대체"><a href="#17-1-부분-문자열-검색과-대체" class="headerlink" title="17.1 부분 문자열 검색과 대체"></a>17.1 부분 문자열 검색과 대체</h2><blockquote>
+<p>정규표현식(정규식)으로 하는 일은 문자열 속에서 부분 문자열을 찾는 일이며<br>찾은 부분을 교체할 때도 있다.<br>다만 그 전에, 정규식을 쓰지 않고 검색하고 교체하는 방법인<br><strong>String.prototype</strong> 메서드 검색을 살펴본다,<br>큰 문자열 안에 원하는 부분 문자열이 존재하는지 여부를 찾을 때 사용</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight javascript hljs"><figcaption><span>String.prototype</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> input = <span class="hljs-string">"AS I was going to Saint Ives"</span>;</span><br><span class="line">input.startsWith(<span class="hljs-string">"AS"</span>); <span class="hljs-comment">//true</span></span><br><span class="line">input.endsWith(<span class="hljs-string">"Ives"</span>); <span class="hljs-comment">//true</span></span><br><span class="line">input.startsWith(<span class="hljs-string">"going"</span>, <span class="hljs-number">9</span>); <span class="hljs-comment">//true - index 9에서 시작하느냐</span></span><br><span class="line">input.endsWith(<span class="hljs-string">"going"</span>, <span class="hljs-number">14</span>); <span class="hljs-comment">//true - 끝에서 부터 14번째에</span></span><br><span class="line">input.includes(<span class="hljs-string">"going"</span>); <span class="hljs-comment">//true;</span></span><br><span class="line">input.includes(<span class="hljs-string">"going"</span>, <span class="hljs-number">10</span>); <span class="hljs-comment">//false - index 10에서 시작하면 going 이 없다.</span></span><br><span class="line">input.indexOf(<span class="hljs-string">"going"</span>); <span class="hljs-comment">// 9 ;</span></span><br><span class="line">input.indexOf(<span class="hljs-string">"going"</span>, <span class="hljs-number">10</span>); <span class="hljs-comment">// -1;</span></span><br><span class="line">input.indexOf(<span class="hljs-string">"nope"</span>); <span class="hljs-comment">// -1;</span></span><br></pre></td></tr></table></figure>
+
+<pre>
+이들 메서드는 모두 대소문자를 구분한다.
+따라서 input.startsWith("as")는 false 이다.
+대소문자를 구분하지 않고 비교하려면 소문자고 바꿔서 비교하면 된다.
+</pre>
+
+<figure class="highlight javascript hljs"><figcaption><span>String.prototype</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> input = <span class="hljs-string">"AS I was going to Saint Ives"</span>;</span><br><span class="line">input.toLowerCase().startsWith(<span class="hljs-string">"as"</span>); <span class="hljs-comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>String.prototype.toLowerCase는 원래 문자열은 그대로 두고 새 문자열을 반환한다.<br>자바스크립트 문자열은 항상 불변이다.<br>부분 문자열을 찾아 교체하려면 <strong>String.prototype.replace</strong> 사용</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>String.prototype.replace</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//String.prototype.replace</span></span><br><span class="line"><span class="hljs-keyword">const</span> input = <span class="hljs-string">"AS I was going to Saint Ives"</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> output = input.replace(<span class="hljs-string">"going"</span>, <span class="hljs-string">"walking"</span>);</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">//원래 문자열은 바뀌지 않는다.</span></span><br><span class="line"><span class="hljs-comment">console.log(input);</span></span><br><span class="line"><span class="hljs-comment">"AS I was going to Saint Ives"</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">console.log(output);</span></span><br><span class="line"><span class="hljs-comment">"AS I was walking to Saint Ives"</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="17-2-정규식-만들기"><a href="#17-2-정규식-만들기" class="headerlink" title="17.2 정규식 만들기"></a>17.2 정규식 만들기</h2><blockquote>
+<p>자바스크립트 정규식은 RegExp 클래스이다. RegExp 생성자로도 정규식을 만들 수 있지만, 간편한 리터럴 문법도 있다.<br>정규식 리터럴은 슬래시(/)로 감싼 형태이다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>정규식 만들기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> rel1 = <span class="hljs-regexp">/going/</span>; <span class="hljs-comment">//단어 going을 찾을 수 있는 정규식</span></span><br><span class="line"><span class="hljs-keyword">const</span> rel2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">"going"</span>); <span class="hljs-comment">//생성자를 사용했지만 결과는 같다.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="17-3-정규식-검색"><a href="#17-3-정규식-검색" class="headerlink" title="17.3 정규식 검색"></a>17.3 정규식 검색</h2><blockquote>
+<p>정규식이 만들어지면 다양한 옵션으로 문자열을 검색 할 수 있다.<br>예) /\w{3,}/ig =&gt; 세 글자 이상인 단어에 모두 일치하고, 대소문자를 가리지 않음</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>정규식 검색</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> input = <span class="hljs-string">"AS I was going to Saint Ives"</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> re = <span class="hljs-regexp">/\w&#123;3,&#125;/gi</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//문자열(input)의 메서드를 사용할 때</span></span><br><span class="line">input.match(re); <span class="hljs-comment">//(4) ["was", "going", "Saint", "Ives"]</span></span><br><span class="line">input.search(re); <span class="hljs-comment">//5 세글자 이상으로 된 단어의 첫번쨰 인덱스는 5이다.</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//정규식(re)의 메서드를 사용할 때</span></span><br><span class="line">re.exec(input); <span class="hljs-comment">//["was", index: 5, input: "AS I was going to Saint Ives", groups: undefined]</span></span><br><span class="line">re.exec(input); <span class="hljs-comment">//going</span></span><br><span class="line">re.exec(input); <span class="hljs-comment">//Saint</span></span><br><span class="line">re.exec(input); <span class="hljs-comment">//Ives</span></span><br><span class="line">re.exec(input); <span class="hljs-comment">//null - 일치하는 것이 더이상 없다.</span></span><br><span class="line">re.test(input); <span class="hljs-comment">//true - input에는 세 글자 이상으로 된 단어가 한 개 이상 있다.</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//정규식 리터럴을 사용시</span></span><br><span class="line">input.match(<span class="hljs-regexp">/\w&#123;3,&#125;/gi</span>);</span><br><span class="line">input.search(<span class="hljs-regexp">/\w&#123;3,&#125;/gi</span>);</span><br><span class="line">/\w&#123;<span class="hljs-number">3</span>,&#125;/gi.exec(input);</span><br><span class="line">/\w&#123;<span class="hljs-number">3</span>,&#125;/gi.test(input);</span><br></pre></td></tr></table></figure>
+
+<h2 id="17-4-정규식을-사용한-문자열-교체"><a href="#17-4-정규식을-사용한-문자열-교체" class="headerlink" title="17.4 정규식을 사용한 문자열 교체"></a>17.4 정규식을 사용한 문자열 교체</h2><blockquote>
+<p>String.prototype.replace 메서드에도 정규식을 쓸 수 있다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//네 글자 이상으로 된 단어를 모두 교체</span></span><br><span class="line"><span class="hljs-keyword">const</span> input = <span class="hljs-string">"AS I was going to Saint Ives"</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> output = input.replace(<span class="hljs-regexp">/\w&#123;4,&#125;/gi</span>, <span class="hljs-string">"****"</span>);</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">"AS I was **** to **** ****"</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="17-5-입력-소비"><a href="#17-5-입력-소비" class="headerlink" title="17.5 입력 소비"></a>17.5 입력 소비</h2><blockquote>
+<p>정규식이 입력 문자열을 소비하는 패턴이라고 생각하는 것<br>정규식이 문자열을 소비할 떄 사용하는 알고리즘</p>
+</blockquote>
+<ul>
+<li>문자열 왼쪽에서 오른쪽으로 진행</li>
+<li>일단 소비한 글자에 다시 돌아오지 않는다</li>
+<li>한 번에 한 글자씩 움직이며 일치하는 것이 있는지 확인한다.</li>
+<li>일치하는 것을 찾으면 해당하는 글자를 한꺼번에 소비 후 다음 글자로 진행</li>
+</ul>
+<h2 id="17-6-대체"><a href="#17-6-대체" class="headerlink" title="17.6 대체"></a>17.6 대체</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//html 페이지를 문자열에 담고, 이 문자열에서 &lt;a&gt;,&lt;area&gt;,&lt;link&gt;,&lt;script&gt;등등을 찾고 싶을 때, 대소문자 상관없이 찾고싶을 때</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> html =</span><br><span class="line">  <span class="hljs-string">'HTML With &lt;a href="one"&gt;one link&lt;/a&gt; and some JavaScript'</span> +</span><br><span class="line">  <span class="hljs-string">'&lt;script src="stuff.js"&gt;'</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> matches = html.match(<span class="hljs-regexp">/area|a|link|script|source/gi</span>); <span class="hljs-comment">//첫 시도</span></span><br><span class="line"><span class="hljs-comment">//(8) ["a", "link", "a", "a", "a", "a", "Script", "script"]</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>파이프(|)는 대체를 뜻하는 메타 문자이다.<br>ig는 대소문자를 가리지 않고 전체를 검색하라는 의미이다.<br>문자열이 겹치는 것이 있을 때는 더 큰것을 먼저 써야한다.</p>
+</blockquote>
+<h2 id="17-7-HTML-찾기"><a href="#17-7-HTML-찾기" class="headerlink" title="17.7 HTML 찾기"></a>17.7 HTML 찾기</h2><blockquote>
+<p>정규식으로는 HTML을 분석할 수 없습니다.<br>p 태그 안에 a 태그가 존재하는 등의 계층적 구조에 취약합니다.</p>
+</blockquote>
+<h2 id="17-8-문자셋"><a href="#17-8-문자셋" class="headerlink" title="17.8 문자셋"></a>17.8 문자셋</h2><blockquote>
+<p>문자셋은 글자 하나를 다른 것으로 대체하는 방법을 줄인 것</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>문자셋</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> beer99 =</span><br><span class="line">  <span class="hljs-string">"99 bottles of beer on the wall"</span> +</span><br><span class="line">  <span class="hljs-string">"take 1 down and pass it around-- "</span> +</span><br><span class="line">  <span class="hljs-string">"98 bottles of bear on the wall"</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> matches = beer99.match(<span class="hljs-regexp">/|0|1|2|3|4|5|6|7|8|9/g</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 문자셋은 이러한 문자들이 들어갈 수 있다는 것을 간략하게 표시할 수 있다.</span></span><br><span class="line"><span class="hljs-keyword">const</span> m1 = beer99.match(<span class="hljs-regexp">/[0123456789]/g</span>);</span><br><span class="line"><span class="hljs-keyword">const</span> m2 = beer99.match(<span class="hljs-regexp">/[0-9]/g</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//범위 결합도 가능합니다.</span></span><br><span class="line"><span class="hljs-keyword">const</span> match = beer99.match(<span class="hljs-regexp">/[\-0-9a-z.]/gi</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//특정 문자 범위를 제외하고도 찾을 수 있다. 문자열 제외시 캐럿(^)을 맨 앞에 붙임</span></span><br><span class="line"><span class="hljs-keyword">const</span> match = beer99.match(<span class="hljs-regexp">/^[\-0-9a-z.]/gi</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="17-9-자주-쓰는-문자셋"><a href="#17-9-자주-쓰는-문자셋" class="headerlink" title="17.9 자주 쓰는 문자셋"></a>17.9 자주 쓰는 문자셋</h2><blockquote>
+<p>매우 자주 쓰이는 일부 문자셋은 단축 표기가 있다.<br>이를 클래스라고 부르기도 한다.</p>
+</blockquote>
+<p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/running_chap17_1.png?raw=true" alt="표 17-1 자주 쓰는 문자셋"></p>
+<p>공백문자셋 \s을 써서 줄을 맞출 때가 많습니다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>공백</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> stuff = <span class="hljs-string">"hight: 9\n"</span> + <span class="hljs-string">"medium : 5\n"</span> + <span class="hljs-string">"low : 2\n"</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> levels = stuff.match(<span class="hljs-regexp">/:\s*[0-9]/g</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//전화번호 양식 맞추기</span></span><br><span class="line"><span class="hljs-keyword">const</span> messyPhone = <span class="hljs-string">`(505) 555 - 1515`</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> neatPhone = messyPhone.replace(<span class="hljs-regexp">/\D/g</span>, <span class="hljs-string">""</span>);</span><br><span class="line"><span class="hljs-comment">//neatPhone</span></span><br><span class="line"><span class="hljs-comment">//"5055551515"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="17-10-반복"><a href="#17-10-반복" class="headerlink" title="17.10 반복"></a>17.10 반복</h2><blockquote>
+<p>반복 메타문자는 얼마나 많이 일치해야하는지 지정할 떄 사용<br>문자셋 다음의 +는 그 앞에 있는 요소가 하나 이상 있어야한다는 뜻<br>반복 메타 문자는 그 자체로는 별 의미가 없다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>반복</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//숫자 여러개를 찾는 예제</span></span><br><span class="line"><span class="hljs-comment">//기존ver</span></span><br><span class="line"><span class="hljs-keyword">const</span> match = beer99.match(<span class="hljs-regexp">/[0-9][0-9][0-9][0-9][0-9][0-9]/</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//반복 메타 문자로 수정</span></span><br><span class="line"><span class="hljs-keyword">const</span> match = beer99.match(<span class="hljs-regexp">/[0-9]+/</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/running_chap17_2.png?raw=true" alt="표 17-2 반복"></p>
+<h2 id="17-11-마침표와-이스케이프"><a href="#17-11-마침표와-이스케이프" class="headerlink" title="17.11 마침표와 이스케이프"></a>17.11 마침표와 이스케이프</h2><blockquote>
+<p>정규식에서 마침표(.)는 줄바꿈 문자를 제외한 모든 문자에 일치하는 특수문자입니다.<br>이 메타문자는 입력이 어떤 문자이든 상관하지 않고 소비하려고 할때 사용</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//문자열에서 우편번호만 필요하고 다른것은 필요 없을 때</span></span><br><span class="line"><span class="hljs-keyword">const</span> input =</span><br><span class="line">  <span class="hljs-string">"Address : 333 Main St., Anywhere, NY, 55532. Phone : 555 -555-2525."</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> match = input.match(<span class="hljs-regexp">/\d&#123;5&#125;.*/</span>);</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">["55532. Phone : 555 -555-2525.", index: 38, input: "Address : 333 Main St., Anywhere, NY, 55532. Phone : 555 -555-2525.", groups: undefined]</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//마침표 자체가 필요할 때</span></span><br><span class="line"><span class="hljs-keyword">const</span> equation = <span class="hljs-string">"(2 + 3.5 ) * 7"</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> match = equation.match(<span class="hljs-regexp">/\(\d \+ \d\.\d\) \* \d/</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="17-11-1-진정한-와일드-카드"><a href="#17-11-1-진정한-와일드-카드" class="headerlink" title="17.11.1 진정한 와일드 카드"></a>17.11.1 진정한 와일드 카드</h2><blockquote>
+<p>마침표가 줄바꿈을 제외한 모든 문자에 일치하면, 줄바꿈 문자를 포함해서 <strong>모든 문자에 일치하는 것</strong>은 바로 <strong>[\s\S]</strong>이다.</p>
+</blockquote>
+<h2 id="17-12-그룹"><a href="#17-12-그룹" class="headerlink" title="17.12 그룹"></a>17.12 그룹</h2><blockquote>
+<p>그룹을 사용하면 하위 표현식을 만들고 단위 하나로 취급할 수 있다.<br>그 그룹에 일치하는 결과를 나중에 사용하도록 캡쳐할 수도 있다.<br>그룹은 괄호로 만든다. 캡쳐하지 않은 그룹은 (? :[subexpression]) 형태이고, 여기서 [subexpression]이 일치시키려는 패턴이다.</p>
+</blockquote>
+<h2 id="17-13-소극적-일치-적극적-일치"><a href="#17-13-소극적-일치-적극적-일치" class="headerlink" title="17.13 소극적 일치, 적극적 일치"></a>17.13 소극적 일치, 적극적 일치</h2><blockquote>
+<p>정규식은 기본적으로 적극적이다. 검색을 멈추기 전에 일치하려는 것을 최대한 많이 찾으려고 한다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>적극적 일치</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//&lt;i&gt;태그를 &lt;strong&gt; 태그로 바꿀때</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//적극적 일치</span></span><br><span class="line"><span class="hljs-keyword">const</span> input =</span><br><span class="line">  <span class="hljs-string">"Regex pros konw the difference between\n"</span> +</span><br><span class="line">  <span class="hljs-string">"&lt;i&gt;greedy&lt;/i&gt; and &lt;i&gt;lazy&lt;/i&gt; matching."</span>;</span><br><span class="line"><span class="hljs-keyword">var</span> a = input.replace(<span class="hljs-regexp">/&lt;i&gt;(.*)&lt;\/i&gt;/gi</span>, <span class="hljs-string">"&lt;strong&gt;$1&lt;/strong&gt;"</span>);</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">a를 콘솔에 입력</span></span><br><span class="line"><span class="hljs-comment">"Regex pros konw the difference between</span></span><br><span class="line"><span class="hljs-comment">&lt;strong&gt;greedy&lt;/i&gt; and &lt;i&gt;lazy&lt;/strong&gt; matching."</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//소극적 일치</span></span><br><span class="line"><span class="hljs-keyword">var</span> b = input.replace(<span class="hljs-regexp">/&lt;i&gt;(.*?)&lt;\/i&gt;/gi</span>, <span class="hljs-string">"&lt;strong&gt;$1&lt;/strong&gt;"</span>);</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">"Regex pros konw the difference between</span></span><br><span class="line"><span class="hljs-comment">&lt;strong&gt;greedy&lt;/strong&gt; and &lt;strong&gt;lazy&lt;/strong&gt; matching."</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<pre>정규식은 일치할 가능성이 있는 동안 문자를 소비하지 않고 계속 넘어간다
+정규식은 <i>를 만나면 </i>를 더 찾을 수 없을 때까지 소비하지 않고 계속 진행한다.
+원래 문자열에는 가 두개 있으므로, 정규식은 첫번째 것을 무시하고 그대로 진행
+</pre>
+
+<blockquote>
+<p>반복 메타 문자 *를 소극적으로 바꾸려면 뒤에 ?를 붙이면된다</p>
+</blockquote>
+<h2 id="17-14-역참조"><a href="#17-14-역참조" class="headerlink" title="17.14 역참조"></a>17.14 역참조</h2><blockquote>
+<p>그룹을 사용하면 역참조라는 테그닉을 사용 가능<br>서브 그룹을 포함해 , 정규식의 각 그룹은 숫자를 할당 받음<br>숫자는 맨 왼쪽이 1번에서 시작해서 오른쪽으로 갈수록 1씩 늘어남<br>역슬래시 뒤에 숫자를 써서 이 그룹을 참조 할 수 있다.<br>즉, \1은 맨 처음 일치한 그룹이 된다.<br>따욤표의 짝을 맞출 때 등 사용</p>
+</blockquote>
+<h2 id="17-15-그룹-교체"><a href="#17-15-그룹-교체" class="headerlink" title="17.15 그룹 교체"></a>17.15 그룹 교체</h2><blockquote>
+<p>그룹을 사용하면 문자열 교체도 더 다양한 방법으로 사용가능</p>
+</blockquote>
+<h2 id="17-16-함수를-이용한-교체"><a href="#17-16-함수를-이용한-교체" class="headerlink" title="17.16 함수를 이용한 교체"></a>17.16 함수를 이용한 교체</h2><blockquote>
+<p>함수를 사용하면 복잡한 정규식을 단순화 할 수 있다.</p>
+</blockquote>
+<h2 id="17-17-위치-지정"><a href="#17-17-위치-지정" class="headerlink" title="17.17 위치 지정"></a>17.17 위치 지정</h2><blockquote>
+<p>‘–으로 시작하는 문자열’, ‘–로 끝나는 문자열’ 등을 정규식의 앵커라고 부른다.</p>
+</blockquote>
+<ul>
+<li>^는 문자열의 처음</li>
+<li>$는 문자열의 마지막</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// ## 17.17 위치 지정</span></span><br><span class="line"><span class="hljs-keyword">const</span> input = <span class="hljs-string">"it was the best of times, it was the worst of times"</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> beginning = input.match(<span class="hljs-regexp">/^\w+/g</span>); <span class="hljs-comment">//["it"]</span></span><br><span class="line"><span class="hljs-keyword">const</span> end = input.match(<span class="hljs-regexp">/\w+$/g</span>); <span class="hljs-comment">//["times"]</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//문자열의 줄바꿈이 들어 갔을 때 각 줄의 처음과 끝을 찾으면 m 플래그 사용</span></span><br><span class="line"><span class="hljs-keyword">const</span> input = <span class="hljs-string">"one line\ntwo line\nthree line\nfour"</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> beginning = input.match(<span class="hljs-regexp">/^\w+/gm</span>); <span class="hljs-comment">//["one", "two", "three", "four"]</span></span><br><span class="line"><span class="hljs-keyword">const</span> end = input.match(<span class="hljs-regexp">/\w+$/gm</span>); <span class="hljs-comment">// ["line", "line", "line", "four"]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="17-18-단어-경계-일치"><a href="#17-18-단어-경계-일치" class="headerlink" title="17.18 단어 경계 일치"></a>17.18 단어 경계 일치</h2><blockquote>
+<p>단어 경계 메타 문자인 \b 와 \B는 앵커와 마찬가지로 입력을 소비하지 않는다.<br>단어 경계는 알파벳 또는 숫자(\w)로 시작하는 부분, 알파벳이나 숫자가 아닌 문자(\W)로 시작하는 부분, 또는 문자열의 시작과 끝에 일치한다.</p>
+</blockquote>
+<h2 id="17-19-룩어헤드"><a href="#17-19-룩어헤드" class="headerlink" title="17.19 룩어헤드"></a>17.19 룩어헤드</h2><blockquote>
+<p>룩어헤드는 입력을 소비하지 않는다.<br>룩어헤드를 쓰면 정규식 하나로 비밀번호의 유효성을 검사가능하다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>룩어헤드</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> * 비밀번호가 규칙에 맞도록 검사해서</span></span><br><span class="line"><span class="hljs-comment"> * 비밀번호에 대문자와 소문자, 숫자가 최소 하나씩 포함되어야하고,</span></span><br><span class="line"><span class="hljs-comment"> * 글자도 아니고 숫자도 아닌 문자는 들어갈 수 없다.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-comment">//룩어헤드로 비밀번호 유효성 체크하기</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vaildPassword</span>(<span class="hljs-params">p</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-regexp">/(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?!.*[^a-zA-Z0-9])/</span>.test(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/11/es6_md/chapter18/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">chapter18. 브라우저의 자바스크립트</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/05/es6_md/chapter16/">
+                <span class="level-item">chapter16. Math</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right ">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#17-1-부분-문자열-검색과-대체">
+        <span class="has-mr-6">1</span>
+        <span>17.1 부분 문자열 검색과 대체</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-2-정규식-만들기">
+        <span class="has-mr-6">2</span>
+        <span>17.2 정규식 만들기</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-3-정규식-검색">
+        <span class="has-mr-6">3</span>
+        <span>17.3 정규식 검색</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-4-정규식을-사용한-문자열-교체">
+        <span class="has-mr-6">4</span>
+        <span>17.4 정규식을 사용한 문자열 교체</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-5-입력-소비">
+        <span class="has-mr-6">5</span>
+        <span>17.5 입력 소비</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-6-대체">
+        <span class="has-mr-6">6</span>
+        <span>17.6 대체</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-7-HTML-찾기">
+        <span class="has-mr-6">7</span>
+        <span>17.7 HTML 찾기</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-8-문자셋">
+        <span class="has-mr-6">8</span>
+        <span>17.8 문자셋</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-9-자주-쓰는-문자셋">
+        <span class="has-mr-6">9</span>
+        <span>17.9 자주 쓰는 문자셋</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-10-반복">
+        <span class="has-mr-6">10</span>
+        <span>17.10 반복</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-11-마침표와-이스케이프">
+        <span class="has-mr-6">11</span>
+        <span>17.11 마침표와 이스케이프</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-11-1-진정한-와일드-카드">
+        <span class="has-mr-6">12</span>
+        <span>17.11.1 진정한 와일드 카드</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-12-그룹">
+        <span class="has-mr-6">13</span>
+        <span>17.12 그룹</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-13-소극적-일치-적극적-일치">
+        <span class="has-mr-6">14</span>
+        <span>17.13 소극적 일치, 적극적 일치</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-14-역참조">
+        <span class="has-mr-6">15</span>
+        <span>17.14 역참조</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-15-그룹-교체">
+        <span class="has-mr-6">16</span>
+        <span>17.15 그룹 교체</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-16-함수를-이용한-교체">
+        <span class="has-mr-6">17</span>
+        <span>17.16 함수를 이용한 교체</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-17-위치-지정">
+        <span class="has-mr-6">18</span>
+        <span>17.17 위치 지정</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-18-단어-경계-일치">
+        <span class="has-mr-6">19</span>
+        <span>17.18 단어 경계 일치</span>
+        </a></li><li>
+        <a class="is-flex" href="#17-19-룩어헤드">
+        <span class="has-mr-6">20</span>
+        <span>17.19 룩어헤드</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catégories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트를-다루는-기술/">
+            <span class="level-start">
+                <span class="level-item">리액트를 다루는 기술</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="chapter17. 정규표현식" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Articles',
+                PAGES: 'Pages',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>

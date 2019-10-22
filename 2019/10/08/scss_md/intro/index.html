@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>vscode 에디터 단축키, 사용자 설정하기 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="vscode 에디터의 기본 단축키 alt 를 누른상태에서 줄을 클릭하면 여러줄이 클릭된다.(여러줄 동시 수정할 때 유용) 커서가 깜빡이는 상태에서 ctrl + c를 누르면 커서가 있는 그 줄 전체 내용이 복사된다. 커서가 깜박이는 상태에서 alt키를 누르고 위아래 방향키를 누르면 그 줄이 위 아래로 이동한다. ctrl + /를 누르면 주석이 된다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode 에디터 단축키, 사용자 설정하기">
+<meta property="og:url" content="http://yoursite.com/2019/10/08/scss_md/intro/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vscode 에디터의 기본 단축키 alt 를 누른상태에서 줄을 클릭하면 여러줄이 클릭된다.(여러줄 동시 수정할 때 유용) 커서가 깜빡이는 상태에서 ctrl + c를 누르면 커서가 있는 그 줄 전체 내용이 복사된다. 커서가 깜박이는 상태에서 alt키를 누르고 위아래 방향키를 누르면 그 줄이 위 아래로 이동한다. ctrl + /를 누르면 주석이 된다.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-10-22T15:29:17.133Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vscode 에디터 단축키, 사용자 설정하기">
+<meta name="twitter:description" content="vscode 에디터의 기본 단축키 alt 를 누른상태에서 줄을 클릭하면 여러줄이 클릭된다.(여러줄 동시 수정할 때 유용) 커서가 깜빡이는 상태에서 ctrl + c를 누르면 커서가 있는 그 줄 전체 내용이 복사된다. 커서가 깜박이는 상태에서 alt키를 누르고 위아래 방향키를 누르면 그 줄이 위 아래로 이동한다. ctrl + /를 누르면 주석이 된다.">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="vscode 에디터 단축키, 사용자 설정하기" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-07T15:00:00.000Z">2019-10-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/SASS-SCSS/">SASS/SCSS</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 764 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                vscode 에디터 단축키, 사용자 설정하기
+            
+        </h1>
+        <div class="content">
+            <h2 id="vscode-에디터의-기본-단축키"><a href="#vscode-에디터의-기본-단축키" class="headerlink" title="vscode 에디터의 기본 단축키"></a>vscode 에디터의 기본 단축키</h2><ul>
+<li>alt 를 누른상태에서 줄을 클릭하면 여러줄이 클릭된다.(여러줄 동시 수정할 때 유용)</li>
+<li>커서가 깜빡이는 상태에서 ctrl + c를 누르면 커서가 있는 그 줄 전체 내용이 복사된다.</li>
+<li>커서가 깜박이는 상태에서 alt키를 누르고 위아래 방향키를 누르면 그 줄이 위 아래로 이동한다.</li>
+<li>ctrl + /를 누르면 주석이 된다.</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="vscode-설정-사용자-작업영역"><a href="#vscode-설정-사용자-작업영역" class="headerlink" title="vscode 설정 (사용자, 작업영역)"></a>vscode 설정 (사용자, 작업영역)</h2><blockquote>
+<p><strong>사용자 설정</strong> : 내 vscode editor에 대한 기본 설정이며 주로 폰트, 탭간격, 줄바꿈 여부 등을 설정한다.<br>한 번 설정시 <strong>전역으로 설정</strong>됩니다.</p>
+</blockquote>
+<blockquote>
+<p><strong>작업영역 설정</strong> :  프로젝트에 대한 개별 설정 부분이다.</p>
+</blockquote>
+<p>쉽게 말해서 사용자 설정은 vscode editor에 대한 설정값이고,<br>작업영역은 각 개별 프로젝트 폴더 단위로 특정 설정값을 넣어주고 싶을 때 건드는 부분이다.</p>
+<ol>
+<li>vscode 에디터 하단 톱니바퀴 모양에서 설정을 클릭한다.</li>
+<li>setting.json 링크를 클릭한다.</li>
+</ol>
+<p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/sass_chap0_1.png?raw=true" alt="그림 setting.json "></p>
+<ol start="3">
+<li>왼쪽은 vscode에서 제공하는 설정들이고, 저 내용들 중 필요한 부분을 {} 안에 복붙해서 넣으면 에디터에서 원하는데로 사용자 설정이 가능하다.</li>
+</ol>
+<p>현재 내 vscode의 사용자 설정 값은 다음과 같다.</p>
+<p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/sass_chap0_2.png?raw=true" alt="그림 설정하기 "></p>
+<figure class="highlight javascript hljs"><figcaption><span>사용자 설정</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-string">"workbench.settings.useSplitJSON"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">  <span class="hljs-string">"editor.fontSize"</span>: <span class="hljs-number">14</span>,</span><br><span class="line">  <span class="hljs-string">"editor.renderWhitespace"</span>: <span class="hljs-string">"all"</span>,</span><br><span class="line">  <span class="hljs-string">"editor.wordWrap"</span>: <span class="hljs-string">"on"</span>,</span><br><span class="line">  <span class="hljs-string">"terminal.integrated.shell.windows"</span>: <span class="hljs-string">"C:\\Program Files\\Git\\bin\\bash.exe"</span>,</span><br><span class="line">  <span class="hljs-string">"workbench.iconTheme"</span>: <span class="hljs-string">"material-icon-theme"</span>,</span><br><span class="line">  <span class="hljs-string">"editor.fontFamily"</span>: <span class="hljs-string">"D2Coding, Consolas, 'Courier New', monospace"</span>,</span><br><span class="line">  <span class="hljs-string">"editor.renderIndentGuides"</span>: <span class="hljs-literal">false</span>,</span><br><span class="line">  <span class="hljs-comment">//prettier</span></span><br><span class="line">  <span class="hljs-string">"editor.formatOnSave"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">  <span class="hljs-string">"tslint.autoFixOnSave"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">  <span class="hljs-string">"eslint.autoFixOnSave"</span>: <span class="hljs-literal">true</span>,</span><br><span class="line">  <span class="hljs-string">"liveServer.settings.donotShowInfoMsg"</span>: <span class="hljs-literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>그런데 가끔 에디터 버전에 따라, 저 왼쪽 vscode에서 제공하는 설정이 안보이는 경우가 있는데,<br>이럴경우 <strong>“workbench.settings.useSplitJSON”: true,</strong>를 사용자 설정 부분에 넣고 저장하면 보인다.</p>
+<p><strong>“editor.fontSize”: 14,</strong> 에디터의 기본 폰트 사이즈를 14로 하겠다.<br><strong>“editor.renderWhitespace”: “all”,</strong> :탭이 몇칸 띄워져 있는지를 보여주는 것.<br><strong>“editor.wordWrap”: “on”,</strong> : 자동 줄 바꿈<br><strong>“terminal.integrated.shell.windows”: “C:\Program Files\Git\bin\bash.exe”,</strong><br>:터미널을 기본 gitbash로 설정하겠다.<br><strong>“workbench.iconTheme”: “material-icon-theme”,</strong> : (에디터 확장 플러그인에 material-icon-theme를 설치 한 뒤에 ) 이를 기본 아이콘 테마로 사용하겠다는 의미<br><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/sass_chap0_3.png?raw=true" alt="그림 5 material-icon-theme "></p>
+<p><strong>“editor.fontFamily”: “D2Coding, Consolas, ‘Courier New’, monospace”,</strong> : 폰트 설정 네이버에서 제공하는 D2Coding 폰트를 기본으로 사용함</p>
+<p>D2Coding 폰트 다운로드 ▼▼<br>link : <a href="https://github.com/naver/d2codingfont" target="_blank" rel="noopener">https://github.com/naver/d2codingfont</a></p>
+<p><strong>//prettier</strong><br><strong>“editor.formatOnSave”: true,</strong><br><strong>“tslint.autoFixOnSave”: true,</strong><br><strong>“eslint.autoFixOnSave”: true,</strong></p>
+<p>:prettier 관련 설정인데 저장시 자동으로 코드가 정렬되게 함</p>
+<p>이런식으로 사용자 설정을 내가 원하는 데로 커스텀 가능하다. </p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/09/scss_md/sass1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">SCSS를 vscode 에디터에서 사용하기(플러그인 설치와 작업영역 설정하기)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/29/es6_md/chapter21/">
+                <span class="level-item">chapter21. 객체 프로퍼티 설정과 프락시</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right is-sticky">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#vscode-에디터의-기본-단축키">
+        <span class="has-mr-6">1</span>
+        <span>vscode 에디터의 기본 단축키</span>
+        </a></li><li>
+        <a class="is-flex" href="#vscode-설정-사용자-작업영역">
+        <span class="has-mr-6">2</span>
+        <span>vscode 설정 (사용자, 작업영역)</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catégories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트를-다루는-기술/">
+            <span class="level-start">
+                <span class="level-item">리액트를 다루는 기술</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nuage de tags
+        </h3>
+        <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="vscode 에디터 단축키, 사용자 설정하기" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Articles',
+                PAGES: 'Pages',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>
