@@ -16,7 +16,7 @@
 <meta property="og:description" content="SCSS의 여러 문법들에 대해 알아본다nesting, media query 사용하기, mixin, extends 등등을 살펴본다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-22T16:05:26.558Z">
+<meta property="og:updated_time" content="2019-10-24T05:36:16.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SCSS의 문법  nesting, mixin, extend , partial">
 <meta name="twitter:description" content="SCSS의 여러 문법들에 대해 알아본다nesting, media query 사용하기, mixin, extends 등등을 살펴본다.">
@@ -127,7 +127,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1199 words)
+                    11 minutes read (About 1590 words)
                 </span>
                 
                 
@@ -233,8 +233,16 @@
 
 <p>css에서 이런식으로 변환이 되게 된다.</p>
 <h2 id="5-partial"><a href="#5-partial" class="headerlink" title="5. partial"></a>5. partial</h2><blockquote>
-<p>공용 스타일을 범용으로 하나의 파일로 묶고, 이를 여러 sass 파일에 가져다쓸때 partial을 사용한다.</p>
+<p>공용 스타일을 범용으로 하나의 파일로 묶고, 이를 여러 sass 파일에 가져다쓸때 partial을 사용한다.<br>예를 들어, mixin으로 만든 코드를 여러 scss 파일에서 재 사용해야할때, 그때마다 mixin을 새로만드는것이 아니라<br><strong>_mixins.scss</strong> 식으로 파일을 만들어 범용 코드를 넣어놓고, 그 파일을 import 해 불러오는 식으로 사용한다.</p>
 </blockquote>
+<p>예제를 위해, scss폴더 안에 partial 라는 폴더를 만들어보자<br>현재 폴더구조는 이렇다.</p>
+<p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/sass_chap2_2.png?raw=true" alt="그림 2 폴더구조"></p>
+<p>partial 폴더 안에 <strong>_mixins.scss</strong> 파일을 생성하고 아까 만든 mixin 변수를 넣어준다.<br>앞에 <strong>_(언더스코어)를 붙이는 이유는 컴파일을 하지말라</strong>는 의미인데<br>이 _mixin.scss는 watiching sass를 시작해도 _mixins.css로 컴파일 되지 않는다.<br>어차피 이 파일을 다른 scss 파일에서 가져다 쓰기 때문에 컴파일 할 필요가 없기 때문이다.<br>이 규칙은 scss 뿐만이 아니라 다른 언어에서도 비슷하게 적용된다.</p>
+<p>partial 파일을 가져올때는<br><strong>@import “파일명”</strong>식으로 가져온다. <strong>단, 앞의 언더스코어(_)와 뒤의 확장자(.scss)를 붙이지 않는다</strong></p>
+<figure class="highlight scss hljs"><figcaption><span>_mixins.scss</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//기존 basic.scss에서 mixin 부분을 가져와서 복붙한다.</span></span><br><span class="line">@<span class="hljs-keyword">mixin</span> fontSizeBgColor(<span class="hljs-variable">$fontSize</span>, <span class="hljs-variable">$bgColor</span>) &#123;</span><br><span class="line">  <span class="hljs-attribute">font-size</span>: <span class="hljs-variable">$fontSize</span>;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$bgColor</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss hljs"><figcaption><span>basic.scss</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//_mixin.scss을 import 한다.</span></span><br><span class="line"><span class="hljs-comment">//기존에 적용되었던 mixin 내용을 날린다.</span></span><br><span class="line">@<span class="hljs-keyword">import</span> <span class="hljs-string">"mixins"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-id">#box1</span>&#123;</span><br><span class="line">    <span class="hljs-comment">//똑같이 mixin 내용이 적용이 된다.</span></span><br><span class="line">    @<span class="hljs-keyword">include</span> fontSizeBgColor(<span class="hljs-number">40px</span>, <span class="hljs-number">#ffcccc</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-id">#box1</span> <span class="hljs-selector-id">#box2</span>&#123;</span><br><span class="line">    @<span class="hljs-keyword">include</span> fontSizeBgColor(<span class="hljs-number">20px</span>, <span class="hljs-number">#e9e9e9</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -283,7 +291,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catalogue
+                Catálogo
             </h3>
             <ul class="menu-list"><li>
         <a class="is-flex" href="#css-Preprocessor-전처리기">
@@ -328,7 +336,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -365,7 +373,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
+            Nube de etiquetas
         </h3>
         <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
@@ -496,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -542,10 +550,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
