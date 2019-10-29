@@ -127,7 +127,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -194,7 +194,7 @@
 <p><strong>사용자 설정</strong> : 내 vscode editor에 대한 기본 설정이며 주로 폰트, 탭간격, 줄바꿈 여부 등을 설정한다.<br>한 번 설정시 전역으로 설정됩니다<br><strong>작업영역 설정</strong> : 이 프로젝트에 대한 개별 설정 부분이다.</p>
 </blockquote>
 <p>위 부분이 이해가 안간다면 ? <a href>vscode 에디터 단축키, 사용자 설정하기</a></p>
-<h2 id="SASS-작업영역-설정하기"><a href="#SASS-작업영역-설정하기" class="headerlink" title="SASS 작업영역 설정하기"></a>SASS 작업영역 설정하기</h2><figure class="highlight javascript hljs"><figcaption><span>sass 관련 작업영역 설정</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-string">"liveSassCompile.settings.formats"</span>:[</span><br><span class="line">        <span class="hljs-comment">// This is Default.</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-string">"format"</span>: <span class="hljs-string">"expanded"</span>,</span><br><span class="line">            <span class="hljs-string">"extensionName"</span>: <span class="hljs-string">".css"</span>,</span><br><span class="line">            <span class="hljs-string">"savePath"</span>: <span class="hljs-string">"/css"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="hljs-comment">// You can add more .min.css</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-string">"format"</span>: <span class="hljs-string">"compressed"</span>,</span><br><span class="line">            <span class="hljs-string">"extensionName"</span>: <span class="hljs-string">".min.css"</span>,</span><br><span class="line">            <span class="hljs-string">"savePath"</span>: <span class="hljs-string">"/dist/css"</span></span><br><span class="line">        &#125;,</span><br><span class="line">    ],</span><br><span class="line">    <span class="hljs-string">"liveSassCompile.settings.excludeList"</span>: [</span><br><span class="line">        <span class="hljs-string">"**/node_modules/**"</span>,</span><br><span class="line">        <span class="hljs-string">".vscode/**"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="hljs-string">"liveSassCompile.settings.generateMap"</span>:<span class="hljs-literal">true</span>,</span><br><span class="line">    <span class="hljs-string">"liveSassCompile.settings.autoprefix"</span>: [</span><br><span class="line">       <span class="hljs-string">"&gt; 1%"</span>,</span><br><span class="line">       <span class="hljs-string">"last 2 versions"</span></span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="SASS-작업영역-설정하기"><a href="#SASS-작업영역-설정하기" class="headerlink" title="SASS 작업영역 설정하기"></a>SASS 작업영역 설정하기</h2><figure class="highlight javascript"><figcaption><span>sass 관련 작업영역 설정</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"liveSassCompile.settings.formats"</span>:[</span><br><span class="line">        <span class="comment">// This is Default.</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"format"</span>: <span class="string">"expanded"</span>,</span><br><span class="line">            <span class="string">"extensionName"</span>: <span class="string">".css"</span>,</span><br><span class="line">            <span class="string">"savePath"</span>: <span class="string">"/css"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// You can add more .min.css</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"format"</span>: <span class="string">"compressed"</span>,</span><br><span class="line">            <span class="string">"extensionName"</span>: <span class="string">".min.css"</span>,</span><br><span class="line">            <span class="string">"savePath"</span>: <span class="string">"/dist/css"</span></span><br><span class="line">        &#125;,</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"liveSassCompile.settings.excludeList"</span>: [</span><br><span class="line">        <span class="string">"**/node_modules/**"</span>,</span><br><span class="line">        <span class="string">".vscode/**"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"liveSassCompile.settings.generateMap"</span>:<span class="literal">true</span>,</span><br><span class="line">    <span class="string">"liveSassCompile.settings.autoprefix"</span>: [</span><br><span class="line">       <span class="string">"&gt; 1%"</span>,</span><br><span class="line">       <span class="string">"last 2 versions"</span></span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>Live sass compiler에서 제공하는<br>link : <a href="https://github.com/ritwickdey/vscode-live-sass-compiler/blob/master/docs/settings.md" target="_blank" rel="noopener">https://github.com/ritwickdey/vscode-live-sass-compiler/blob/master/docs/settings.md</a><br>에서 들어가게되면 Example 부분에 SASS 컴파일러를 환경설정할수 있는 JSON이 보인다.</li>
@@ -240,6 +240,30 @@
 </div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/10/09/scss_md/sass1/';
+        this.page.identifier = '2019/10/09/scss_md/sass1/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
                 
@@ -254,7 +278,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catálogo
+                Catalogue
             </h3>
             <ul class="menu-list"><li>
         <a class="is-flex" href="#vscode-에디터에서-sass-확장-컴파일러-설치하기">
@@ -279,7 +303,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -324,7 +348,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
         <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
@@ -501,10 +525,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

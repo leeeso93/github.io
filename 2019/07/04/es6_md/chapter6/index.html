@@ -127,7 +127,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -181,27 +181,27 @@
 </blockquote>
 <a id="more"></a>
 
-<figure class="highlight javascript hljs"><figcaption><span>함수 return</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGreeting</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-string">"hello world"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getGreeting();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><figcaption><span>함수 return</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getGreeting</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"hello world"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getGreeting();</span><br></pre></td></tr></table></figure>
 
 <h2 id="6-2-호출과-참조"><a href="#6-2-호출과-참조" class="headerlink" title="6.2 호출과 참조"></a>6.2 호출과 참조</h2><blockquote>
 <p>함수 식별자 뒤에 ()를 쓰면 함수를 호출,<br>괄호를 쓰지 않으면 함수를 참조하며 함수 실행되지 않는다.</p>
 </blockquote>
-<figure class="highlight javascript hljs"><figcaption><span>호출과 참조</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGreeting</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//함수 바디 중괄호</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"hello world"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getGreeting(); <span class="hljs-comment">// "hello world";</span></span><br><span class="line">getGreeting; <span class="hljs-comment">// function getGreeting()</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><figcaption><span>호출과 참조</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getGreeting</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//함수 바디 중괄호</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"hello world"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getGreeting(); <span class="comment">// "hello world";</span></span><br><span class="line">getGreeting; <span class="comment">// function getGreeting()</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>변수에 할당</li>
 </ul>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//변수에 할당</span></span><br><span class="line"><span class="hljs-keyword">const</span> f = getGreeting;</span><br><span class="line">f(); <span class="hljs-comment">//hello, world;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//변수에 할당</span></span><br><span class="line"><span class="keyword">const</span> f = getGreeting;</span><br><span class="line">f(); <span class="comment">//hello, world;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>객체 프로퍼티에 할당</li>
 </ul>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//객체 프로퍼티에 할당</span></span><br><span class="line"><span class="hljs-keyword">const</span> o = &#123;&#125;;</span><br><span class="line">o.f = getGreeting;</span><br><span class="line">o.f();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//객체 프로퍼티에 할당</span></span><br><span class="line"><span class="keyword">const</span> o = &#123;&#125;;</span><br><span class="line">o.f = getGreeting;</span><br><span class="line">o.f();</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>배열 요소에 할당</li>
 </ul>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//배열 요소에 할당</span></span><br><span class="line"><span class="hljs-keyword">const</span> arr = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;</span><br><span class="line">arr[<span class="hljs-number">1</span>] = getGreeting;</span><br><span class="line">arr[<span class="hljs-number">1</span>]();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//배열 요소에 할당</span></span><br><span class="line"><span class="keyword">const</span> arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">arr[<span class="number">1</span>] = getGreeting;</span><br><span class="line">arr[<span class="number">1</span>]();</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -237,6 +237,30 @@
 </div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/07/04/es6_md/chapter6/';
+        this.page.identifier = '2019/07/04/es6_md/chapter6/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
                 
@@ -251,7 +275,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catálogo
+                Catalogue
             </h3>
             <ul class="menu-list"><li>
         <a class="is-flex" href="#6-1-반환-값">
@@ -272,7 +296,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -317,7 +341,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
         <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
@@ -494,10 +518,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

@@ -127,7 +127,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -184,14 +184,14 @@
 </blockquote>
 <h2 id="node-js-설치"><a href="#node-js-설치" class="headerlink" title="node.js 설치"></a>node.js 설치</h2><p>node.js는 다운받아서 설치해주면 되는데 안전버전이랑, 최신버전으로 나뉜다.<br>보통 안전버전을 많이 권하긴 한다.</p>
 <p>노트를 설치한뒤에 cmd(터미널,명령 프롬프트)에 node -v를 입력하고 버전정보가 나오면 설치가 된 것이다.</p>
-<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">//v10.<span class="hljs-number">15</span>.<span class="hljs-number">3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">//v10.<span class="number">15</span>.<span class="number">3</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="git-설치"><a href="#git-설치" class="headerlink" title="git 설치"></a>git 설치</h2><p>사이트 url로 들어가면 오른쪽에 download 2.23.0 for windows 식으로 뜨는데 다운 받아 설치해주면 된다.<br>git 설치 프로그램의 default 셋팅 그래로 설치한다.<br>git을 설치하면 Git Bash 와 git GUI가 자동으로 같이 설치된다.</p>
 <p><strong>git bash의 경우 vscode 에디터의 기본 터미널로 설정하면 편하다.</strong></p>
 <ul>
 <li>설정방법<br>설정(하단 톱니바퀴) -&gt; 사용자 설정 -&gt; json 추가</li>
 </ul>
-<figure class="highlight hljs"><figcaption><span>사용자 설정</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe", //git bash를 기본 터미널로 사용</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><figcaption><span>사용자 설정</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe", //git bash를 기본 터미널로 사용</span><br></pre></td></tr></table></figure>
 
 <h2 id="github-계정생성-및-repository-등록"><a href="#github-계정생성-및-repository-등록" class="headerlink" title="github 계정생성 및 repository 등록"></a>github 계정생성 및 repository 등록</h2><ol>
 <li>일단 github에 가입을 한다.</li>
@@ -212,23 +212,23 @@
 </ol>
 <p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/hexo1_4.png?raw=true" alt="그림 url 알기"></p>
 <h2 id="hexo-설치"><a href="#hexo-설치" class="headerlink" title="hexo 설치"></a>hexo 설치</h2><p>모든 요구사항이 설치되면 npm(node 설치하면 자동으로 사용가능함) 과 함께 hexo 설치가 가능하다.</p>
-<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
 
 <p>hexo를 설치하고 hexo -v를 통해 hexo 버전이 나오면 설치가 된것이다.<br>나의 경우에는 blog라는 루트폴더를 만들고 cd로 blog 경로로 들어가서 hexo를 설치했다.</p>
 <p>hexo 설치가 성공</p>
-<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;폴더명&gt;</span><br><span class="line"><span class="hljs-built_in">cd</span> &lt;폴더명&gt;</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">ex)</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="hljs-built_in">cd</span> blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;폴더명&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;폴더명&gt;</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">ex)</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
 
 <p>설치가 성공하면 local 서버를 띄워서 확인해볼 수 있다.</p>
-<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo s //로컬서버 구동 명령어</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">INFO  Checking dependencies</span><br><span class="line">INFO  Validating the configuration file</span><br><span class="line">INFO  <span class="hljs-built_in">Start</span> processing</span><br><span class="line">INFO  Hexo is running <span class="hljs-built_in">at</span> http://localhost:<span class="hljs-number">4000</span> . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo s //로컬서버 구동 명령어</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">INFO  Checking dependencies</span><br><span class="line">INFO  Validating the configuration file</span><br><span class="line">INFO  <span class="built_in">Start</span> processing</span><br><span class="line">INFO  Hexo is running <span class="built_in">at</span> http://localhost:<span class="number">4000</span> . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
 
 <p>이런식으로 로컬서버가 나오면 성공 </p>
 <p>클릭시 hexo 기본테마인 landscape의 theme가 내 로컬서버에 나타난다.</p>
 <h2 id="github-repository와-연결"><a href="#github-repository와-연결" class="headerlink" title="github repository와 연결"></a>github repository와 연결</h2><p>이제 로컬말고 방금 만든 내 github와 연결하면 되는데, 루트 폴더 아래의<br><code>_config.yml</code>이라는 파일이 있다. 클릭 후 </p>
-<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line"><span class="hljs-function">deploy:</span></span><br><span class="line"><span class="hljs-function">  <span class="hljs-title">type</span>: <span class="hljs-title">git</span></span></span><br><span class="line"><span class="hljs-function">  <span class="hljs-title">repo</span>: //아까 복사해놓은 내 <span class="hljs-title">repository</span> 주소를 넣는다.(.<span class="hljs-title">git</span>으로 끝남)</span></span><br><span class="line"><span class="hljs-function">  <span class="hljs-title">branch</span>: <span class="hljs-title">master</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line"><span class="function">deploy:</span></span><br><span class="line"><span class="function">  <span class="title">type</span>: <span class="title">git</span></span></span><br><span class="line"><span class="function">  <span class="title">repo</span>: //아까 복사해놓은 내 <span class="title">repository</span> 주소를 넣는다.(.<span class="title">git</span>으로 끝남)</span></span><br><span class="line"><span class="function">  <span class="title">branch</span>: <span class="title">master</span></span></span><br></pre></td></tr></table></figure>
 
 <p>을 넣으면 내 github와 연결된다.</p>
 <h2 id="배포"><a href="#배포" class="headerlink" title="배포"></a>배포</h2><p>이제 github repository로 내 hexo 블로그를 배포해야한다.</p>
-<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
 
 <p>가끔 배포가 안돼는 경우에 한번씩 clean 해주고 배포하면 잘 된다.<br>배포 후 몇분 기다리면 github에 내 블로그가 올라간다.</p>
 <h2 id="확인"><a href="#확인" class="headerlink" title="확인"></a>확인</h2><p>아까 봤던 사이트 url로 들어가면 내 블로그가 들어가 있는것을 확인할 수 있다.</p>
@@ -248,16 +248,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/20/react_md/react_chap3/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/21/hexo_md/hexo2/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">react chapter3. 컴포넌트</span>
+                <span class="level-item">hexo icarus 테마 설치 및 커스텀하기</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/10/scss_md/sass2/">
-                <span class="level-item">SCSS의 문법  nesting, mixin, extend , partial</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/20/react_md/react_chap3/">
+                <span class="level-item">react chapter3. 컴포넌트</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -266,6 +266,30 @@
 </div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/10/20/hexo_md/hexo/';
+        this.page.identifier = '2019/10/20/hexo_md/hexo/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
                 
@@ -280,7 +304,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catálogo
+                Catalogue
             </h3>
             <ul class="menu-list"><li>
         <a class="is-flex" href="#hexo-란">
@@ -329,7 +353,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -374,7 +398,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
         <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 10px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
@@ -551,10 +575,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
