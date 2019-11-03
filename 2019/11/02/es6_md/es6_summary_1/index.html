@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>ES6 Summary 1 - 변수와 스코프 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="ES6 공부를 한 지 시간이 좀 지났다.. 그리고 요즘은 SCSS, React 위주의 공부를 하다보니 내가 ES6 공부를 했었던가 하는 기억조차 가물가물해지는거 같다.원래 공부란게 하나 공부하고 뒤돌으면 까먹고.. 최근 너무 모르는거 같아 ES6 문법을 다시 읽고 있긴 한데 정리가 안돼는거 같다.각설하고..ES6공부를 완벽하게 숙지는 못하더라도 중요 개념">
+<meta name="keywords" content="스코프,var,let,const">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 Summary 1 - 변수와 스코프">
+<meta property="og:url" content="http://yoursite.com/2019/11/02/es6_md/es6_summary_1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ES6 공부를 한 지 시간이 좀 지났다.. 그리고 요즘은 SCSS, React 위주의 공부를 하다보니 내가 ES6 공부를 했었던가 하는 기억조차 가물가물해지는거 같다.원래 공부란게 하나 공부하고 뒤돌으면 까먹고.. 최근 너무 모르는거 같아 ES6 문법을 다시 읽고 있긴 한데 정리가 안돼는거 같다.각설하고..ES6공부를 완벽하게 숙지는 못하더라도 중요 개념">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-03T06:20:28.043Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 Summary 1 - 변수와 스코프">
+<meta name="twitter:description" content="ES6 공부를 한 지 시간이 좀 지났다.. 그리고 요즘은 SCSS, React 위주의 공부를 하다보니 내가 ES6 공부를 했었던가 하는 기억조차 가물가물해지는거 같다.원래 공부란게 하나 공부하고 뒤돌으면 까먹고.. 최근 너무 모르는거 같아 ES6 문법을 다시 읽고 있긴 한데 정리가 안돼는거 같다.각설하고..ES6공부를 완벽하게 숙지는 못하더라도 중요 개념">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="ES6 Summary 1 - 변수와 스코프" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-01T15:00:00.000Z">2019-11-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    23 minutes read (About 3395 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                ES6 Summary 1 - 변수와 스코프
+            
+        </h1>
+        <div class="content">
+            <p> ES6 공부를 한 지 시간이 좀 지났다..<br> 그리고 요즘은 SCSS, React 위주의 공부를 하다보니 내가 ES6 공부를 했었던가 하는 기억조차 가물가물해지는거 같다.<br>원래 공부란게 하나 공부하고 뒤돌으면 까먹고.. 최근 너무 모르는거 같아 ES6 문법을 다시 읽고 있긴 한데 정리가 안돼는거 같다.<br>각설하고..ES6공부를 완벽하게 숙지는 못하더라도 중요 개념 정도는 집고 넘어갸아겠다는 생각이 들어서 정리를 시작하게 되었다. </p>
+<a id="more"></a>
+
+<h2 id="ES6-ECMA2015"><a href="#ES6-ECMA2015" class="headerlink" title="ES6? ECMA2015 ?"></a>ES6? ECMA2015 ?</h2><blockquote>
+<p><strong>ECMAScript is a standard script language</strong><br>즉 자바스크립트 언어의 표준을 의미한다. ECMAScript 6 는 2015년 6월에 업데이트 되었다고 한다. ECMAScript의 6번째 에디션이 ES6이자 ECMA2015인 셈이다.</p>
+</blockquote>
+<p>ES6가 뜨는 이유는 ES5에서 제공하지 않던 다양한 기능들을 제공하기 때문인데, 아쉽게도 모든 브라우저에서 ES6의 기능을 제공하지 못한다.</p>
+<h3 id="ES6-호환성"><a href="#ES6-호환성" class="headerlink" title="ES6 호환성"></a>ES6 호환성</h3><p><a href="https://kangax.github.io/compat-table/es6/" target="_blank" rel="noopener">https://kangax.github.io/compat-table/es6/</a></p>
+<p>각 브라우저마다 ES6 를 지원하는지에 대해 정리해놓은 사이트이다.<br>구글 Chrome 기준으로, current brower 위에 98%, 즉 대부분의 ES6기능이 크롬에서 지원 가능하다고 나온다. 반대로 IE 11은 지원 안돼는 기능들이 거의 대부분이고, Edge는 상당부분 지원가능하다고 나온다. </p>
+<p>반면, ES5 탭을 클릭해서 들어가면 브라우저에서 거의 대부분의 ES5 기능이 지원되는 것을 알 수 있다.</p>
+<p>보통 그래서 ES6로 개발하고 Babel을 통해 ES5로 변환해서 올리는 방식을 많이 쓴다.</p>
+<h3 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h3><blockquote>
+<p>babel 공식 사이트 :  <a href="https://babeljs.io/" target="_blank" rel="noopener">https://babeljs.io/</a><br>바벨(Babel)은 <strong>ECMAScript 2015 이상의 코드를 이전 버전과 호환되는 JavaScript 버전으로 변환하는 데 주로 사용되는 무료 오픈 소스 JavaScript 컴파일러이다.</strong> 쉽게 말해 es6 코드를 es5로 변환해주는 도구이다.<br>babel은 react에서도 create react-app 통해 react를 설치하면 자동으로 들어가 있기도 하다.</p>
+</blockquote>
+<p>위의 babel 사이트를 들어가서 es6 문법 중 하나인 화살표 함수(arrow)를 입력하면 다음과 같이 변환해준다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>babel을 사용해서 es6 변환</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//es6</span></span><br><span class="line"><span class="hljs-keyword">const</span> plus = <span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> x + x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//es5</span></span><br><span class="line"><span class="hljs-keyword">var</span> plus = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">plus</span>(<span class="hljs-params">x</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> x + x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>babel 설치는 <a href="https://leeeso93.github.io/2019/06/24/es6_md/chapter2/#2-3-%ED%8A%B8%EB%9E%9C%EC%8A%A4%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC-%EB%B0%94%EB%B2%A8" target="_blank">babel 설치하기</a>를 가면 알 수 있다.</p>
+<p>본격적으로 ES6의 제공 문법에 대해서 알아보자</p>
+<h2 id="var와-스코프-scope"><a href="#var와-스코프-scope" class="headerlink" title="var와 스코프(scope)"></a>var와 스코프(scope)</h2><p>ES6 이전에 자바스크립트에서 변수를 선언할 수 있는 방법은 <strong>var</strong>를 사용하는 것이였다. var 키워드는 다른 언어와 다르게 몇 가지 특징이 있다.</p>
+<blockquote>
+<p><strong>var</strong>의 특징 </p>
+<ol>
+<li>var는 <strong>함수 레벨 스코프</strong>를 따른다.</li>
+<li>var 키워드는 생략이 가능하다.</li>
+<li>변수 중복 선언을 허용한다.</li>
+<li>변수 <strong>호이스팅</strong>이 발생한다.</li>
+</ol>
+</blockquote>
+<h3 id="var는-함수-레벨-스코프를-따른다"><a href="#var는-함수-레벨-스코프를-따른다" class="headerlink" title="var는 함수 레벨 스코프를 따른다."></a>var는 <strong>함수 레벨 스코프</strong>를 따른다.</h3><p> <strong>스코프</strong>란 시야, 범위라는 뜻인데, 변수와 상수, 매개변수가 언제 어디서 정의되는지를 결정하는 유효범위를 가리킨다.<br>자바스크립트는 다른 프로그래밍 언어가 <strong>블록 레벨 스코프</strong>를 따르는 것과 달리 <strong>함수 레벨 스코프</strong>를 따른다는 점에서 차이가 있다.</p>
+<figure class="highlight java hljs"><figcaption><span>c언어 블록 레벨 스코프</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 참고 : https://poiemaweb.com/js-scope</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// block-level scope</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-number">1</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = <span class="hljs-number">5</span>;</span><br><span class="line">    printf(<span class="hljs-string">"x = %d\n"</span>, x);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  printf(<span class="hljs-string">"x = %d\n"</span>, x); <span class="hljs-comment">// use of undeclared identifier 'x'</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위의 코드를 보면 if 문 내에서 선언된 변수 x는 if문 코드 블록 내에서만 유효하고,  if 문 밖에서는 참조가 불가능하므로 에러를 발생시킨다.<br>그러나 자바스크립트는 함수 레벨 스코프를 따른다. 그렇기에 다음과 같은 상황이 발생하게 된다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>javascript var의 함수 레벨 스코프</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>; <span class="hljs-comment">//전역 변수</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> x = <span class="hljs-number">2</span>; <span class="hljs-comment">//전역 변수가됨</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//2 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<p>얼핏 보면 블록 스코프 밖에 있는 x는 1을 찍어낼 거 같지만 var는 함수레벨 스코프를 따르기 때문에 코드 블록 내의 x는 전역 변수가 된다.<br>그런데 이미 var x = 1이라는 전역변수가 있기 때문에, var에서는 변수 중복 선언이 가능하므로 별 문제 없이 x의 값을 재할당하여 새로운 값 2로 덮어쓰게 된다.</p>
+<p>이러한 문제는 예상치 못한 에러를 종종 발생시켰고 , ES6는 이러한 var 키워드의 단점을 보완하기 위해 let과 const 키워드를 도입하였다.</p>
+<h2 id="let-const의-스코프-scope"><a href="#let-const의-스코프-scope" class="headerlink" title="let, const의 스코프(scope)"></a>let, const의 스코프(scope)</h2><h3 id="let과-const는-블록-레벨-스코프를-따른다"><a href="#let과-const는-블록-레벨-스코프를-따른다" class="headerlink" title="let과 const는 블록 레벨 스코프를 따른다."></a>let과 const는 <strong>블록 레벨 스코프</strong>를 따른다.</h3><p>위의 코드를 let으로 바꾸면 다음과 같은 결과가 나온다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>javascript let의 블록 레벨 스코프</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>; <span class="hljs-comment">//전역 변수</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> x = <span class="hljs-number">2</span>; <span class="hljs-comment">//지역 변수가됨</span></span><br><span class="line">    <span class="hljs-keyword">let</span> y = <span class="hljs-number">3</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//2 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(y); <span class="hljs-comment">//ReferenceError: y is not defined</span></span><br></pre></td></tr></table></figure>
+
+<p>코드 블록({}) 내에 선언된 x는 블록 레벨 스코프를 가지며 그 블록 내에서만 사용가능한 지역변수이다. 따라서 블록 밖에 let x 와는 다른 별개의 변수이다. 또한, 코드 블록 내의 y 역시 블록 내에서만 사용 가능한 지역 변수이므로 블록 밖, 즉 외부에서 이를 참조할 수 없다. 그러므로 외부에서 이를 참조하려고 하면 참조에러(ReferenceError)를 발생시키게 된다.</p>
+<h2 id="스코프의-종류"><a href="#스코프의-종류" class="headerlink" title="스코프의 종류"></a>스코프의 종류</h2><h3 id="정적-스코프와-동적-스코프"><a href="#정적-스코프와-동적-스코프" class="headerlink" title="정적 스코프와 동적 스코프"></a>정적 스코프와 동적 스코프</h3><blockquote>
+<p>자바스크립트는 정적 스코프를 따른다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> x = <span class="hljs-number">10</span>;</span><br><span class="line">  bar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(); <span class="hljs-comment">// ?</span></span><br><span class="line">bar(); <span class="hljs-comment">// ?</span></span><br></pre></td></tr></table></figure>
+
+<p>위 실행 결과는 함수 bar()의 상위 스코프가 무엇인지에 따라 값이 다르게 나온다.<br>첫 번째는 함수를 어디서 호출하는지에 따라 스코프가 결정되는 방식인, <strong>동적 스코프</strong>이고, 두 번째는 함수를 어디서 선언했는지에 따라 값이 다르게 나오는 <strong>정적 스코프</strong>이다.</p>
+<p>자바스크립트는 <strong>정적 스코프(렉시컬 스코프)</strong>이다. 즉 함수가 어디서 선언되었는지가 중요하지, 어디서 호출했는지는 중요하지 않다.</p>
+<p>따라서 위의 예제를 보면 함수 bar()는 전역변수 var  x = 1의 값을 참조하게 된다. 설사 foo() 함수 안에서 호출되었다고 해도 스코프 결정에 별 영향을 주지 못하므로 bar()를 두 번 호출한 것과 같은 결과인 1을 두 번 출력하게 된다.</p>
+<p>이러한 정적 스코프는 전역 스코프, 블록 스코프 , 함수 스코프에 적용된다.</p>
+<h3 id="전역-스코프"><a href="#전역-스코프" class="headerlink" title="전역 스코프"></a>전역 스코프</h3><blockquote>
+<p>전역에 변수를 선언하면 이 변수는 어디서든지 참조할 수 있는 전역 스코프를 갖는 전역 변수가 된다</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> name = <span class="hljs-string">"lee"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hello</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;name&#125;</span> 님 안녕하세요!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hello(); <span class="hljs-comment">// lee 님 안녕하세요!</span></span><br></pre></td></tr></table></figure>
+
+<p>위의 name은 전역 스코프를 갖는 전역 변수이다. 이 변수는 어디서든지 참조가 가능하게 된다. 자바스크립트는 다른 언어와 달리 특별한 시작점 없이 전역 변수 선언이 가능하다. 이런 편리함때문에 전역 변수를 남발하게 되면 변수 이름이 중복되게 되고, 변수가 중복되면 값이 재할당이 되므로 의도치 않은 문제를 발생시킬 수 있다.</p>
+<p>이러한 문제를 해결하기 위해서는 <a href="https://leeeso93.github.io/2019/07/13/es6_md/chapter7/#7-3-%EC%A0%84%EC%97%AD-%EC%8A%A4%EC%BD%94%ED%94%84" target="_blank" rel="noopener">전역 스코프</a>에 가면 확인 할 수 있다.</p>
+<h3 id="지역-스코프"><a href="#지역-스코프" class="headerlink" title="지역 스코프"></a>지역 스코프</h3><blockquote>
+<p>코드의 특정 부분에서만 사용할 수 있는 변수는 지역 스코프에 있다고 할 수 있다. 함수 내부에서 선언한 변수나 , 코드 블록내에서 let,const로 선언한 변수는 외부에서 참조할 수 없으므로 지역 변수가 된다.</p>
+</blockquote>
+<h3 id="함수-스코프"><a href="#함수-스코프" class="headerlink" title="함수 스코프"></a>함수 스코프</h3><blockquote>
+<p>함수 내부에서 변수를 선언하면 그 변수는 함수 내부에서만 접근이 가능한 함수 스코프를 가진다.</p>
+</blockquote>
+<h3 id="블록-스코프"><a href="#블록-스코프" class="headerlink" title="블록 스코프"></a>블록 스코프</h3><blockquote>
+<p>블록의 스코프안에서만 보이는 식별자를 말한다. let,const는 식별자를 블록 스코프에서 선언한다.</p>
+</blockquote>
+<p>이러한 블록 스코프를 중첩해서 <strong>변수 숨기기</strong>가 가능하다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//스코프 중첩 </span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">//외부블록 </span></span><br><span class="line">    <span class="hljs-keyword">let</span> x  = <span class="hljs-string">'blue'</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x) ; <span class="hljs-comment">//"blue"   </span></span><br><span class="line"> </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-comment">//내부블록 </span></span><br><span class="line">        <span class="hljs-keyword">let</span> x = <span class="hljs-number">3</span>;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// "3" </span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">//"blue"  </span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> x); <span class="hljs-comment">//undefined ; x는 스코프에 있지 않습니다. .</span></span><br></pre></td></tr></table></figure>
+
+<p>위 코드를 보면 외부 블록 x와 내부 블록 x는 이름만 같지 다른 지역변수이다.<br>그러므로 내부 블록에서는 마치 외부 스코프 x를 가리는 것과 같은 효과를 발휘하게 된다.<br>이러한 것을 변수 숨기기 라고 한다.</p>
+<h2 id="var-let-const"><a href="#var-let-const" class="headerlink" title="var / let / const"></a>var / let / const</h2><h3 id="1-var-함수-레벨-스코프-let-const-블록-레벨-스코프"><a href="#1-var-함수-레벨-스코프-let-const-블록-레벨-스코프" class="headerlink" title="1) var : 함수 레벨 스코프 /  let,const : 블록 레벨 스코프"></a>1) var : 함수 레벨 스코프 /  let,const : 블록 레벨 스코프</h3><h3 id="2-중복-선언-여부"><a href="#2-중복-선언-여부" class="headerlink" title="2) 중복 선언 여부"></a>2) 중복 선언 여부</h3><p>var로는 <strong>동일한 이름을 갖는 변수를 중복해서 선언이 가능</strong>했지만,<br>let과 const로는 으로는 <strong>중복 선언이 불가능</strong>하다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//var</span></span><br><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;</span><br><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">2</span>; </span><br><span class="line"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">//2; 값이 재 할당됨</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//let</span></span><br><span class="line"><span class="hljs-keyword">let</span> b = <span class="hljs-number">1</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> b = <span class="hljs-number">2</span>; <span class="hljs-comment">//Identifier 'b' has already been declared</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//const</span></span><br><span class="line"><span class="hljs-keyword">const</span> c = <span class="hljs-number">1</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> c = <span class="hljs-number">2</span>; <span class="hljs-comment">//Identifier 'c' has already been declared</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-호이스팅"><a href="#3-호이스팅" class="headerlink" title="3) 호이스팅"></a>3) 호이스팅</h3><blockquote>
+<p>자바스크립트는 ES6에서 도입된 let,const를 포함하여 모든 선언(var, function,class..)등을 <strong>호이스팅</strong>한다.<br>호이스팅이란 ? : var 선언문이나 function 선언문 등을 해당 스코프의 선두로 옮긴 것처럼 동작하는 특성을 말한다.</p>
+</blockquote>
+<p>먼저 알아야할 것은 변수는 3단계에 거쳐 생성된다는 것이다.</p>
+<ul>
+<li><strong>선언</strong><br>: 변수를 실행 컨텍스트의 변수 객체(Variable Object)에 등록한다. 이 변수 객체는 스코프가 참조하는 대상이 된다.</li>
+<li><strong>초기화</strong><br>: 변수를 위한 공간을 메모리에 확보한다. 이 단계에서 변수는 undefined로 초기화된다.</li>
+<li><strong>할당</strong><br>:  undefined로 초기화된 변수에 실제 값을 할당한다.</li>
+</ul>
+<blockquote>
+<p><strong>var</strong><br><strong>var로 선언된 변수는 선언과 초기화가 한번에 이루워진다.</strong> 즉 스코프에 변수를 선언(등록)하자마자 그 변수를 위한 공간을 메모리에 확보(초기화)가 동시에 발생한다.<br>단, 아직 변수에 값을 할당하지 않았으므로 undefined를 반환한다. 변수값을 할당하는 문에 도달해서야 비로소 할당 단계가 완료된다.  </p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>var의 호이스팅</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// var 변수는 스코프의 가장 선두로 호이스팅되고 선언 단계와 초기화 단계가 실행된다.</span></span><br><span class="line"><span class="hljs-comment">//선언,초기화 동시진행 </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">//undefined  </span></span><br><span class="line"><span class="hljs-keyword">var</span> a; <span class="hljs-comment">//변수 선언문</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// undefined</span></span><br><span class="line">a = <span class="hljs-number">2</span>;  <span class="hljs-comment">//할당</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>let</strong><br><strong>let으로 선언된 변수는 선언과 초기화가 분리되어 진행된다.</strong> 즉 스코프를 변수에 선언(등록)은 하지만, 초기화 단계는 그 변수에 도달했을 때 이뤄진다. 그러므로 초기화 이전에 변수를 참조하려고 하면 참조에러(ReferenceError)가 발생한다.<br>이렇게되면 변수가 선언되고 초기화 되기 전까지는 그 변수를 참조할 수 없게 되는 구간이 생기는데 이를 <strong>일시적 사각지대(Temporal Dead Zone; TDZ)</strong>라고 부른다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>let의 호이스팅</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//let 변수는 스코프의 선두에서 선언이 실행된다.(호이스팅)</span></span><br><span class="line"><span class="hljs-comment">//단 초기화는 그 변수의 선언문에서 실행된다. </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(b);<span class="hljs-comment">// ReferenceError: b is not defined</span></span><br><span class="line"><span class="hljs-keyword">let</span> b; <span class="hljs-comment">//변수 선언문, 초기화 단계 실행 </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// undefined (선언, 초기화 완료, 값 아직 미할당)</span></span><br><span class="line">b = <span class="hljs-number">1</span>;<span class="hljs-comment">// 할당</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>많은 사람들이 이 코드를 보면 let이 호이스팅이 발생하지 않는것 아니냐고 생각하곤 한다.<br>그러나 그것이 아니고 var은 선언과 초기화가 동시에 호이스팅 되는 것이고, let은 선언만 스코프 선두로 올라가는 호이스팅이 된다고 생각하면 될 것 같다.</p>
+<h2 id="let과-const"><a href="#let과-const" class="headerlink" title="let과 const"></a>let과 const</h2><blockquote>
+<p>let은 변할 수 있는 값을 위해, const는 변하지 않는 값(상수)를 위해 사용한다.<br>const는 let과 거의 비슷하나 몇 가지 차이가 있다.</p>
+</blockquote>
+<ul>
+<li><strong>선언과 할당</strong> <blockquote>
+<p>let은 재할당이 자유로우나 const는 선언과 동시에 반드시 할당이 되어야 하며 재할당이 금지된다.</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//let</span></span><br><span class="line"><span class="hljs-keyword">let</span> a; <span class="hljs-comment">//undefined</span></span><br><span class="line">a = <span class="hljs-number">2</span>; </span><br><span class="line"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">//2 </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//const </span></span><br><span class="line"><span class="hljs-keyword">const</span> b; <span class="hljs-comment">// Missing initializer in const declaration (선언과 할당을 같이 하라)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> c = <span class="hljs-number">1</span>;</span><br><span class="line">c = <span class="hljs-number">2</span>; <span class="hljs-comment">// Assignment to constant variable.(재할당 금지)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>const의 객체의 내용 변경</strong><blockquote>
+<p>const는 재할당 자체는 불가능하지만, 할당된 객체의 내용을 추가, 삭제, 프로퍼티 값 변경 등은 가능하다.</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> a = &#123;<span class="hljs-attr">name</span> : <span class="hljs-string">"somoong"</span>&#125;;</span><br><span class="line">a.name = <span class="hljs-string">"jinmoong"</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// &#123;name: "jinmoong"&#125; 객체의 프로퍼티 값 변경 가능</span></span><br></pre></td></tr></table></figure>
+
+<p><code>NEXT :  자바스크립트의 클로저</code></p>
+<hr>
+<p>참고 링크</p>
+<p><a href="https://poiemaweb.com/es6-block-scope" target="_blank" rel="noopener">https://poiemaweb.com/es6-block-scope</a></p>
+<p><a href="http://chanlee.github.io/2013/12/10/javascript-variable-scope-and-hoisting/" target="_blank" rel="noopener">http://chanlee.github.io/2013/12/10/javascript-variable-scope-and-hoisting/</a></p>
+<p><a href="https://medium.com/korbit-engineering/let%EA%B3%BC-const%EB%8A%94-%ED%98%B8%EC%9D%B4%EC%8A%A4%ED%8C%85-%EB%90%A0%EA%B9%8C-72fcf2fac365" target="_blank" rel="noopener">https://medium.com/korbit-engineering/let%EA%B3%BC-const%EB%8A%94-%ED%98%B8%EC%9D%B4%EC%8A%A4%ED%8C%85-%EB%90%A0%EA%B9%8C-72fcf2fac365</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/const/">const</a>, <a class="has-link-grey -link" href="/tags/let/">let</a>, <a class="has-link-grey -link" href="/tags/var/">var</a>, <a class="has-link-grey -link" href="/tags/스코프/">스코프</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/21/hexo_md/hexo2/">
+                <span class="level-item">hexo icarus 테마 설치 및 커스텀하기</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/11/02/es6_md/es6_summary_1/';
+        this.page.identifier = '2019/11/02/es6_md/es6_summary_1/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right is-sticky">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catálogo
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#ES6-ECMA2015">
+        <span class="has-mr-6">1</span>
+        <span>ES6? ECMA2015 ?</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#ES6-호환성">
+        <span class="has-mr-6">1.1</span>
+        <span>ES6 호환성</span>
+        </a></li><li>
+        <a class="is-flex" href="#babel">
+        <span class="has-mr-6">1.2</span>
+        <span>babel</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#var와-스코프-scope">
+        <span class="has-mr-6">2</span>
+        <span>var와 스코프(scope)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#var는-함수-레벨-스코프를-따른다">
+        <span class="has-mr-6">2.1</span>
+        <span>var는 함수 레벨 스코프를 따른다.</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#let-const의-스코프-scope">
+        <span class="has-mr-6">3</span>
+        <span>let, const의 스코프(scope)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#let과-const는-블록-레벨-스코프를-따른다">
+        <span class="has-mr-6">3.1</span>
+        <span>let과 const는 블록 레벨 스코프를 따른다.</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#스코프의-종류">
+        <span class="has-mr-6">4</span>
+        <span>스코프의 종류</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#정적-스코프와-동적-스코프">
+        <span class="has-mr-6">4.1</span>
+        <span>정적 스코프와 동적 스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#전역-스코프">
+        <span class="has-mr-6">4.2</span>
+        <span>전역 스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#지역-스코프">
+        <span class="has-mr-6">4.3</span>
+        <span>지역 스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#함수-스코프">
+        <span class="has-mr-6">4.4</span>
+        <span>함수 스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#블록-스코프">
+        <span class="has-mr-6">4.5</span>
+        <span>블록 스코프</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#var-let-const">
+        <span class="has-mr-6">5</span>
+        <span>var / let / const</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-var-함수-레벨-스코프-let-const-블록-레벨-스코프">
+        <span class="has-mr-6">5.1</span>
+        <span>1) var : 함수 레벨 스코프 /  let,const : 블록 레벨 스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-중복-선언-여부">
+        <span class="has-mr-6">5.2</span>
+        <span>2) 중복 선언 여부</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-호이스팅">
+        <span class="has-mr-6">5.3</span>
+        <span>3) 호이스팅</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#let과-const">
+        <span class="has-mr-6">6</span>
+        <span>let과 const</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categorias
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hexo/">
+            <span class="level-start">
+                <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">22</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트를-다루는-기술/">
+            <span class="level-start">
+                <span class="level-item">리액트를 다루는 기술</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="ES6 Summary 1 - 변수와 스코프" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>
