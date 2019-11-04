@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>ES6 Summary 2 - 클로저 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="클로저 클로저란 외부함수(포함하고 있는)의 변수에 접근할 수 있는 내부 함수를 말한다.">
+<meta name="keywords" content="클로저">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 Summary 2 - 클로저">
+<meta property="og:url" content="http://yoursite.com/2019/11/03/es6_md/es6_summary_2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="클로저 클로저란 외부함수(포함하고 있는)의 변수에 접근할 수 있는 내부 함수를 말한다.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-04T12:38:38.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 Summary 2 - 클로저">
+<meta name="twitter:description" content="클로저 클로저란 외부함수(포함하고 있는)의 변수에 접근할 수 있는 내부 함수를 말한다.">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="ES6 Summary 2 - 클로저" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-02T15:00:00.000Z">2019-11-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 minutes read (About 1640 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                ES6 Summary 2 - 클로저
+            
+        </h1>
+        <div class="content">
+            <h3 id="클로저"><a href="#클로저" class="headerlink" title="클로저"></a>클로저</h3><blockquote>
+<p>클로저란 외부함수(포함하고 있는)의 변수에 접근할 수 있는 내부 함수를 말한다.</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight javascript hljs"><figcaption><span>외부함수 내부함수</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> hello = <span class="hljs-string">"hi"</span>;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>)</span>&#123; <span class="hljs-comment">//이는 var inner = function()&#123;&#125;하고 같다.</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(hello);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> inner();</span><br><span class="line">&#125;</span><br><span class="line">outer(); </span><br><span class="line"><span class="hljs-comment">//hi</span></span><br></pre></td></tr></table></figure>
+
+<p>여기서 outer()는 외부함수, inner()는 내부함수가 된다.<br>또한 변수 hello는 외부함수 outer()의 지역변수가 된다.<br>내부함수 innner()에서 외부함수 outer()의 hello의 지역변수에 접근할 수 있다. 이를 클로저라고 한다.</p>
+<p><strong>내부함수는 외부함수의 변수뿐만이 아니라 파라미터도 접근 가능하다.</strong></p>
+<figure class="highlight javascript hljs"><figcaption><span>내부함수가 외부함수 파라미터에 접근할 때</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params">name</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> hello = <span class="hljs-string">"hi"</span>;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>)</span>&#123; <span class="hljs-comment">//이는 var inner = function()&#123;&#125;하고 같다.</span></span><br><span class="line">    <span class="hljs-keyword">return</span> name +<span class="hljs-string">" "</span>+ hello;</span><br><span class="line">  &#125;</span><br><span class="line">   <span class="hljs-keyword">return</span> inner();</span><br><span class="line">&#125;</span><br><span class="line">outer(<span class="hljs-string">"somoong"</span>); </span><br><span class="line"><span class="hljs-comment">//somoong hi;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="클로저의-특징"><a href="#클로저의-특징" class="headerlink" title="클로저의 특징"></a>클로저의 특징</h2><blockquote>
+<p>클로저는 외부함수가 리턴된 이후에도 외부함수의 변수에 접근할수 있다.</p>
+</blockquote>
+<p>내부함수는 외부함수의 지역변수에 접근 할 수 있다고 했는데, 특이한 점은 외부함수의 실행이 끝나서 외부함수가 return 된 이후에도 내부함수에서 외부함수 변수에 접근 할 수 있다는 것이다. </p>
+<figure class="highlight javascript hljs"><figcaption><span>내부함수에서 리턴한 외부함수 변수에 접근하기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> hello = <span class="hljs-string">"hi"</span>;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; <span class="hljs-comment">//익명함수</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(hello);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">var</span> inner = outer();</span><br><span class="line">inner(); <span class="hljs-comment">//hi</span></span><br></pre></td></tr></table></figure>
+
+<p>위 예제를 보면 7행에서 외부함수 outer()를 호출해 변수 inner에 담았다.<br>그리고 outer는 익명함수를 return 한다. 그리고 8행에서 inner()를 호출하면, outer()는 실행이 끝났기 때문에(return) 소멸하고 외부함수의 지역변수 역시 소멸해야 한다. 하지만 8행에서 함수 inner를 실행했을때 “hi” 가 출력되었다는 것은 외부함수 outer의 지역변수 hello가 소멸되지 않았다는 것을 의미한다. </p>
+<p>클로저는 외부함수의 지역변수를 사용하는 내부함수가 소멸되기 전까지 외부함수가 소멸되지 않게 한다.</p>
+<blockquote>
+<p>동일한 외부함수 안에서 만들어진 내부함수나 메소드는 외부함수의 지역변수를 공유한다.<br>그리고 이러한 특성을 이용해 Private한 속성을 사용할 수 있게 한다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><figcaption><span>내부(private) 변수 예제</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">movie</span>(<span class="hljs-params">title</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span>&#123;</span><br><span class="line">    get_title : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> title; </span><br><span class="line">    &#125;,</span><br><span class="line">    set_title : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">newTitle</span>)</span>&#123;</span><br><span class="line">       title = newTitle;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">get_title 메서드로 movie()의 title 변수를 참조, set_title 메서드에서 title 지역변수를 참조받아 newTitle에 저장 </span></span><br><span class="line"><span class="hljs-comment">get_title : title 값을 결정</span></span><br><span class="line"><span class="hljs-comment">set_title : title 값을 변경</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> blood = movie(<span class="hljs-string">"금발이 너무해"</span>);<span class="hljs-comment">// 이 시점에, 외부함수 movie가 리턴된다.</span></span><br><span class="line"><span class="hljs-keyword">var</span> joker = movie(<span class="hljs-string">"조커"</span>);<span class="hljs-comment">// 이 시점에, 외부함수 movie가 리턴된다.</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(blood.get_title()); <span class="hljs-comment">//금발이 너무해</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(joker.get_title()); <span class="hljs-comment">//조커</span></span><br><span class="line"></span><br><span class="line">blood.set_title(<span class="hljs-string">"금발이 너무하지 않아"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(blood.get_title()); <span class="hljs-comment">//금발이 너무하지 않아</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(joker.get_title()); <span class="hljs-comment">//조커</span></span><br></pre></td></tr></table></figure>
+
+<p>1) 클로저는 객체의 메소드에서도 사용할 수 있다. 위 예제에서 외부함수 movie()의 return 값 안에 있는 get_title과 set_title 메소드는 movie()의 파라미터 값으로 전달된 지역변수 title의 값을 참조할 수 있다. (지역변수 공유)</p>
+<p>2) 그러나 똑같은 외부함수 movie()를 공유하고 있는 blood와 joker의 get_title 결과와 set_title결과는 서로 다르다. 그 것은 외부함수가 실행 될 때마다 새로운 지역변수를 포함하는 클로저가 생성되므로 blood와 joker는 서로 완전히 독립된다.</p>
+<p>3) 그러므로 , 26행에서 blood의 title을 변경했다고 해서 jocker의 title에 영향을 미치지 못한다.</p>
+<p>4) movie()의 지역변수 title은 movie()의 리턴 값에서 정의된 메서드인 get_title과 set_title에 의해서만 접근할 수 있다. title이란 변수를 아무나 수정할 수 없고, 외부에서 title을 다르게 사용한다고 해서 이 함수에 영향을 미치지 못하게 된다.<br>private 속성은 객체 외부에서 접근할 수 없는 감춰진 속성을 말한다. javascript는 기본적으로 private한 속성을 지원하지 않지만, 클로저의 특성을 이용해서 private 한 속성을 사용할 수 있게 한다.  </p>
+<h2 id="클로저를-통해-문제-해결하기"><a href="#클로저를-통해-문제-해결하기" class="headerlink" title="클로저를 통해 문제 해결하기"></a>클로저를 통해 문제 해결하기</h2><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr = [];</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;</span><br><span class="line">    arr[i] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> index <span class="hljs-keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(arr[index]());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//결과 ?</span></span><br></pre></td></tr></table></figure>
+
+<p>위 예제는 반복문이 0부터 4까지 총 다섯번을 돌면서 i 값을 arr 란 배열에 저장하고, 이를 다시 콘솔에 찍는 예제이다.<br>위 예제의 결과를  0,1,2,3,4가 나온다고 기대할 수 있지만,<br>실제로 값을 찍어보면 5가 다섯 번 나오게 된다.</p>
+<p>우선, 클로저는 내부 함수가 외부 함수의 지역변수를 참조 할 수 있는 것이라고 햇는데 , 여기서 var i 는 함수 레벨 스코프 단위로 감싸지는 전역변수가 된다. 즉 지역변수가 되지 못한다.  </p>
+<p>또한, arr[i]에 저장되는 값은 i값이 아닌<br>function(){<br>        return i;<br>    }<br>즉 함수 자체가 된다. </p>
+<p>arr[0] = function(){<br>return i; //5<br>}</p>
+<p>arr[1] = function(){<br>return i; //5<br>}
+…<br>그리고 return 할때는 이미 반복문이 실행되어 i의 값이 5까지 올라간 상태가된다. 따라서 5가 5번 찍히는 것이다.</p>
+<p>이 문제를 클로저를 통해 해결할 수 있다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr = []</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;</span><br><span class="line">    arr[i] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">id</span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(i); <span class="hljs-comment">//즉시실행함수</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> index <span class="hljs-keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(arr[index]());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>마찬가지로 arr[i]는 </p>
+<p>function(id) { //외부함수<br>    return function(){ //내부함수<br>        return id;<br>    }<br>}(i); //매개변수로 i를 줌 </p>
+<p>의 값을 받는다. 여기서 외부함수의 매개변수로 i를 주고 외부함수는 id라고하는 매개변수(지역변수)를 갖게 된다. 그리고 내부함수(클로저)는 외부함수의 지역변수를 참조할 수 있으므로 외부함수 id 값을 참조하게 된다. 그 함수가 만들어지게 되는 시점에 i 값을 id라는 매개변수로 받고 이를 내부함수가 그 값을 참조할 수 있으므로 우리가 원하는 결과를 찍게 된다. </p>
+<hr>
+<p>참고 링크</p>
+<ul>
+<li><p>생활코딩 : <a href="https://opentutorials.org/course/743/6544" target="_blank" rel="noopener">https://opentutorials.org/course/743/6544</a></p>
+</li>
+<li><p>자바스크립트 클로저 쉽게 이해하기 :  <a href="http://chanlee.github.io/2013/12/10/understand-javascript-closure/" target="_blank" rel="noopener">http://chanlee.github.io/2013/12/10/understand-javascript-closure/</a></p>
+</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/클로저/">클로저</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/02/es6_md/es6_summary_1/">
+                <span class="level-item">ES6 Summary 1 - 변수와 스코프</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/11/03/es6_md/es6_summary_2/';
+        this.page.identifier = '2019/11/03/es6_md/es6_summary_2/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right is-sticky">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#클로저">
+        <span class="has-mr-6">1.1</span>
+        <span>클로저</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#클로저의-특징">
+        <span class="has-mr-6">2</span>
+        <span>클로저의 특징</span>
+        </a></li><li>
+        <a class="is-flex" href="#클로저를-통해-문제-해결하기">
+        <span class="has-mr-6">3</span>
+        <span>클로저를 통해 문제 해결하기</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hexo/">
+            <span class="level-start">
+                <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">23</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트를-다루는-기술/">
+            <span class="level-start">
+                <span class="level-item">리액트를 다루는 기술</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 10px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="ES6 Summary 2 - 클로저" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>
