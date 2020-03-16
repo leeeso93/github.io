@@ -8,18 +8,18 @@
 
 
 
-    <meta name="description" content="3.1.1 var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
+    <meta name="description" content="변수 선언var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
 <meta property="og:type" content="article">
 <meta property="og:title" content="typescript chapter3. 변수 선언과 기본타입">
 <meta property="og:url" content="http://yoursite.com/2020/03/16/ts_md/ts1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="3.1.1 var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
+<meta property="og:description" content="변수 선언var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2020-03-16T15:38:03.485Z">
+<meta property="og:updated_time" content="2020-03-16T16:50:26.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="typescript chapter3. 변수 선언과 기본타입">
-<meta name="twitter:description" content="3.1.1 var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
+<meta name="twitter:description" content="변수 선언var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -127,7 +127,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 minutes read (About 1340 words)
+                    19 minutes read (About 2780 words)
                 </span>
                 
                 
@@ -173,7 +173,7 @@
             
         </h1>
         <div class="content">
-            <h3 id="3-1-1-var-선언자의-특징"><a href="#3-1-1-var-선언자의-특징" class="headerlink" title="3.1.1 var 선언자의 특징"></a>3.1.1 var 선언자의 특징</h3><blockquote>
+            <h2 id="변수-선언"><a href="#변수-선언" class="headerlink" title="변수 선언"></a>변수 선언</h2><h3 id="var-선언자의-특징"><a href="#var-선언자의-특징" class="headerlink" title="var 선언자의 특징"></a>var 선언자의 특징</h3><blockquote>
 <ul>
 <li>호이스팅</li>
 <li>블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)</li>
@@ -202,7 +202,7 @@
 <blockquote>
 <p>let, const<br>클래스, 인터페이스, 타입 에일리어스, enum 선언</p>
 </blockquote>
-<h3 id="3-1-2-let-선언자-특징"><a href="#3-1-2-let-선언자-특징" class="headerlink" title="3.1.2 let 선언자 특징"></a>3.1.2 let 선언자 특징</h3><blockquote>
+<h3 id="let-선언자-특징"><a href="#let-선언자-특징" class="headerlink" title="let 선언자 특징"></a>let 선언자 특징</h3><blockquote>
 <ul>
 <li>같은 블록 내에서 같은 이름의 변수를 중복해서 선언 불가</li>
 <li>변수를 초기화하기 전에는 변수에 접근할 수가 없으므로 호이스팅 방지</li>
@@ -227,7 +227,7 @@
 
 <h3 id="실습-폴더와-파일-구성"><a href="#실습-폴더와-파일-구성" class="headerlink" title="실습 폴더와 파일 구성"></a>실습 폴더와 파일 구성</h3><figure class="highlight json hljs"><figcaption><span>tsconfig.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"outDir"</span>: <span class="hljs-string">"./dist"</span>,</span><br><span class="line">    <span class="hljs-attr">"target"</span>: <span class="hljs-string">"es6"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-13-상수-선언"><a href="#3-13-상수-선언" class="headerlink" title="3.13 상수 선언"></a>3.13 상수 선언</h3><blockquote>
+<h3 id="상수-선언"><a href="#상수-선언" class="headerlink" title="상수 선언"></a>상수 선언</h3><blockquote>
 <p>const는 선언 할 때 초기화는 가능하지만 재할당은 불가능한 읽기 전용 (read only) 변수가 된다. 블록 레벨 스코프이며 호이스팅이 되지 않는다.</p>
 </blockquote>
 <figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// const로 선언했으므로 상수가 된다.</span></span><br><span class="line"><span class="hljs-comment">// 값 재할당 금지, 읽기 전용 변수</span></span><br><span class="line"><span class="hljs-keyword">const</span> birthMonth = <span class="hljs-number">9</span>;</span><br></pre></td></tr></table></figure>
@@ -249,13 +249,13 @@
 <figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> profile = &#123;</span><br><span class="line">  name: <span class="hljs-string">"lee"</span>,</span><br><span class="line">  age: <span class="hljs-number">28</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">profile.name = <span class="hljs-string">"happy1"</span>; <span class="hljs-comment">// 할당 가능</span></span><br><span class="line">profile.month--; <span class="hljs-comment">// 할당 가능</span></span><br></pre></td></tr></table></figure>
 
 <p>이는, 타입스크립트가 값 자체를 재할당할 수는 없지만, 속성값의 변경은 허용하는 특성을 갖고 있기 때문이다.</p>
-<h2 id="3-2-타입-검사와-타입-선언"><a href="#3-2-타입-검사와-타입-선언" class="headerlink" title="3.2 타입 검사와 타입 선언"></a>3.2 타입 검사와 타입 선언</h2><blockquote>
+<h2 id="타입-검사와-타입-선언"><a href="#타입-검사와-타입-선언" class="headerlink" title="타입 검사와 타입 선언"></a>타입 검사와 타입 선언</h2><h3 id="점진적-타입-검사"><a href="#점진적-타입-검사" class="headerlink" title="점진적 타입 검사"></a>점진적 타입 검사</h3><blockquote>
 <p>타입 검사는 정적 타입 검사(statically type checking)과 동적 타입 검사(dynamically type checking)으로 나뉨<br>정적 타입 검사 : 자바, C++<br>동적 타입 검사 : 자바스크립트<br>한편, <strong>타입스크립트는 점진적 타입 검사(gradually type checking)을 수행 , 필요에 따라 타입 선언 생략을 허용한다.</strong><br>타입을 생략하면 암시적 형변환이 일어난다.</p>
 </blockquote>
 <figure class="highlight typescript hljs"><figcaption><span>암시적 형변환</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add10</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> a + <span class="hljs-number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add10(<span class="hljs-number">1</span>);</span><br></pre></td></tr></table></figure>
 
 <p>매개변수 a에 타입을 선언하진 않았지만, 타입스크립트 컴파일러가 a를 오류로 취급하지 않는다.<br>또한 변환된 자바스크립트는 동적으로 타입이 결정되어 오류 없이 실행된다.<br>필요에 따라 타입을 생략할 수도 , 점진적으로 추가할 수도 있다.<br>대표적으로 <strong>any타입</strong>은 모든 타입의 최상위 타입으로 동적 타입과 정적 타입의 경계에 있으며 어떤 타입의 변수도 받아들인다.(심지어 타입이 없는 변수도 받아들임)</p>
-<h3 id="3-2-2-자바스크립트의-동적-타이핑"><a href="#3-2-2-자바스크립트의-동적-타이핑" class="headerlink" title="3.2.2. 자바스크립트의 동적 타이핑"></a>3.2.2. 자바스크립트의 동적 타이핑</h3><blockquote>
+<h3 id="자바스크립트의-동적-타이핑"><a href="#자바스크립트의-동적-타이핑" class="headerlink" title="자바스크립트의 동적 타이핑"></a>자바스크립트의 동적 타이핑</h3><blockquote>
 <p>자바스크립트는 <strong>기본 타입</strong>과 <strong>객체 타입</strong>이 있다.</p>
 <ul>
 <li>기본 타입 - Number, String, Boolean</li>
@@ -269,7 +269,156 @@
 <p>타입스크립트에서도 타입을 선언하지 않으면 입력값에 따라 타입이 결정된다. 정해진 타입을 예측할수 없으므로 타입을 검사하는 코드가 추가로 필요해지고, 이는 성능상으로 좋지 않다.</p>
 <figure class="highlight javascript hljs"><figcaption><span>typeOf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> width = <span class="hljs-number">10</span>;</span><br><span class="line"><span class="hljs-keyword">var</span> animals = [];</span><br><span class="line"><span class="hljs-keyword">var</span> myFullName = &#123; <span class="hljs-attr">first</span>: <span class="hljs-string">"happy"</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> width); <span class="hljs-comment">// number</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> animals); <span class="hljs-comment">//object</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> myFullName); <span class="hljs-comment">//object</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="3-2-3-타입-계층도"><a href="#3-2-3-타입-계층도" class="headerlink" title="3.2.3 타입 계층도"></a>3.2.3 타입 계층도</h3><p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/ts1_1.png?raw=true" alt="그림  1-1 자바스크립트 기반 프레임워크"></p>
+<h3 id="타입-계층도"><a href="#타입-계층도" class="headerlink" title="타입 계층도"></a>타입 계층도</h3><blockquote>
+<p>가장 상위에 any가 있고 그 아래에</p>
+<ul>
+<li>기본타입</li>
+<li>객체 타입</li>
+<li>기타 타입(유니언 타입, 인터섹션 타입)</li>
+</ul>
+</blockquote>
+<p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/ts1_1.png?raw=true" alt="그림  1-1 타입 계층도"></p>
+<ol>
+<li><p>기본 타입<br>기본 타입(primative types)는 보편적으로 많이 사용된다.</p>
+<blockquote>
+<ul>
+<li>string, number, boolean</li>
+<li>symbol(es6에서 추가됨)</li>
+<li>enum</li>
+<li>문자열 리터럴</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>string 타입은 작은 따음표나 큰 따음표, 역따옴표(백틱 , backtick)을 이용할 수 있다.</li>
+<li>number 타입은 es6에서 10진수뿐만 아닌 16진수, 2진수,8진수도 지원한다.</li>
+<li>bolean 타입은 true 또는 false 값 할당할 수 있다.\</li>
+<li>symbol 은 Symbol() 함수를 이용해 생성한 고유고 수정 불가능한 데이터 타입이다.</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> hello = <span class="hljs-built_in">Symbol</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>enum 은 number에서 확장된 타입으로 enumm의 첫번째 요소에는 숫자 0의 값이 할당된다. 그 다음부턴 1씩 증가한다.</li>
+</ul>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 타입스크립트</span></span><br><span class="line"><span class="hljs-keyword">enum</span> WeekDay &#123;</span><br><span class="line">  Mon,</span><br><span class="line">  Tue,</span><br><span class="line">  Wed,</span><br><span class="line">  Thu</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> day: WeekDay = WeekDay.Mon;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// javascript로 변환했을 때</span></span><br><span class="line"><span class="hljs-keyword">var</span> WeekDay;</span><br><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">WeekDay</span>) </span>&#123;</span><br><span class="line">  WeekDay[(WeekDay[<span class="hljs-string">"Mon"</span>] = <span class="hljs-number">0</span>)] = <span class="hljs-string">"Mon"</span>;</span><br><span class="line">  WeekDay[(WeekDay[<span class="hljs-string">"Tue"</span>] = <span class="hljs-number">1</span>)] = <span class="hljs-string">"Tue"</span>;</span><br><span class="line">  WeekDay[(WeekDay[<span class="hljs-string">"Wed"</span>] = <span class="hljs-number">2</span>)] = <span class="hljs-string">"Wed"</span>;</span><br><span class="line">  WeekDay[(WeekDay[<span class="hljs-string">"Thu"</span>] = <span class="hljs-number">3</span>)] = <span class="hljs-string">"Thu"</span>;</span><br><span class="line">&#125;)(WeekDay || (WeekDay = &#123;&#125;));</span><br><span class="line"><span class="hljs-keyword">var</span> day = WeekDay.Mon;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>문자열 리터럴 타입은 string 타입의 확장 타입으로 사용자 정의 타입에 정의한 문자열만 할당받을수 있다.</li>
+</ul>
+<ol start="2">
+<li><p>객체 타입<br>객체 타입은 속성을 포함한다.</p>
+<blockquote>
+<ul>
+<li>Array</li>
+<li>Tuple</li>
+<li>Function</li>
+<li>생성자</li>
+<li>Class</li>
+<li>Interface</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>array는 배열 요소에 대응하는 타입이다.</li>
+</ul>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> items: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>tuple은 배열 요소가 n개로 정해질 때 각 요소별로 타입을 지정한다.</li>
+</ul>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 배열 요소가 문자열과 숫자일 때</span></span><br><span class="line"><span class="hljs-keyword">let</span> x: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];</span><br><span class="line">x = [<span class="hljs-string">"tuple"</span>, <span class="hljs-number">100</span>];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>함수타입</li>
+<li>class 타입과 interface 타입은 객체 타입(object types)로 본류된다.</li>
+</ul>
+<ol start="3">
+<li>기타 타입<blockquote>
+<ul>
+<li>유니언(union)</li>
+<li>인터섹션(intersection)</li>
+<li>특수 타입</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>유니언 타입은 2개 이상의 타입을 하나의 타입으로 정의한 타입이다.</li>
+</ul>
+<figure class="highlight typescript hljs"><figcaption><span>유니언 타입</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> x: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>인터섹션 타입은 두 타입을 합쳐 하나로 만들 수 있는 타입이다.</li>
+</ul>
+<figure class="highlight typescript hljs"><figcaption><span>인터섹션 타입</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> Cat &#123;</span><br><span class="line">  leg: <span class="hljs-built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">interface</span> Bird &#123;</span><br><span class="line">  wing: <span class="hljs-built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> birdCat: Cat &amp; Bird = &#123; leg: <span class="hljs-number">4</span>, wing: <span class="hljs-number">2</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>위 코드에서 birdCat 변수가 인터섹션 타입인 Cat&amp;Bird로 선언되어 있으므로 할당 객체는 leg와 wing 만 허용한다.</p>
+<ul>
+<li>void , null, undefined는 타입 계층도 가장 아래층에 위치한다.</li>
+</ul>
+<ul>
+<li>void는 빈 값을 나타내는 타입이다. 함수에 리턴값이 없을떄 void 타입을 선언할 수 있는데 undefined나 null값을 받을 때 사용한다.</li>
+<li>null 과 undefined는 다른 모든 타입의 하위 타입(subtype)이다.</li>
+<li>undefined는 빈 값으로도 초기화되지 않는 타입이다.</li>
+<li>null 타입은 빈 객체로 초기화된다.</li>
+</ul>
+<p>타입스크립트의 타입 계층도는 기존 자바스크립트 타입을 확장한 형태이다. 자바스크립트 타입과 비교했을 때 다음과 같은 타입이 추가되었다.</p>
+<blockquote>
+<ul>
+<li>객체 타입의 상위 타입으로 any추가</li>
+<li>any 타입의 특수 타입으로 유니언 타입과 인터섹션 타입 추가</li>
+<li>객체 타입의 하위 타입으로 Array,Interface,Tuple추가</li>
+<li>void 타입 추가</li>
+</ul>
+</blockquote>
+<h3 id="변수에-타입-지정"><a href="#변수에-타입-지정" class="headerlink" title="변수에 타입 지정"></a>변수에 타입 지정</h3><blockquote>
+<p>타입 스크립트는 강력한 타입을 지원한다.</p>
+</blockquote>
+<figure class="highlight typescript hljs"><figcaption><span>변수에 타입 지정</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> &lt;변수식별자&gt; : &lt;타입&gt; = &lt;값&gt;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//어떤 변수에 명시적으로 타입을 지정함</span></span><br><span class="line"><span class="hljs-keyword">var</span> width2 : <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="자바스크립트의-타입"><a href="#자바스크립트의-타입" class="headerlink" title="자바스크립트의 타입"></a>자바스크립트의 타입</h2><blockquote>
+<p>타입스크립트에서는 자바스크립트에서 지원하는 내장타입을 제공한다.<br>크게 <strong>기본타입</strong>, <strong>객체타입</strong>, <strong>함수타입</strong> 이 있다.</p>
+</blockquote>
+<h3 id="내장-타입"><a href="#내장-타입" class="headerlink" title="내장 타입"></a>내장 타입</h3><blockquote>
+<p>boolean, string, number 등이 있다. 이들은 명시적으로 <strong>전역 객체</strong>를 통해 직접 생성 가능하다.</p>
+</blockquote>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> type1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">false</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> type2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-string">"hello"</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> type3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Number</span>(<span class="hljs-number">123</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 이들은 타입이 객체이므로 호출할 때 다음과 같다.</span></span><br><span class="line">type1.valueOf(); <span class="hljs-comment">// false</span></span><br><span class="line">type2.valueOf(); <span class="hljs-comment">// "hello"</span></span><br><span class="line">type3.valueOf(); <span class="hljs-comment">// 123</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Symbol() 함수처럼 객체 속성에 유일한 식별자로 사용하는 타입</p>
+</li>
+<li><p>null,undefined 처럼 null값이거나 아직 할당되지 않았다는 의미로 쓰이는 타입</p>
+</li>
+<li><p>이 외에도 object 타입 (배열이나 객체 리터럴 대상)</p>
+</li>
+<li><p>함수는 그 자체로 function 타입 등이 있다.</p>
+</li>
+</ul>
+<blockquote>
+<p>자바스크립트에서는 타입을 지정할 때 런타임 시 할당과 동시에 동적으로 타입이 결정되는 <strong>느슨한 타입</strong><br>타입스크립트는 지정한 값만 받는 <strong>엄격한 타입</strong> 쳬계를 사용한다.</p>
+</blockquote>
+<h3 id="symbol-타입"><a href="#symbol-타입" class="headerlink" title="symbol 타입"></a>symbol 타입</h3><blockquote>
+<p>자바스크립트 내장 타입중 symbol 타입은 es6에서 추가된 특징이다.</p>
+</blockquote>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> hello = Symbol(<span class="hljs-string">"hello"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>symbol 타입은 심벌 객체를 반환한다. “hello”인수는 심벌의 설명(description)을 의미한다. 심벌에 접근할 때 사용할 수 있으며 생략 가능하다.<br>만약, 어떤 변수를 불변 상수로 선언하려면 const를 사용한다.</p>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> hello = Symbol();</span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 선언하면 hello는 유일하면서(Symbol() 함수 사용) 불면(const 사용)인 특성을 갖게된다.</p>
+<p>symbol함수는 es6로 컴파일해야한다. tsconfig.json의 target을 es6로 선언하거나</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc sysmbol.ts(컴파일하려는 ts명) -t es6</span><br></pre></td></tr></table></figure>
+
+<p>명령어로 컴파일한다.</p>
+<figure class="highlight typescript hljs"><figcaption><span>심벌 객체간 비교</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> hello1 = Symbol(<span class="hljs-string">"hello"</span>);</span><br><span class="line"><span class="hljs-keyword">let</span> hello2 = Symbol(<span class="hljs-string">"hello"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(hello1 === hello2); <span class="hljs-comment">//false</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> hello1); <span class="hljs-comment">//symbol</span></span><br></pre></td></tr></table></figure>
+
+<p>심벌 객체는 유일하므로 hello1과 hello2는 서로 다른 객체이다.</p>
+<ul>
+<li>Symbol() 함수의 반환값은 별다른 값을 취하지 않아도 그 자체로 식별자가 된다.</li>
+<li>Symbol()함수로 초기화된 변수는 객체 속성에 대한 유일한 식별자로서 값을 할당하는 용도로 사용한다.</li>
+</ul>
 
         </div>
         
@@ -300,7 +449,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -335,36 +484,60 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catálogo
+                Catalogue
             </h3>
-            <ul class="menu-list"><ul class="menu-list"><li>
-        <a class="is-flex" href="#3-1-1-var-선언자의-특징">
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#변수-선언">
+        <span class="has-mr-6">1</span>
+        <span>변수 선언</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#var-선언자의-특징">
         <span class="has-mr-6">1.1</span>
-        <span>3.1.1 var 선언자의 특징</span>
+        <span>var 선언자의 특징</span>
         </a></li><li>
-        <a class="is-flex" href="#3-1-2-let-선언자-특징">
+        <a class="is-flex" href="#let-선언자-특징">
         <span class="has-mr-6">1.2</span>
-        <span>3.1.2 let 선언자 특징</span>
+        <span>let 선언자 특징</span>
         </a></li><li>
         <a class="is-flex" href="#실습-폴더와-파일-구성">
         <span class="has-mr-6">1.3</span>
         <span>실습 폴더와 파일 구성</span>
         </a></li><li>
-        <a class="is-flex" href="#3-13-상수-선언">
+        <a class="is-flex" href="#상수-선언">
         <span class="has-mr-6">1.4</span>
-        <span>3.13 상수 선언</span>
-        </a></li></ul><li>
-        <a class="is-flex" href="#3-2-타입-검사와-타입-선언">
+        <span>상수 선언</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#타입-검사와-타입-선언">
         <span class="has-mr-6">2</span>
-        <span>3.2 타입 검사와 타입 선언</span>
+        <span>타입 검사와 타입 선언</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#3-2-2-자바스크립트의-동적-타이핑">
+        <a class="is-flex" href="#점진적-타입-검사">
         <span class="has-mr-6">2.1</span>
-        <span>3.2.2. 자바스크립트의 동적 타이핑</span>
+        <span>점진적 타입 검사</span>
         </a></li><li>
-        <a class="is-flex" href="#3-2-3-타입-계층도">
+        <a class="is-flex" href="#자바스크립트의-동적-타이핑">
         <span class="has-mr-6">2.2</span>
-        <span>3.2.3 타입 계층도</span>
+        <span>자바스크립트의 동적 타이핑</span>
+        </a></li><li>
+        <a class="is-flex" href="#타입-계층도">
+        <span class="has-mr-6">2.3</span>
+        <span>타입 계층도</span>
+        </a></li><li>
+        <a class="is-flex" href="#변수에-타입-지정">
+        <span class="has-mr-6">2.4</span>
+        <span>변수에 타입 지정</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#자바스크립트의-타입">
+        <span class="has-mr-6">3</span>
+        <span>자바스크립트의 타입</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#내장-타입">
+        <span class="has-mr-6">3.1</span>
+        <span>내장 타입</span>
+        </a></li><li>
+        <a class="is-flex" href="#symbol-타입">
+        <span class="has-mr-6">3.2</span>
+        <span>symbol 타입</span>
         </a></li></ul></li></ul>
         </div>
     </div>
@@ -376,7 +549,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -445,7 +618,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
         <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
@@ -622,10 +795,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
