@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>typescript chapter3. 변수 선언과 기본타입 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="3.1.1 var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript chapter3. 변수 선언과 기본타입">
+<meta property="og:url" content="http://yoursite.com/2020/03/16/ts_md/ts1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="3.1.1 var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2020-03-16T15:38:03.485Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript chapter3. 변수 선언과 기본타입">
+<meta name="twitter:description" content="3.1.1 var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="typescript chapter3. 변수 선언과 기본타입" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-15T15:00:00.000Z">2020-03-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/타입스크립트/">타입스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1340 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                typescript chapter3. 변수 선언과 기본타입
+            
+        </h1>
+        <div class="content">
+            <h3 id="3-1-1-var-선언자의-특징"><a href="#3-1-1-var-선언자의-특징" class="headerlink" title="3.1.1 var 선언자의 특징"></a>3.1.1 var 선언자의 특징</h3><blockquote>
+<ul>
+<li>호이스팅</li>
+<li>블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)</li>
+</ul>
+</blockquote>
+<ol>
+<li>호이스팅<br>변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것</li>
+</ol>
+<a id="more"></a>
+
+<figure class="highlight typescript hljs"><figcaption><span>호이스팅 예제</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">helloMessage = <span class="hljs-string">"hello"</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(helloMessage);</span><br><span class="line"><span class="hljs-keyword">var</span> helloMessage;</span><br></pre></td></tr></table></figure>
+
+<p>변수를 먼저 선언하고 할당한 것처럼 변수 선언을 호이스팅에서 처리함</p>
+<ol start="2">
+<li>함수 레벨 스코프<br>함수 내에서만 유효하고 함수 외부에서는 참조할 수 없음</li>
+</ol>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> myName = <span class="hljs-string">"sad"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-title">Level</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-function">  <span class="hljs-title">var</span> <span class="hljs-title">myName</span> = "<span class="hljs-title">happy</span>"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-title">Level</span>(<span class="hljs-params"></span>)</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(myName); <span class="hljs-comment">// sad</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>즉, var은 블록레벨 스코프를 지원하지 않는다.</strong></p>
+<ol start="3">
+<li>블록 레벨 스코프<br>블록{} 내에서만 유효하고 블록 외부에서는 참조할 수 없음</li>
+</ol>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 블록 레벨 스코프를 지원하지 않을 경우</span></span><br><span class="line"><span class="hljs-comment">// 내부에 있는 변수가 외부에 영향을 미칠수가 있다.</span></span><br><span class="line"><span class="hljs-keyword">var</span> myName = <span class="hljs-string">"sad"</span>;</span><br><span class="line"><span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> myName = <span class="hljs-string">"happy"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(myName); <span class="hljs-comment">// happy</span></span><br></pre></td></tr></table></figure>
+
+<p>블록 레벨 스코프에 대표적 선언</p>
+<blockquote>
+<p>let, const<br>클래스, 인터페이스, 타입 에일리어스, enum 선언</p>
+</blockquote>
+<h3 id="3-1-2-let-선언자-특징"><a href="#3-1-2-let-선언자-특징" class="headerlink" title="3.1.2 let 선언자 특징"></a>3.1.2 let 선언자 특징</h3><blockquote>
+<ul>
+<li>같은 블록 내에서 같은 이름의 변수를 중복해서 선언 불가</li>
+<li>변수를 초기화하기 전에는 변수에 접근할 수가 없으므로 호이스팅 방지</li>
+<li>선언할 변수에 블록 레벨 스코프 적용</li>
+</ul>
+</blockquote>
+<ol>
+<li>let선언자로 선언된 변수는 같은 블록 내에서 중복 선언 할 수 없다.</li>
+</ol>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> myName2;</span><br><span class="line"><span class="hljs-keyword">let</span> myName2; <span class="hljs-comment">// Uncaught SyntaxError: Identifier 'myName2' has already been declared</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>호이스팅 방지</li>
+</ol>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(myName); <span class="hljs-comment">//Uncaught ReferenceError: myName is not defined</span></span><br><span class="line"><span class="hljs-keyword">let</span> myName = <span class="hljs-string">"happy"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>변수를 초기화 하기전에는 변수에 접근 불가</p>
+<ol start="3">
+<li>블록 레벨 스코프 지원</li>
+</ol>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> myName2 = <span class="hljs-string">"sad"</span>;</span><br><span class="line"><span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> myName2;</span><br><span class="line">  myName2 = <span class="hljs-string">"happy"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(myName2); <span class="hljs-comment">// sad</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="실습-폴더와-파일-구성"><a href="#실습-폴더와-파일-구성" class="headerlink" title="실습 폴더와 파일 구성"></a>실습 폴더와 파일 구성</h3><figure class="highlight json hljs"><figcaption><span>tsconfig.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"outDir"</span>: <span class="hljs-string">"./dist"</span>,</span><br><span class="line">    <span class="hljs-attr">"target"</span>: <span class="hljs-string">"es6"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-13-상수-선언"><a href="#3-13-상수-선언" class="headerlink" title="3.13 상수 선언"></a>3.13 상수 선언</h3><blockquote>
+<p>const는 선언 할 때 초기화는 가능하지만 재할당은 불가능한 읽기 전용 (read only) 변수가 된다. 블록 레벨 스코프이며 호이스팅이 되지 않는다.</p>
+</blockquote>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// const로 선언했으므로 상수가 된다.</span></span><br><span class="line"><span class="hljs-comment">// 값 재할당 금지, 읽기 전용 변수</span></span><br><span class="line"><span class="hljs-keyword">const</span> birthMonth = <span class="hljs-number">9</span>;</span><br></pre></td></tr></table></figure>
+
+<p>특히 타입 어노테이션 (:)을 추가하지 않더라도 할당한 값에 따라 타입이 추론되어 number 타입이 된다.</p>
+<ol>
+<li><p>const는 블록 레벨 스코프이다.</p>
+</li>
+<li><p>const는 입력값의 타입에 상관없이 변수를 읽기 전용으로 만든다.</p>
+</li>
+<li><p>변수가 읽기 전용이 되면 값을 새로 할당할 수 없다.</p>
+</li>
+</ol>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> profile = &#123;</span><br><span class="line">  name: <span class="hljs-string">"happy"</span>,</span><br><span class="line">  month: <span class="hljs-number">12</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// const 는 값을 새로 할당할 수 없다</span></span><br><span class="line">profile = &#123;</span><br><span class="line">  name: <span class="hljs-string">"happygrammer"</span>,</span><br><span class="line">  month: <span class="hljs-number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>그러나 <strong>예외적으로 const로 선언한 변수라도 객체 리터럴의 속성으로는 변경이 가능하다.</strong></li>
+</ol>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> profile = &#123;</span><br><span class="line">  name: <span class="hljs-string">"lee"</span>,</span><br><span class="line">  age: <span class="hljs-number">28</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">profile.name = <span class="hljs-string">"happy1"</span>; <span class="hljs-comment">// 할당 가능</span></span><br><span class="line">profile.month--; <span class="hljs-comment">// 할당 가능</span></span><br></pre></td></tr></table></figure>
+
+<p>이는, 타입스크립트가 값 자체를 재할당할 수는 없지만, 속성값의 변경은 허용하는 특성을 갖고 있기 때문이다.</p>
+<h2 id="3-2-타입-검사와-타입-선언"><a href="#3-2-타입-검사와-타입-선언" class="headerlink" title="3.2 타입 검사와 타입 선언"></a>3.2 타입 검사와 타입 선언</h2><blockquote>
+<p>타입 검사는 정적 타입 검사(statically type checking)과 동적 타입 검사(dynamically type checking)으로 나뉨<br>정적 타입 검사 : 자바, C++<br>동적 타입 검사 : 자바스크립트<br>한편, <strong>타입스크립트는 점진적 타입 검사(gradually type checking)을 수행 , 필요에 따라 타입 선언 생략을 허용한다.</strong><br>타입을 생략하면 암시적 형변환이 일어난다.</p>
+</blockquote>
+<figure class="highlight typescript hljs"><figcaption><span>암시적 형변환</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add10</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> a + <span class="hljs-number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add10(<span class="hljs-number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>매개변수 a에 타입을 선언하진 않았지만, 타입스크립트 컴파일러가 a를 오류로 취급하지 않는다.<br>또한 변환된 자바스크립트는 동적으로 타입이 결정되어 오류 없이 실행된다.<br>필요에 따라 타입을 생략할 수도 , 점진적으로 추가할 수도 있다.<br>대표적으로 <strong>any타입</strong>은 모든 타입의 최상위 타입으로 동적 타입과 정적 타입의 경계에 있으며 어떤 타입의 변수도 받아들인다.(심지어 타입이 없는 변수도 받아들임)</p>
+<h3 id="3-2-2-자바스크립트의-동적-타이핑"><a href="#3-2-2-자바스크립트의-동적-타이핑" class="headerlink" title="3.2.2. 자바스크립트의 동적 타이핑"></a>3.2.2. 자바스크립트의 동적 타이핑</h3><blockquote>
+<p>자바스크립트는 <strong>기본 타입</strong>과 <strong>객체 타입</strong>이 있다.</p>
+<ul>
+<li>기본 타입 - Number, String, Boolean</li>
+<li>객체 타입 - 객체 리터럴, 배열, 내장 객체</li>
+</ul>
+</blockquote>
+<p>자바스크립트에도 타입이 있지만 타입을 강제할 수는 없고 값 할당시에 타입을 추론한다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> number = <span class="hljs-number">10</span>; <span class="hljs-comment">// number 타입</span></span><br><span class="line"><span class="hljs-keyword">var</span> str = <span class="hljs-string">"hello"</span>; <span class="hljs-comment">// string 타입</span></span><br></pre></td></tr></table></figure>
+
+<p>이처럼 값을 변수에 할당할 때 타입이 정해지는 것을 <strong>동적 타이핑</strong>이라고 한다.</p>
+<p>타입스크립트에서도 타입을 선언하지 않으면 입력값에 따라 타입이 결정된다. 정해진 타입을 예측할수 없으므로 타입을 검사하는 코드가 추가로 필요해지고, 이는 성능상으로 좋지 않다.</p>
+<figure class="highlight javascript hljs"><figcaption><span>typeOf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> width = <span class="hljs-number">10</span>;</span><br><span class="line"><span class="hljs-keyword">var</span> animals = [];</span><br><span class="line"><span class="hljs-keyword">var</span> myFullName = &#123; <span class="hljs-attr">first</span>: <span class="hljs-string">"happy"</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> width); <span class="hljs-comment">// number</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> animals); <span class="hljs-comment">//object</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> myFullName); <span class="hljs-comment">//object</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-3-타입-계층도"><a href="#3-2-3-타입-계층도" class="headerlink" title="3.2.3 타입 계층도"></a>3.2.3 타입 계층도</h3><p><img src="https://github.com/leeeso93/leeeso93.github.io/blob/master/images/ts1_1.png?raw=true" alt="그림  1-1 자바스크립트 기반 프레임워크"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/01/14/es6_md/es6_summary_3/">
+                <span class="level-item">ES6 Summary 2 - 클로저</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2020/03/16/ts_md/ts1/';
+        this.page.identifier = '2020/03/16/ts_md/ts1/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right ">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#3-1-1-var-선언자의-특징">
+        <span class="has-mr-6">1.1</span>
+        <span>3.1.1 var 선언자의 특징</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-1-2-let-선언자-특징">
+        <span class="has-mr-6">1.2</span>
+        <span>3.1.2 let 선언자 특징</span>
+        </a></li><li>
+        <a class="is-flex" href="#실습-폴더와-파일-구성">
+        <span class="has-mr-6">1.3</span>
+        <span>실습 폴더와 파일 구성</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-13-상수-선언">
+        <span class="has-mr-6">1.4</span>
+        <span>3.13 상수 선언</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#3-2-타입-검사와-타입-선언">
+        <span class="has-mr-6">2</span>
+        <span>3.2 타입 검사와 타입 선언</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#3-2-2-자바스크립트의-동적-타이핑">
+        <span class="has-mr-6">2.1</span>
+        <span>3.2.2. 자바스크립트의 동적 타이핑</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-2-3-타입-계층도">
+        <span class="has-mr-6">2.2</span>
+        <span>3.2.3 타입 계층도</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/ES6/">
+            <span class="level-start">
+                <span class="level-item">ES6</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hexo/">
+            <span class="level-start">
+                <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/intelliJ/">
+            <span class="level-start">
+                <span class="level-item">intelliJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트-react/">
+            <span class="level-start">
+                <span class="level-item">리액트 / react</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/타입스크립트/">
+            <span class="level-start">
+                <span class="level-item">타입스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="typescript chapter3. 변수 선언과 기본타입" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>

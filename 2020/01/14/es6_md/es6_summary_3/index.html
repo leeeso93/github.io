@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>ES6 Summary 2 - 클로저 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="ES6 속성 정리 본 정리본은 인프런의모던 자바스크립트(javascript) 개발을 위한 ES6 강좌를 바탕으로 작성되었습니다.  let, const const라고 해서 값 변경이 불가능하다는 것은 아니다.  1234567const array = [1, 2, 3, 4, 5];array.push(6); //가능할까?console.log(array);/*[ 1">
+<meta name="keywords" content="클로저">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 Summary 2 - 클로저">
+<meta property="og:url" content="http://yoursite.com/2020/01/14/es6_md/es6_summary_3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ES6 속성 정리 본 정리본은 인프런의모던 자바스크립트(javascript) 개발을 위한 ES6 강좌를 바탕으로 작성되었습니다.  let, const const라고 해서 값 변경이 불가능하다는 것은 아니다.  1234567const array = [1, 2, 3, 4, 5];array.push(6); //가능할까?console.log(array);/*[ 1">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2020-01-13T15:10:08.173Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 Summary 2 - 클로저">
+<meta name="twitter:description" content="ES6 속성 정리 본 정리본은 인프런의모던 자바스크립트(javascript) 개발을 위한 ES6 강좌를 바탕으로 작성되었습니다.  let, const const라고 해서 값 변경이 불가능하다는 것은 아니다.  1234567const array = [1, 2, 3, 4, 5];array.push(6); //가능할까?console.log(array);/*[ 1">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="ES6 Summary 2 - 클로저" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-13T15:00:00.000Z">2020-01-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 372 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                ES6 Summary 2 - 클로저
+            
+        </h1>
+        <div class="content">
+            <h1 id="ES6-속성-정리"><a href="#ES6-속성-정리" class="headerlink" title="ES6 속성 정리"></a>ES6 속성 정리</h1><blockquote>
+<p>본 정리본은 인프런의<br><a href="https://www.inflearn.com/course/es6-%EA%B0%95%EC%A2%8C-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/dashboard" target="_blank" rel="noopener">모던 자바스크립트(javascript) 개발을 위한 ES6 강좌</a><br>를 바탕으로 작성되었습니다.</p>
+</blockquote>
+<h2 id="let-const"><a href="#let-const" class="headerlink" title="let, const"></a>let, const</h2><blockquote>
+<p>const라고 해서 값 변경이 불가능하다는 것은 아니다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];</span><br><span class="line">array.push(<span class="hljs-number">6</span>); <span class="hljs-comment">//가능할까?</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(array);</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">[ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="es6-string에-새로운-메서드들"><a href="#es6-string에-새로운-메서드들" class="headerlink" title="es6 string에 새로운 메서드들"></a>es6 string에 새로운 메서드들</h2><ul>
+<li>특정 문자열의 포함 여부를 알려주는 메서드들<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> str = <span class="hljs-string">'hello world ^^'</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(str.startsWith(<span class="hljs-string">'hello'</span>)); <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(str.endsWith(<span class="hljs-string">'hello'</span>)); <span class="hljs-comment">// false</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(str.includes(<span class="hljs-string">'world'</span>)); <span class="hljs-comment">// true</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="for-in-과-for-of"><a href="#for-in-과-for-of" class="headerlink" title="for in 과 for of"></a>for in 과 for of</h2><ul>
+<li>for in<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> data = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">""</span>];</span><br><span class="line"><span class="hljs-built_in">Array</span>.prototype.getIndex = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> idx  <span class="hljs-keyword">in</span> data)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(data[idx]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">1</span></span><br><span class="line"><span class="hljs-comment">2</span></span><br><span class="line"><span class="hljs-comment">undefined</span></span><br><span class="line"><span class="hljs-comment">NaN</span></span><br><span class="line"><span class="hljs-comment">null</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">[Function]</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>for in의 문제점<br>자기가 가지고 있는 객체 이외의 상위의 프로토타입 객체가 나오게 되는 의도치 못한 결과가 발생할 수 있다.<br>그래서 <strong>array 문에서는 for in을 안 쓰는 것을 권장</strong></p>
+</blockquote>
+<ul>
+<li>for of<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> data = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">""</span>];</span><br><span class="line"><span class="hljs-built_in">Array</span>.prototype.getIndex = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> value  <span class="hljs-keyword">of</span> data)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">1</span></span><br><span class="line"><span class="hljs-comment">2</span></span><br><span class="line"><span class="hljs-comment">undefined</span></span><br><span class="line"><span class="hljs-comment">NaN</span></span><br><span class="line"><span class="hljs-comment">null</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>for of 를 배열이 아닌 문자 단위로도 순회 가능하다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> str = <span class="hljs-string">'hello world'</span>;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> value <span class="hljs-keyword">of</span> str)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">h</span></span><br><span class="line"><span class="hljs-comment">e</span></span><br><span class="line"><span class="hljs-comment">l</span></span><br><span class="line"><span class="hljs-comment">l</span></span><br><span class="line"><span class="hljs-comment">o</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">w</span></span><br><span class="line"><span class="hljs-comment">o</span></span><br><span class="line"><span class="hljs-comment">r</span></span><br><span class="line"><span class="hljs-comment">l</span></span><br><span class="line"><span class="hljs-comment">d</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="spread-operator-…"><a href="#spread-operator-…" class="headerlink" title="spread operator(…)"></a>spread operator(…)</h2><blockquote>
+<p>spread operator, 펼침 연산자</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> newData = [...pre];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(newData); <span class="hljs-comment">// [ 'apple', 'orange', 100 ]</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(pre === newData); <span class="hljs-comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>spread operator의 활용<blockquote>
+<p>배열 합치기가 쉽다.</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> pre = [<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-string">'hello'</span>, <span class="hljs-literal">undefined</span>];</span><br><span class="line"><span class="hljs-keyword">let</span> newData = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, ...pre, <span class="hljs-number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(newData); <span class="hljs-comment">// [ 0, 1, 2, 3, 100, 200, 'hello', undefined, 4 ]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>spread operator 파라미터로 사용하기<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a, b, c</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.log(a + b + c);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> array = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];</span><br><span class="line">sum(...array); <span class="hljs-comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="from-메서드"><a href="#from-메서드" class="headerlink" title="from 메서드"></a>from 메서드</h2>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/클로저/">클로저</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/16/ts_md/ts1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">typescript chapter3. 변수 선언과 기본타입</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/17/intelliJ/intelliJ/">
+                <span class="level-item">intelliJ 사용법</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2020/01/14/es6_md/es6_summary_3/';
+        this.page.identifier = '2020/01/14/es6_md/es6_summary_3/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right is-sticky">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#ES6-속성-정리">
+        <span class="has-mr-6">1</span>
+        <span>ES6 속성 정리</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#let-const">
+        <span class="has-mr-6">1.1</span>
+        <span>let, const</span>
+        </a></li><li>
+        <a class="is-flex" href="#es6-string에-새로운-메서드들">
+        <span class="has-mr-6">1.2</span>
+        <span>es6 string에 새로운 메서드들</span>
+        </a></li><li>
+        <a class="is-flex" href="#for-in-과-for-of">
+        <span class="has-mr-6">1.3</span>
+        <span>for in 과 for of</span>
+        </a></li><li>
+        <a class="is-flex" href="#spread-operator-…">
+        <span class="has-mr-6">1.4</span>
+        <span>spread operator(…)</span>
+        </a></li><li>
+        <a class="is-flex" href="#from-메서드">
+        <span class="has-mr-6">1.5</span>
+        <span>from 메서드</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/ES6/">
+            <span class="level-start">
+                <span class="level-item">ES6</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hexo/">
+            <span class="level-start">
+                <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/intelliJ/">
+            <span class="level-start">
+                <span class="level-item">intelliJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트-react/">
+            <span class="level-start">
+                <span class="level-item">리액트 / react</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/타입스크립트/">
+            <span class="level-start">
+                <span class="level-item">타입스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="ES6 Summary 2 - 클로저" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>

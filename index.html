@@ -143,6 +143,157 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-15T15:00:00.000Z">2020-03-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/타입스크립트/">타입스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1340 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/16/ts_md/ts1/">typescript chapter3. 변수 선언과 기본타입</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="3-1-1-var-선언자의-특징"><a href="#3-1-1-var-선언자의-특징" class="headerlink" title="3.1.1 var 선언자의 특징"></a>3.1.1 var 선언자의 특징</h3><blockquote>
+<ul>
+<li>호이스팅</li>
+<li>블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)</li>
+</ul>
+</blockquote>
+<ol>
+<li>호이스팅<br>변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것</li>
+</ol>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/16/ts_md/ts1/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-13T15:00:00.000Z">2020-01-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 372 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/14/es6_md/es6_summary_3/">ES6 Summary 2 - 클로저</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="ES6-속성-정리"><a href="#ES6-속성-정리" class="headerlink" title="ES6 속성 정리"></a>ES6 속성 정리</h1><blockquote>
+<p>본 정리본은 인프런의<br><a href="https://www.inflearn.com/course/es6-%EA%B0%95%EC%A2%8C-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/dashboard" target="_blank" rel="noopener">모던 자바스크립트(javascript) 개발을 위한 ES6 강좌</a><br>를 바탕으로 작성되었습니다.</p>
+</blockquote>
+<h2 id="let-const"><a href="#let-const" class="headerlink" title="let, const"></a>let, const</h2><blockquote>
+<p>const라고 해서 값 변경이 불가능하다는 것은 아니다.</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];</span><br><span class="line">array.push(<span class="hljs-number">6</span>); <span class="hljs-comment">//가능할까?</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(array);</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">[ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="es6-string에-새로운-메서드들"><a href="#es6-string에-새로운-메서드들" class="headerlink" title="es6 string에 새로운 메서드들"></a>es6 string에 새로운 메서드들</h2><ul>
+<li>특정 문자열의 포함 여부를 알려주는 메서드들<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> str = <span class="hljs-string">'hello world ^^'</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(str.startsWith(<span class="hljs-string">'hello'</span>)); <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(str.endsWith(<span class="hljs-string">'hello'</span>)); <span class="hljs-comment">// false</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(str.includes(<span class="hljs-string">'world'</span>)); <span class="hljs-comment">// true</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="for-in-과-for-of"><a href="#for-in-과-for-of" class="headerlink" title="for in 과 for of"></a>for in 과 for of</h2><ul>
+<li>for in<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> data = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">""</span>];</span><br><span class="line"><span class="hljs-built_in">Array</span>.prototype.getIndex = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> idx  <span class="hljs-keyword">in</span> data)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(data[idx]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">1</span></span><br><span class="line"><span class="hljs-comment">2</span></span><br><span class="line"><span class="hljs-comment">undefined</span></span><br><span class="line"><span class="hljs-comment">NaN</span></span><br><span class="line"><span class="hljs-comment">null</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">[Function]</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>for in의 문제점<br>자기가 가지고 있는 객체 이외의 상위의 프로토타입 객체가 나오게 되는 의도치 못한 결과가 발생할 수 있다.<br>그래서 <strong>array 문에서는 for in을 안 쓰는 것을 권장</strong></p>
+</blockquote>
+<ul>
+<li>for of<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> data = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">""</span>];</span><br><span class="line"><span class="hljs-built_in">Array</span>.prototype.getIndex = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> value  <span class="hljs-keyword">of</span> data)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">1</span></span><br><span class="line"><span class="hljs-comment">2</span></span><br><span class="line"><span class="hljs-comment">undefined</span></span><br><span class="line"><span class="hljs-comment">NaN</span></span><br><span class="line"><span class="hljs-comment">null</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>for of 를 배열이 아닌 문자 단위로도 순회 가능하다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> str = <span class="hljs-string">'hello world'</span>;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> value <span class="hljs-keyword">of</span> str)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">h</span></span><br><span class="line"><span class="hljs-comment">e</span></span><br><span class="line"><span class="hljs-comment">l</span></span><br><span class="line"><span class="hljs-comment">l</span></span><br><span class="line"><span class="hljs-comment">o</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">w</span></span><br><span class="line"><span class="hljs-comment">o</span></span><br><span class="line"><span class="hljs-comment">r</span></span><br><span class="line"><span class="hljs-comment">l</span></span><br><span class="line"><span class="hljs-comment">d</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="spread-operator-…"><a href="#spread-operator-…" class="headerlink" title="spread operator(…)"></a>spread operator(…)</h2><blockquote>
+<p>spread operator, 펼침 연산자</p>
+</blockquote>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> newData = [...pre];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(newData); <span class="hljs-comment">// [ 'apple', 'orange', 100 ]</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(pre === newData); <span class="hljs-comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>spread operator의 활용<blockquote>
+<p>배열 합치기가 쉽다.</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> pre = [<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-string">'hello'</span>, <span class="hljs-literal">undefined</span>];</span><br><span class="line"><span class="hljs-keyword">let</span> newData = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, ...pre, <span class="hljs-number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(newData); <span class="hljs-comment">// [ 0, 1, 2, 3, 100, 200, 'hello', undefined, 4 ]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>spread operator 파라미터로 사용하기<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a, b, c</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.log(a + b + c);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> array = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];</span><br><span class="line">sum(...array); <span class="hljs-comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="from-메서드"><a href="#from-메서드" class="headerlink" title="from 메서드"></a>from 메서드</h2>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-12-16T15:00:00.000Z">2019-12-17</time>
                 
                 <div class="level-item">
@@ -570,117 +721,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-07T15:00:00.000Z">2019-10-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/SASS-SCSS/">SASS/SCSS</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 764 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/08/scss_md/intro/">vscode 에디터 단축키, 사용자 설정하기</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="vscode-에디터의-기본-단축키"><a href="#vscode-에디터의-기본-단축키" class="headerlink" title="vscode 에디터의 기본 단축키"></a>vscode 에디터의 기본 단축키</h2><ul>
-<li>alt 를 누른상태에서 줄을 클릭하면 여러줄이 클릭된다.(여러줄 동시 수정할 때 유용)</li>
-<li>커서가 깜빡이는 상태에서 ctrl + c를 누르면 커서가 있는 그 줄 전체 내용이 복사된다.</li>
-<li>커서가 깜박이는 상태에서 alt키를 누르고 위아래 방향키를 누르면 그 줄이 위 아래로 이동한다.</li>
-<li>ctrl + /를 누르면 주석이 된다.</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/08/scss_md/intro/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-28T15:00:00.000Z">2019-08-29</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/러닝자바스크립트/">러닝자바스크립트</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    19 minutes read (About 2837 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/08/29/es6_md/chapter21/">chapter21. 객체 프로퍼티 설정과 프락시</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>객체 프로퍼티에는 <strong>데이터 프로퍼티</strong>와 <strong>접근자 프로퍼티</strong> 두 가지가 있다.<br>접근자 프로퍼티는 메서드와 비슷한데, 1. <strong>getter</strong>와 <strong>setter</strong> 두 가지 함수로 구성된 점과 2.접근했을때 함수라기보단 데이터 프로퍼티와 비슷하게 동작한다는 점에서 조금 다르다. 이런 점에서 접근자 프로퍼티를 <strong>동적 프로퍼티</strong>라고 부르기도 한다.</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/08/29/es6_md/chapter21/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -698,6 +738,8 @@
             <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
             
         </ul>
     </nav>
@@ -740,7 +782,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        30
+                        32
                     </p>
                 </div>
             </div>
@@ -750,7 +792,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        7
                     </p>
                 </div>
             </div>
@@ -839,7 +881,7 @@
                 <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/SASS-SCSS/">
@@ -881,6 +923,14 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/타입스크립트/">
+            <span class="level-start">
+                <span class="level-item">타입스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
         </a></li>
             </ul>
         </div>
@@ -893,7 +943,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 10px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
 </div>
 
@@ -907,6 +957,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/16/ts_md/ts1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="typescript chapter3. 변수 선언과 기본타입">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T15:00:00.000Z">2020-03-16</time></div>
+                    <a href="/2020/03/16/ts_md/ts1/" class="has-link-black-ter is-size-6">typescript chapter3. 변수 선언과 기본타입</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/타입스크립트/">타입스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/14/es6_md/es6_summary_3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6 Summary 2 - 클로저">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T15:00:00.000Z">2020-01-14</time></div>
+                    <a href="/2020/01/14/es6_md/es6_summary_3/" class="has-link-black-ter is-size-6">ES6 Summary 2 - 클로저</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -965,44 +1053,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/21/hexo_md/hexo2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo icarus 테마 설치 및 커스텀하기">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T15:00:00.000Z">2019-10-21</time></div>
-                    <a href="/2019/10/21/hexo_md/hexo2/" class="has-link-black-ter is-size-6">hexo icarus 테마 설치 및 커스텀하기</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/hexo/">hexo</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/20/react_md/react_chap3/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react chapter3. 컴포넌트 (리액트를 다루는 기술)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T15:00:00.000Z">2019-10-20</time></div>
-                    <a href="/2019/10/20/react_md/react_chap3/" class="has-link-black-ter is-size-6">react chapter3. 컴포넌트 (리액트를 다루는 기술)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/리액트-react/">리액트 / react</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1014,6 +1064,28 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/12/">
@@ -1202,7 +1274,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/클로저/">
                         <span class="tag">클로저</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1238,6 +1310,44 @@
         
         <article class="media">
             
+            <a href="/2020/03/16/ts_md/ts1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="typescript chapter3. 변수 선언과 기본타입">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T15:00:00.000Z">2020-03-16</time></div>
+                    <a href="/2020/03/16/ts_md/ts1/" class="has-link-black-ter is-size-6">typescript chapter3. 변수 선언과 기본타입</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/타입스크립트/">타입스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/14/es6_md/es6_summary_3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6 Summary 2 - 클로저">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T15:00:00.000Z">2020-01-14</time></div>
+                    <a href="/2020/01/14/es6_md/es6_summary_3/" class="has-link-black-ter is-size-6">ES6 Summary 2 - 클로저</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/17/intelliJ/intelliJ/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="intelliJ 사용법">
@@ -1293,44 +1403,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/10/21/hexo_md/hexo2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo icarus 테마 설치 및 커스텀하기">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-20T15:00:00.000Z">2019-10-21</time></div>
-                    <a href="/2019/10/21/hexo_md/hexo2/" class="has-link-black-ter is-size-6">hexo icarus 테마 설치 및 커스텀하기</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/hexo/">hexo</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/10/20/react_md/react_chap3/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="react chapter3. 컴포넌트 (리액트를 다루는 기술)">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-19T15:00:00.000Z">2019-10-20</time></div>
-                    <a href="/2019/10/20/react_md/react_chap3/" class="has-link-black-ter is-size-6">react chapter3. 컴포넌트 (리액트를 다루는 기술)</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/리액트-react/">리액트 / react</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1342,6 +1414,28 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/12/">
@@ -1530,7 +1624,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/클로저/">
                         <span class="tag">클로저</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
