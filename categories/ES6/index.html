@@ -3,7 +3,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>Categoria: ES6 - Hexo</title>
+<title>Category: ES6 - Hexo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -140,7 +140,7 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Categorias</a></li>
+            <li><a href="/categories">Categories</a></li>
             
             <li class="is-active"><a href="#" aria-current="page">ES6</a></li>
         </ul>
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 372 words)
+                    2 minutes read (About 373 words)
                 </span>
                 
                 
@@ -180,53 +180,16 @@
             <h1 id="ES6-속성-정리"><a href="#ES6-속성-정리" class="headerlink" title="ES6 속성 정리"></a>ES6 속성 정리</h1><blockquote>
 <p>본 정리본은 인프런의<br><a href="https://www.inflearn.com/course/es6-%EA%B0%95%EC%A2%8C-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/dashboard" target="_blank" rel="noopener">모던 자바스크립트(javascript) 개발을 위한 ES6 강좌</a><br>를 바탕으로 작성되었습니다.</p>
 </blockquote>
-<h2 id="let-const"><a href="#let-const" class="headerlink" title="let, const"></a>let, const</h2><blockquote>
-<p>const라고 해서 값 변경이 불가능하다는 것은 아니다.</p>
-</blockquote>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];</span><br><span class="line">array.push(<span class="hljs-number">6</span>); <span class="hljs-comment">//가능할까?</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(array);</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">[ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="es6-string에-새로운-메서드들"><a href="#es6-string에-새로운-메서드들" class="headerlink" title="es6 string에 새로운 메서드들"></a>es6 string에 새로운 메서드들</h2><ul>
-<li>특정 문자열의 포함 여부를 알려주는 메서드들<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> str = <span class="hljs-string">'hello world ^^'</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(str.startsWith(<span class="hljs-string">'hello'</span>)); <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(str.endsWith(<span class="hljs-string">'hello'</span>)); <span class="hljs-comment">// false</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(str.includes(<span class="hljs-string">'world'</span>)); <span class="hljs-comment">// true</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="for-in-과-for-of"><a href="#for-in-과-for-of" class="headerlink" title="for in 과 for of"></a>for in 과 for of</h2><ul>
-<li>for in<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> data = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">""</span>];</span><br><span class="line"><span class="hljs-built_in">Array</span>.prototype.getIndex = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> idx  <span class="hljs-keyword">in</span> data)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(data[idx]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">1</span></span><br><span class="line"><span class="hljs-comment">2</span></span><br><span class="line"><span class="hljs-comment">undefined</span></span><br><span class="line"><span class="hljs-comment">NaN</span></span><br><span class="line"><span class="hljs-comment">null</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">[Function]</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<blockquote>
-<p>for in의 문제점<br>자기가 가지고 있는 객체 이외의 상위의 프로토타입 객체가 나오게 되는 의도치 못한 결과가 발생할 수 있다.<br>그래서 <strong>array 문에서는 for in을 안 쓰는 것을 권장</strong></p>
-</blockquote>
-<ul>
-<li>for of<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> data = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">""</span>];</span><br><span class="line"><span class="hljs-built_in">Array</span>.prototype.getIndex = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> value  <span class="hljs-keyword">of</span> data)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">1</span></span><br><span class="line"><span class="hljs-comment">2</span></span><br><span class="line"><span class="hljs-comment">undefined</span></span><br><span class="line"><span class="hljs-comment">NaN</span></span><br><span class="line"><span class="hljs-comment">null</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>for of 를 배열이 아닌 문자 단위로도 순회 가능하다.</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> str = <span class="hljs-string">'hello world'</span>;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> value <span class="hljs-keyword">of</span> str)&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">h</span></span><br><span class="line"><span class="hljs-comment">e</span></span><br><span class="line"><span class="hljs-comment">l</span></span><br><span class="line"><span class="hljs-comment">l</span></span><br><span class="line"><span class="hljs-comment">o</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">w</span></span><br><span class="line"><span class="hljs-comment">o</span></span><br><span class="line"><span class="hljs-comment">r</span></span><br><span class="line"><span class="hljs-comment">l</span></span><br><span class="line"><span class="hljs-comment">d</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="spread-operator-…"><a href="#spread-operator-…" class="headerlink" title="spread operator(…)"></a>spread operator(…)</h2><blockquote>
-<p>spread operator, 펼침 연산자</p>
-</blockquote>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> newData = [...pre];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(newData); <span class="hljs-comment">// [ 'apple', 'orange', 100 ]</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(pre === newData); <span class="hljs-comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>spread operator의 활용<blockquote>
-<p>배열 합치기가 쉽다.</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> pre = [<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-string">'hello'</span>, <span class="hljs-literal">undefined</span>];</span><br><span class="line"><span class="hljs-keyword">let</span> newData = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, ...pre, <span class="hljs-number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(newData); <span class="hljs-comment">// [ 0, 1, 2, 3, 100, 200, 'hello', undefined, 4 ]</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>spread operator 파라미터로 사용하기<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a, b, c</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.log(a + b + c);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> array = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];</span><br><span class="line">sum(...array); <span class="hljs-comment">// 6</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="from-메서드"><a href="#from-메서드" class="headerlink" title="from 메서드"></a>from 메서드</h2>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/01/14/es6_md/es6_summary_3/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -380,7 +343,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         32
@@ -390,7 +353,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         7
@@ -400,7 +363,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <p class="title has-text-weight-normal">
                         17
@@ -410,7 +373,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/leeeso93" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -473,7 +436,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -542,7 +505,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nube de etiquetas
+            Tag Cloud
         </h3>
         <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
@@ -556,7 +519,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -662,7 +625,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -763,7 +726,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -906,7 +869,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -1012,7 +975,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1113,7 +1076,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -1411,10 +1374,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
