@@ -16,7 +16,7 @@
 <meta property="og:description" content="변수 선언var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2020-03-16T16:50:26.680Z">
+<meta property="og:updated_time" content="2020-03-17T16:40:15.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="typescript chapter3. 변수 선언과 기본타입">
 <meta name="twitter:description" content="변수 선언var 선언자의 특징  호이스팅 블록 레벨 스코프가 지원되지 않음(함수 레벨 스코프)    호이스팅변수가 선언된 위치에 관계없이 스코프 최상위로 끌어올림되어 같은 스코프라면 어디서든 호출 할 수 있는 것">
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    19 minutes read (About 2780 words)
+                    30 minutes read (About 4436 words)
                 </span>
                 
                 
@@ -419,6 +419,100 @@
 <li>Symbol() 함수의 반환값은 별다른 값을 취하지 않아도 그 자체로 식별자가 된다.</li>
 <li>Symbol()함수로 초기화된 변수는 객체 속성에 대한 유일한 식별자로서 값을 할당하는 용도로 사용한다.</li>
 </ul>
+<h3 id="enum-타입"><a href="#enum-타입" class="headerlink" title="enum 타입"></a>enum 타입</h3><blockquote>
+<p>enum 타입은 es6에서 제안된 타입으로 컴파일 시간에 평가되며, 타입 계층도에 따르면 number 타입의 하위타입으로 , 컴파일 후에는 객체 타입이 된다.<br>명명된 숫자 상수의 집합을 정의할때 사용한다.<br>enum 타입은 숫자 상수를 기억하기 좋은 키워드로 변환해서 사용가능하다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">enum</span> Day &#123;속성 : 값, 속성 : 값&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 기억하기 좋게</span></span><br><span class="line"><span class="hljs-keyword">enum</span> WeekDay &#123;Mon,Tue,Wed,Thu&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>각 속성은 상수와 연결되며 <strong>첫 번째 속성의 인덱스는 0부터 시작한다. 또한 특별히 명시하지 않는 이상 순차적으로 1씩 증가한다.</strong> 초기값을 할당할 수도 있는데 기본적으로 숫자 할당이 가능하다.</li>
+<li>enum은 const를 붙여서 상수 enum으로도 선언할 수 있다. 이때 상수 enum은 읽기 전용이 된다.</li>
+</ul>
+<figure class="highlight ts hljs"><figcaption><span>const를 붙인 enum</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">enum</span> WeekDay &#123;</span><br><span class="line">  Mon = <span class="hljs-number">1</span>,</span><br><span class="line">  Tue = <span class="hljs-number">2</span>,</span><br><span class="line">  Wed = <span class="hljs-number">3</span>,</span><br><span class="line">  Thu = <span class="hljs-number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 읽기 전용으로 설정하면 인덱스 접근 표현식에 문자열 리터럴만 허용한다.</p>
+<figure class="highlight ts hljs"><figcaption><span>const를 붙인 enum는 인덱스 접근에 문자열만 허용한다.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> day = WeekDay[<span class="hljs-string">"Mon"</span>]; <span class="hljs-comment">// 문자열 리터럴 허용 가능</span></span><br><span class="line"><span class="hljs-keyword">let</span> day2 = WeekDay[weekDay.Mon]; <span class="hljs-comment">//불가능</span></span><br><span class="line"><span class="hljs-keyword">let</span> day3 = WeekDay[<span class="hljs-number">1</span>]; <span class="hljs-comment">// 불가능</span></span><br><span class="line"><span class="hljs-keyword">let</span> day4 = WekkDay; <span class="hljs-comment">// const enum을 변수에 직접 할당 불가능</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>문자열 enum</strong>이 추가되어 초기값으로 문자열 할당 가능하다.<br>문자열로 초기값을 설정하면 연산식 할당은 할 수 없다.</li>
+</ul>
+<figure class="highlight ts hljs"><figcaption><span>문자열 enum</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">enum</span> WeekDay3 &#123;</span><br><span class="line">  Mon = <span class="hljs-string">"Monday"</span>,</span><br><span class="line">  Tue = <span class="hljs-string">"Tuesday"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// 연산식 할당 불가</span></span><br><span class="line"><span class="hljs-keyword">enum</span> WeekDay3 &#123;</span><br><span class="line">  Mon = <span class="hljs-number">1</span> + <span class="hljs-number">2</span>,</span><br><span class="line">  Tue = <span class="hljs-string">"Tues"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// Computed values are not permitted in an enum with string valued members</span></span><br><span class="line"><span class="hljs-comment">// 계산된 값은 문자열 값 멤버가 포함된 열거형에 허용되지 않습니다.</span></span><br></pre></td></tr></table></figure>
+
+<p>// TODO enum 타입 정리</p>
+<h2 id="타입스크립트의-내장타입"><a href="#타입스크립트의-내장타입" class="headerlink" title="타입스크립트의 내장타입"></a>타입스크립트의 내장타입</h2><blockquote>
+<p>타입스크립트에서만 지원되는 내장타입을 알아본다.</p>
+</blockquote>
+<h3 id="any-타입"><a href="#any-타입" class="headerlink" title="any 타입"></a>any 타입</h3><blockquote>
+<p>any 타입은 어떤 타입의 값도 받아들일수 있으며 최소한의 타입 검사만 수행한다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><figcaption><span>any 타입 예제</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> basket: <span class="hljs-built_in">any</span> = <span class="hljs-number">10</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> vList: <span class="hljs-built_in">any</span>[] = [<span class="hljs-number">1</span>, <span class="hljs-literal">false</span>, <span class="hljs-string">"happy"</span>]; <span class="hljs-comment">// any[] : 배열의 타입이 다양해서 한 가지 타입으로 고정할 수 없을 때 사용</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>any는 모든 타입의 가장 최상위 타입이므로 자바스크립트의 모든 값을 할당 받을수 있다.</li>
+<li>any 타입을 선언하면 명시적으로 타입을 선언한거고, any 타입을 생략하면 타입이 없는 것</li>
+</ul>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> a; <span class="hljs-comment">// let a : any;와 같음</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>any 타입으로 선언된 변수는 최소한의 정적 타입 검사만 수행한다.</li>
+</ul>
+<figure class="highlight ts hljs"><figcaption><span>타입이 선언된 경우와 타입이 없는 경우</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> <span class="hljs-built_in">number</span> = <span class="hljs-number">50</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> number2: <span class="hljs-built_in">any</span> = <span class="hljs-number">50</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">number</span>.toFixed(<span class="hljs-number">1</span>); <span class="hljs-comment">// 가능</span></span><br><span class="line">number2.toFixed(<span class="hljs-number">1</span>); <span class="hljs-comment">// 가능</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">number</span>.notExitMethod(); <span class="hljs-comment">// Property 'notExitMethod' does not exist on type 'number'.</span></span><br><span class="line">number2.notExitMethod();</span><br></pre></td></tr></table></figure>
+
+<p>선언되지 않은 어떤 메서드를 호출할 때 타입을 선언하지 않으면 오류를 발생시킴</p>
+<h3 id="object-타입"><a href="#object-타입" class="headerlink" title="object 타입"></a>object 타입</h3><blockquote>
+<p>object 타입은 any와 비슷하게 타입 구분없이 값을 할당할 수 있지만 차이점이 있다.<br>any 타입은 런타임시 속성의 유뮤를 검사한다.<br>object 타입은 컴파일 시간에 속성의 유무를 검사한다.</p>
+</blockquote>
+<p>따라서, object 타입에 변수에 숫자를 할당해도 컴파일 시에 숫자 메서드를 인식하지 못하므로 컴파일 에러를 발생시킨다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> number2: <span class="hljs-built_in">any</span> = <span class="hljs-number">40</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> number3: <span class="hljs-built_in">Object</span> = <span class="hljs-number">40</span>;</span><br><span class="line"></span><br><span class="line">number2.toFixed(<span class="hljs-number">1</span>);</span><br><span class="line">number3.toFixed(<span class="hljs-number">1</span>); <span class="hljs-comment">// Property 'toFixed' does not exist on type 'Object'.</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> number3); <span class="hljs-comment">// number</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="nolmplicaitAny-옵션"><a href="#nolmplicaitAny-옵션" class="headerlink" title="nolmplicaitAny 옵션"></a>nolmplicaitAny 옵션</h3><blockquote>
+<p>any 타입을 반드시 지정해야 할 때</p>
+</blockquote>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//  tsconfig.json</span><br><span class="line">&#123;</span><br><span class="line">  "compilerOptions" : &#123;</span><br><span class="line">    "noImplicitAny" : true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 또는 <span class="hljs-built_in">cmd</span>에서</span><br><span class="line">tsc --noImplicitAny true</span><br></pre></td></tr></table></figure>
+
+<h3 id="배열-타입과-제네릭-배열-타입"><a href="#배열-타입과-제네릭-배열-타입" class="headerlink" title="배열 타입과 제네릭 배열 타입"></a>배열 타입과 제네릭 배열 타입</h3><blockquote>
+<p>배열은 <strong>배열타입</strong>과 <strong>제네릭 배열 타입</strong>으로 나뉜다.</p>
+</blockquote>
+<ul>
+<li>배열 타입<br>요소 타입에 []를 붙여서 선언한다. string,number,boolean, class, interface 모두 가능하다.</li>
+</ul>
+<figure class="highlight ts hljs"><figcaption><span>배열 타입</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> myVar: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];</span><br></pre></td></tr></table></figure>
+
+<p>any[]타입으로 지정하면 어떤 요소든 배열에 추가 가능하다. 타입을 제약하고 싶을때는 유니언 타입을 이용해 선언한다.<br>(유니언타입 : 2개 이상의 타입을 하나의 타입으로 정의)</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> myVar: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">boolean</span> = [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-literal">true</span>];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>제네릭 배열<br>Array[T] 형태로 선언한다. T는 타입을 의미한다.</li>
+</ul>
+<figure class="highlight ts hljs"><figcaption><span>제네릭 배열 타입</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> myVar: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">number</span>&gt; = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</span><br></pre></td></tr></table></figure>
+
+<p>마찬가지로 유니언 타입으로 배열의 타입을 제약 가능하다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> myVar: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">boolean</span>&gt; = [<span class="hljs-number">1</span>, <span class="hljs-string">"1"</span>, <span class="hljs-literal">true</span>];</span><br></pre></td></tr></table></figure>
+
+<p>내장 타입 외에 객체 타입도 받을 수 있다.</p>
+<figure class="highlight ts hljs"><figcaption><span>객체 타입</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> nums: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">string</span>&gt; = [<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">"one"</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">"two"</span>];</span><br><span class="line"><span class="hljs-built_in">console</span>.log(nums[<span class="hljs-number">0</span>]()); <span class="hljs-comment">// one</span></span><br></pre></td></tr></table></figure>
+
+<p>배열타입이건 제네릭 배열 타입이건 javascript로 컴파일 시에는 타입이 제거되므로 동일한 결과를 가져옴</p>
+<h3 id="튜플-타입-tuple-type"><a href="#튜플-타입-tuple-type" class="headerlink" title="튜플 타입(tuple type)"></a>튜플 타입(tuple type)</h3><blockquote>
+<p>배열 요소에 대응하는 n개에 대한 타입이다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><figcaption><span>tuple</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//배열 : 요소 개수에 제한이 없다.</span></span><br><span class="line"><span class="hljs-keyword">let</span> x: <span class="hljs-built_in">string</span>[] = [<span class="hljs-string">"h"</span>, <span class="hljs-string">"b"</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 튜플 : 선언된 타입수와 할당된 배열 요소 수가 정확히 일치해야한다.</span></span><br><span class="line"><span class="hljs-keyword">let</span> x: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">string</span>] = [<span class="hljs-number">1</span>, <span class="hljs-string">"h"</span>];</span><br></pre></td></tr></table></figure>
+
+<p>타입스크립트 2.7 이후 <strong>튜플 타입에 따라 할당된 배열의 요소 수가 고정</strong>되었다.</p>
+<h3 id="void-null-undefined"><a href="#void-null-undefined" class="headerlink" title="void, null,undefined"></a>void, null,undefined</h3><blockquote>
+<p>void는 함수의 반환 값이 없을 때 지정하는 타입으로 null, undefined만 할당 할 수 있다.<br>void는 null, undefined의 상위 타입이다.<br>반환값이 없을 때 이를 명시적으로 나타내기 위헤 void를 지정한다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><figcaption><span>viod</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hello</span>(<span class="hljs-params"></span>): <span class="hljs-title">void</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">//리턴값이 없음</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(hello()); <span class="hljs-comment">// undefined</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> hello()); <span class="hljs-comment">// "undefined"</span></span><br></pre></td></tr></table></figure>
+
+<p>hello() 의 반환 타입은 void 지만 리턴값이 없으므로 undefined로 할당된다.<br>void 타입은 undefined나 null만 할당할 수 있으므로 유용한 타입이 아니다.</p>
+<h3 id="null-vs-undefined"><a href="#null-vs-undefined" class="headerlink" title="null vs undefined"></a>null vs undefined</h3><blockquote>
+<p>undefined는 undefined 타입이며 아직 초기화 되지 않았음을 의미한다.<br>null은 값이기 때문에 null을 할당하고 나면 object 타입이 된다.<br>undefined와 null 모두 값이 없다는 점에서는 같다. 다만 undefined는 선언은 했으나 값이 할당되지 않는 경우이고,<br>null은 값을 할당했으나 그 값이 없는 경우이다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><figcaption><span>undefined와 null</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> testUndefined;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(testUndefined, <span class="hljs-keyword">typeof</span> testUndefined); <span class="hljs-comment">// undefined 'undefined'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> testUndefined2: <span class="hljs-literal">undefined</span> = <span class="hljs-literal">undefined</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(testUndefined2, <span class="hljs-keyword">typeof</span> testUndefined2); <span class="hljs-comment">// undefined 'undefined'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> testUndefined3: <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(testUndefined3, <span class="hljs-keyword">typeof</span> testUndefined3); <span class="hljs-comment">// null 'object'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> === <span class="hljs-literal">undefined</span>); <span class="hljs-comment">// 값과 타입 모두 비교하므로 false</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span>); <span class="hljs-comment">// 값만 비교하므로 둘다 값이 없으므로 true</span></span><br></pre></td></tr></table></figure>
+
+<p>값이 없음을 나타내기 위해서 null을 할당하는것인 권장하지 않는다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> empty; <span class="hljs-comment">// undefined</span></span><br><span class="line"><span class="hljs-keyword">let</span> empty = <span class="hljs-literal">null</span>; <span class="hljs-comment">// 권장하지 않음</span></span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -538,6 +632,42 @@
         <a class="is-flex" href="#symbol-타입">
         <span class="has-mr-6">3.2</span>
         <span>symbol 타입</span>
+        </a></li><li>
+        <a class="is-flex" href="#enum-타입">
+        <span class="has-mr-6">3.3</span>
+        <span>enum 타입</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#타입스크립트의-내장타입">
+        <span class="has-mr-6">4</span>
+        <span>타입스크립트의 내장타입</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#any-타입">
+        <span class="has-mr-6">4.1</span>
+        <span>any 타입</span>
+        </a></li><li>
+        <a class="is-flex" href="#object-타입">
+        <span class="has-mr-6">4.2</span>
+        <span>object 타입</span>
+        </a></li><li>
+        <a class="is-flex" href="#nolmplicaitAny-옵션">
+        <span class="has-mr-6">4.3</span>
+        <span>nolmplicaitAny 옵션</span>
+        </a></li><li>
+        <a class="is-flex" href="#배열-타입과-제네릭-배열-타입">
+        <span class="has-mr-6">4.4</span>
+        <span>배열 타입과 제네릭 배열 타입</span>
+        </a></li><li>
+        <a class="is-flex" href="#튜플-타입-tuple-type">
+        <span class="has-mr-6">4.5</span>
+        <span>튜플 타입(tuple type)</span>
+        </a></li><li>
+        <a class="is-flex" href="#void-null-undefined">
+        <span class="has-mr-6">4.6</span>
+        <span>void, null,undefined</span>
+        </a></li><li>
+        <a class="is-flex" href="#null-vs-undefined">
+        <span class="has-mr-6">4.7</span>
+        <span>null vs undefined</span>
         </a></li></ul></li></ul>
         </div>
     </div>
