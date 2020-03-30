@@ -180,13 +180,6 @@
             <h2 id="자바스크립트-함수"><a href="#자바스크립트-함수" class="headerlink" title="자바스크립트 함수"></a>자바스크립트 함수</h2><blockquote>
 <p>타입스크립트는 함수의 매개변수나 반환값에 타입을 지정해 타입 안정성을 강화할 수 있다.<br>자바스크립트 함수는 기명 함수와 익명함수로 나뉜다. </p>
 </blockquote>
-<p>기명함수는 호출 될 때 호이스팅이 발생한다. 함수를 선언하기 전에도 선언한 후에도 호출할 수 있다.</p>
-<figure class="highlight ts hljs"><figcaption><span>기명함수</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">myFunction(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunctiion</span>(<span class="hljs-params">x,y</span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">myFunction(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);</span><br></pre></td></tr></table></figure>
-
-<p>변수에 익명함수를 할당해 호출하면 익명 함수를 할당 한 뒤에만 함수를 호출 할 수 있다.</p>
-<figure class="highlight ts hljs"><figcaption><span>익명함수</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myFunc(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// Block-scoped variable 'myFunc' used before its declaration.ts(24</span></span><br><span class="line"><span class="hljs-keyword">let</span> myFunc = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) </span>&#123; &#125;</span><br><span class="line">myFunc(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);</span><br></pre></td></tr></table></figure>
-
-<p>let 선언자는 익명 함수를 변수에 할당 한 후에만 호출하게 함</p>
         </div>
         
         
