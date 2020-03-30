@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>typescript chapter6. 함수 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="자바스크립트 함수 타입스크립트는 함수의 매개변수나 반환값에 타입을 지정해 타입 안정성을 강화할 수 있다.자바스크립트 함수는 기명 함수와 익명함수로 나뉜다.   기명함수는 호출 될 때 호이스팅이 발생한다. 함수를 선언하기 전에도 선언한 후에도 호출할 수 있다. 기명함수1234myFunction(1,2);function myFunctiion(x,y)&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript chapter6. 함수">
+<meta property="og:url" content="http://yoursite.com/2020/03/30/ts_md/ts4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="자바스크립트 함수 타입스크립트는 함수의 매개변수나 반환값에 타입을 지정해 타입 안정성을 강화할 수 있다.자바스크립트 함수는 기명 함수와 익명함수로 나뉜다.   기명함수는 호출 될 때 호이스팅이 발생한다. 함수를 선언하기 전에도 선언한 후에도 호출할 수 있다. 기명함수1234myFunction(1,2);function myFunctiion(x,y)&amp;#123;">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2020-03-30T15:43:55.836Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript chapter6. 함수">
+<meta name="twitter:description" content="자바스크립트 함수 타입스크립트는 함수의 매개변수나 반환값에 타입을 지정해 타입 안정성을 강화할 수 있다.자바스크립트 함수는 기명 함수와 익명함수로 나뉜다.   기명함수는 호출 될 때 호이스팅이 발생한다. 함수를 선언하기 전에도 선언한 후에도 호출할 수 있다. 기명함수1234myFunction(1,2);function myFunctiion(x,y)&amp;#123;">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="typescript chapter6. 함수" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-29T15:00:00.000Z">2020-03-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/타입스크립트/">타입스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 minutes read (About 1508 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                typescript chapter6. 함수
+            
+        </h1>
+        <div class="content">
+            <h2 id="자바스크립트-함수"><a href="#자바스크립트-함수" class="headerlink" title="자바스크립트 함수"></a>자바스크립트 함수</h2><blockquote>
+<p>타입스크립트는 함수의 매개변수나 반환값에 타입을 지정해 타입 안정성을 강화할 수 있다.<br>자바스크립트 함수는 기명 함수와 익명함수로 나뉜다. </p>
+</blockquote>
+<p>기명함수는 호출 될 때 호이스팅이 발생한다. 함수를 선언하기 전에도 선언한 후에도 호출할 수 있다.</p>
+<figure class="highlight ts hljs"><figcaption><span>기명함수</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">myFunction(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunctiion</span>(<span class="hljs-params">x,y</span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">myFunction(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p>변수에 익명함수를 할당해 호출하면 익명 함수를 할당 한 뒤에만 함수를 호출 할 수 있다.</p>
+<figure class="highlight ts hljs"><figcaption><span>익명함수</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myFunc(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// Block-scoped variable 'myFunc' used before its declaration.ts(24</span></span><br><span class="line"><span class="hljs-keyword">let</span> myFunc = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) </span>&#123; &#125;</span><br><span class="line">myFunc(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p>let 선언자는 익명 함수를 변수에 할당 한 후에만 호출하게 함</p>
+<a id="more"></a>
+
+<h3 id="자바스크립트-함수의-불안정성"><a href="#자바스크립트-함수의-불안정성" class="headerlink" title="자바스크립트 함수의 불안정성"></a>자바스크립트 함수의 불안정성</h3><blockquote>
+<p>자바스크립트 - 느슨한 타입 언어 , 프로그램이 실행될 때 동적으로 타입을 할당, 타입 추론, 타입이 없어 브라우저 환경에서 속도가 빠름<br>그러나, 타입이 없기 때문에 런타임때 의도치 않은 타입 변환이 일어날 수 있다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abc</span>(<span class="hljs-params">str</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> str + <span class="hljs-number">1000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> result = abc(<span class="hljs-string">'10'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> result, result); <span class="hljs-comment">// string 101000</span></span><br></pre></td></tr></table></figure>
+
+<p>함수의 매개변수와 반환값에 타입을 지정하지 않아 함수에서 연산시 결과를 예측할 수 없음<br>이를 방지하기위해 자바스크립트는 불필요한 매개변수 검증이나 타입 캐스팅을 수행</p>
+<figure class="highlight ts hljs"><figcaption><span>불필요한 타입 캐스팅의 예</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abm</span>(<span class="hljs-params">num</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> num !== <span class="hljs-string">'number'</span>) &#123;</span><br><span class="line">        num = <span class="hljs-built_in">Number</span>(num)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(num) + <span class="hljs-number">1000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> result = <span class="hljs-built_in">Number</span>(abm(<span class="hljs-string">'1000'</span>))</span><br></pre></td></tr></table></figure>
+
+<p>타입이 고정되어 있지 않아 불필요한 코드가 발생함</p>
+<h3 id="타입-안정성을-가진-타입-스크립트-함수"><a href="#타입-안정성을-가진-타입-스크립트-함수" class="headerlink" title="타입 안정성을 가진 타입 스크립트 함수"></a>타입 안정성을 가진 타입 스크립트 함수</h3><blockquote>
+<p>타입스크립트는 함수의 매개변수나 반환 값에 타입을 추가해 타입 안정성을 강화함 , 이러한 과정을 함수에 대한 타입 지정(typing)이라고 함<br>안정성이 보장되므로 타입 검사나 캐스팅 작업이 필요가 없음</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">max</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span> </span>&#123; <span class="hljs-comment">// 매개변수와 반환값에 number 타입 지정</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (x &gt; y) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> x;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> a = max(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);</span><br><span class="line"><span class="hljs-keyword">let</span> b = max(<span class="hljs-string">"abc"</span>, <span class="hljs-string">"ABC"</span>); <span class="hljs-comment">// Argument of type '"abc"' is not assignable to parameter of type 'number'.ts</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">`a=<span class="hljs-subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">`b=<span class="hljs-subst">$&#123;b&#125;</span>`</span>); <span class="hljs-comment">//   Argument of type '"abc"' is not assignable to parameter of type 'number'.ts</span></span><br></pre></td></tr></table></figure>
+
+<p>안전하게 매개변수로 숫자 값만 전달하고, 함수에서 안전하게 숫자 값만 반환함</p>
+<h2 id="매개변수의-활용"><a href="#매개변수의-활용" class="headerlink" title="매개변수의 활용"></a>매개변수의 활용</h2><blockquote>
+<p>ES6에 추가된 <strong>기본 초기화 매개변수</strong>는 함수의 특정 매개변수에 인수가 전달되지 않으면 매개변수에 설정된 초깃값으로 값을 초기화하는 기능이다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><figcaption><span>타입스크립트</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pow</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span> = 2</span>): <span class="hljs-title">number</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> x ** y</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(pow(<span class="hljs-number">10</span>)); <span class="hljs-comment">// 100</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(pow(<span class="hljs-number">10</span>, <span class="hljs-number">3</span>)); <span class="hljs-comment">// 1000</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="나머지-매개변수"><a href="#나머지-매개변수" class="headerlink" title="나머지 매개변수"></a>나머지 매개변수</h3><blockquote>
+<p>나머지 매개변수(rest parameter)는 es6에서 제안된 특징으로 개수가 정해지지 않은 인수를 배열로 받을 수 있는 기능이다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">concat</span>(<span class="hljs-params">a, b, ...rest</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + b + rest.join(<span class="hljs-string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// concat() //Expected at least 2 arguments, but got 0.ts(2555)</span></span><br><span class="line"></span><br><span class="line">concat(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p>나머지 매개변수는 0개 이상 요소를 받을 수 있다.  위 concat 함수를 호출하려면 최소 0개 이상 인수를 전달해야한다.<br>선언된 나머지 매개변수는 타입이 없기 때문에 타입 구분 없이 여러 인수를 전달받아 문자열 합치기를 수행한다.</p>
+<p>만약, 전달받을 요소가 string으로만 받아야 한다면 타입을 제한해야할 필요가 있다.<br>이때 나머지 매개변수에 타입을 추가하면 지정한 타입의 인수만 받을 수 있다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">concat</span>(<span class="hljs-params">a, b, ...rest: <span class="hljs-built_in">string</span>[]</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + b + rest.join(<span class="hljs-string">''</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>나머지 매개변수는 개수가 정해지지 않은 인수를 받기 때문에 문자열 배열 타입인 string[]으로 지정해야한다.</p>
+<p>나머지 매개변수는 ES6에 도입된 특징이므로 위 코드를 ES5로 컴파일하면 나머지 매개변수 기능을 동작시키지 위해<br>함수 내부에 인수(arguments) 객체를 순회하는 for문이 추가된다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 나머지 매개변수 사용시(es6)</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">colors</span>(<span class="hljs-params">a: <span class="hljs-built_in">string</span>, ...rest: <span class="hljs-built_in">string</span>[]</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + <span class="hljs-string">" "</span> + rest.join(<span class="hljs-string">" "</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//es5로 변환시</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">colors</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> rest = [];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> _i = <span class="hljs-number">1</span>; _i &lt; <span class="hljs-built_in">arguments</span>.length; _i++) &#123;</span><br><span class="line">        rest[_i - <span class="hljs-number">1</span>] = <span class="hljs-built_in">arguments</span>[_i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + <span class="hljs-string">" "</span> + rest.join(<span class="hljs-string">" "</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="선택-매개변수"><a href="#선택-매개변수" class="headerlink" title="선택 매개변수"></a>선택 매개변수</h3><blockquote>
+<p>함수 호출 시에는 매개변수를 선언한 만큼 인수를 전달해야한다. 그런데 나머지 매개변수는 개수가 정해져 있지 않아 불필요한 인수가 전달 될 수 있다.<br>따라서 전달할 인수의 개수를 0개 이상 1개 미만으로 제한하려면 <strong>선택 매개변수(optional parameter)</strong>을 이용해야 한다.<br>선택 매개변수는 변수명 뒤에 물음표를 붙이는 식으로 선언한다. 선택 매개변수를 이용하면 지정한 매개변수는 생략 할 수 있다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b?: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(sum(<span class="hljs-number">1</span>)) <span class="hljs-comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<p>매개변수는 2개지만 두번째가 선택 매개변수라서 인수 하나를 생략해 호출하더라도 에러가 발생하지 않는다.<br>다만 선택 매개변수로 지정된 b가 초기화되지 않았으므로 NaN 값이 되어 반환값도 NaN이 된다.</p>
+<p>선택 매개변수와 매개변수의 초깃값 설정은 함께 사용할 수 없다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b?: <span class="hljs-built_in">number</span> = 2</span>): <span class="hljs-title">number</span> </span>&#123; <span class="hljs-comment">//Parameter cannot have question mark and initializer.</span></span><br><span class="line">    <span class="hljs-keyword">return</span> a + b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 내용을 수정하려면 매개변수 b에 대한 undefined 검사를 통해 초깃값을 설정해야한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum2</span>(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b?: <span class="hljs-built_in">number</span></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (b === <span class="hljs-literal">undefined</span>) &#123;</span><br><span class="line">        b = <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(sum2(<span class="hljs-number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<p>매개변수 b가 아무것도 전달 못받았을 때 어떤 값으로 초기화해야하는지에 대한 로직을 추가함</p>
+<h3 id="함수-오버로드"><a href="#함수-오버로드" class="headerlink" title="함수 오버로드"></a>함수 오버로드</h3>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/22/ts_md/ts3/">
+                <span class="level-item">typescript chapter5. 연산자</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2020/03/30/ts_md/ts4/';
+        this.page.identifier = '2020/03/30/ts_md/ts4/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right ">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#자바스크립트-함수">
+        <span class="has-mr-6">1</span>
+        <span>자바스크립트 함수</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#자바스크립트-함수의-불안정성">
+        <span class="has-mr-6">1.1</span>
+        <span>자바스크립트 함수의 불안정성</span>
+        </a></li><li>
+        <a class="is-flex" href="#타입-안정성을-가진-타입-스크립트-함수">
+        <span class="has-mr-6">1.2</span>
+        <span>타입 안정성을 가진 타입 스크립트 함수</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#매개변수의-활용">
+        <span class="has-mr-6">2</span>
+        <span>매개변수의 활용</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#나머지-매개변수">
+        <span class="has-mr-6">2.1</span>
+        <span>나머지 매개변수</span>
+        </a></li><li>
+        <a class="is-flex" href="#선택-매개변수">
+        <span class="has-mr-6">2.2</span>
+        <span>선택 매개변수</span>
+        </a></li><li>
+        <a class="is-flex" href="#함수-오버로드">
+        <span class="has-mr-6">2.3</span>
+        <span>함수 오버로드</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/ES6/">
+            <span class="level-start">
+                <span class="level-item">ES6</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hexo/">
+            <span class="level-start">
+                <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/intelliJ/">
+            <span class="level-start">
+                <span class="level-item">intelliJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트-react/">
+            <span class="level-start">
+                <span class="level-item">리액트 / react</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/타입스크립트/">
+            <span class="level-start">
+                <span class="level-item">타입스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="typescript chapter6. 함수" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>

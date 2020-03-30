@@ -143,6 +143,67 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-29T15:00:00.000Z">2020-03-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/타입스크립트/">타입스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 minutes read (About 1508 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/30/ts_md/ts4/">typescript chapter6. 함수</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="자바스크립트-함수"><a href="#자바스크립트-함수" class="headerlink" title="자바스크립트 함수"></a>자바스크립트 함수</h2><blockquote>
+<p>타입스크립트는 함수의 매개변수나 반환값에 타입을 지정해 타입 안정성을 강화할 수 있다.<br>자바스크립트 함수는 기명 함수와 익명함수로 나뉜다. </p>
+</blockquote>
+<p>기명함수는 호출 될 때 호이스팅이 발생한다. 함수를 선언하기 전에도 선언한 후에도 호출할 수 있다.</p>
+<figure class="highlight ts hljs"><figcaption><span>기명함수</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">myFunction(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunctiion</span>(<span class="hljs-params">x,y</span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">myFunction(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p>변수에 익명함수를 할당해 호출하면 익명 함수를 할당 한 뒤에만 함수를 호출 할 수 있다.</p>
+<figure class="highlight ts hljs"><figcaption><span>익명함수</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myFunc(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// Block-scoped variable 'myFunc' used before its declaration.ts(24</span></span><br><span class="line"><span class="hljs-keyword">let</span> myFunc = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) </span>&#123; &#125;</span><br><span class="line">myFunc(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<p>let 선언자는 익명 함수를 변수에 할당 한 후에만 호출하게 함</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/30/ts_md/ts4/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-21T15:00:00.000Z">2020-03-22</time>
                 
                 <div class="level-item">
@@ -630,60 +691,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-19T15:00:00.000Z">2019-10-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/hexo/">hexo</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 minutes read (About 1022 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/10/20/hexo_md/hexo/">hexo 시작하기</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="hexo-란"><a href="#hexo-란" class="headerlink" title="hexo 란"></a>hexo 란</h2><blockquote>
-<p>Hexo는 node.js 기반 정적 사이트 생성기(Static site generator)의 일종이다….<br>사실 잘 모르겠고 간단하고 강력한 블로그 프레임 워크다 라고 하는게 더 이해가 쉬울듯하다.<br>hexo 주소 : <a href="https://hexo.io/" target="_blank" rel="noopener">https://hexo.io/</a></p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/10/20/hexo_md/hexo/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -745,7 +752,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        34
+                        35
                     </p>
                 </div>
             </div>
@@ -892,7 +899,7 @@
                 <span class="level-item">타입스크립트</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li>
             </ul>
@@ -920,6 +927,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/30/ts_md/ts4/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="typescript chapter6. 함수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-29T15:00:00.000Z">2020-03-30</time></div>
+                    <a href="/2020/03/30/ts_md/ts4/" class="has-link-black-ter is-size-6">typescript chapter6. 함수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/타입스크립트/">타입스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -997,25 +1023,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/17/intelliJ/intelliJ/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="intelliJ 사용법">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-16T15:00:00.000Z">2019-12-17</time></div>
-                    <a href="/2019/12/17/intelliJ/intelliJ/" class="has-link-black-ter is-size-6">intelliJ 사용법</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/intelliJ/">intelliJ</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1034,7 +1041,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1273,6 +1280,25 @@
         
         <article class="media">
             
+            <a href="/2020/03/30/ts_md/ts4/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="typescript chapter6. 함수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-29T15:00:00.000Z">2020-03-30</time></div>
+                    <a href="/2020/03/30/ts_md/ts4/" class="has-link-black-ter is-size-6">typescript chapter6. 함수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/타입스크립트/">타입스크립트</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/03/22/ts_md/ts3/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="typescript chapter5. 연산자">
@@ -1347,25 +1373,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/17/intelliJ/intelliJ/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="intelliJ 사용법">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-16T15:00:00.000Z">2019-12-17</time></div>
-                    <a href="/2019/12/17/intelliJ/intelliJ/" class="has-link-black-ter is-size-6">intelliJ 사용법</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/intelliJ/">intelliJ</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1384,7 +1391,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
