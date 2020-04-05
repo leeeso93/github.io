@@ -16,7 +16,7 @@
 <meta property="og:description" content="자바스크립트 함수 타입스크립트는 함수의 매개변수나 반환값에 타입을 지정해 타입 안정성을 강화할 수 있다.자바스크립트 함수는 기명 함수와 익명함수로 나뉜다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2020-03-30T15:53:47.644Z">
+<meta property="og:updated_time" content="2020-04-05T11:58:40.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="typescript chapter6. 함수">
 <meta name="twitter:description" content="자바스크립트 함수 타입스크립트는 함수의 매개변수나 반환값에 타입을 지정해 타입 안정성을 강화할 수 있다.자바스크립트 함수는 기명 함수와 익명함수로 나뉜다.">
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 minutes read (About 1508 words)
+                    23 minutes read (About 3461 words)
                 </span>
                 
                 
@@ -232,7 +232,76 @@
 <figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum2</span>(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b?: <span class="hljs-built_in">number</span></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (b === <span class="hljs-literal">undefined</span>) &#123;</span><br><span class="line">        b = <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(sum2(<span class="hljs-number">1</span>));</span><br></pre></td></tr></table></figure>
 
 <p>매개변수 b가 아무것도 전달 못받았을 때 어떤 값으로 초기화해야하는지에 대한 로직을 추가함</p>
-<h3 id="함수-오버로드"><a href="#함수-오버로드" class="headerlink" title="함수 오버로드"></a>함수 오버로드</h3>
+<h3 id="함수-오버로드"><a href="#함수-오버로드" class="headerlink" title="함수 오버로드"></a>함수 오버로드</h3><blockquote>
+<p>함수 오버로드란 매개변수와 반환 타입이 다른 함수를 여러 개 선언할 수 있는 특징을 말한다.<br>오버로드는 목록 형태로 선언할 수 있다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a: <span class="hljs-built_in">string</span>, b: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">string</span></span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span></span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a: <span class="hljs-built_in">any</span>, b: <span class="hljs-built_in">any</span></span>): <span class="hljs-title">any</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>가장 일반적인 함수(매개변수가 any 타입)을 가장 아래에 선언하고 그 위로 구체적인 타입을 명시한 함수를 쌓는 방식으로 선언한다.<br>각 오버로드를 독립된 블록 형태로 선언하면 안됀다.<br>매개변수의 개수가 다른 오버로드를 지정할 때는 선택 매개변수를 둬 매개변수 개수에 변화를 줄 수 있도록 허용할 수 있다.</p>
+<figure class="highlight ts hljs"><figcaption><span>선택 매개변수를 둔 경우</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span></span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, c: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">number</span></span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a: <span class="hljs-built_in">any</span>, b?: <span class="hljs-built_in">any</span></span>): <span class="hljs-title">any</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (b === <span class="hljs-literal">undefined</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a;</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)); <span class="hljs-comment">// 3</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(add(<span class="hljs-number">1</span>)); <span class="hljs-comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>add 함수 두번째 매개변수에 ?를 사용해 선택 매개변수로 선언했다. 선택 매개변수는 전달 받은 값이 없을수도 있으므로 undefined 인지 검사하는 로직을 추가해야한다.</p>
+<h2 id="익명함수의-이해와-활용"><a href="#익명함수의-이해와-활용" class="headerlink" title="익명함수의 이해와 활용"></a>익명함수의 이해와 활용</h2><h3 id="익명함수와-화살표-함수"><a href="#익명함수와-화살표-함수" class="headerlink" title="익명함수와 화살표 함수"></a>익명함수와 화살표 함수</h3><blockquote>
+<p>화살표 함수(arrow function)은 ES6 표준에 포함된 익명 함수를 좀 더 간략하게 표현 할 수 있는 방법이다.<br>매개변수가 하나도 없을 때는 ( )로 표현한다. 화살표 함수를 호출하려면 변수에 할당해야 한다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> x1 = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">x1(); <span class="hljs-comment">// 함수 호출시</span></span><br></pre></td></tr></table></figure>
+
+<p>매개변수가 1개인 화살표는 다음과 같이 표현할 수 있다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> y1 = <span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> &#123;<span class="hljs-keyword">return</span> x&#125;;</span><br><span class="line"><span class="hljs-keyword">let</span> y1 = <span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> &#123;<span class="hljs-keyword">return</span> x&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>매개변수가 1개일때는 소괄호를 생략할수 있다. 생략하지 않는 형태도 유효하지만 <a href="https://github.com/Microsoft/Typescript/wiki/Coding-guidelines" target="_blank" rel="noopener">타입스크립트 스타일 가이드</a>에서 추천하지 않는다. </p>
+<p>화살표 함수를 호출할때는 변수를 이용해 호출한다. 유의할 점은 중괄호{}를 사용한 경우 반환값이 있으면 return 키워드를 사용해 값을 반환해야한다.<br>매개변수가 2개일 때는 소괄호를 사용해 표현한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> x1 = <span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> &#123;</span><br><span class="line">  x;</span><br><span class="line">&#125;; <span class="hljs-comment">// 반환값이 없다.</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> x2 = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> x + y;</span><br><span class="line">&#125;; <span class="hljs-comment">// 매개변수가 2개일 때</span></span><br></pre></td></tr></table></figure>
+
+<p>화살표함수는 익명함수라 변수를 할당에 호출했지만, 변수를 사용하지 않고 화살표 함수를 사용하려면 <strong>즉시실행함수(IIEF)</strong>를 이용해야 한다.<br>즉시 실행함수는 코드를 실행하면 별도의 외부호출없이 바로 함수가 자체적으로 호출된다.</p>
+<figure class="highlight ts hljs"><figcaption><span>IIEF</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// reteurn 값이 없을때</span></span><br><span class="line">(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> &#123; x;&#125;)(<span class="hljs-number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// retunr 값이 있을 때</span></span><br><span class="line"><span class="hljs-keyword">let</span> iife = <span class="hljs-function">(<span class="hljs-params">(<span class="hljs-params">x</span>) =&gt; &#123;</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">  <span class="hljs-keyword">return</span> x;</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">&#125;</span>)(<span class="hljs-params">3</span>);</span></span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 return 를 사용해 실행하면 iife 변수에 즉시실행함수가 반환한 값이 할당된다.</p>
+<h3 id="필터-메서드-filter"><a href="#필터-메서드-filter" class="headerlink" title="필터 메서드 (filter)"></a>필터 메서드 (filter)</h3><blockquote>
+<p>화살표함수는 필터 메서드를 적용할 수 있다. 필터 메서드는 배열에서 조건에 맞는 요소를 추출할 때 사용한다.<br>for문을 순회해 조건에 맞는 값을 찾는 것보다 편리하고 유지보수에도 좋다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><figcaption><span>filter 메서드</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> list = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];</span><br><span class="line"></span><br><span class="line">list = list.filter(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> x % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(list); <span class="hljs-comment">// [2,4]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="리듀스-메서드-reduce"><a href="#리듀스-메서드-reduce" class="headerlink" title="리듀스 메서드(reduce)"></a>리듀스 메서드(reduce)</h3><blockquote>
+<p>배열의 합을 구하는데 적용할 수 있다. reduce 메서드는 배열의 요소를 왼쪽에서 오른쪽으로 더해가면서 값을 처리할수 있는 메서드이다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><figcaption><span>reduce 메서드</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(</span><br><span class="line">  [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>].reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + b;</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br><span class="line"><span class="hljs-comment">// 15</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 화살표 함수로 합계 계산(reduce) 사용</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSum</span>(<span class="hljs-params">numList: <span class="hljs-built_in">number</span>[]</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> sum: <span class="hljs-built_in">number</span> = numList.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + b;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="hljs-keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(getSum([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]));</span><br><span class="line"><span class="hljs-comment">// 15</span></span><br></pre></td></tr></table></figure>
+
+<p>첫번째 매개변수(a)는 누적된 값이고, 두번째 매개변수(b)는 현재값 이다.</p>
+<h3 id="객체-리터럴"><a href="#객체-리터럴" class="headerlink" title="객체 리터럴"></a>객체 리터럴</h3><blockquote>
+<p>객체 리터럴은 여러 속성의 값을 한 단위로 묶어서 표현할 수 있는 객체이다.<br>객체 리터럴의 속성은 키(key)이며, 값(value)은 숫자,문자열뿐만 아니라 사용자가 정의한 객체도 할당 할 수 있다.</p>
+</blockquote>
+<p>따라서 함수 역시 객체이므로 함수도 속성 값으로 할당 할 수 있다. 값을 선언하면서 객체 프로퍼티를 참조하려면 this 키워드를 사용한다.</p>
+<figure class="highlight ts hljs"><figcaption><span>this를 이용해 다른 객체 속성 참조하기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> person = &#123;</span><br><span class="line">  name: <span class="hljs-string">"lee"</span>,</span><br><span class="line">  hello: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name2: <span class="hljs-built_in">string</span></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name, name2); <span class="hljs-comment">// lee park</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person.hello(<span class="hljs-string">"park"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>객체 리터럴 내부에서 다른 프로퍼티를 참조할 일이 많다면 <strong>객체 리터럴에 타입을 선언</strong>할 수 있다.<br>타입은 interface를 이용해 정의한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> PersonType &#123;</span><br><span class="line">  name: <span class="hljs-built_in">string</span>;</span><br><span class="line">  hello(<span class="hljs-keyword">this</span>: PersonType, name2: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> typedPerson: PersonType = &#123;</span><br><span class="line">  name: <span class="hljs-string">"lee"</span>,</span><br><span class="line">  hello: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-keyword">this</span>: PersonType, name2: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">string</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> message = <span class="hljs-string">`<span class="hljs-subst">$&#123;this.name + name2&#125;</span>`</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> message;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(typedPerson.hello(<span class="hljs-string">"world"</span>)); <span class="hljs-comment">// leeworld</span></span><br></pre></td></tr></table></figure>
+
+<p>참조 : <a href="https://webclub.tistory.com/390" target="_blank" rel="noopener">https://webclub.tistory.com/390</a></p>
+<h3 id="익명함수의-타입-선언"><a href="#익명함수의-타입-선언" class="headerlink" title="익명함수의 타입 선언"></a>익명함수의 타입 선언</h3><blockquote>
+<p>익명 함수는 변수에 할당 할수 있고, 익명함수가 할당된 변수는 타입을 추가 할수 있으므로 함수 자체에도 타입이 존재할 수 있다.<br>타입스크립트에서는 함수 자체에 대한 타입을 함수 타입(function type)이라고 한다.</p>
+</blockquote>
+<p>할당한 익명함수에 매개변수 타입과 반환 타입을 추가할 수 있다.</p>
+<figure class="highlight ts hljs"><figcaption><span>익명함수에 타입 선언</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> concat = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">str1: <span class="hljs-built_in">string</span>, str2: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">string</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> str1 + str2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>그런데, 익명함수에 선언된 타입을 별도로 분리해 선언하면 타입 안정성을 보장하면서도 익명함수의 타입이 무엇인지 쉽게 파악이 가능하다.<br>특히 익명함수의 타입을 분리하면 새로 정의한 타입은 반복적으로 재활용해 사용할 수 있다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> caltype = <span class="hljs-function">(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">number</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> add: caltype = <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b;</span><br><span class="line"><span class="hljs-keyword">let</span> minus: caltype = <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a - b;</span><br></pre></td></tr></table></figure>
+
+<p>새롭게 정의한 타입인 caltype은 익명함수를 할당받는 여러 변수에 함수 타입으로 선언할 수 있다.</p>
+<h3 id="콜백함수의-타입-선언"><a href="#콜백함수의-타입-선언" class="headerlink" title="콜백함수의 타입 선언"></a>콜백함수의 타입 선언</h3><blockquote>
+<p>콜백함수(callback)함수는 또 다른 함수의 매개변수로 전달 될 수 있는 함수이다.<br>콜백함수를 전달받는 함수는 상위 처리를 담당하는 고차 함수(higher-order function)이라고 불린다.<br>고차 함수는 하나 이상의 콜백을 전달받거나, 하나 이상의 함수를 결과로 반환하는 특성이 있다.</p>
+</blockquote>
+<p>콜백함수의 한가지 예로 <strong>setTimeout</strong>함수가 있다. setTimeout은 지정된 시간이 지난 후에 어떠한 일을 처리하기 위해 콜백 함수를 전달 받는다.</p>
+<figure class="highlight ts hljs"><figcaption><span>setTimeout</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"종료"</span>);</span><br><span class="line">&#125;, <span class="hljs-number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>단순한 형태의 콜백함수는 다음과 같다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ehoFunction</span>(<span class="hljs-params">message: <span class="hljs-built_in">string</span>, callback</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> callback(message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> response = ehoFunction(<span class="hljs-string">"hello"</span>, <span class="hljs-function">(<span class="hljs-params">message</span>) =&gt;</span> message);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(response); <span class="hljs-comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<p>첫번째 인수로 문자열을 전달하고, 두번째 인수로 콜백 함수를 전달하면 문자열을 되돌려주는 에코(eho) 함수이다.<br>두번째 인자인 콜백함수는 문자열을 반환하는 비교적 단순한 동작을 수행하므로 타입이 없는 화살표 함수를 사용했다.<br>이렇게 하면 타입 안정성이 없으므로, 콜백 함수에 로직을 추가해야하고 콜백 함수가 중요하다면 콜백 함수 선언을 분리해 타입을 추가하는 편이 좋다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> callbackType = <span class="hljs-function">(<span class="hljs-params">message: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">string</span>; <span class="hljs-comment">// 콜백 함수의 타입을 먼저 선언</span></span><br><span class="line"><span class="hljs-keyword">let</span> callback: callbackType = <span class="hljs-function">(<span class="hljs-params">message</span>) =&gt;</span> message; <span class="hljs-comment">// 콜백 함수 선언</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> response = ehoFunction(<span class="hljs-string">"hello"</span>, callback);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(response); <span class="hljs-comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<p>위 처럼 콜백 함수의 타입을 먼저 선언하고, 콜백함수의 선언과 사용을 분리할 수 있다.</p>
+
         </div>
         
         
@@ -327,6 +396,34 @@
         <a class="is-flex" href="#함수-오버로드">
         <span class="has-mr-6">2.3</span>
         <span>함수 오버로드</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#익명함수의-이해와-활용">
+        <span class="has-mr-6">3</span>
+        <span>익명함수의 이해와 활용</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#익명함수와-화살표-함수">
+        <span class="has-mr-6">3.1</span>
+        <span>익명함수와 화살표 함수</span>
+        </a></li><li>
+        <a class="is-flex" href="#필터-메서드-filter">
+        <span class="has-mr-6">3.2</span>
+        <span>필터 메서드 (filter)</span>
+        </a></li><li>
+        <a class="is-flex" href="#리듀스-메서드-reduce">
+        <span class="has-mr-6">3.3</span>
+        <span>리듀스 메서드(reduce)</span>
+        </a></li><li>
+        <a class="is-flex" href="#객체-리터럴">
+        <span class="has-mr-6">3.4</span>
+        <span>객체 리터럴</span>
+        </a></li><li>
+        <a class="is-flex" href="#익명함수의-타입-선언">
+        <span class="has-mr-6">3.5</span>
+        <span>익명함수의 타입 선언</span>
+        </a></li><li>
+        <a class="is-flex" href="#콜백함수의-타입-선언">
+        <span class="has-mr-6">3.6</span>
+        <span>콜백함수의 타입 선언</span>
         </a></li></ul></li></ul>
         </div>
     </div>
