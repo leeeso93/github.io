@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>typescript chapter7. 클래스와 인터페이스 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="타입스크립트의 객체지향 프로그래밍 지원   객체지향 프로그래밍 요소 자바스크립트(ES6) 타입스크립트    클래스 class class   인터페이스 x interface   인터페이스구현 x implements   상속 extends extends   생성자 constructor(){} constructor(){}   접근 제한자 x private, pu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript chapter7. 클래스와 인터페이스">
+<meta property="og:url" content="http://yoursite.com/2020/04/19/ts_md/ts5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="타입스크립트의 객체지향 프로그래밍 지원   객체지향 프로그래밍 요소 자바스크립트(ES6) 타입스크립트    클래스 class class   인터페이스 x interface   인터페이스구현 x implements   상속 extends extends   생성자 constructor(){} constructor(){}   접근 제한자 x private, pu">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2020-04-19T15:20:32.530Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript chapter7. 클래스와 인터페이스">
+<meta name="twitter:description" content="타입스크립트의 객체지향 프로그래밍 지원   객체지향 프로그래밍 요소 자바스크립트(ES6) 타입스크립트    클래스 class class   인터페이스 x interface   인터페이스구현 x implements   상속 extends extends   생성자 constructor(){} constructor(){}   접근 제한자 x private, pu">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="typescript chapter7. 클래스와 인터페이스" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-18T15:00:00.000Z">2020-04-19</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/타입스크립트/">타입스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    19 minutes read (About 2817 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                typescript chapter7. 클래스와 인터페이스
+            
+        </h1>
+        <div class="content">
+            <h3 id="타입스크립트의-객체지향-프로그래밍-지원"><a href="#타입스크립트의-객체지향-프로그래밍-지원" class="headerlink" title="타입스크립트의 객체지향 프로그래밍 지원"></a>타입스크립트의 객체지향 프로그래밍 지원</h3><table>
+<thead>
+<tr>
+<th>객체지향 프로그래밍 요소</th>
+<th>자바스크립트(ES6)</th>
+<th>타입스크립트</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>클래스</td>
+<td>class</td>
+<td>class</td>
+</tr>
+<tr>
+<td>인터페이스</td>
+<td>x</td>
+<td>interface</td>
+</tr>
+<tr>
+<td>인터페이스구현</td>
+<td>x</td>
+<td>implements</td>
+</tr>
+<tr>
+<td>상속</td>
+<td>extends</td>
+<td>extends</td>
+</tr>
+<tr>
+<td>생성자</td>
+<td>constructor(){}</td>
+<td>constructor(){}</td>
+</tr>
+<tr>
+<td>접근 제한자</td>
+<td>x</td>
+<td>private, public, protected</td>
+</tr>
+<tr>
+<td>final 제한자</td>
+<td>x</td>
+<td>readonly(TS 2.0부터 지원)</td>
+</tr>
+<tr>
+<td>static 키워드</td>
+<td>static</td>
+<td>static</td>
+</tr>
+<tr>
+<td>super 키워드</td>
+<td>super</td>
+<td>super</td>
+</tr>
+</tbody></table>
+<p>자바스크립트는 객체지향 프로그래밍을 하기에 지원이 다소 부족하지만, 타입스크립트는 객체지향 프로그래밍에 부족함이 없다.</p>
+<a id="more"></a>
+
+<h2 id="클래스"><a href="#클래스" class="headerlink" title="클래스"></a>클래스</h2><h3 id="클래스-선언과-객체-생성"><a href="#클래스-선언과-객체-생성" class="headerlink" title="클래스 선언과 객체 생성"></a>클래스 선언과 객체 생성</h3><blockquote>
+<p>타입스크립트에서 class를 선언할 때는 클래스명 앞에 class를 붙여 선언한다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> Rectangle &#123;</span><br><span class="line">  x: <span class="hljs-built_in">number</span>;</span><br><span class="line">  y: <span class="hljs-built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.x = x;</span><br><span class="line">    <span class="hljs-keyword">this</span>.y = y;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getArea(): <span class="hljs-built_in">number</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.x * <span class="hljs-keyword">this</span>.y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 선언한 Rectangle 클래스는 클래스 타입이 된다.  Rectangle 클래스는 다음의 인터페이스 타입과 정확히 일치하게 된다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> Rectangle &#123;</span><br><span class="line">  x: <span class="hljs-built_in">number</span>;</span><br><span class="line">  y: <span class="hljs-built_in">number</span>;</span><br><span class="line">  getArea(): <span class="hljs-built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>클래스 내부에는 생성자는 <strong>contstructor</strong>을 정의한다. 생성자는 객체 생성 시 클래스에 필요한 설정을 매개변수로 전달받아 멤버변수를 초기화한다.<br>생성자를 생략하면 기본 생성자를 호출한다. 생성자는 클래스 선언 떄 생략 가능하다.</p>
+<h3 id="객체-생성"><a href="#객체-생성" class="headerlink" title="객체 생성"></a>객체 생성</h3><blockquote>
+<p>클래스는 멤버 변수와 메서드 등으로 구성된 ‘틀’이며 클래스를 실제로 사용하려면 객체를 새로 생성해줘야한다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> rectangle = <span class="hljs-keyword">new</span> Rectangle(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<p>new 키워드를 사용해 Rectangle 객체를 생성해 객체 참조변수에 할당한다. 이를 인스턴스화라고 한다.<br>rectangle은 객체 참조변수(인스턴스) 이고, new 키워드를 통해 Rectangle객체를 생성함(인스턴스화)</p>
+<figure class="highlight ts hljs"><figcaption><span>Rectangle 클래스 선언과 객체 생성</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> Rectangle &#123;</span><br><span class="line">  x: <span class="hljs-built_in">number</span>;</span><br><span class="line">  y: <span class="hljs-built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.x = x;</span><br><span class="line">    <span class="hljs-keyword">this</span>.y = y;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getArea(): <span class="hljs-built_in">number</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.x * <span class="hljs-keyword">this</span>.y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> rectangle = <span class="hljs-keyword">new</span> Rectangle(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> result: <span class="hljs-built_in">number</span> = rectangle.getArea();</span><br><span class="line"><span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// 4</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="상속관계-포함관계"><a href="#상속관계-포함관계" class="headerlink" title="상속관계, 포함관계"></a>상속관계, 포함관계</h3><blockquote>
+<p>클래스 간의 관계는 상속 관계와 포함 관계가 있다.</p>
+</blockquote>
+<ul>
+<li>상속 관계<blockquote>
+<p><strong>부모 클래스</strong>를 기반 클래스 또는 슈퍼 클래스라고 하며 이를 상속 받는 <strong>자식 클래스</strong>를 파생 클래스 또는 서브 클래스라고 부른다.<br>자식 클래스는 부모 클래스에 공개된 메서드나 변수를 상속받는다.( IS-A관계)<br>상속을 위해 <strong>extends</strong> 키워드를 지원한다.<br>단일 상속만 지원하므로 자식 클래스는 하나의 부모 클래스만 상속받을 수 있다. 상속시 자식 클래스 생성자에서 super() 메서드를 호출해 부모 클래스의 생성자를 호출해주어야한다.</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> &lt;자식 클래스&gt; <span class="hljs-keyword">extends</span> &lt;부모 클래스&gt;&#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="line">        supper();</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>포함 관계<blockquote>
+<p>클래스가 다른 클래스를 포함하는 (HAS-A) 관계이다.<br>합성(composition)관계<br>집합(aggregation)관계</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><strong>합성 관계</strong>는  전체가 부분을 포함하며 강한 관계이다.</li>
+</ul>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> Engine &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> Car &#123;</span><br><span class="line">  <span class="hljs-keyword">private</span> engine;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.engine = <span class="hljs-keyword">new</span> Engine();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> car = <span class="hljs-keyword">new</span> Car();</span><br><span class="line">car = <span class="hljs-literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Car 클래스에 선언된 engine 객체는 Car 클래스가 new로 생성될때 함께 생성되고, car가 null이되면 함께 제거된다.(생명주기를 함께한다)</p>
+<ul>
+<li><strong>집합 관계</strong>는 전체가 부분을 포함하며 약한 관계이다.</li>
+</ul>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> Engine &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> Car &#123;</span><br><span class="line">  <span class="hljs-keyword">private</span> engine: Engine;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">engine: Engine</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.engine = engine;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> engine = <span class="hljs-keyword">new</span> Engine();</span><br><span class="line"><span class="hljs-keyword">let</span> car = <span class="hljs-keyword">new</span> Car(engine);</span><br></pre></td></tr></table></figure>
+
+<p>Car 클래스의 car 객체가생성될때  외부에서 생성된 engine 객체를 전달하고 있다.따라서 car가 null이 되더라도,<br>engine 객체는 Car클래스 외부에서 선언되어 null이 되지 않아 생명주기를 함꼐 하지 않는다.</p>
+<h3 id="상속관계와-포함-관계를-고려해-구현하기"><a href="#상속관계와-포함-관계를-고려해-구현하기" class="headerlink" title="상속관계와 포함 관계를 고려해 구현하기"></a>상속관계와 포함 관계를 고려해 구현하기</h3><figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Flashlight 클래스 - 포함</span></span><br><span class="line"><span class="hljs-keyword">class</span> Flashlight &#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> lightIntensity</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Bicycle 클래스 - 부모</span></span><br><span class="line"><span class="hljs-keyword">class</span> Bicycle &#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> numberOfWheel: <span class="hljs-built_in">number</span></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  getNumberOfWheel(): <span class="hljs-built_in">number</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.numberOfWheel;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Bicycle 클래스를 상속함(IS-A 관계)</span></span><br><span class="line"><span class="hljs-keyword">class</span> MountainBike <span class="hljs-keyword">extends</span> Bicycle &#123;</span><br><span class="line">  flashlight: Flashlight;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> numberOfWheel: <span class="hljs-built_in">number</span>, <span class="hljs-keyword">public</span> hasBackSaddle: <span class="hljs-built_in">boolean</span></span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">super</span>(numberOfWheel); <span class="hljs-comment">// 부모의 메서드numberOfWheel를 사용하기위해</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 자전거가 후레쉬 라이트를 포함함(HAS-A 관계)</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.flashlight = <span class="hljs-keyword">new</span> Flashlight(<span class="hljs-number">90</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getHasBackSaddle() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.hasBackSaddle;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getNumberOfWheel() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.numberOfWheel;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> hasBackSaddle = <span class="hljs-literal">true</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> numberOfWheel = <span class="hljs-number">2</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> mountainBike = <span class="hljs-keyword">new</span> MountainBike(numberOfWheel, hasBackSaddle);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"자전거의 안장 유무 : "</span> + mountainBike.getHasBackSaddle()); <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"자전거의 바퀴 개수 : "</span> + mountainBike.getNumberOfWheel()); <span class="hljs-comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="접근-제한자-사용법"><a href="#접근-제한자-사용법" class="headerlink" title="접근 제한자 사용법"></a>접근 제한자 사용법</h3><blockquote>
+<p>타입스크립트에서는 접근 제한자 (private, public , protected)를 제공한다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>접근 제한자</th>
+<th>특징</th>
+<th>상속 여부</th>
+<th>외부객체를 통한 접근</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>public으로 설정된 멤버(멤버 변수, 메서드)등은 자식 클래스에서 접근 할 수 있다.</td>
+<td>o</td>
+<td>o</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>protected로 설정된 맴버는 자식 클래스에서 접근 가능</td>
+<td>o</td>
+<td>x</td>
+</tr>
+<tr>
+<td>private</td>
+<td>private로 설정된 멤버는 현재 클래스에서만 접근할수 있고, 자식 클래스에서 접근 불가능</td>
+<td>x</td>
+<td>x</td>
+</tr>
+</tbody></table>
+<ul>
+<li>public 제한자와 private 제한자<blockquote>
+<p>public 은 클래스 내부와 외부에서 모두 접근 가능하게 한다. 객체 내부나 외부에서 접근할 수 있고 부모 클래스로부터 상속도 가능하다.<br>private 제한자는 클래스 내부에서는 접근 할 수 있지만 외부에서는 접근 못하게 하는 접근 제한자이다.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="생성자-매개변수에-접근-제한자-추가"><a href="#생성자-매개변수에-접근-제한자-추가" class="headerlink" title="생성자 매개변수에 접근 제한자 추가"></a>생성자 매개변수에 접근 제한자 추가</h3><blockquote>
+<p>생성자 매개변수에 접근 제한자를 추가하면 매개변수 속성이 되어 멤버 변수가 되는 효과가 있다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> Cube &#123;</span><br><span class="line">  <span class="hljs-keyword">public</span> width: <span class="hljs-built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">pwidth: <span class="hljs-built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.width = pwidth;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/****같은 역할을 하도록 코드를 간결하게 변경****/</span></span><br><span class="line"><span class="hljs-keyword">class</span> Cube &#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> width: <span class="hljs-built_in">number</span></span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>생성자 매개변수에 접근 제한자를 추가해 멤버 변수처럼 사용하는 예제</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> Cube &#123;</span><br><span class="line">  <span class="hljs-comment">// #1 생성자 매개변수 선언</span></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span></span><br><span class="line"><span class="hljs-params">    <span class="hljs-keyword">public</span> width: <span class="hljs-built_in">number</span>,</span></span><br><span class="line"><span class="hljs-params">    <span class="hljs-keyword">private</span> length: <span class="hljs-built_in">number</span>,</span></span><br><span class="line"><span class="hljs-params">    <span class="hljs-keyword">protected</span> height: <span class="hljs-built_in">number</span></span></span><br><span class="line"><span class="hljs-params">  </span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// #2 직육면체 부피 구하기</span></span><br><span class="line">  getVolume() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.width * <span class="hljs-keyword">this</span>.length * <span class="hljs-keyword">this</span>.height;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> [cWidth, cLength, cHeight] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]; <span class="hljs-comment">// 가로, 세로, 높이</span></span><br><span class="line"><span class="hljs-keyword">let</span> cube = <span class="hljs-keyword">new</span> Cube(cWidth, cLength, cHeight);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"1번 세로 : "</span>, cube.width, <span class="hljs-string">"cm"</span>); <span class="hljs-comment">// length, height는 접근 불가</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"2번 부피 : "</span>, cube.getVolume(), <span class="hljs-string">"ml"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>오직 public으로 선언된 생성자 매개변수 width만이 외부객체에서 접근을 허용함(private, protected는 비허용)</p>
+<ul>
+<li>protected 제한자의 사용법<blockquote>
+<p>protected는 객체를 통한 외부 접근은 비허용하지만 상속관계에서 부모클래스에 protected로 선언된 메서드나 멤버 변수의 접근은 허용한다.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="부모-클래스의-맴버를-이용"><a href="#부모-클래스의-맴버를-이용" class="headerlink" title="부모 클래스의 맴버를 이용"></a>부모 클래스의 맴버를 이용</h3><blockquote>
+<p>super 키워드와 this 키워드를 이용해서 자식 클래스에서 부모 클래스에서 선언된 메서드나 변수를 이용할 수 있다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> PC &#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">hddCapacity</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.hddCapacity = hddCapacity;</span><br><span class="line">        <span class="hljs-keyword">this</span>.ram = <span class="hljs-string">"0G"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">set</span> ramCapacity(value) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.ram = value;</span><br><span class="line">    &#125; <span class="hljs-comment">// set 프로퍼티</span></span><br><span class="line">    <span class="hljs-keyword">get</span> ramCapacity() &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.ram;</span><br><span class="line">    &#125; <span class="hljs-comment">// get 프로퍼티</span></span><br><span class="line">    getHddCapacity() &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.hddCapacity;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">class</span> Desktop <span class="hljs-keyword">extends</span> PC &#123;</span><br><span class="line">    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">hddCapacity</span>) &#123;</span><br><span class="line">        <span class="hljs-comment">// 부모 클래스의 생성자를 호출함</span></span><br><span class="line">        <span class="hljs-keyword">super</span>(hddCapacity);</span><br><span class="line">        <span class="hljs-keyword">this</span>.hddCapacity = hddCapacity;</span><br><span class="line">    &#125;</span><br><span class="line">    getInfo() &#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"1번 HDD 용량 : "</span> + <span class="hljs-keyword">super</span>.getHddCapacity(), <span class="hljs-keyword">super</span>.hddCapacity);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"2번 HDD 용량 : "</span> + <span class="hljs-keyword">this</span>.getHddCapacity(), <span class="hljs-keyword">this</span>.hddCapacity);</span><br><span class="line">        <span class="hljs-keyword">this</span>.hddCapacity = <span class="hljs-string">"2000G"</span>;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"3번 HDD 용량 : "</span> + <span class="hljs-keyword">super</span>.getHddCapacity(), <span class="hljs-keyword">super</span>.hddCapacity);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"4번 HDD 용량 : "</span> + <span class="hljs-keyword">this</span>.getHddCapacity(), <span class="hljs-keyword">this</span>.hddCapacity);</span><br><span class="line">        <span class="hljs-keyword">super</span>.ramCapacity = <span class="hljs-string">"16G"</span>; <span class="hljs-comment">// 부모 클래스의 set 프로퍼티로 값을 설정함</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"5번 RAM 용량 : "</span> + <span class="hljs-keyword">this</span>.ramCapacity, <span class="hljs-keyword">super</span>.ramCapacity);</span><br><span class="line">        <span class="hljs-keyword">this</span>.ramCapacity = <span class="hljs-string">"8G"</span>; <span class="hljs-comment">// 상속 받은 set 프로퍼티로 값을 설정함</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"6번 RAM 용량 : "</span> + <span class="hljs-keyword">this</span>.ramCapacity, <span class="hljs-keyword">super</span>.ramCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">let</span> myDesktop = <span class="hljs-keyword">new</span> Desktop(<span class="hljs-string">"1000G"</span>);</span><br><span class="line">myDesktop.getInfo();</span><br><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">  1번 HDD 용량 : 1000G undefined</span></span><br><span class="line"><span class="hljs-comment">  2번 HDD 용량 : 1000G 1000G</span></span><br><span class="line"><span class="hljs-comment">  3번 HDD 용량 : 2000G undefined</span></span><br><span class="line"><span class="hljs-comment">  4번 HDD 용량 : 2000G 2000G</span></span><br><span class="line"><span class="hljs-comment">  5번 RAM 용량 : 16G 16G</span></span><br><span class="line"><span class="hljs-comment">  6번 RAM 용량 : 8G 8G</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="기본-접근-제한자"><a href="#기본-접근-제한자" class="headerlink" title="기본 접근 제한자"></a>기본 접근 제한자</h3><blockquote>
+<p>접근 제한자 선언을 생략할 때 적용되며 , 대체로 public 이다.<br>constructor에서 접근 제한자가 생략되면 생성자 내부에서만 사용 가능해진다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> Account &#123;</span><br><span class="line">  balance: <span class="hljs-built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 적금액 얻기(get 프로퍼티 이용)</span></span><br><span class="line">  <span class="hljs-keyword">get</span> getBalance() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.balance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 적금하기(set 프로퍼티 이용)</span></span><br><span class="line">  <span class="hljs-keyword">set</span> setBalance(amount: <span class="hljs-built_in">number</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.balance += amount;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 적금하기(메서드 이용)</span></span><br><span class="line">  deposite(depositeAmount: <span class="hljs-built_in">number</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.setBalance = depositeAmount;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 기본 적금(balance)액을 설정하기</span></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span></span><br><span class="line"><span class="hljs-params">    defaultBalance: <span class="hljs-built_in">number</span> = 0,</span></span><br><span class="line"><span class="hljs-params">    <span class="hljs-keyword">protected</span> bankName: <span class="hljs-built_in">string</span> = "happy bank",</span></span><br><span class="line"><span class="hljs-params">    readonly interestRate: <span class="hljs-built_in">number</span> = 0.1</span></span><br><span class="line"><span class="hljs-params">  </span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.balance = defaultBalance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 생성자 매개변수 interestRate는 public으로 설정됐으므로 호출 가능</span></span><br><span class="line">  getInterestRate() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.interestRate;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 생성자 매개변수 defaultBalance는 private(기본 접근 제한자)이므로 호출 불가</span></span><br><span class="line">  getDefaultBalance() &#123;</span><br><span class="line">    <span class="hljs-comment">// return this.defaultBalance;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> MyAccount <span class="hljs-keyword">extends</span> Account &#123;</span><br><span class="line">  <span class="hljs-comment">// 테스트</span></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">super</span>();</span><br><span class="line">    <span class="hljs-keyword">this</span>.deposite(<span class="hljs-number">1000</span>); <span class="hljs-comment">// 1000원 적금하기</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.setBalance = <span class="hljs-number">1000</span>; <span class="hljs-comment">// 1000원 적금하기</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(</span><br><span class="line">      <span class="hljs-string">`2번) 적금 : <span class="hljs-subst">$&#123;this.balance&#125;</span>원, <span class="hljs-subst">$&#123;this.getBalance&#125;</span>원 / 이율 : <span class="hljs-subst">$&#123;</span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst">        this.interestRate</span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst">      &#125;</span>, <span class="hljs-subst">$&#123;this.getInterestRate()&#125;</span>% / 은행명 : <span class="hljs-subst">$&#123;this.bankName&#125;</span> `</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> account = <span class="hljs-keyword">new</span> Account();</span><br><span class="line"><span class="hljs-built_in">console</span>.log(</span><br><span class="line">  <span class="hljs-string">`1번) 적금 : <span class="hljs-subst">$&#123;account.balance&#125;</span>원, <span class="hljs-subst">$&#123;account.getBalance&#125;</span>원 / 이율 : <span class="hljs-subst">$&#123;</span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst">    account.interestRate</span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst">  &#125;</span>, <span class="hljs-subst">$&#123;account.getInterestRate()&#125;</span>% `</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> myAccount = <span class="hljs-keyword">new</span> MyAccount();</span><br><span class="line"></span><br><span class="line">account.bankName; <span class="hljs-comment">// Property 'bankName' is protected and only accessible within class 'Account' and its subclasses</span></span><br></pre></td></tr></table></figure>
+
+<p>접근 제한자를 생략하면 기본적으로 public이 된다.<br>위 예제에서 defaultBalance는 생성자 내부에서만 사용 가능한 private가 된다.<br>bankName은 protected로 자식 클래스에서 접근가능하지만 객체를 통한 외부접근은 불가능하다.(account.bankName 불가)<br>interestRate는 readOnly로 자식 클래스에서도 접근 가능하고 외부 접근도 가능하다.</p>
+<h3 id="추상-클래스"><a href="#추상-클래스" class="headerlink" title="추상 클래스"></a>추상 클래스</h3><blockquote>
+<p>추상 클래스는 구현 메서드와 추상 클래스가 동시에 존재할 수 있다.<br>abstract 키워드를 클래스 선언 앞에 붙여서 선언한다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> 추상클래스&#123;</span><br><span class="line">  <span class="hljs-keyword">abstract</span> 추상메서드();</span><br><span class="line">  <span class="hljs-keyword">abstract</span> 추상멤버변수 : <span class="hljs-built_in">string</span>;</span><br><span class="line">  <span class="hljs-keyword">public</span> 구현메서드():<span class="hljs-built_in">void</span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="인터페이스"><a href="#인터페이스" class="headerlink" title="인터페이스"></a>인터페이스</h2><blockquote>
+<p>인터페이스는 타입스크립트에서만 지원한다. 인터페이스는 컴파일 후에는 사라지는 타입이다.<br>인터페이스는 선언만 존재하며 멤버 변수와 멤버 메서드를 선언할 수 있지만 접근제한자 설정은 불가능하다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> Car&#123;</span><br><span class="line">  speed : <span class="hljs-built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>자식 인터페이스sms extends 키워드를 사용해 부모 인터페이스를 상속해 확장 할 수 있다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> &lt;자식 인터페이스명&gt; <span class="hljs-keyword">extends</span> Car&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>자식 인터페이스는 여러 부모 인터페이스를 다중 상속할수 있다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> Car &#123;</span><br><span class="line">  speed: <span class="hljs-built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">interface</span> SuperCar &#123;</span><br><span class="line">  gear: <span class="hljs-built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 다중 상속</span></span><br><span class="line"><span class="hljs-keyword">interface</span> MyCar <span class="hljs-keyword">extends</span> Car, SuperCar &#123;</span><br><span class="line">  setting: <span class="hljs-built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> mycar = &lt;MyCar&gt;&#123;&#125;;</span><br><span class="line">mycar.speed = <span class="hljs-number">100</span>;</span><br><span class="line">mycar.gear = <span class="hljs-number">2</span>;</span><br><span class="line">mycar.setting = <span class="hljs-literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<p>만약 부모 인터페이스에서 같은 이름의 메서드를 사용하고 이를 자식이 상속받으면 상속된 자식 인터페이스에서 같은 이름의 메서드를 모두 정의해야한다.<br>인터페이스 정의를 마치면 implements 키워드를 이용해 인터페이스를 구현하는 클래스를 작성한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> Dog &#123;</span><br><span class="line">  run(): <span class="hljs-built_in">void</span>;</span><br><span class="line">  getStatus(): &#123; runningSpeed: <span class="hljs-built_in">number</span> &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">interface</span> Bird &#123;</span><br><span class="line">  fly(): <span class="hljs-built_in">void</span>;</span><br><span class="line">  getStatus(): &#123; flySpeed: <span class="hljs-built_in">number</span> &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">interface</span> DogBird <span class="hljs-keyword">extends</span> Dog, Bird &#123;</span><br><span class="line">  getStatus(): &#123; runningSpeed: <span class="hljs-built_in">number</span>; flySpeed: <span class="hljs-built_in">number</span> &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="인터페이스-역할과-컴파일-결과"><a href="#인터페이스-역할과-컴파일-결과" class="headerlink" title="인터페이스 역할과 컴파일 결과"></a>인터페이스 역할과 컴파일 결과</h3><blockquote>
+<p>인터페이스를 이용하면 객체의 구조를 고정 할 수 있다.<br>인터페이스는 타입 검사의 용도로 사용하고 컴파일 후에는 제거된다. typeof를 이용해 인터페이스 타입을 조사할 수 없다.</p>
+</blockquote>
+<h2 id="클래스와-인터페이스의-활용"><a href="#클래스와-인터페이스의-활용" class="headerlink" title="클래스와 인터페이스의 활용"></a>클래스와 인터페이스의 활용</h2>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/30/ts_md/ts4/">
+                <span class="level-item">typescript chapter6. 함수</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2020/04/19/ts_md/ts5/';
+        this.page.identifier = '2020/04/19/ts_md/ts5/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right ">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#타입스크립트의-객체지향-프로그래밍-지원">
+        <span class="has-mr-6">1.1</span>
+        <span>타입스크립트의 객체지향 프로그래밍 지원</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#클래스">
+        <span class="has-mr-6">2</span>
+        <span>클래스</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#클래스-선언과-객체-생성">
+        <span class="has-mr-6">2.1</span>
+        <span>클래스 선언과 객체 생성</span>
+        </a></li><li>
+        <a class="is-flex" href="#객체-생성">
+        <span class="has-mr-6">2.2</span>
+        <span>객체 생성</span>
+        </a></li><li>
+        <a class="is-flex" href="#상속관계-포함관계">
+        <span class="has-mr-6">2.3</span>
+        <span>상속관계, 포함관계</span>
+        </a></li><li>
+        <a class="is-flex" href="#상속관계와-포함-관계를-고려해-구현하기">
+        <span class="has-mr-6">2.4</span>
+        <span>상속관계와 포함 관계를 고려해 구현하기</span>
+        </a></li><li>
+        <a class="is-flex" href="#접근-제한자-사용법">
+        <span class="has-mr-6">2.5</span>
+        <span>접근 제한자 사용법</span>
+        </a></li><li>
+        <a class="is-flex" href="#생성자-매개변수에-접근-제한자-추가">
+        <span class="has-mr-6">2.6</span>
+        <span>생성자 매개변수에 접근 제한자 추가</span>
+        </a></li><li>
+        <a class="is-flex" href="#부모-클래스의-맴버를-이용">
+        <span class="has-mr-6">2.7</span>
+        <span>부모 클래스의 맴버를 이용</span>
+        </a></li><li>
+        <a class="is-flex" href="#기본-접근-제한자">
+        <span class="has-mr-6">2.8</span>
+        <span>기본 접근 제한자</span>
+        </a></li><li>
+        <a class="is-flex" href="#추상-클래스">
+        <span class="has-mr-6">2.9</span>
+        <span>추상 클래스</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#인터페이스">
+        <span class="has-mr-6">3</span>
+        <span>인터페이스</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#인터페이스-역할과-컴파일-결과">
+        <span class="has-mr-6">3.1</span>
+        <span>인터페이스 역할과 컴파일 결과</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#클래스와-인터페이스의-활용">
+        <span class="has-mr-6">4</span>
+        <span>클래스와 인터페이스의 활용</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/ES6/">
+            <span class="level-start">
+                <span class="level-item">ES6</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hexo/">
+            <span class="level-start">
+                <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/intelliJ/">
+            <span class="level-start">
+                <span class="level-item">intelliJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트-react/">
+            <span class="level-start">
+                <span class="level-item">리액트 / react</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/타입스크립트/">
+            <span class="level-start">
+                <span class="level-item">타입스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="typescript chapter7. 클래스와 인터페이스" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>

@@ -60,3 +60,13 @@ body {
   background: #f00;
   color: #fff;
 }
+
+.content table thead th, .content table thead td {
+  border-width: 0 0 2px;
+  color: #363636;
+  background: whitesmoke;
+  border-bottom: 1px solid #e2e5e8;
+}
+
+
+
