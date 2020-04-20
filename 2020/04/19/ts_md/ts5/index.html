@@ -16,7 +16,7 @@
 <meta property="og:description" content="타입스크립트의 객체지향 프로그래밍 지원   객체지향 프로그래밍 요소 자바스크립트(ES6) 타입스크립트    클래스 class class   인터페이스 x interface   인터페이스구현 x implements   상속 extends extends   생성자 constructor(){} constructor(){}   접근 제한자 x private, pu">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2020-04-19T15:20:32.530Z">
+<meta property="og:updated_time" content="2020-04-20T14:37:51.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="typescript chapter7. 클래스와 인터페이스">
 <meta name="twitter:description" content="타입스크립트의 객체지향 프로그래밍 지원   객체지향 프로그래밍 요소 자바스크립트(ES6) 타입스크립트    클래스 class class   인터페이스 x interface   인터페이스구현 x implements   상속 extends extends   생성자 constructor(){} constructor(){}   접근 제한자 x private, pu">
@@ -127,7 +127,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    19 minutes read (About 2817 words)
+                    29 minutes read (About 4352 words)
                 </span>
                 
                 
@@ -363,7 +363,72 @@
 <h3 id="인터페이스-역할과-컴파일-결과"><a href="#인터페이스-역할과-컴파일-결과" class="headerlink" title="인터페이스 역할과 컴파일 결과"></a>인터페이스 역할과 컴파일 결과</h3><blockquote>
 <p>인터페이스를 이용하면 객체의 구조를 고정 할 수 있다.<br>인터페이스는 타입 검사의 용도로 사용하고 컴파일 후에는 제거된다. typeof를 이용해 인터페이스 타입을 조사할 수 없다.</p>
 </blockquote>
-<h2 id="클래스와-인터페이스의-활용"><a href="#클래스와-인터페이스의-활용" class="headerlink" title="클래스와 인터페이스의 활용"></a>클래스와 인터페이스의 활용</h2>
+<h3 id="배열-요소-타입을-객체-리터럴-타입으로-사용"><a href="#배열-요소-타입을-객체-리터럴-타입으로-사용" class="headerlink" title="배열 요소 타입을 객체 리터럴 타입으로 사용"></a>배열 요소 타입을 객체 리터럴 타입으로 사용</h3><blockquote>
+<p>배열 요소가 객체 리터럴이면 배열 타입 선언 시, 배열 요소의 타입을 객체 리터럴로 지정할 수 있다.<br>배열 요소 타입이 선언되어있으므로 이에 맞춰서 json의 속성을 지정해줄 수 있다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> person: &#123; name: <span class="hljs-built_in">string</span>; age: <span class="hljs-built_in">number</span> &#125;[];</span><br><span class="line"></span><br><span class="line">person = [</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="hljs-string">"lee"</span>,</span><br><span class="line">    age: <span class="hljs-number">20</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="hljs-string">"kim"</span>,</span><br><span class="line">    age: <span class="hljs-number">30</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h3 id="클래스를-배열-타입으로-지정함"><a href="#클래스를-배열-타입으로-지정함" class="headerlink" title="클래스를 배열 타입으로 지정함"></a>클래스를 배열 타입으로 지정함</h3><figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> Person &#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> name: <span class="hljs-built_in">string</span>, <span class="hljs-keyword">public</span> age: <span class="hljs-built_in">number</span></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> person: Person[] = [<span class="hljs-keyword">new</span> Person(<span class="hljs-string">"lee"</span>, <span class="hljs-number">20</span>), <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"kim"</span>, <span class="hljs-number">30</span>)];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(person)); <span class="hljs-comment">// [&#123;"name":"lee","age":20&#125;,&#123;"name":"kim","age":30&#125;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="인터페이스를-배열-타입으로-지정함"><a href="#인터페이스를-배열-타입으로-지정함" class="headerlink" title="인터페이스를 배열 타입으로 지정함"></a>인터페이스를 배열 타입으로 지정함</h3><figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> Person &#123;</span><br><span class="line">  name: <span class="hljs-built_in">string</span>;</span><br><span class="line">  age: <span class="hljs-built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> person: Person[] = [</span><br><span class="line">  &#123; name: <span class="hljs-string">"lee"</span>, age: <span class="hljs-number">20</span> &#125;,</span><br><span class="line">  &#123; name: <span class="hljs-string">"kim"</span>, age: <span class="hljs-number">30</span> &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(person)); <span class="hljs-comment">// [&#123;"name":"lee","age":20&#125;,&#123;"name":"kim","age":30&#125;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="클래스와-인터페이스의-활용"><a href="#클래스와-인터페이스의-활용" class="headerlink" title="클래스와 인터페이스의 활용"></a>클래스와 인터페이스의 활용</h2><h3 id="오버라이딩-overriding"><a href="#오버라이딩-overriding" class="headerlink" title="오버라이딩(overriding)"></a>오버라이딩(overriding)</h3><blockquote>
+<p>오버라이딩은 부모 클래스에 정의된 메서드를 자식 클래스에 새로 구현하는 것을 말한다.<br>부모 클래스를 오버라이든 클래스(overridden class)라고 한다.<br>오버라이든 클래스 안에는 오버라이든 메서드가 존재한다. (부모)<br>오버라이딩 메서드가 재 정의 되려면 (자식)</p>
+<ul>
+<li>오버라이든 메서드의 매개변수 타입은 오버라이딩 메서드의 매개변수 타입과 같거나 상위 타입이여야한다.</li>
+<li>오버라이든 메서드의 매개변수 개수가 오버라이딩 메서드의 매개변수 개수와 같거나 많아야한다.(위 조건 충족 시)</li>
+</ul>
+</blockquote>
+<figure class="highlight ts hljs"><figcaption><span>오버라이딩 예제</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Bird : 오버라이든 클래스 (부모)</span></span><br><span class="line"><span class="hljs-keyword">class</span> Bird&#123;</span><br><span class="line">    <span class="hljs-comment">// 오버라이든 메서드</span></span><br><span class="line">    flight(sppeed : <span class="hljs-built_in">any</span> = <span class="hljs-number">0</span>)&#123;&#125; <span class="hljs-comment">// 부모의 메서드의 타입이 같거나 상위 타입이어야함, 갯수가 같거나 많아야함 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Eagle : 오버라이딩 클래스 (자식)</span></span><br><span class="line"><span class="hljs-keyword">class</span> Eagle <span class="hljs-keyword">extends</span> Bird&#123;</span><br><span class="line">  <span class="hljs-comment">// 오버라이딩 메서드(부모 메서드와 이름이 같음)</span></span><br><span class="line">  flight(sppeed2 : <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>)&#123;&#125; <span class="hljs-comment">// 매개변수 이름은 달라도 된다. 단 타입은 같거나 하위 타입이여함</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 두개의 조건을 만족하지 않으면 오버라이딩 되지 않음</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 위 경우는 메서드의 이름이 같아도 오버라이딩 되지 않는다.</span></span><br><span class="line">filght(speed : <span class="hljs-built_in">any</span> = <span class="hljs-number">0</span>; distance : <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>); <span class="hljs-comment">// 오버라이든 메서드</span></span><br><span class="line">filght(speed : <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>; distance : <span class="hljs-built_in">string</span> = <span class="hljs-string">''</span>); <span class="hljs-comment">// 오버라이딩 메서드</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="오버로딩-overloading"><a href="#오버로딩-overloading" class="headerlink" title="오버로딩(overloading)"></a>오버로딩(overloading)</h3><blockquote>
+<p>메서드 오버로딩은 메서드의 이름이 같지만 매개변수 타입과 개수를 다르게 정의하는 방법을 말한다.</p>
+</blockquote>
+<ul>
+<li>오버라이딩 메서드를 오버로딩하는법<blockquote>
+<p>부모 클래스에 상위 타입을 가지는 오버라이든 메서드를 구현하고, 파생 클래스에서 오버라이딩 메서드를 선언해 구현함 </p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> SingleTypeChecker &#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) &#123;&#125;</span><br><span class="line">  typeCheck(value: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;typeof value&#125;</span> : <span class="hljs-subst">$&#123;value&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> UnionTypeChecker <span class="hljs-keyword">extends</span> SingleTypeChecker &#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">super</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  typeCheck(value2: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span>;</span><br><span class="line">  typeCheck(value2: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span>; <span class="hljs-comment">// 같은 타입을 포함해야 한다.</span></span><br><span class="line">  typeCheck(value2: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">void</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value2 === <span class="hljs-string">"number"</span>) &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"숫자 : "</span>, value2);</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value2 === <span class="hljs-string">"string"</span>) &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"문자열 : "</span>, value2);</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"기타 : "</span>, value2);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> unionTypeChecker = <span class="hljs-keyword">new</span> UnionTypeChecker();</span><br><span class="line">unionTypeChecker.typeCheck(<span class="hljs-number">123</span>);</span><br><span class="line">unionTypeChecker.typeCheck(<span class="hljs-string">"happy"</span>);</span><br><span class="line"><span class="hljs-comment">// unionTypeChecker.typeCheck(true); // 에러</span></span><br></pre></td></tr></table></figure>
+
+<p>위 예제는 any 타입에 number와 string 만 받을 수 있도록 typeCheck 메서드를 정의함<br>any 타입이 모든 타입을 받을 수 있을 것 같지만 실제로는 number와 string 만 받을 수 있다.</p>
+<ul>
+<li>인터페이스를 클래스에서 구현하여 오버로딩<blockquote>
+<p>인터페이스를 이용해 오버로딩 하라면 인터페이스에 오버로딩할 기본 메서드를 선언하고, 클래스에서 기본 메서드를 구현해준다.</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> IPoint &#123;</span><br><span class="line">  getX(x: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">any</span>; <span class="hljs-comment">// 기본 메서드 선언</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">class</span> Point <span class="hljs-keyword">implements</span> IPoint &#123;</span><br><span class="line">  getX(x?: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>): <span class="hljs-built_in">any</span> &#123;</span><br><span class="line">    <span class="hljs-comment">// ?매개변수에 ? 을 추가해 선택 매개변수가 되어 입력값이 없는 호출을 받을 수 있다. p.getX();</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> x === <span class="hljs-string">"number"</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> x;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> x === <span class="hljs-string">"string"</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> p = <span class="hljs-keyword">new</span> Point();</span><br><span class="line"><span class="hljs-built_in">console</span>.log(p.getX()); <span class="hljs-comment">// undefined</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(p.getX(<span class="hljs-string">"hello"</span>)); <span class="hljs-comment">// hello</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(p.getX(<span class="hljs-number">123</span>)); <span class="hljs-comment">//  123</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="다형성"><a href="#다형성" class="headerlink" title="다형성"></a>다형성</h2><blockquote>
+<p>여러 타입을 받아들여 여러 형태를 가지는 것. 타입스크립트에서는 다음 세 가지가 대표적인 예이다.</p>
+<ol>
+<li>클래스의 다형성</li>
+<li>인터페이스의 다형성</li>
+<li>매개변수의 다형성</li>
+</ol>
+</blockquote>
+<h3 id="클래스의-다형성"><a href="#클래스의-다형성" class="headerlink" title="클래스의 다형성"></a>클래스의 다형성</h3><figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">class</span> Planet &#123;</span><br><span class="line">  <span class="hljs-keyword">public</span> diameter: <span class="hljs-built_in">number</span>; <span class="hljs-comment">// 접근 가능</span></span><br><span class="line"></span><br><span class="line">  getIsTransduction(): <span class="hljs-built_in">boolean</span> &#123; <span class="hljs-comment">// 접근 가능</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.isTransduction;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  stop(): <span class="hljs-built_in">void</span> &#123; <span class="hljs-comment">// 오버라이든 메서드 2)</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"stop1"</span>);</span><br><span class="line">    <span class="hljs-keyword">this</span>.isTransduction = <span class="hljs-literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> Earth <span class="hljs-keyword">extends</span> Planet &#123;</span><br><span class="line">  <span class="hljs-keyword">public</span> features: <span class="hljs-built_in">string</span>[] = [<span class="hljs-string">"soil"</span>, <span class="hljs-string">"water"</span>, <span class="hljs-string">"oxyzen"</span>]; <span class="hljs-comment">// 접근 불가</span></span><br><span class="line"></span><br><span class="line">  stop(): <span class="hljs-built_in">void</span> &#123; <span class="hljs-comment">// 오버라이딩 메서드</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"stop2"</span>);</span><br><span class="line">    <span class="hljs-keyword">this</span>.isTransduction = <span class="hljs-literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> earth: Planet = <span class="hljs-keyword">new</span> Earth(); <span class="hljs-comment">// 1)</span></span><br></pre></td></tr></table></figure>
+
+<p>1) 부모 클래스(Planet) 타입으로 지정된 객체 참조변수(earth)는 자식 클래스의 객체(new Earth)를 할당받더라도 실제 동작은 부모 클래스를 기준으로 실행된다.<br>따라서 earth는 부모 메서드는 접근 가능하지만 자식 클래스의 매개변수(features)에는 접근 할 수 없다.</p>
+<p>2) 그런데, stop()은 부모 클래스의 stop() 메서드가 자식 클래스로 오버라이딩 되어있다. 이럴 경우 자식 클래스의 메서드가 우선으로 호출된다.<br>즉 오버라이든 &lt; 오버라이딩<br>이처럼, 런타임 시에 호출될 메서드가 결정되는 특성을 런타임 다형성이라고 한다.</p>
+<h3 id="인터페이스의-다형성"><a href="#인터페이스의-다형성" class="headerlink" title="인터페이스의 다형성"></a>인터페이스의 다형성</h3><figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> IPerson &#123;</span><br><span class="line">  age: <span class="hljs-built_in">number</span>;</span><br><span class="line">  getAge(): <span class="hljs-built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">class</span> MyPerson <span class="hljs-keyword">implements</span> IPerson &#123;</span><br><span class="line">  age: <span class="hljs-built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  getAge(): <span class="hljs-built_in">number</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  hasClub() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> man: IPerson = <span class="hljs-keyword">new</span> MyPerson(); <span class="hljs-comment">// 1)</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(man.getAge()); <span class="hljs-comment">// 2)</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(man.hasClub()); <span class="hljs-comment">//3)  Property 'hasClub' does not exist on type 'IPerson'.</span></span><br></pre></td></tr></table></figure>
+
+<p>1) new MyPerson()는 원래 MyPerson 타입이지만 객체 참조변수(man)에 할당되면서 인터페이스(IPerson) 기준으로 접근이 이뤄진다.<br>2) 따라서, man은 매개변수  age와 getAge()메서드에는 접근 가능하지만,<br>3) 구현 클래스(MyPerson)에 새롭게 추가된 hasClub() 메서드는 접근 할 수 없다.</p>
+<h3 id="매개변수의-다형성"><a href="#매개변수의-다형성" class="headerlink" title="매개변수의 다형성"></a>매개변수의 다형성</h3><ul>
+<li><p>유니언 타입 이용</p>
+<blockquote>
+<p>매개변수 타입을 유니언 타입을 이용하므로써 객체가 다형성의 성질을 띄도록 만들 수 있다.</p>
+</blockquote>
+</li>
+<li><p>인터페이스 타입 이용</p>
+</li>
+</ul>
+<h2 id="클래스에서-getter-setter"><a href="#클래스에서-getter-setter" class="headerlink" title="클래스에서 getter,setter"></a>클래스에서 getter,setter</h2>
         </div>
         
         
@@ -393,7 +458,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -428,7 +493,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catalogue
+                Catálogo
             </h3>
             <ul class="menu-list"><ul class="menu-list"><li>
         <a class="is-flex" href="#타입스크립트의-객체지향-프로그래밍-지원">
@@ -482,10 +547,50 @@
         <a class="is-flex" href="#인터페이스-역할과-컴파일-결과">
         <span class="has-mr-6">3.1</span>
         <span>인터페이스 역할과 컴파일 결과</span>
+        </a></li><li>
+        <a class="is-flex" href="#배열-요소-타입을-객체-리터럴-타입으로-사용">
+        <span class="has-mr-6">3.2</span>
+        <span>배열 요소 타입을 객체 리터럴 타입으로 사용</span>
+        </a></li><li>
+        <a class="is-flex" href="#클래스를-배열-타입으로-지정함">
+        <span class="has-mr-6">3.3</span>
+        <span>클래스를 배열 타입으로 지정함</span>
+        </a></li><li>
+        <a class="is-flex" href="#인터페이스를-배열-타입으로-지정함">
+        <span class="has-mr-6">3.4</span>
+        <span>인터페이스를 배열 타입으로 지정함</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#클래스와-인터페이스의-활용">
         <span class="has-mr-6">4</span>
         <span>클래스와 인터페이스의 활용</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#오버라이딩-overriding">
+        <span class="has-mr-6">4.1</span>
+        <span>오버라이딩(overriding)</span>
+        </a></li><li>
+        <a class="is-flex" href="#오버로딩-overloading">
+        <span class="has-mr-6">4.2</span>
+        <span>오버로딩(overloading)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#다형성">
+        <span class="has-mr-6">5</span>
+        <span>다형성</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#클래스의-다형성">
+        <span class="has-mr-6">5.1</span>
+        <span>클래스의 다형성</span>
+        </a></li><li>
+        <a class="is-flex" href="#인터페이스의-다형성">
+        <span class="has-mr-6">5.2</span>
+        <span>인터페이스의 다형성</span>
+        </a></li><li>
+        <a class="is-flex" href="#매개변수의-다형성">
+        <span class="has-mr-6">5.3</span>
+        <span>매개변수의 다형성</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#클래스에서-getter-setter">
+        <span class="has-mr-6">6</span>
+        <span>클래스에서 getter,setter</span>
         </a></li></ul>
         </div>
     </div>
@@ -497,7 +602,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -566,7 +671,7 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Tag Cloud
+            Nube de etiquetas
         </h3>
         <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
@@ -743,10 +848,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
