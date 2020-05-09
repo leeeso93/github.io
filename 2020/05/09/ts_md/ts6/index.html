@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>typescript chapter8. 모듈 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="모듈 모듈은 독립 가능한 기능의 단위이다. 모듈을 사용하면1) 유지보수가 쉬워진다. 자주 사용하는 공통 기능을 정의해 사용하면 중복 코드가 적어져 유지 보수가 쉬워진다.2) 전역 스코프 오염을 방지한다. 전역 스코프 내부에서 함수나 변수 이름을 중복해 선언할 수 없으므로 이를 파일 내부에 한정해 모듈로 선언하면 전역 공간을 침범하지 않는다.3) 재사용성이">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript chapter8. 모듈">
+<meta property="og:url" content="http://yoursite.com/2020/05/09/ts_md/ts6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="모듈 모듈은 독립 가능한 기능의 단위이다. 모듈을 사용하면1) 유지보수가 쉬워진다. 자주 사용하는 공통 기능을 정의해 사용하면 중복 코드가 적어져 유지 보수가 쉬워진다.2) 전역 스코프 오염을 방지한다. 전역 스코프 내부에서 함수나 변수 이름을 중복해 선언할 수 없으므로 이를 파일 내부에 한정해 모듈로 선언하면 전역 공간을 침범하지 않는다.3) 재사용성이">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2020-05-09T13:37:54.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typescript chapter8. 모듈">
+<meta name="twitter:description" content="모듈 모듈은 독립 가능한 기능의 단위이다. 모듈을 사용하면1) 유지보수가 쉬워진다. 자주 사용하는 공통 기능을 정의해 사용하면 중복 코드가 적어져 유지 보수가 쉬워진다.2) 전역 스코프 오염을 방지한다. 전역 스코프 내부에서 함수나 변수 이름을 중복해 선언할 수 없으므로 이를 파일 내부에 한정해 모듈로 선언하면 전역 공간을 침범하지 않는다.3) 재사용성이">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="typescript chapter8. 모듈" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-08T15:00:00.000Z">2020-05-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/타입스크립트/">타입스크립트</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    23 minutes read (About 3488 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                typescript chapter8. 모듈
+            
+        </h1>
+        <div class="content">
+            <h2 id="모듈"><a href="#모듈" class="headerlink" title="모듈"></a>모듈</h2><blockquote>
+<p>모듈은 독립 가능한 기능의 단위이다. 모듈을 사용하면<br>1) 유지보수가 쉬워진다. 자주 사용하는 공통 기능을 정의해 사용하면 중복 코드가 적어져 유지 보수가 쉬워진다.<br>2) 전역 스코프 오염을 방지한다. 전역 스코프 내부에서 함수나 변수 이름을 중복해 선언할 수 없으므로 이를 파일 내부에 한정해 모듈로 선언하면 전역 공간을 침범하지 않는다.<br>3) 재사용성이 향상된다. 모듈은 프로젝트에 자주 사용되는 기능을 공통으로 뺴놓을 수 있게 된다.</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="내부-모듈과-외부-모듈"><a href="#내부-모듈과-외부-모듈" class="headerlink" title="내부 모듈과 외부 모듈"></a>내부 모듈과 외부 모듈</h3><blockquote>
+<p>내무 모듈은 네임스페이스를 의미하고, 외부 모듈은 export 라고 선언해 외부로 공개된 모듈을 의미한다.<br>네임 스페이스는 여러 파일에 걸쳐 하나의 이름 공간을 공유하지만, 외부 모듈은 모듈 파일마다 이름 공간이 정해진다.</p>
+</blockquote>
+<ul>
+<li><strong>내부모듈</strong><br>내부 모듈은 네임스페이스는 전역 이름 공간과 분리된 네임스페이스 단위의 이름공간이다.<br>따라서 같은 네임스페이스내 이름공간에서는 파일 B가 파일 A에 선언된 모듈을 참조(reference)할 수 있다.<br>파일이 다르더라도 같은 네임 스페이스 내에서는 이름을 중복해 클래스,함수,변수 등을 선언 할 수 없다.</li>
+</ul>
+<ul>
+<li><strong>외부모듈</strong><br>export로 선언한 모듈을 외부 모듈이라고 한다. export 키워드로 외부 모듈로 선언할 수 있는 대상은 변수, 함수, 클래스 , 네임스페이스 등이 가능하다.<br>export로 외부 모듈로 선언하면 이름이 같아도 충돌이 일어나지 않는다.</li>
+</ul>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//ts1.ts</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-function">function1(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//ts2.ts</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-function">function1(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">이름이 같아도 export로 분리하면 충돌이 발생하지 않지만 export를 생락하면 전역 스코프의 이름 공간을 공유해 충돌이 발생함</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>타입스크립트는 module 옵션을 통해 다른 모듈 형식으로 변환할 수 있게 지원한다. tsc의 –module 옵션을 통해 특정 모듈 형식으로 변환할 수 있다.</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tsc --module &lt;모듈형식&gt; &lt;변환할 파일명&gt;</span><br><span class="line"></span><br><span class="line">/** 예시 **/</span><br><span class="line">tsc --module commonjs example.component.js</span><br></pre></td></tr></table></figure>
+
+<p>module 옵션에서 사용할 수 있는 모듈형식은 다음과 같다.</p>
+<ul>
+<li>commonjs</li>
+<li>amd</li>
+<li>system</li>
+<li>umd</li>
+<li>es2015 또는 es6</li>
+</ul>
+<h3 id="모듈-예제를-컴파일-할-때-주의사항"><a href="#모듈-예제를-컴파일-할-때-주의사항" class="headerlink" title="모듈 예제를 컴파일 할 때 주의사항"></a>모듈 예제를 컴파일 할 때 주의사항</h3><blockquote>
+<p>Node.js 버전이 8.5.0 이상이면 –experimental-modules 플래그를 통해 es 모듈에 대한 컴파일을 지원한다.</p>
+</blockquote>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --experimental-modules load-default.mjs</span><br></pre></td></tr></table></figure>
+
+<p>이 때 자바스크립트 확장자가 .mjs 여야한다. </p>
+<p>반대로 8.5.0 미만이면 es2015를 지원하지 않으므로 다운 레벨 컴파일이 필요하다.</p>
+<h2 id="네임스페이스"><a href="#네임스페이스" class="headerlink" title="네임스페이스"></a>네임스페이스</h2><blockquote>
+<p>네임스페이스는 하나의 독립된 이름 공간을 만들고, 여러 파일에 걸처 하나의 이름 공간을 공유하게 한다.<br>namespace 키워드를 이용해 선언한다. module 키워드로도 같은 역할과 기능을 한다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">namespace</span> Hello &#123;&#125;</span><br><span class="line"><span class="hljs-keyword">module</span> Hello&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="namespace와-module의-선언과-컴파일-결과-확인"><a href="#namespace와-module의-선언과-컴파일-결과-확인" class="headerlink" title="namespace와 module의 선언과 컴파일 결과 확인"></a>namespace와 module의 선언과 컴파일 결과 확인</h3><figure class="highlight ts hljs"><figcaption><span>hello.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">namespace</span> Hello &#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">print</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"hello"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">module</span> Hello &#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">print</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"hello"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ts hljs"><figcaption><span>hello.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> Hello;</span><br><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">Hello</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">print</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(Hello || (Hello = &#123;&#125;));</span><br></pre></td></tr></table></figure>
+
+<p>namespace와 module은 컴파일 결과가 완전히 동일하다. 내부 모듈은 자바스크립트(es6)로 컴파일 될 때 즉시 실행함수로 변환된다.</p>
+<h3 id="한-파일에-여러-네임스페이스-선언"><a href="#한-파일에-여러-네임스페이스-선언" class="headerlink" title="한 파일에 여러 네임스페이스 선언"></a>한 파일에 여러 네임스페이스 선언</h3><blockquote>
+<p>네임스페이스는 보통 여러 파일에 걸처 하나의 이름 공간을 공유하는데, 특정 파일에만 네임 스페이스를 선언하거나, 하나의 파일에 여러 네임스페이스를 함께 써도 가능하다. 한 파일에서 여러 네임스페이스를 써서 서로의 이름 공간에 접근하려면 모듈을 export로 선언해야한다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 네임스페이스 간에는 모듈을 서로 호출하고 주고 받을 수 있다.</span></span><br><span class="line"><span class="hljs-keyword">namespace</span> MyInfo1 &#123;</span><br><span class="line">  <span class="hljs-comment">// export로 오</span></span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> name = <span class="hljs-string">"happy1"</span>;</span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName2</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> MyInfo2.name2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> MyInfo2 &#123;</span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> name2 = <span class="hljs-string">"happy2"</span>;</span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> MyInfo1.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 전역 공간에서 네임스페이스 내부에 선언된 외부 모듈 호출할 수 있다.</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(MyInfo1.getName2()); <span class="hljs-comment">// happy2</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(MyInfo2.getName()); <span class="hljs-comment">// happy1</span></span><br></pre></td></tr></table></figure>
+
+<p>자바스크립트는 코드가 순차적으로 실행되므로 상위의 있는 네임스페이스에서 하위에 선언된 네임스페이스로 접근할 수 없어야 한다.<br>그런데, 컴파일 결과를 보면 실행 순서와 관계없이 자유롭게 호출할 수 있는데 이는 컴파일시 네임 스페이스 이름이 var 변수로 선언됬기 때문이다.</p>
+<figure class="highlight js hljs"><figcaption><span>컴파일 결과</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 네임스페이스 간에는 모듈을 서로 호출하고 주고 받을 수 있다.</span></span><br><span class="line"><span class="hljs-keyword">var</span> MyInfo1;</span><br><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">MyInfo1</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// export로 오</span></span><br><span class="line">    MyInfo1.name = <span class="hljs-string">"happy1"</span>;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName2</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> MyInfo2.name2;</span><br><span class="line">    &#125;</span><br><span class="line">    MyInfo1.getName2 = getName2;</span><br><span class="line">&#125;)(MyInfo1 || (MyInfo1 = &#123;&#125;));</span><br><span class="line"><span class="hljs-keyword">var</span> MyInfo2;</span><br><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">MyInfo2</span>) </span>&#123;</span><br><span class="line">    MyInfo2.name2 = <span class="hljs-string">"happy2"</span>;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> MyInfo1.name;</span><br><span class="line">    &#125;</span><br><span class="line">    MyInfo2.getName = getName;</span><br><span class="line">&#125;)(MyInfo2 || (MyInfo2 = &#123;&#125;));</span><br><span class="line"><span class="hljs-comment">// 전역 공간에서 네임스페이스 내부에 선언된 외부 모듈 호출할 수 있다.</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(MyInfo1.getName2());</span><br><span class="line"><span class="hljs-built_in">console</span>.log(MyInfo2.getName());</span><br></pre></td></tr></table></figure>
+
+<h3 id="참조-경로-추가"><a href="#참조-경로-추가" class="headerlink" title="참조 경로 추가"></a>참조 경로 추가</h3><figure class="highlight ts hljs"><figcaption><span>car1.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">namespace</span> Car &#123;</span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> auto: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> ICar &#123;</span><br><span class="line">    name: <span class="hljs-built_in">string</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>car1.ts 파일에는 export로 auto변수와 ICar 인터페이스가 선언되어있음.</p>
+<figure class="highlight ts hljs"><figcaption><span>car2.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">namespace</span> Car &#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> wheels: <span class="hljs-built_in">number</span>;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(auto);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">class</span> Taxi <span class="hljs-keyword">implements</span> ICar &#123;</span><br><span class="line">    name: <span class="hljs-built_in">string</span>;</span><br><span class="line">    vendor: <span class="hljs-built_in">string</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(Car.auto);</span><br></pre></td></tr></table></figure>
+
+<p>car2.ts에서 Taxi 클래스는 car1.js의 ICar 인터페이스를 참조한다. 같은 네임스페이스(Car) 안에서 선언되어 있으므로<br>tsc로 프로젝트 단위로 컴파일 하면 이상없이 컴파일된다. 그러나 특정 파일 (car2.ts)만 컴파일 하면 문제가 발생한다.<br>따라서 파일 상단에 명시적으로 참조 경로(reference path)를 선언해줘야한다.</p>
+<figure class="highlight ts hljs"><figcaption><span>참조 경로 설정</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/// &lt;reference path="car1.ts" /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>참조 경로는 <strong>트리플 슬래시</strong>를 이용해 작성한다. 참조 경로를 작성한 car2.ts를 컴파일하면 참조 경로로 연결된 car1.ts도 함께 컴파일되어<br>car1.js, car2.js 두 파일이 생성된다. </p>
+<p>그 다음 컴파일된 car2.js를 실행하면 다음과 같다.</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node car2.js</span><br><span class="line">undefined</span><br><span class="line">undefined</span><br></pre></td></tr></table></figure>
+
+<p>undefined가 출력되는 이유는 컴파일 후 js 파일에서 참조 경로가 주석처럼 인식되어 제 기능을 할 수 없기 때문이다.<br>올바른 결과를 컴파일 하려면 두 파일을 합쳐서 컴파일 해아한다.</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc --out out.js car2.ts</span><br></pre></td></tr></table></figure>
+
+<p>위 명렁어를 입력하면 car1.js 파일의 결과를 합쳐 out.js라는 파일을 생성한다. 컴파일 결과가 한 파일에 존재하므로 참조 경로나 require 함수가 없더라도 정상적으로 결과가 출력된다.</p>
+<figure class="highlight js hljs"><figcaption><span>out.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> Car;</span><br><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">Car</span>) </span>&#123;</span><br><span class="line">    Car.auto = <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;)(Car || (Car = &#123;&#125;));</span><br><span class="line"><span class="hljs-comment">/// &lt;reference path="car1.ts" /&gt;</span></span><br><span class="line"><span class="hljs-keyword">var</span> Car;</span><br><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">Car</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> wheels;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(Car.auto);</span><br><span class="line">    <span class="hljs-keyword">var</span> Taxi = <span class="hljs-comment">/** @class */</span> (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Taxi</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> Taxi;</span><br><span class="line">    &#125;());</span><br><span class="line">&#125;)(Car || (Car = &#123;&#125;));</span><br><span class="line"><span class="hljs-built_in">console</span>.log(Car.auto);</span><br></pre></td></tr></table></figure>
+
+<h3 id="네임스페이스-모듈"><a href="#네임스페이스-모듈" class="headerlink" title="네임스페이스 모듈"></a>네임스페이스 모듈</h3><blockquote>
+<p>네임스페이스는 export를 이용해 모듈로 선언할 수 있다.<br>import문을 이용해 js로 컴파일 된 뒤에도 명시적으로 모듈 호출(imort문 , require 함수) 등을 할 수 있다.</p>
+</blockquote>
+<p>먼저 export 키워드를 이용해 Car 네임스페이스를 모듈로 선언한다.</p>
+<figure class="highlight ts hljs"><figcaption><span>car1.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">namespace</span> Car &#123;</span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> auto: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> ICar &#123;</span><br><span class="line">    name: <span class="hljs-built_in">string</span>;</span><br><span class="line">    vendor: <span class="hljs-built_in">string</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>그 다음 네임스페이스 모듈을 호출하는 import문을 다음과 같이 작성한다.</p>
+<figure class="highlight ts hljs"><figcaption><span>car2.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> ns <span class="hljs-keyword">from</span> <span class="hljs-string">"./car1"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Car &#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> wheels: <span class="hljs-built_in">number</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(ns.Car.auto);</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">class</span> Taxi <span class="hljs-keyword">implements</span> ns.Car.ICar &#123;</span><br><span class="line">    name: <span class="hljs-built_in">string</span>;</span><br><span class="line">    vendor: <span class="hljs-built_in">string</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>그 뒤 car2.ts 파일을 컴파일 한다.</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc car2.ts</span><br></pre></td></tr></table></figure>
+
+<p>tsc로 컴파일시  –module 옵션을 설정하지 않았으므로 기본 설정인 CommonJs 모듈 형식으로 변환된다.</p>
+<h3 id="네임스페이스-이름-확장"><a href="#네임스페이스-이름-확장" class="headerlink" title="네임스페이스 이름 확장"></a>네임스페이스 이름 확장</h3><blockquote>
+<p>네임스페이스 이름은 알파벳 대소문자를 사용한다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">namespace</span> Animal&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>네임 스페이스 이름은 예외로 점(.)을 허용한다. 점을 이용하면 네임스페이스 간의 이름 계층을 만든다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">namespace</span> Animal.Land&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Animal과 Animal.Land 네임스페이스는 서로 다른 이름 공간이다.<br>따라서 Animal.Land 네임스페이스에서 Animal의 모듈 함수를 호출할 수 있다.</p>
+<p>또한, 한 파일내에 여러 네임스페이스를 선언할 때 논리적인 이름 순서 상 상위 이름은 앞에 선언되어야한다.<br>그러나 선언 순서를 바꾼다고 해서 문제가 생기지는 않는다.</p>
+<figure class="highlight ts hljs"><figcaption><span>animal.ts 논리적 순서에 맞게 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">namespace</span> Animal&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Animal.Land &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> Animal.Land.Cat&#123;</span><br><span class="line">    ..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 선언된 네임스페이스를 import 할때는 최상위 이름만을 이용해야한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Animal &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"./animal"</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="모듈의-이해와-사용"><a href="#모듈의-이해와-사용" class="headerlink" title="모듈의 이해와 사용"></a>모듈의 이해와 사용</h2><blockquote>
+<p>타임스크립트는 ES2015 모듈 선언과 호출과 관련한 스타일을 지원한다.</p>
+</blockquote>
+<h3 id="모듈-선언과-모듈-임포트"><a href="#모듈-선언과-모듈-임포트" class="headerlink" title="모듈 선언과 모듈 임포트"></a>모듈 선언과 모듈 임포트</h3><blockquote>
+<p>export나 import 제한자를 통해 모듈을 선언하고 호출할 수 있다. 이러한 방식을 명명된 내보내기(named exports)라고 한다.<br>외부로 노출된 모듈은 import를 통해 가져올 수 있다.</p>
+</blockquote>
+<p>함수나 인터페이스와 같은 단위별로 노출하려면 개별 노출 형식을 사용한다.</p>
+<figure class="highlight ts hljs"><figcaption><span>export.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> ICard &#123;&#125;</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">saveInfo</span>(<span class="hljs-params">card: ICard, name: <span class="hljs-built_in">string</span></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>export로 노출된 ICar 인터페이스와 saveInfo 함수는 다음과 같은 방식으로 임포트 할 수 있다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; ICard,saveInfo&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./export'</span></span><br><span class="line"><span class="hljs-keyword">let</span> card : ICard =&#123;&#125;;</span><br><span class="line">saveInfo(card,<span class="hljs-string">"string"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="여러-모듈-export-하기"><a href="#여러-모듈-export-하기" class="headerlink" title="여러 모듈 export 하기"></a>여러 모듈 export 하기</h3><blockquote>
+<p>함수나 인터페이스 뿐만 아니라 배열과 변수 등도 모듈로 선언할 수 있다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><figcaption><span>variable.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> ver = <span class="hljs-string">"1.0"</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> author: <span class="hljs-built_in">string</span> = <span class="hljs-string">"happy"</span>;</span><br><span class="line"><span class="hljs-keyword">let</span> extensions = [<span class="hljs-string">"jpg"</span>, <span class="hljs-string">"bmp"</span>, <span class="hljs-string">"png"</span>];</span><br><span class="line"><span class="hljs-keyword">let</span> display = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">"hello world"</span>;</span><br><span class="line"><span class="hljs-keyword">export</span> &#123; ver, author, extensions, display &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>일일이 export 붙이기 힘드므로 다음과 같은 형태로 여러 변수를 함꼐 export 할 수 있다.</p>
+<p>export된 함수는 다음과 같이 import 해 사용할 수 있다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span>  &#123; ver, author, extensions, display &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"./variable"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>만약, 모둘로 선언할 대상이 인터페이스를 사용하는 함수 일때는 함수가 인터페이스와 의존관계에 있으므로 함께 선언해주어야한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> ICar &#123;&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">drive</span>(<span class="hljs-params">car: ICar</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> &#123; ICar , drive&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="모듈을-재-노출해-사용하기"><a href="#모듈을-재-노출해-사용하기" class="headerlink" title="모듈을 재 노출해 사용하기"></a>모듈을 재 노출해 사용하기</h3><ul>
+<li>가져온 모든 모듈 재노출</li>
+</ul>
+<blockquote>
+<p>한 파일에서 재노출할 모듈이 많아 구체적인 이름을 열거하기 불편할 때 export * from 을 이용한다.<br>(*) 은 모든 모듈을 의미한다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><figcaption><span>예시</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">"./module1"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>외부 모듈 *에 대한 별칭이 없으므로 임포트시 as 키워드를 이용해 별칭을 추가해야한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> m <span class="hljs-keyword">from</span> <span class="hljs-string">"./module1"</span>;</span><br><span class="line">m.run(<span class="hljs-number">20</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="디폴트-모듈의-이해와-사용법"><a href="#디폴트-모듈의-이해와-사용법" class="headerlink" title="디폴트 모듈의 이해와 사용법"></a>디폴트 모듈의 이해와 사용법</h2><h2 id="디폴트-모듈-선언"><a href="#디폴트-모듈-선언" class="headerlink" title="디폴트 모듈 선언"></a>디폴트 모듈 선언</h2><blockquote>
+<p>타입스크립트 1.5에서는 import-equals문과 export-equals 문 대신 다른 형태로 모듈을 선언하거나 임포트 할 수 있다.<br>export-equals 할당은 default 키워드를 이용한 방식으려 변경되었다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  title: <span class="hljs-string">"title"</span>,</span><br><span class="line">  length: <span class="hljs-number">11</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 default로 선언된 모듈은 파일마다 하나씩만 선언되어야 한다.<br>다음과 같은 방식으로도 선언 가능하다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//기본</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="line">  title: <span class="hljs-string">"title"</span>,</span><br><span class="line">  length: <span class="hljs-number">11</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//변형</span></span><br><span class="line"><span class="hljs-keyword">export</span> a = &#123;</span><br><span class="line">     title : <span class="hljs-string">'title'</span>,</span><br><span class="line">     length : <span class="hljs-number">11</span></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="hljs-keyword">export</span> &#123; a <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>&#125;</span><br><span class="line"></span><br><span class="line"> <span class="hljs-comment">//익명 함수</span></span><br><span class="line"> <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x :<span class="hljs-built_in">number</span></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//기명 함수</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">x :<span class="hljs-built_in">number</span></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//클래스</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">class</span> Hello&#123;</span><br><span class="line">    sayHello()&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hello'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>import-equals 문은 require() 대신 import 형식으로 가져올 수 있다.</p>
+</blockquote>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> Validator <span class="hljs-keyword">from</span> <span class="hljs-string">" ./validator"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> &#123;<span class="hljs-keyword">default</span> <span class="hljs-keyword">as</span> Validator&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./validator'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="디폴트-모듈과-명명된-모듈을-함께-가져오기"><a href="#디폴트-모듈과-명명된-모듈을-함께-가져오기" class="headerlink" title="디폴트 모듈과 명명된 모듈을 함께 가져오기"></a>디폴트 모듈과 명명된 모듈을 함께 가져오기</h3><blockquote>
+<p>디폴트 모듈은 default 키워드를 이용해 선언한다. </p>
+</blockquote>
+<p>익명의 객체 리터럴을 디폴트 모듈로 선언하고 임포트하는 과정은 다음과 같다.</p>
+<figure class="highlight ts hljs"><figcaption><span>default.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span>&#123;</span><br><span class="line">  name : <span class="hljs-string">'happy'</span>;</span><br><span class="line">  age : <span class="hljs-number">40</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>익명의 객체 리터럴을 디폴트 모듈로 선언할 경우 외부에 export 할 때 이름이 없으므로 임의로 지정해 주어야한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> profile <span class="hljs-keyword">from</span> <span class="hljs-string">"./default"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>또한 default 키워드는 한 번만 사용해야 한다. 유일한 식별자로서만 인식되기 때문이다. 두 번 사용하면 컴파일 에러가 발생한다.</p>
+<p>default 모듈을 import 할때는 {}에 선언하면 안돼고 {}가 없이 선언해야한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123;<span class="hljs-keyword">default</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"./default"</span>; (x)</span><br><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">from</span> <span class="hljs-string">"./default"</span>; (o)</span><br></pre></td></tr></table></figure>
+
+<p>따라서 디폴트 모듈과 일반 모듈을 함꼐 import 할때는 다음과 같이 사용해야한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> profile <span class="hljs-keyword">from</span> <span class="hljs-string">"./default"</span>; <span class="hljs-comment">// 한 개의 디폴트 모듈 임포트시</span></span><br><span class="line"><span class="hljs-keyword">import</span> p, &#123; hello &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"./default2"</span>; <span class="hljs-comment">// 디폴트 모듈 p와 일반 모듈hello를 임포트시</span></span><br></pre></td></tr></table></figure>
+
+<p>이처럼 디폴트 모듈과 일반 모듈을 함께 임포트 할 때는 디폴트 모듈은 이름만 선언하고 일반 모듈은 {} 내부에 선언해야한다.</p>
+<h3 id="디폴트-모듈로-타입과-모듈을-함께-노출하기"><a href="#디폴트-모듈로-타입과-모듈을-함께-노출하기" class="headerlink" title="디폴트 모듈로 타입과 모듈을 함께 노출하기"></a>디폴트 모듈로 타입과 모듈을 함께 노출하기</h3><figure class="highlight ts hljs"><figcaption><span>export.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">interface</span> HelloMessage &#123;</span><br><span class="line">  first: <span class="hljs-built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HelloMessage</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">HelloMessage</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> message: HelloMessage = &#123; first: <span class="hljs-string">"hello"</span> &#125;;</span><br><span class="line">  <span class="hljs-keyword">return</span> message;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> HelloMessage; <span class="hljs-comment">// 디폴트 모듈로 export함</span></span><br></pre></td></tr></table></figure>
+
+<p>interface 명과 함수 명을 HelloMessage로 일치시키고 해당이름으로 export 한 뒤 ,<br>export된 디폴트 모듈을 임포트하면 같은 이름을 이용해 함수 또는 인터페이스 타입으로서 사용할 수 있다.</p>
+<figure class="highlight ts hljs"><figcaption><span>import.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> hello <span class="hljs-keyword">from</span> <span class="hljs-string">"./export"</span>; <span class="hljs-comment">// 디폴트 모듈은 임포트할 때 이름 변경이 가능하다.</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> helloMessage: hello = hello(<span class="hljs-string">"hello"</span>);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(hello(<span class="hljs-string">"hello"</span>)); <span class="hljs-comment">//  &#123; first: 'hello' &#125;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(helloMessage); <span class="hljs-comment">// &#123; first: 'hello' &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>임포트한 hello 모듈은 hello(‘hello’)와 같이 함수로 사용될 수 있고, : hello와 같이 인터페이스 타입으로 사용될 수도 있다.</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/19/ts_md/ts5/">
+                <span class="level-item">typescript chapter7. 클래스와 인터페이스</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2020/05/09/ts_md/ts6/';
+        this.page.identifier = '2020/05/09/ts_md/ts6/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right ">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#모듈">
+        <span class="has-mr-6">1</span>
+        <span>모듈</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#내부-모듈과-외부-모듈">
+        <span class="has-mr-6">1.1</span>
+        <span>내부 모듈과 외부 모듈</span>
+        </a></li><li>
+        <a class="is-flex" href="#모듈-예제를-컴파일-할-때-주의사항">
+        <span class="has-mr-6">1.2</span>
+        <span>모듈 예제를 컴파일 할 때 주의사항</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#네임스페이스">
+        <span class="has-mr-6">2</span>
+        <span>네임스페이스</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#namespace와-module의-선언과-컴파일-결과-확인">
+        <span class="has-mr-6">2.1</span>
+        <span>namespace와 module의 선언과 컴파일 결과 확인</span>
+        </a></li><li>
+        <a class="is-flex" href="#한-파일에-여러-네임스페이스-선언">
+        <span class="has-mr-6">2.2</span>
+        <span>한 파일에 여러 네임스페이스 선언</span>
+        </a></li><li>
+        <a class="is-flex" href="#참조-경로-추가">
+        <span class="has-mr-6">2.3</span>
+        <span>참조 경로 추가</span>
+        </a></li><li>
+        <a class="is-flex" href="#네임스페이스-모듈">
+        <span class="has-mr-6">2.4</span>
+        <span>네임스페이스 모듈</span>
+        </a></li><li>
+        <a class="is-flex" href="#네임스페이스-이름-확장">
+        <span class="has-mr-6">2.5</span>
+        <span>네임스페이스 이름 확장</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#모듈의-이해와-사용">
+        <span class="has-mr-6">3</span>
+        <span>모듈의 이해와 사용</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#모듈-선언과-모듈-임포트">
+        <span class="has-mr-6">3.1</span>
+        <span>모듈 선언과 모듈 임포트</span>
+        </a></li><li>
+        <a class="is-flex" href="#여러-모듈-export-하기">
+        <span class="has-mr-6">3.2</span>
+        <span>여러 모듈 export 하기</span>
+        </a></li><li>
+        <a class="is-flex" href="#모듈을-재-노출해-사용하기">
+        <span class="has-mr-6">3.3</span>
+        <span>모듈을 재 노출해 사용하기</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#디폴트-모듈의-이해와-사용법">
+        <span class="has-mr-6">4</span>
+        <span>디폴트 모듈의 이해와 사용법</span>
+        </a></li><li>
+        <a class="is-flex" href="#디폴트-모듈-선언">
+        <span class="has-mr-6">5</span>
+        <span>디폴트 모듈 선언</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#디폴트-모듈과-명명된-모듈을-함께-가져오기">
+        <span class="has-mr-6">5.1</span>
+        <span>디폴트 모듈과 명명된 모듈을 함께 가져오기</span>
+        </a></li><li>
+        <a class="is-flex" href="#디폴트-모듈로-타입과-모듈을-함께-노출하기">
+        <span class="has-mr-6">5.2</span>
+        <span>디폴트 모듈로 타입과 모듈을 함께 노출하기</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/ES6/">
+            <span class="level-start">
+                <span class="level-item">ES6</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hexo/">
+            <span class="level-start">
+                <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/intelliJ/">
+            <span class="level-start">
+                <span class="level-item">intelliJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트-react/">
+            <span class="level-start">
+                <span class="level-item">리액트 / react</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/타입스크립트/">
+            <span class="level-start">
+                <span class="level-item">타입스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="typescript chapter8. 모듈" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>
