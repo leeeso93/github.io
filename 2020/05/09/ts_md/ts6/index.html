@@ -16,7 +16,7 @@
 <meta property="og:description" content="모듈 모듈은 독립 가능한 기능의 단위이다. 모듈을 사용하면1) 유지보수가 쉬워진다. 자주 사용하는 공통 기능을 정의해 사용하면 중복 코드가 적어져 유지 보수가 쉬워진다.2) 전역 스코프 오염을 방지한다. 전역 스코프 내부에서 함수나 변수 이름을 중복해 선언할 수 없으므로 이를 파일 내부에 한정해 모듈로 선언하면 전역 공간을 침범하지 않는다.3) 재사용성이">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2020-05-09T13:37:54.787Z">
+<meta property="og:updated_time" content="2020-05-10T07:37:25.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="typescript chapter8. 모듈">
 <meta name="twitter:description" content="모듈 모듈은 독립 가능한 기능의 단위이다. 모듈을 사용하면1) 유지보수가 쉬워진다. 자주 사용하는 공통 기능을 정의해 사용하면 중복 코드가 적어져 유지 보수가 쉬워진다.2) 전역 스코프 오염을 방지한다. 전역 스코프 내부에서 함수나 변수 이름을 중복해 선언할 수 없으므로 이를 파일 내부에 한정해 모듈로 선언하면 전역 공간을 침범하지 않는다.3) 재사용성이">
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    23 minutes read (About 3488 words)
+                    36 minutes read (About 5436 words)
                 </span>
                 
                 
@@ -344,7 +344,126 @@
 <figure class="highlight ts hljs"><figcaption><span>import.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> hello <span class="hljs-keyword">from</span> <span class="hljs-string">"./export"</span>; <span class="hljs-comment">// 디폴트 모듈은 임포트할 때 이름 변경이 가능하다.</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> helloMessage: hello = hello(<span class="hljs-string">"hello"</span>);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(hello(<span class="hljs-string">"hello"</span>)); <span class="hljs-comment">//  &#123; first: 'hello' &#125;</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(helloMessage); <span class="hljs-comment">// &#123; first: 'hello' &#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>임포트한 hello 모듈은 hello(‘hello’)와 같이 함수로 사용될 수 있고, : hello와 같이 인터페이스 타입으로 사용될 수도 있다.</p>
+<h2 id="모듈-시스템"><a href="#모듈-시스템" class="headerlink" title="모듈 시스템"></a>모듈 시스템</h2><h3 id="모듈-로더와-모듈-형식"><a href="#모듈-로더와-모듈-형식" class="headerlink" title="모듈 로더와 모듈 형식"></a>모듈 로더와 모듈 형식</h3><blockquote>
+<p>모듈 로더(module loader)는 모듈 파일에 선언된 모듈을 실행할 수 있다.<br>모듈 형식은 모듈 정의에 관한 표준 명세에 해당한다.<br>모듈 로더마다 지원하는 명세가 다소 다른데 최근 모듈 로더는 대체로 CommonJs와 AMD 모듈 형식을 기본으로 지원한다.</p>
+</blockquote>
+<ul>
+<li>Commonjs</li>
+<li>amd</li>
+<li>system</li>
+<li>umd</li>
+<li>es2015 </li>
+</ul>
+<p>이들 중 타입스크립트는 es2015 모듈 형식을 기본으로 사용한다.</p>
+<h3 id="모듈-형식에-맞춰-컴파일하기"><a href="#모듈-형식에-맞춰-컴파일하기" class="headerlink" title="모듈 형식에 맞춰 컴파일하기"></a>모듈 형식에 맞춰 컴파일하기</h3><blockquote>
+<p>타입스크립트는 es2015 모듈을 이용해 하위 표준으로 컴파일 할 수 있다.</p>
+</blockquote>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 프로젝트 기반으로 target을 ES3로 지정해 컴파일하기</span><br><span class="line">tsc -t es3 -m &lt;모듈형식&gt;</span><br><span class="line"></span><br><span class="line">// 프로젝트 기반으로 target을 es5로 지정해 컴파일하기</span><br><span class="line">tsc -t es5 -m &lt;모듈형식&gt;</span><br><span class="line"></span><br><span class="line">// 프로젝트 기반이 아닌 특정 모듈 파일만 컴파일하기</span><br><span class="line">tsc --module &lt;모듈형식&gt; &lt;변환할 모듈 파일명&gt;</span><br><span class="line"></span><br><span class="line">// 예제</span><br><span class="line">tsc --module commonjs calc.ts</span><br></pre></td></tr></table></figure>
 
+<p>–module에 옵션에 사용할 수 있는 모듈형식의 설정값은 다음과 같다.</p>
+<ul>
+<li>none</li>
+<li>commonjs</li>
+<li>amd</li>
+<li>system</li>
+<li>umd</li>
+<li>es6 또는 es2015</li>
+</ul>
+<p>설정값중 none은 es2015 모듈 형식과 commonjs 모듈 형식을 사용하지 않을 떄 설정한다.<br>만약 –module 옵션 사용 시 모듈 형식을 지정하지 않으면 target 값에 따라 다르게 기본값이 정해지게 된다.</p>
+<p><strong>–moodule 옵션에 관한 부가적 설명</strong><br>1) 명령어로 모듈을 컴파일 할 때  –out 옵션을 사용하면 단일 파일로 생성할 수 있다.</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tsc --out &lt;출력할 js파일명&gt; &lt;변환할 ts 파일명&gt; --module &lt;모듈형식&gt;</span><br><span class="line"></span><br><span class="line">tsc --out out.js calc.ts --module amd</span><br></pre></td></tr></table></figure>
+
+<p>–out 옵션과 –module 옵션을 사용할 떄 허용하는 설정값은 amd,system 2가지 이다. 이 외에는 컴파일 에러가 발생한다.</p>
+<p>2) 여러 파일에 걸쳐 모듈이 나눠져 있는 대상을 컴파일 할 때</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc &lt;파일<span class="hljs-number">1</span>이름&gt;.ts &lt;파일<span class="hljs-number">2</span>이름&gt;.ts --module amd | system</span><br></pre></td></tr></table></figure>
+
+<p>3) 소스맵 필요시 </p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc &lt;파일이름&gt;.ts &lt;파일이름&gt;.ts - sourcemap--out &lt;파일이름&gt;.js</span><br></pre></td></tr></table></figure>
+
+<h3 id="특정-모듈-형식을-실행하기-위한-준비"><a href="#특정-모듈-형식을-실행하기-위한-준비" class="headerlink" title="특정 모듈 형식을 실행하기 위한 준비"></a>특정 모듈 형식을 실행하기 위한 준비</h3><p>1) 모듈 로더를 구동하기 위한 HTTP 서버 준비</p>
+<blockquote>
+<p> SystemJs 모듈 로더를 실제 웹 브라우저 환경에서 실행할 수 있도록 HTTP 서버를 준비한다. Node.js 서버를 준비한다.<br>편의를 고려해 express 프레임 워크를 이용한다.</p>
+</blockquote>
+<figure class="highlight cmd hljs"><figcaption><span>express 프레임워크 설치 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express --save</span><br></pre></td></tr></table></figure>
+
+<p>설치가 끝나면 사용할 http 서버 코드 작성</p>
+<figure class="highlight js hljs"><figcaption><span>server.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">"express"</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(express.static(path.join(__dirname, <span class="hljs-string">""</span>)));</span><br><span class="line"><span class="hljs-keyword">var</span> server = app.listen(<span class="hljs-number">3000</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> port = server.address().port;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(port + <span class="hljs-string">" port server"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>작성후에 node로 서버를 실행한다. </p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node server.js</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a> 로 서버를 시작할 수 있다. </p>
+<p>2) 모듈 로더에서 사용할 a.ts와 b.ts 파일 준비</p>
+<figure class="highlight ts hljs"><figcaption><span>a.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unique</span>(<span class="hljs-params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"a 모듈"</span>);</span><br><span class="line">  <span class="hljs-keyword">return</span> arr.filter(<span class="hljs-function">(<span class="hljs-params">v, i, a</span>) =&gt;</span> a.indexOf(v) === i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ts hljs"><figcaption><span>b.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; unique &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"./a"</span>;</span><br><span class="line"><span class="hljs-keyword">var</span> data = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"b 모듈"</span>);</span><br><span class="line"><span class="hljs-keyword">export</span> * <span class="hljs-keyword">from</span> <span class="hljs-string">"./a"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>a와 b는 특정 모듈 형식으로 변환해 SystemJs 에서 호출해 사용할 예정이다.</p>
+<h2 id="각종-모듈-형식에-대한-소개"><a href="#각종-모듈-형식에-대한-소개" class="headerlink" title="각종 모듈 형식에 대한 소개"></a>각종 모듈 형식에 대한 소개</h2><h3 id="ES2015-모듈-형식"><a href="#ES2015-모듈-형식" class="headerlink" title="ES2015 모듈 형식"></a>ES2015 모듈 형식</h3><blockquote>
+<p>타입스크립트는 ES2015 모듈 형식을 기본으로 채택해 모듈을 선언하고 모듈을 호출한다.</p>
+</blockquote>
+<p>b.ts 파일을 es2015 형식으로 컴파일 하는 방법은 이렇다.</p>
+<figure class="highlight cmd hljs"><figcaption><span>es2015 형식으로 컴파일</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc b.ts --outDir src-es6 --module es2015 --target es2015</span><br></pre></td></tr></table></figure>
+
+<p>위 명렁어는 b.ts 파일을 컴파일 할 떄 src-es6 디렉터리에 컴파일 결과(a.ts , b.ts)가 저장 될수 있도록 –outDir 옵션을 사용했다.<br>또한 –module 옵션을 이용해 es2015 모듈 형식으로 컴파일 되도록 설정했다. 이로인해 a.ts와 b.ts 파일이 es2015 모듈 형식으로 컴파일된다.</p>
+<p>es2015는 Node.js 에서 곧바로 실행할 수 없다. </p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">cd</span> src-es6</span><br><span class="line">node b.js</span><br><span class="line"></span><br><span class="line">//export * from "./a";</span><br><span class="line">^^^^^^</span><br></pre></td></tr></table></figure>
+
+<p>그러므로 es2015 모듈 형식을 node.js에서 확인하려면 앞서 언급했던 것처럼 –experimental-modules 플래그를 이용해야하고, 확장지를 .mjs로 변경해야하는 불편함이 발생한다.  그러므로 es6 형식은 모듈로더인 SystemJs 를 이용해 실행한다.</p>
+<p>1) 먼저 SystemJs 모듈 로더를 설치한다.</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install systemjs --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>2) 그 다음 traceur 컴파일러를 로컬에 설치한다.</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install traceur --save</span><br></pre></td></tr></table></figure>
+
+<p>3) 그 다음 systemJs 모듈 로더를 구동하기 위한 html 페이지를 작성한다.</p>
+<figure class="highlight html hljs"><figcaption><span>test.html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/node_modules/systemjs/dist/system.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/node_modules/traceur/bin/traceur.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">        SystemJS.config(&#123;</span><br><span class="line">            packages: &#123;</span><br><span class="line"><span class="hljs-javascript">                <span class="hljs-string">'.'</span>: &#123;</span></span><br><span class="line"><span class="hljs-javascript">                    defaultJSExtensions: <span class="hljs-string">'js'</span></span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"><span class="hljs-javascript">        SystemJS.import(<span class="hljs-string">'./src-es6/a.js'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">m</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"a.js 모듈을 호출 =&gt;"</span>, m.unique([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]));</span></span><br><span class="line"><span class="hljs-javascript">        &#125;, <span class="hljs-built_in">console</span>.error.bind(<span class="hljs-built_in">console</span>));</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">        SystemJS.import(<span class="hljs-string">'./src-es6/b.js'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">m</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"b.js 모듈을 호출 =&gt;"</span>, m.unique([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]));</span></span><br><span class="line"><span class="hljs-javascript">        &#125;, <span class="hljs-built_in">console</span>.error.bind(<span class="hljs-built_in">console</span>));</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="CommonJs-모듈-형식"><a href="#CommonJs-모듈-형식" class="headerlink" title="CommonJs 모듈 형식"></a>CommonJs 모듈 형식</h3><blockquote>
+<p>CommonJs는 node.js에서 지원하는 모듈 형식이고 대부분의 모듈 로더에서 지원한다.<br>commonJs는 export로 노출한 모듈을 require 함수를 이용해 호출 할 수 있다.  </p>
+</blockquote>
+<p>예를 들어,</p>
+<figure class="highlight ts hljs"><figcaption><span>calc.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exports.add = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> a + b;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>위 모듈 파일을 호출해 사용하려면 require()함수를 이용한다.</p>
+<figure class="highlight js hljs"><figcaption><span>increment.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> add = <span class="hljs-built_in">require</span>(<span class="hljs-string">"calc"</span>).add;</span><br><span class="line">exports.increment = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> add(val, <span class="hljs-number">1</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>그런데, calc.js를 calc.ts로 옮겨오면 에러가 발생한다. 정상적으로 CommonJs를 타입스크립트에 인식시키려면 다음과 같이 해아한다.</p>
+<p>1) @types/node 설치</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @<span class="hljs-built_in">type</span>/node --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>2) tsconfig.json 파일의 type 속성에 node 추가</p>
+<figure class="highlight json hljs"><figcaption><span>tsconfig.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="hljs-attr">"compilerOptions"</span>:&#123;</span><br><span class="line">   <span class="hljs-attr">"types"</span> : [<span class="hljs-string">"node"</span>]</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3) calc.js를 calc.ts로 옮기고 ts 파일 컴파일</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc calc.ts --outDir src-cjs --module commonjs --target es5</span><br></pre></td></tr></table></figure>
+
+<h3 id="AMD-모듈-형식"><a href="#AMD-모듈-형식" class="headerlink" title="AMD 모듈 형식"></a>AMD 모듈 형식</h3><blockquote>
+<p> AMD(Asynchronous Module Definition)은 비동기 모듈 호출 방식으로 웹 사이트의 성능을 개선하기 위한 목적으로 나왔다.<br>웹 사이트에서 AMD 모듈을 호출하면 모듈 파일을 비동기로 가져와서 호출한다.</p>
+</blockquote>
+<p>AMD 모듈을 정의할 떄는 define() 함수를 이용한다.</p>
+<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(id?,dependencies?,factory);</span><br></pre></td></tr></table></figure>
+
+<p>id는 모듈 아이디를 의미하며 생략 가능하다. dependencies는 모듈 id의 배열을 의미하며 의존하고 있는 모듈의 id목록을 배열로 전달한다.<br>factory는 익명 함수로 모듈의 구현 코드가 위치한다.</p>
+<figure class="highlight ts hljs"><figcaption><span>예시</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// id를 생략하고 두번째 매개변수에 의존 모듈로 jquery를 사용할 경우</span></span><br><span class="line">define([<span class="hljs-string">'jquery'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;;</span><br><span class="line">&#125;]);</span><br></pre></td></tr></table></figure>
+
+<p>amd로 컴파일 하려면 다음과 같다.</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc calc.ts --outDir src-amd --module amd --target es5</span><br></pre></td></tr></table></figure>
+
+<h3 id="UMD-모듈-형식"><a href="#UMD-모듈-형식" class="headerlink" title="UMD 모듈 형식"></a>UMD 모듈 형식</h3><blockquote>
+<p>umd(Universial Module Definition) 모듈 형식은 클라이언트, 서버에서 보편적으로 작동하며, RequireJs등 모듈 로더에서 지원한다.<br>umd는 CommonJs 형식과 AMD 형식 모두 고려하기 때문에 호환성을 갖춘 모듈로 정의할 수 있지만 모듈 코드 양이 많아진다는 단점이 있다.</p>
+</blockquote>
+<p>UMD 모듈패턴은 익명함수 매개변수인 factory로 모듈을 정의한 뒤 익명 함수를 전달하는 형태로 사용한다.</p>
+<figure class="highlight ts hljs"><figcaption><span>umd 모듈형식</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">factory</span>)</span>&#123; <span class="hljs-comment">// 모듈을 factory 매개변수로 받음</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 환경을 감시할 수 있는 코드를 여기에 둠</span></span><br><span class="line">&#125;)(); <span class="hljs-comment">//</span></span><br></pre></td></tr></table></figure>
+
+<p>umd로 컴파일 하려면 다음과 같다.</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc calc.ts --outDir src-umd --module umd --target es5</span><br></pre></td></tr></table></figure>
+
+<h3 id="SystemJs-모듈-형식"><a href="#SystemJs-모듈-형식" class="headerlink" title="SystemJs 모듈 형식"></a>SystemJs 모듈 형식</h3><blockquote>
+<p>SystemJs 모듈 형식은 es를 호출할 때 브라우저나 node.js에서 비동기 형태로 es 모듈을 호출하는 모듈 로더이다.<br>SystemJs 모듈 형식은 지원하는 모듈 로더가 SystemJs에 한정된다.</p>
+</blockquote>
+<p>컴파일 하는 방법은 다음과 같다.</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc b.ts --outDir src-system --module system --target es5</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -374,7 +493,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -479,6 +598,46 @@
         <a class="is-flex" href="#디폴트-모듈로-타입과-모듈을-함께-노출하기">
         <span class="has-mr-6">5.2</span>
         <span>디폴트 모듈로 타입과 모듈을 함께 노출하기</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#모듈-시스템">
+        <span class="has-mr-6">6</span>
+        <span>모듈 시스템</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#모듈-로더와-모듈-형식">
+        <span class="has-mr-6">6.1</span>
+        <span>모듈 로더와 모듈 형식</span>
+        </a></li><li>
+        <a class="is-flex" href="#모듈-형식에-맞춰-컴파일하기">
+        <span class="has-mr-6">6.2</span>
+        <span>모듈 형식에 맞춰 컴파일하기</span>
+        </a></li><li>
+        <a class="is-flex" href="#특정-모듈-형식을-실행하기-위한-준비">
+        <span class="has-mr-6">6.3</span>
+        <span>특정 모듈 형식을 실행하기 위한 준비</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#각종-모듈-형식에-대한-소개">
+        <span class="has-mr-6">7</span>
+        <span>각종 모듈 형식에 대한 소개</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#ES2015-모듈-형식">
+        <span class="has-mr-6">7.1</span>
+        <span>ES2015 모듈 형식</span>
+        </a></li><li>
+        <a class="is-flex" href="#CommonJs-모듈-형식">
+        <span class="has-mr-6">7.2</span>
+        <span>CommonJs 모듈 형식</span>
+        </a></li><li>
+        <a class="is-flex" href="#AMD-모듈-형식">
+        <span class="has-mr-6">7.3</span>
+        <span>AMD 모듈 형식</span>
+        </a></li><li>
+        <a class="is-flex" href="#UMD-모듈-형식">
+        <span class="has-mr-6">7.4</span>
+        <span>UMD 모듈 형식</span>
+        </a></li><li>
+        <a class="is-flex" href="#SystemJs-모듈-형식">
+        <span class="has-mr-6">7.5</span>
+        <span>SystemJs 모듈 형식</span>
         </a></li></ul></li></ul>
         </div>
     </div>
@@ -490,7 +649,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -554,17 +713,6 @@
         </div>
     </div>
 </div>
-    
-    
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Nuage de tags
-        </h3>
-        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
-    </div>
-</div>
-
     
     
 </div>
@@ -736,9 +884,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
