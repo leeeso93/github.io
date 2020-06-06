@@ -127,7 +127,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="カタログ" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -478,6 +478,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/25/angular/angular01/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Angular chapter5 Angular CLI</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/19/ts_md/ts5/">
@@ -493,7 +500,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">コメント</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -528,7 +535,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                カタログ
+                Catalogue
             </h3>
             <ul class="menu-list"><li>
         <a class="is-flex" href="#모듈">
@@ -649,10 +656,18 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                カテゴリ
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/ES6/">
             <span class="level-start">
                 <span class="level-item">ES6</span>
@@ -884,10 +899,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: '投稿',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'カテゴリ',
-                TAGS: 'タグ',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

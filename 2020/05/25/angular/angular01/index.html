@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Angular chapter5 Angular CLI - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Angular CLI 란 간단한 명령어를 사용하여 angular 프로젝트를 생성, 실행, 빌드 할 수 있는 커맨드 라인 인터페이스   설치방법1 node 6.9.0이상 npm 3.0.0 이상 필요https://nodejs.org/en/   터미널에 명령어 입력   123456npm install -g @angular/cli``3. 설치가 완료되면 ng 명령">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular chapter5 Angular CLI">
+<meta property="og:url" content="http://yoursite.com/2020/05/25/angular/angular01/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Angular CLI 란 간단한 명령어를 사용하여 angular 프로젝트를 생성, 실행, 빌드 할 수 있는 커맨드 라인 인터페이스   설치방법1 node 6.9.0이상 npm 3.0.0 이상 필요https://nodejs.org/en/   터미널에 명령어 입력   123456npm install -g @angular/cli``3. 설치가 완료되면 ng 명령">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2020-05-31T07:20:56.901Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular chapter5 Angular CLI">
+<meta name="twitter:description" content="Angular CLI 란 간단한 명령어를 사용하여 angular 프로젝트를 생성, 실행, 빌드 할 수 있는 커맨드 라인 인터페이스   설치방법1 node 6.9.0이상 npm 3.0.0 이상 필요https://nodejs.org/en/   터미널에 명령어 입력   123456npm install -g @angular/cli``3. 설치가 완료되면 ng 명령">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Angular chapter5 Angular CLI" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-24T15:00:00.000Z">2020-05-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Angular/">Angular</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1075 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Angular chapter5 Angular CLI
+            
+        </h1>
+        <div class="content">
+            <h2 id="Angular-CLI-란"><a href="#Angular-CLI-란" class="headerlink" title="Angular CLI 란"></a>Angular CLI 란</h2><blockquote>
+<p>간단한 명령어를 사용하여 angular 프로젝트를 생성, 실행, 빌드 할 수 있는 커맨드 라인 인터페이스</p>
+</blockquote>
+<ul>
+<li>설치방법<br>1 node 6.9.0이상 npm 3.0.0 이상 필요<br><a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></li>
+</ul>
+<ol start="2">
+<li>터미널에 명령어 입력 </li>
+</ol>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @angular/cli</span><br><span class="line">``</span><br><span class="line"><span class="hljs-number">3</span>. 설치가 완료되면 ng 명령어로 버전 확인</span><br><span class="line"></span><br><span class="line">``<span class="hljs-built_in">cmd</span></span><br><span class="line">ng version</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+
+<h2 id="angular-프로젝트"><a href="#angular-프로젝트" class="headerlink" title="angular 프로젝트"></a>angular 프로젝트</h2><ol>
+<li>프로젝트 생성하기</li>
+</ol>
+<figure class="highlight cmd hljs"><figcaption><span>my-app 프로젝트 생성</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng new my-app</span><br></pre></td></tr></table></figure>
+
+<p>프로젝트를 생성하면 angular router를 사용할 건지, stylesheet는 어떤 언어로 할 건지(css /scss 등등) 질문이 나옴<br>고르고 enter </p>
+<ol start="2">
+<li>프로젝트 로컬 서버 실행하기<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">cd</span> my-app </span><br><span class="line">// 서버 실행</span><br><span class="line">ng serve </span><br><span class="line">// 또는</span><br><span class="line">ng s</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>브라우저 주소창에 localhost:4200을 입력하여 개발용 서버에 접속 가능<br>만약 포트 4200을 이미 사용하고 있다면 포트번호를 변경해야함</p>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ng serve -open // 로컬서버가 실행되면서 동시에 브라우저 열림 </span><br><span class="line">ng serve --port <span class="hljs-number">4100</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>프로젝트 구성요소 생성 <blockquote>
+<p>프로젝트에 새로운 구성요소를 생성하기 위해서는 ng generate 명령어를 사용한다. (또는 ng g)</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>컴포넌트 생성 </li>
+</ul>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ng generate component &lt;컴포넌트 이름&gt;</span><br><span class="line">ng g c &lt;컴포넌트 이름&gt;</span><br><span class="line"></span><br><span class="line">ng generate component home</span><br></pre></td></tr></table></figure>
+
+<p>컴포넌트를 생성하면 angular cli는 </p>
+<p>1) src/app 폴더에 home 폴더를 생성한다.<br>2) home 폴더 안에 다음 4개의 파일을 생성한다.<br>home.component.html<br>home.component.css<br>home.component.ts<br>home.component.spec.ts<br>3) app.module.ts에 새롭게 생성된 컴포넌트를 등록함 </p>
+<ul>
+<li>파일명 변경 <blockquote>
+<p>angular cli는 지정된 컴포넌트의 대소문자를 구별하여 정해진 규칙에 따라 파일명을 암묵적으로 변경한다.</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ng g c newComponent</span><br><span class="line">/**</span><br><span class="line"></span><br><span class="line">CREATE src/app/new-component/new-component.component.html (<span class="hljs-number">28</span> bytes)</span><br><span class="line">CREATE src/app/new-component/new-component.component.spec.ts (<span class="hljs-number">671</span> bytes)</span><br><span class="line">CREATE src/app/new-component/new-component.component.ts (<span class="hljs-number">303</span> bytes)</span><br><span class="line">CREATE src/app/new-component/new-component.component.scss (<span class="hljs-number">0</span> bytes)</span><br><span class="line"></span><br><span class="line">**/</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+
+<p>만약 newComponent라는 컴포넌트를 생성하면 실제로는 저렇게 하이픈(-)으로 파일명이 변경되어 컴포넌트가 생성된다.</p>
+<ul>
+<li>디렉티브 생성</li>
+</ul>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ng generate directive &lt;디렉티브명&gt;</span><br><span class="line">ng g d &lt;디렉티브명&gt;</span><br><span class="line"></span><br><span class="line">ng generate directive highlight</span><br><span class="line">/**</span><br><span class="line"></span><br><span class="line">CREATE src/app/highlight.directive.spec.ts (<span class="hljs-number">236</span> bytes)</span><br><span class="line">CREATE src/app/highlight.directive.ts (<span class="hljs-number">147</span> bytes)</span><br><span class="line"></span><br><span class="line">**/</span><br></pre></td></tr></table></figure>
+
+<p>디렉티브 생성시 별도의 폴더는 생성되지 않으며 src/app 폴더에 2개의 파일을 생성한다.</p>
+<ul>
+<li>모듈 생성<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ng generate module &lt;모듈명&gt;</span><br><span class="line">ng g m &lt;모듈명&gt;</span><br><span class="line"></span><br><span class="line">ng generate module todos</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"></span><br><span class="line">CREATE src/app/todos/todos.module.ts (<span class="hljs-number">191</span> bytes)</span><br><span class="line"></span><br><span class="line">**/</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>모듈을 생성하면 마찬가지로<br>1) src/app 폴더에 todos 폴더를 생성한다.<br>2) home 폴더 안에 todos.module.ts 파일을 생성한다.<br>3) 모듈을 사용하려면 다른 모듈의 imports 프로퍼티로 등록해야한다. </p>
+<figure class="highlight typescript hljs"><figcaption><span>app.module.ts에 todo.module 등록하기</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; BrowserModule &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/platform-browser'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; NgModule &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> &#123; AppRoutingModule &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./app-routing.module'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; AppComponent &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./app.component'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; NewComponentComponent &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./new-component/new-component.component'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; HighlightDirective &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./highlight.directive'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; TodosModule &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./todos/todos.module'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@NgModule</span>(&#123;</span><br><span class="line">  declarations: [</span><br><span class="line">    AppComponent,</span><br><span class="line">    NewComponentComponent,</span><br><span class="line">    HighlightDirective</span><br><span class="line">  ],</span><br><span class="line">  imports: [</span><br><span class="line">    BrowserModule,</span><br><span class="line">    AppRoutingModule,</span><br><span class="line">    TodosModule,</span><br><span class="line">  ],</span><br><span class="line">  providers: [],</span><br><span class="line">  bootstrap: [AppComponent]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule &#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>서비스 생성</li>
+</ul>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ng generate service &lt;서비스명&gt;</span><br><span class="line">ng g s &lt;서비스명&gt;</span><br><span class="line"></span><br><span class="line">ng generate service data</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"></span><br><span class="line">CREATE src/app/data.service.spec.ts (<span class="hljs-number">347</span> bytes)</span><br><span class="line">CREATE src/app/data.service.ts (<span class="hljs-number">133</span> bytes)</span><br><span class="line"></span><br><span class="line">**/</span><br></pre></td></tr></table></figure>
+
+<p>서비스 생성시 별도의 폴더는 생성되지 않으며 src/app 폴더에 2개의 파일을 생성한다.</p>
+<figure class="highlight ts hljs"><figcaption><span>data.service.ts </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Injectable &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Injectable</span>(&#123;</span><br><span class="line">  providedIn: <span class="hljs-string">'root'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DataService &#123;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>서비스 안의 <strong>@Injectable</strong> 안의 <strong>providedIn</strong> 프로퍼티의 값으로 ‘root’를 설정하면<br>루트 인젝터에게 서비스를 제공하여 전역에서 서비스를 주입할 수 있다.</p>
+<ul>
+<li>클래스 생성</li>
+</ul>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ng generate class &lt;클래스명&gt;</span><br><span class="line">ng g cl &lt;클래스명&gt;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"></span><br><span class="line">CREATE src/app/user.spec.ts (<span class="hljs-number">146</span> bytes)</span><br><span class="line">CREATE src/app/user.ts (<span class="hljs-number">22</span> bytes)</span><br><span class="line"></span><br><span class="line">**/</span><br></pre></td></tr></table></figure>
+
+<p>클래스 생성시 별도의 폴더는 생성되지 않으며 src/app 폴더에 2개의 파일을 생성한다.</p>
+<ul>
+<li>프로젝트 빌드 <blockquote>
+<p>프로젝트 개발 후 배포를 위해서는 ng build를 사용한다.<br>빌드가 완료되면 루트에 빌드 결과물이 포함된 dist 폴더가 생성된다.</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng build</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>기본 옵션 변경<blockquote>
+<p>프로젝트에 기본으로 적용되는 옵션을 변경하기 위해서는 angular.json을 수정한다. </p>
+</blockquote>
+</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/05/28/angular/angular02/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Angular chapter6 Angular의 파일 구조와 처리 흐름</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/05/09/ts_md/ts6/">
+                <span class="level-item">typescript chapter8. 모듈</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2020/05/25/angular/angular01/';
+        this.page.identifier = '2020/05/25/angular/angular01/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right ">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Angular-CLI-란">
+        <span class="has-mr-6">1</span>
+        <span>Angular CLI 란</span>
+        </a></li><li>
+        <a class="is-flex" href="#angular-프로젝트">
+        <span class="has-mr-6">2</span>
+        <span>angular 프로젝트</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/ES6/">
+            <span class="level-start">
+                <span class="level-item">ES6</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hexo/">
+            <span class="level-start">
+                <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/intelliJ/">
+            <span class="level-start">
+                <span class="level-item">intelliJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트-react/">
+            <span class="level-start">
+                <span class="level-item">리액트 / react</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/타입스크립트/">
+            <span class="level-start">
+                <span class="level-item">타입스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Angular chapter5 Angular CLI" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>
