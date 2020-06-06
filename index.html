@@ -153,7 +153,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 minutes read (About 1453 words)
+                    10 minutes read (About 1454 words)
                 </span>
                 
                 
@@ -169,83 +169,16 @@
             <h2 id="디렉티브란"><a href="#디렉티브란" class="headerlink" title="디렉티브란?"></a>디렉티브란?</h2><blockquote>
 <p>전역에서 공통으로 사용하는 기능을 컴포넌트에서 분리하여 구현한 것<br>디렉티브는 컴포넌트와 달리 자식을 가질 수 없다.<br>@Directive 데코레이터로 장식된 클래스이다.</p>
 </blockquote>
-<p>Angular에서는 크게 3가지 디렉티브를 제공한다.</p>
-<ul>
-<li>컴포넌트 디렉티브(chapter7) : 컴포넌트 템플릿을 표시하기 위한 디렉티브이다.</li>
-<li>어트리뷰트 디렉티브 : ngClass, ngStyle 같이 Dom 요소의 어트리뷰트로 사용하여 해당요소의 모양 ,동작을 제어 </li>
-<li>구조 디렉티브 : ngIf, ngFor, ngSwitch 같이 dom 의 구조를 변경하는 디렉티브</li>
-</ul>
-<p>이 외에도 사용자 정의 디렉티브가 있다.</p>
-<h3 id="사용자-정의-디렉티브"><a href="#사용자-정의-디렉티브" class="headerlink" title="사용자 정의 디렉티브"></a>사용자 정의 디렉티브</h3><ol>
-<li>디렉티브를 생성한다.</li>
-</ol>
-<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng g d textBlue</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>생성된 디렉티브를 수정한다.</li>
-</ol>
-<figure class="highlight ts hljs"><figcaption><span>text-blue.directive.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Directive, ElementRef &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Directive</span>(&#123;</span><br><span class="line">  <span class="hljs-comment">// 디렉티브의 식별자</span></span><br><span class="line">  selector: <span class="hljs-string">'[appTextBlue]'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TextBlueDirective &#123;</span><br><span class="line">  <span class="hljs-comment">// 생성자 함수에 주입된 ElementRef는 컴포넌트의 호스트 요소를 반환한다.</span></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">el: ElementRef</span>) &#123;</span><br><span class="line">    <span class="hljs-comment">// 호스트 요소의 컬러를 반환한다.</span></span><br><span class="line">    el.nativeElement.style.color = <span class="hljs-string">'blue'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>selector 프로퍼티에는 css 셀렉터 문법과 동일하게 디렉티브가 적용되는 조건을 설정 할 수 있다.</p>
-<p>생성자(constructor)에 ElementRef 타입의 인스턴스가 주입되었다.</p>
-<p><a href="https://stackblitz.com/edit/elementref" target="_blank" rel="noopener">ElementRef 사용 예시</a></p>
-<p>그러나, ElementRef로 dom에 직접 접근하기보다는 Renderer2 클래스로 Dom에 직접 접근하지 않으면서 네이티브 요소를 조작하는 방법을 권장한다.</p>
-<p><a href="https://stackblitz.com/edit/custom-attr-directive-2?file=src%2Fapp%2Ftext-blue.directive.ts" target="_blank" rel="noopener">Renderer2 클래스 사용 예시</a></p>
-<ol start="3">
-<li>app.module.ts에 디렉티브를 추가한다.(보통 cli로 생성하면 자동으로 등록된다.)</li>
-</ol>
-<figure class="highlight ts hljs"><figcaption><span>app.module.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; AppComponent &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./app.component'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; TextBlueDirective &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./text-blue.directive'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@NgModule</span>(&#123;</span><br><span class="line">  <span class="hljs-comment">// 이 모듈에 속하는 컴포넌트, 디렉티브, 파이프 선언</span></span><br><span class="line">  declarations: [</span><br><span class="line">    AppComponent,</span><br><span class="line">    TextBlueDirective</span><br><span class="line">  ],</span><br><span class="line">..</span><br><span class="line">  bootstrap: [AppComponent]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule &#123; &#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>디렉티브를 모듈에 등록하면 컴포넌트에서 사용가능하다. 디렉티브를 적용해본다.</li>
-</ol>
-<figure class="highlight ts hljs"><figcaption><span>app.component.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'app-root'</span>,</span><br><span class="line">  template: <span class="hljs-string">` &lt;p appTextBlue&gt;text blue&lt;/p&gt; `</span>,</span><br><span class="line">  styles: [],</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent &#123;</span><br><span class="line">  title = <span class="hljs-string">'custom-attr-directive'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>p 태그가  파란색으로 바뀜</p>
-<h3 id="이벤트-처리"><a href="#이벤트-처리" class="headerlink" title="이벤트 처리"></a>이벤트 처리</h3><p>mouseenter 이벤트가 발생하면 텍스트를 파란색으로, mouseleave 되면 파란색을 취소하도록 디렉티브의 이벤트 기능을 추가한 경우이다.</p>
-<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Directive, ElementRef, Renderer2, HostListener &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Directive</span>(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'[appTextBlue]'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TextBlueDirective &#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> el: ElementRef, <span class="hljs-keyword">private</span> renderer: Renderer2</span>) &#123;</span><br><span class="line">    <span class="hljs-comment">// el.nativeElement.style.color = 'blue';</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-meta">@HostListener</span>(<span class="hljs-string">'mouseenter'</span>) mouseEvent() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.textColor(<span class="hljs-string">'blue'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-meta">@HostListener</span>(<span class="hljs-string">'mouseleave'</span>) mouseLeave() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.textColor(<span class="hljs-literal">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">private</span> textColor(color: <span class="hljs-built_in">string</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.renderer.setStyle(<span class="hljs-keyword">this</span>.el.nativeElement, <span class="hljs-string">'color'</span>, color);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>ElementRef에 접근 제한자 private를 추가한다.</p>
-</li>
-<li><p>@HostListener 데코레이터를 사용하여 호스트 요소의 이벤트에 대한 핸들러를 정의한다.</p>
-</li>
-</ol>
-<h2 id="사용자-정의-구조-디렉티브"><a href="#사용자-정의-구조-디렉티브" class="headerlink" title="사용자 정의 구조 디렉티브"></a>사용자 정의 구조 디렉티브</h2><ol>
-<li>새로운 프로젝트와 새로운 디렉티브를 생성한다.</li>
-</ol>
-<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ng new custom-structure-directive -t -s -S</span><br><span class="line"><span class="hljs-built_in">cd</span> custom-structure-directive</span><br><span class="line">ng g d myNgIf // 디렉티브 생성</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>templateRef와 viewContainer를 import 한 후 디렉티브를 수정한다.</li>
-</ol>
-<figure class="highlight ts hljs"><figcaption><span>my-ng-if.component.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Directive, Input, TemplateRef, ViewContainerRef &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Directive</span>(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'[myNgIf]'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyNgIfDirective &#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span></span><br><span class="line"><span class="hljs-params">    <span class="hljs-keyword">private</span> templateRef: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;,</span></span><br><span class="line"><span class="hljs-params">    <span class="hljs-keyword">private</span> viewContainer: ViewContainerRef</span></span><br><span class="line"><span class="hljs-params">  </span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-meta">@Input</span>() <span class="hljs-keyword">set</span> myNgIf(condition: <span class="hljs-built_in">boolean</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (condition) &#123;</span><br><span class="line">      <span class="hljs-comment">// 호스트 뷰에 ng-template 요소를 추가</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.viewContainer.createEmbeddedView(<span class="hljs-keyword">this</span>.templateRef); <span class="hljs-comment">// ①</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-comment">// 호스트 뷰에서 ng-template 요소를 제거</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.viewContainer.clear(); <span class="hljs-comment">// ②</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight ts hljs"><figcaption><span>app.component.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'app-root'</span>,</span><br><span class="line">  template: <span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">    &lt;h2 *myNgIf="condition"&gt;Hello &#123;&#123; name &#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;button (click)="condition = !condition"&gt;Click&lt;/button&gt;</span></span><br><span class="line"><span class="hljs-string">  `</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent &#123;</span><br><span class="line">  condition = <span class="hljs-literal">false</span>;</span><br><span class="line">  name = <span class="hljs-string">'Lee'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>1) 프로퍼티 바인딩에 의해 전달된 myNgIf 디렉티브 상태값이 true이면 viewContainerRef의 createEmbeddedView 메소드에 호스트( app.component)의 ng-template으로 래핑된 요소를 의미하는 templateRef 객체를 인자로 전달하여 뷰에 추가한다.</p>
-<p>2) 위와 같은 방식으로 clear 하여 뷰에서 완전히 제거한다.</p>
-<h3 id="ng-template-디렉티브"><a href="#ng-template-디렉티브" class="headerlink" title="ng-template 디렉티브"></a>ng-template 디렉티브</h3><blockquote>
-<p>ngIf, ngFor, ngSwitch 같은 빌트인 구조 디렉티브는 디렉티브 이름 앞에 붙은 *기호에 의해 ng-template으로 변환된다.</p>
-</blockquote>
-<p>예를 들어<br>&lt;element *nglf=”expression”&gt; </p>
-<p>ngIf 앞에 붙은 * 기호는 아래 구문으로 변환된다.</p>
-<figure class="highlight ts hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ng-template [ngIf]=<span class="hljs-string">"expression"</span>&gt;</span><br><span class="line">  &lt;element&gt;&lt;<span class="hljs-regexp">/element&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>ng-template&gt;</span><br></pre></td></tr></table></figure>
-
-<p>angular 는 *ngIf를 만나면 호스트 요소를 ng-template 디렉티브로 래핑하고 ngIf를 프로퍼티 바인딩으로 변환한다. ng-template 디렉티브는 컴포넌트 템플릿의 일부로서 주석처리 되어 뷰에 랜더링되지 않다가 ngIf 바인딩 값이 true 이면 뷰에 랜더링된다.</p>
-<p>이 때 ngIf는 TemplateRef와 ViewContainerRef 의 인스턴스를 사용하여 ng-template 디렉티브로 래핑된 요소를 랜더링하거나 dom에서 제거한다.</p>
-<hr>
-<p>위의 예제에서도 myNgIf가 ngIf와 같은 역할을 한다. myNgIf 디렉티브에 바인딩된 값을 평가하여 ViewContainerRef의 createEmbeddedView 메소드 또는 clear 메소드를 호출하여 ng-template의 랜더링 여부를 결정한다.</p>
-<h3 id="templateRef와-ViewContainerRef"><a href="#templateRef와-ViewContainerRef" class="headerlink" title="templateRef와 ViewContainerRef"></a>templateRef와 ViewContainerRef</h3><blockquote>
-<p>templateRef는 ng-template 로 래핑된 요소를 가리키는 객체를 생성한다.<br>ViewContainerRef는 하나 이상의 뷰를 포함시킬 수 있는 컨테이너이다. 즉 ng-template 디렉티브로 래핑된 요소를 dom에 삽입하기 위해 필요한 컨테이너 로써 메소드를 통해 새로운 요소를 DOM에 추가한다.</p>
-</blockquote>
-<h3 id="ng-container-디렉티브"><a href="#ng-container-디렉티브" class="headerlink" title="ng-container 디렉티브"></a>ng-container 디렉티브</h3><blockquote>
-<p>단순히 디렉티브를 선언하기 위해 태그가 필요할 경우 사용한다.<br>ng-template는 <em>문법을 사용할 수 없지만, ng-container는 *문법(ex)</em>ngIf) 등이 사용가능하다.</p>
-</blockquote>
-<p>일반적으로 angular는 같은 요소에 하나 이상의 구조 디렉티브 사용을 금지하므로, 이런 경우가 필요할 때 ng-cotainer 요소를 사용한다.</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!--같은 요소에 ngFor문과 ngIf 문을 사용하고 싶을 때 --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"isShow"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let item of itemList"</span>&gt;</span></span><br><span class="line">    &#123;&#123;item&#125;&#125;</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span></span><br></pre></td></tr></table></figure>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/06/06/angular/angular04/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -847,10 +780,10 @@ my-app/
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/0/">Préc</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/0/">Previous</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Suiv</a>
+            <a class="is-flex-grow has-text-black-ter" href="/page/2/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -900,7 +833,7 @@ my-app/
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
                         41
@@ -910,7 +843,7 @@ my-app/
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         8
@@ -930,7 +863,7 @@ my-app/
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/leeeso93" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -955,7 +888,7 @@ my-app/
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Liens
+            Links
         </h3>
         <ul class="menu-list">
         
@@ -993,7 +926,7 @@ my-app/
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -1070,7 +1003,7 @@ my-app/
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Nuage de tags
+            Tag Cloud
         </h3>
         <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
     </div>
@@ -1084,7 +1017,7 @@ my-app/
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
@@ -1467,7 +1400,7 @@ my-app/
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
@@ -2005,9 +1938,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
