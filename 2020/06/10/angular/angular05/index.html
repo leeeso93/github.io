@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Angular chapter9 파이프 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="파이프 데이터 자체를 변경하기 보다는 화면에 표시하는 형식만 변경하고 싶을때 사용하는 것   app.component.ts12345678910111213141516171819202122import &amp;#123;Component&amp;#125; from &apos;@angular/core&apos;;@Component(&amp;#123;  selector: &apos;app-root&apos;,  templ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular chapter9 파이프">
+<meta property="og:url" content="http://yoursite.com/2020/06/10/angular/angular05/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="파이프 데이터 자체를 변경하기 보다는 화면에 표시하는 형식만 변경하고 싶을때 사용하는 것   app.component.ts12345678910111213141516171819202122import &amp;#123;Component&amp;#125; from &apos;@angular/core&apos;;@Component(&amp;#123;  selector: &apos;app-root&apos;,  templ">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2020-06-14T07:54:28.758Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular chapter9 파이프">
+<meta name="twitter:description" content="파이프 데이터 자체를 변경하기 보다는 화면에 표시하는 형식만 변경하고 싶을때 사용하는 것   app.component.ts12345678910111213141516171819202122import &amp;#123;Component&amp;#125; from &apos;@angular/core&apos;;@Component(&amp;#123;  selector: &apos;app-root&apos;,  templ">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Angular chapter9 파이프" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-06-09T15:00:00.000Z">2020-06-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Angular/">Angular</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 minutes read (About 1632 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Angular chapter9 파이프
+            
+        </h1>
+        <div class="content">
+            <h2 id="파이프"><a href="#파이프" class="headerlink" title="파이프"></a>파이프</h2><blockquote>
+<p>데이터 자체를 변경하기 보다는 화면에 표시하는 형식만 변경하고 싶을때 사용하는 것 </p>
+</blockquote>
+<figure class="highlight typescript hljs"><figcaption><span>app.component.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123;Component&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'app-root'</span>,</span><br><span class="line">  template: <span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">    &lt;h2&gt;&#123;&#123;today&#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;h2&gt;&#123;&#123;today | date&#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;h2&gt;&#123;&#123;today | date : 'y년 MM월 dd일 HH시 mm분 ss초'&#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">  `</span>,</span><br><span class="line">  styles: []</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent &#123;</span><br><span class="line">  title = <span class="hljs-string">'custom-attr-directive'</span>;</span><br><span class="line">  today = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">Fri Jun 12 2020 16:46:36 GMT+0900 (대한민국 표준시)</span></span><br><span class="line"><span class="hljs-comment">Jun 12, 2020</span></span><br><span class="line"><span class="hljs-comment">2020년 06월 12일 16시 46분 36초</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<p>파이프는 템플릿 내에서 원하는 형식으로 데이터를 변환하여 표시하는 기능으로, 원본 데이터 자체가 변경되는 것은 아니다.<br>파이프는 다음과 같이 사용한다.</p>
+<figure class="highlight typescript hljs"><figcaption><span>파이프 사용법</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;value | pipeName&#125;&#125;</span><br><span class="line">&#123;&#123;value | pipeName : Option : OptionValue&#125;&#125;</span><br><span class="line">&#123;&#123;value | pipeName1 | pipeName2&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이와 같이 파이프 대상 값 뒤에 연산자(|)를 붙인후 원하는 파이프를 지정한다.<br>(:)으로 구분하여 파이프 옵션을 지정하거나, 파이프를 추가할 수도 있다.</p>
+<h2 id="빌트인-파이프"><a href="#빌트인-파이프" class="headerlink" title="빌트인 파이프"></a>빌트인 파이프</h2><blockquote>
+<p>Angular는 다양한 빌트인 파이프를 제공한다.</p>
+</blockquote>
+<p>+———–+——————+<br>| 파이프    | 의미             |<br>+———–+——————+<br>| date      | 날짜 형식 변환   |<br>+———–+——————+<br>| json      | json 형식 변환   |<br>+———–+——————+<br>| uppercase | 대문자 변환      |<br>+———–+——————+<br>| lowercase | 소문자 변환      |<br>+———–+——————+<br>| currency  | 통화 형식 변환   |<br>+———–+——————+<br>| percent   | 퍼센트 형식 변환 |<br>+———–+——————+<br>| decimal   | 자리수 형식 변환 |<br>+———–+——————+<br>| slice     | 문자열 추출      |<br>+———–+——————+<br>| async     | 비동기 객체 출력 |<br>+———–+——————+</p>
+<figure class="highlight typescript hljs"><figcaption><span>빌트인 파이프 예제</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123;Component&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123;interval&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123;take&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs/operators'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'app-root'</span>,</span><br><span class="line">  template: <span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;DatePipe&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;p&gt;&#123;&#123; today | date: 'y년 MM월 dd일 HH시 mm분 ss초' &#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;CurrencyPipe&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;!-- 한국원:통화기호표시:소숫점위 최소 1자리 소숫점아래 1~2 --&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;p&gt;&#123;&#123; price | currency:'KRW':'symbol':'1.1-2' &#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;SlicePipe : array&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;ul&gt;</span></span><br><span class="line"><span class="hljs-string">      &lt;li *ngFor="let i of collection | slice:1:3"&gt;&#123;&#123;i&#125;&#125;&lt;/li&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;/ul&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;SlicePipe : string&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;p&gt;&#123;&#123; str | slice:0:4 &#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;JsonPipe&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;pre&gt;&#123;&#123; object | json &#125;&#125;&lt;/pre&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;DecimalPipe&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;p&gt;&#123;&#123; pi | number:'3.5' &#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;PercentPipe&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;p&gt;&#123;&#123; num | percent:'3.3' &#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;UpperCasePipe&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;p&gt;&#123;&#123; str | uppercase &#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;LowerCasePipe&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;p&gt;&#123;&#123; str | lowercase &#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;AsyncPipe&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;p&gt;&#123;&#123; second | async &#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-string">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent &#123;</span><br><span class="line">  today = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</span><br><span class="line">  price = <span class="hljs-number">0.1234</span>;</span><br><span class="line">  collection = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'d'</span>];</span><br><span class="line">  str = <span class="hljs-string">'abcdefghij'</span>;</span><br><span class="line">  object = &#123;foo: <span class="hljs-string">'bar'</span>, baz: <span class="hljs-string">'qux'</span>, nested: &#123;xyz: <span class="hljs-number">3</span>&#125;&#125;;</span><br><span class="line">  pi = <span class="hljs-number">3.141592</span>;</span><br><span class="line">  num = <span class="hljs-number">1.3495</span>;</span><br><span class="line">  <span class="hljs-comment">// 1s마다 값을 방출하고 10개를 take한다. (0 ~ 9)</span></span><br><span class="line">  second = interval(<span class="hljs-number">1000</span>).pipe(take(<span class="hljs-number">10</span>));</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">   * DatePipe</span></span><br><span class="line"><span class="hljs-comment">   2020년 06월 12일 17시 06분 26초</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">   CurrencyPipe</span></span><br><span class="line"><span class="hljs-comment">   ₩0.12</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">   SlicePipe : array</span></span><br><span class="line"><span class="hljs-comment">   b</span></span><br><span class="line"><span class="hljs-comment">   c</span></span><br><span class="line"><span class="hljs-comment">   SlicePipe : string</span></span><br><span class="line"><span class="hljs-comment">   abcd</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">   JsonPipe</span></span><br><span class="line"><span class="hljs-comment">   &#123;</span></span><br><span class="line"><span class="hljs-comment">  "foo": "bar",</span></span><br><span class="line"><span class="hljs-comment">  "baz": "qux",</span></span><br><span class="line"><span class="hljs-comment">  "nested": &#123;</span></span><br><span class="line"><span class="hljs-comment">    "xyz": 3</span></span><br><span class="line"><span class="hljs-comment">  &#125;</span></span><br><span class="line"><span class="hljs-comment">&#125;</span></span><br><span class="line"><span class="hljs-comment">   DecimalPipe</span></span><br><span class="line"><span class="hljs-comment">   003.14159</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">   PercentPipe</span></span><br><span class="line"><span class="hljs-comment">   134.950%</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">   UpperCasePipe</span></span><br><span class="line"><span class="hljs-comment">   ABCDEFGHIJ</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">   LowerCasePipe</span></span><br><span class="line"><span class="hljs-comment">   abcdefghij</span></span><br><span class="line"><span class="hljs-comment"></span></span><br><span class="line"><span class="hljs-comment">   AsyncPipe</span></span><br><span class="line"><span class="hljs-comment">   */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="체이닝-파이프"><a href="#체이닝-파이프" class="headerlink" title="체이닝 파이프"></a>체이닝 파이프</h2><blockquote>
+<p>여러 개의 파이프를 조합하여 결과를 출력하는 것을 말한다.</p>
+</blockquote>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Component &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'app-root'</span>,</span><br><span class="line">  template: <span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">    &lt;h3&gt;SlicePipe + UpperCasePipe&lt;/h3&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;p&gt;&#123;&#123; name | slice:4 | uppercase &#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="hljs-string">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent &#123;</span><br><span class="line">  name = <span class="hljs-string">'Lee ung-mo'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 코드의 slice:4 파이프는 4번째 문자부터 마지막 문자까지를 잘라내고, 그걸 전부 대문자로 출력하는 예제이다.<br>출력하면 ‘UNG-MO’가 출력된다.</p>
+<h2 id="커스텀-파이프"><a href="#커스텀-파이프" class="headerlink" title="커스텀 파이프"></a>커스텀 파이프</h2><blockquote>
+<p>사용자가 직접 파이프를 만들어서 사용할 수도 있다.</p>
+</blockquote>
+<ol>
+<li>먼저 아무프로젝트나 생성하고 프로젝트 안에 파이프를 추가한다.</li>
+</ol>
+<figure class="highlight cmd hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ng new pipe-custom -t -s -S</span><br><span class="line"><span class="hljs-built_in">cd</span> pipe-custom</span><br><span class="line">ng g pipe reverse // reverse라는 파이프 파일을 생성함</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>프로젝트와 pipe 파일이 생성되면 pipe 파일을 수정한다.</li>
+</ol>
+<figure class="highlight typescript hljs"><figcaption><span>reverse.pipe.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123;Pipe, PipeTransform&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Pipe</span>(&#123;</span><br><span class="line">  name: <span class="hljs-string">'reverse'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ReversePipe <span class="hljs-keyword">implements</span> PipeTransform &#123;</span><br><span class="line"></span><br><span class="line">  transform(value = <span class="hljs-string">''</span>): <span class="hljs-built_in">string</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> value.split(<span class="hljs-string">''</span>).reverse().join(<span class="hljs-string">''</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>파이프는 @Pipe 데코레이터로 장식된 클래스이고, @Pipe 메타데이터 객체의 name 프로퍼티에 파이프의 식별자를 지정한다.<br>파이프 클래스는 PipeTransform 인터페이스의 추상 메소드 transform를 구현해야 한다.<br>transform  메소드는 파이프의 대상인 값(value)와 옵션(args)를 인자로 받고 변환된 값을 반환한다.</p>
+<ol start="3">
+<li>angular cli로 pipe를 생성하면 app.module.ts에 자동으로 등록된다. </li>
+</ol>
+<figure class="highlight typescript hljs"><figcaption><span>app.module.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; BrowserModule &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/platform-browser'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; NgModule &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> &#123; AppRoutingModule &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./app-routing.module'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; AppComponent &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./app.component'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; ReversePipe &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./reverse.pipe'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@NgModule</span>(&#123;</span><br><span class="line">  declarations: [</span><br><span class="line">    AppComponent,</span><br><span class="line">    ReversePipe <span class="hljs-comment">// 자동 등록</span></span><br><span class="line">  ],</span><br><span class="line">    imports: [</span><br><span class="line">        BrowserModule,</span><br><span class="line">    ],</span><br><span class="line">  providers: [],</span><br><span class="line">  bootstrap: [AppComponent]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule &#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>커스텀 파이프는 빌트인 파이프와 동일한 방법으로 사용한다.</li>
+</ol>
+<figure class="highlight typescript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123;Component&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'app-root'</span>,</span><br><span class="line">  template: <span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">    &lt;input type="text" [(ngModel)]="value"/&gt;</span></span><br><span class="line"><span class="hljs-string">    &#123;&#123;value |reverse&#125;&#125;</span></span><br><span class="line"><span class="hljs-string">  `</span>,</span><br><span class="line">  styles: []</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent &#123;</span><br><span class="line">  value: <span class="hljs-built_in">string</span>;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="파이프와-변화감지"><a href="#파이프와-변화감지" class="headerlink" title="파이프와 변화감지"></a>파이프와 변화감지</h2><blockquote>
+<p>변화감지는 상태의 변화를 감지하여 뷰에 반영하는 것으로 데이터 바인딩이 이에 해당한다. </p>
+</blockquote>
+<p>간단한 todo 예제를 통해 파이프의 변화감지를 알 수 있다.</p>
+<ol>
+<li>프로젝트를 생성한다 (위의 내용반복)</li>
+<li>todo 컴포넌트를 생성한다.</li>
+<li>limit 파이프를 생성하고 수정한다. (최대 5개까지만 리스트가 보이는 파이프)</li>
+</ol>
+<figure class="highlight typescript hljs"><figcaption><span>limit.pipe.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123;Pipe, PipeTransform&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123;Todo&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./todos.component'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Pipe</span>(&#123;</span><br><span class="line">  name: <span class="hljs-string">'limit'</span>,</span><br><span class="line">  pure: <span class="hljs-literal">false</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> LimitPipe <span class="hljs-keyword">implements</span> PipeTransform &#123;</span><br><span class="line"></span><br><span class="line">  transform(todos: Todo[], limit: <span class="hljs-built_in">number</span>): Todo[] &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> todos.filter(<span class="hljs-function">(<span class="hljs-params">el, i</span>) =&gt;</span> i &lt; limit);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>todo 컴포넌트를 수정한다. (limit 파이프 반영)</li>
+</ol>
+<figure class="highlight typescript hljs"><figcaption><span>todo.component.ts </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment">//  todo-list 만들기</span></span><br><span class="line"><span class="hljs-keyword">import</span> &#123;Component, OnInit&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> Todo &#123;</span><br><span class="line">  id: <span class="hljs-built_in">number</span>;</span><br><span class="line">  content: <span class="hljs-built_in">string</span>;</span><br><span class="line">  completed: <span class="hljs-built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'app-todos'</span>,</span><br><span class="line">  template: <span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;input type="text" #todo&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;button (click)="add(todo.value)"&gt;add&lt;/button&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;ul&gt;</span></span><br><span class="line"><span class="hljs-string">        &lt;!-- 1) 컴포넌트에 limit 파이프를 적용한다.  --&gt;</span></span><br><span class="line"><span class="hljs-string">      &lt;li *ngFor="let todo of (todos | limit : 5)" (click)="complete(todo.id)" [class.completed]="todo.completed"&gt;&#123;&#123;todo.content&#125;&#125;&lt;/li&gt;</span></span><br><span class="line"><span class="hljs-string">    &lt;/ul&gt;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">    &lt;pre&gt;&#123;&#123;todos | json&#125;&#125;&lt;/pre&gt;</span></span><br><span class="line"><span class="hljs-string">  `</span>,</span><br><span class="line">  styles: [<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">    .completed &#123;</span></span><br><span class="line"><span class="hljs-string">      text-decoration: line-through;</span></span><br><span class="line"><span class="hljs-string">    &#125;`</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TodosComponent &#123;</span><br><span class="line"></span><br><span class="line">  todos: Todo[] = [</span><br><span class="line">    &#123;id: <span class="hljs-number">1</span>, content: <span class="hljs-string">'HTML'</span>, completed: <span class="hljs-literal">false</span>&#125;,</span><br><span class="line">    &#123;id: <span class="hljs-number">2</span>, content: <span class="hljs-string">'css'</span>, completed: <span class="hljs-literal">false</span>&#125;,</span><br><span class="line">    &#123;id: <span class="hljs-number">3</span>, content: <span class="hljs-string">'gs'</span>, completed: <span class="hljs-literal">false</span>&#125;,</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  add(content: <span class="hljs-built_in">string</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// push 메소드는 원본 배열을 직접 변경하지만, 원본배열의 참조는 밴경되지 않기 때문에 파이프에 의한 변화가 감지되지 않는다.</span></span><br><span class="line">    <span class="hljs-comment">// this.todos.push(&#123;</span></span><br><span class="line">    <span class="hljs-comment">//   id: this.getNextId(),</span></span><br><span class="line">    <span class="hljs-comment">//   content,</span></span><br><span class="line">    <span class="hljs-comment">//   completed: false</span></span><br><span class="line">    <span class="hljs-comment">// &#125;);</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 2) 파이프에 의해 변화 감지가 작동하도록 todos 프로퍼티의 참조가 변경되도록 수정한다.</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.todos = [...this.todos, &#123;id: <span class="hljs-keyword">this</span>.getNextId(), content, completed: <span class="hljs-literal">false</span>&#125;];</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  complete(id: <span class="hljs-built_in">number</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.todos = <span class="hljs-keyword">this</span>.todos.map(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span> todo.id === id ? (&#123;...todo, completed: !todo.completed&#125;) : todo);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">private</span> getNextId() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> !<span class="hljs-keyword">this</span>.todos.length ? <span class="hljs-number">1</span> : <span class="hljs-built_in">Math</span>.max(...this.todos.map(<span class="hljs-function">(<span class="hljs-params">&#123;id&#125;</span>) =&gt;</span> id)) + <span class="hljs-number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2) 이처럼 파이프를 사용하려면 코드 수정이 불가피한데 이를 피하기 위해서 angular에서는 비순수 파이프를 제공한다. </p>
+<h2 id="순수-파이프와-비순수-파이프"><a href="#순수-파이프와-비순수-파이프" class="headerlink" title="순수 파이프와 비순수 파이프"></a>순수 파이프와 비순수 파이프</h2><blockquote>
+<p>파이프는 순수 파이프와 비순수 파이프로 분류할 수 있다.<br>비순수 파이프는 메타데이터 객체의 pure 프로퍼티에 false를 지정한 것이다. pure 프로퍼티를 생략하면 순수 파이프로 동작한다.</p>
+</blockquote>
+<figure class="highlight typescript hljs"><figcaption><span>비순수 파이프 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="hljs-meta">@Pipe</span>(&#123;</span><br><span class="line">    name :<span class="hljs-string">'limit'</span>,</span><br><span class="line">    pure : <span class="hljs-literal">false</span> <span class="hljs-comment">//비순수 파이프</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>위 limit 파이프를 비순수 파이프로 변경하면 push를 사용하여도 변화감지가 작동한다.<br>하지만 비순수 파이프를 사용하면 빈번하게 파이프가 호출되어 퍼포먼스 측면에서 좋지 않으므로 주의한다.</p>
+<p>순수 파이프는 기본 자료형의 값 또는 객체 참조의 변경과 같은 순수한 변경만을 감지하고 파이프를 실행한다.<br>angular는 퍼포먼스를 위해 객체 내부의 변경은 무시하며 순수 파이프를 실행하지 않는다.</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/06/14/angular/angular06/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Angular chapter10 생명주기와 훅 메소드</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/06/06/angular/angular04/">
+                <span class="level-item">Angular chapter8 디렉티브</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2020/06/10/angular/angular05/';
+        this.page.identifier = '2020/06/10/angular/angular05/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'leeeso93' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-3 column-right ">
+    
+    
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#파이프">
+        <span class="has-mr-6">1</span>
+        <span>파이프</span>
+        </a></li><li>
+        <a class="is-flex" href="#빌트인-파이프">
+        <span class="has-mr-6">2</span>
+        <span>빌트인 파이프</span>
+        </a></li><li>
+        <a class="is-flex" href="#체이닝-파이프">
+        <span class="has-mr-6">3</span>
+        <span>체이닝 파이프</span>
+        </a></li><li>
+        <a class="is-flex" href="#커스텀-파이프">
+        <span class="has-mr-6">4</span>
+        <span>커스텀 파이프</span>
+        </a></li><li>
+        <a class="is-flex" href="#파이프와-변화감지">
+        <span class="has-mr-6">5</span>
+        <span>파이프와 변화감지</span>
+        </a></li><li>
+        <a class="is-flex" href="#순수-파이프와-비순수-파이프">
+        <span class="has-mr-6">6</span>
+        <span>순수 파이프와 비순수 파이프</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/ES6/">
+            <span class="level-start">
+                <span class="level-item">ES6</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/SASS-SCSS/">
+            <span class="level-start">
+                <span class="level-item">SASS/SCSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hexo/">
+            <span class="level-start">
+                <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/intelliJ/">
+            <span class="level-start">
+                <span class="level-item">intelliJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/러닝자바스크립트/">
+            <span class="level-start">
+                <span class="level-item">러닝자바스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/리액트-react/">
+            <span class="level-start">
+                <span class="level-item">리액트 / react</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/타입스크립트/">
+            <span class="level-start">
+                <span class="level-item">타입스크립트</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/git세팅/" style="font-size: 10px;">git세팅</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 20px;">map</a> <a href="/tags/set/" style="font-size: 20px;">set</a> <a href="/tags/var/" style="font-size: 10px;">var</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/스코프/" style="font-size: 20px;">스코프</a> <a href="/tags/이터레이터/" style="font-size: 10px;">이터레이터</a> <a href="/tags/인스턴스/" style="font-size: 10px;">인스턴스</a> <a href="/tags/제너레이터/" style="font-size: 10px;">제너레이터</a> <a href="/tags/제어문/" style="font-size: 10px;">제어문</a> <a href="/tags/클래스/" style="font-size: 10px;">클래스</a> <a href="/tags/클로저/" style="font-size: 20px;">클로저</a> <a href="/tags/프로퍼티/" style="font-size: 10px;">프로퍼티</a>
+    </div>
+</div>
+
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Angular chapter9 파이프" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 John Doe&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/leeeso93">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+
+</html>
