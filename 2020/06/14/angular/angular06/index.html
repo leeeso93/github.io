@@ -16,7 +16,7 @@
 <meta property="og:description" content="생명주기 컴포넌트와 디렉티브는 생명주기를 갖는다. 생명주기는 생성하고 소멸되기 까지의 여러 과정을 말하며 Angular 에 의해 관리된다. Angular는 생명주기를 통해 컴포넌트와 디렉티를 생성하고 렌더링하며 프로퍼티의 변화를 체크하고 DOM에서 제거하는 과정을 관리한다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2020-06-14T10:10:28.902Z">
+<meta property="og:updated_time" content="2020-06-14T10:11:27.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular chapter10 생명주기와 훅 메소드">
 <meta name="twitter:description" content="생명주기 컴포넌트와 디렉티브는 생명주기를 갖는다. 생명주기는 생성하고 소멸되기 까지의 여러 과정을 말하며 Angular 에 의해 관리된다. Angular는 생명주기를 통해 컴포넌트와 디렉티를 생성하고 렌더링하며 프로퍼티의 변화를 체크하고 DOM에서 제거하는 과정을 관리한다.">
@@ -280,10 +280,7 @@
 <figure class="highlight console hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[DoCheck]</span><br><span class="line">immutable: HI</span><br><span class="line">mutable: &#123;name: "kim"&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="디렉티브-생명주기-훅-메소드"><a href="#디렉티브-생명주기-훅-메소드" class="headerlink" title="디렉티브 생명주기 훅 메소드"></a>디렉티브 생명주기 훅 메소드</h2><blockquote>
-<p>디렉티브도 컴포넌트와 동일한 생명주기와 훅 메소드를 가진다. 다만 디렉티브는 뷰가 없기 때문에 뷰와 관련된 생명주기는 존재하지 않는다.</p>
-<ul>
-<li>뷰와 관련된 생명주기 : AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked<br>이를 제외한 ngOnChanges, ngDoCheck, OnInit, OnDestory만 존재한다.</li>
-</ul>
+<p>디렉티브도 컴포넌트와 동일한 생명주기와 훅 메소드를 가진다. 다만 디렉티브는 뷰가 없기 때문에 뷰와 관련된 생명주기는 존재하지 않는다.<br>뷰와 관련된 생명주기 : AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked<br>이를 제외한 ngOnChanges, ngDoCheck, OnInit, OnDestory만 존재한다.</p>
 </blockquote>
 
         </div>
